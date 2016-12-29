@@ -7,8 +7,97 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2016 - 2022, IMkind; all rights reserved.</copyright>
-    <lastBuildDate>Fri, 02 Dec 2016 09:53:13 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 14 Dec 2016 10:57:00 +0800</lastBuildDate>
     <atom:link href="https://imkind.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>使用Hugo和Github搭建静态博客之填坑</title>
+      <link>https://imkind.github.io/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%A1%AB%E5%9D%91/</link>
+      <pubDate>Wed, 14 Dec 2016 10:57:00 +0800</pubDate>
+      
+      <guid>https://imkind.github.io/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%A1%AB%E5%9D%91/</guid>
+      <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;我的静态博客已经搭建成功了，并且使用Markdown记录了过程，但期间踩了一路的坑，今天总结一下其中一个：Hugo成功部署到Github Pages，但访问博客时不加载网页布局和样式。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这算是遇到最大的坑了，前后折腾了半个月的时间，直到找到了组织（Hugo交流QQ群：512499080），群主大大&lt;a href=&#34;http://www.coderzh.com/&#34;&gt;@coderzh&lt;/a&gt; 一语道破天机。
+&lt;img src=&#34;https://imkind.github.io/media/hugo_tk_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;1-先来回顾一下如何踩上这个大坑的:597c1832ad705093668c865e80485432&#34;&gt;1 先来回顾一下如何踩上这个大坑的&lt;/h4&gt;
+
+&lt;h5 id=&#34;1-1-使用-hugo-new-site-创建一个新站点时-配置文件-config-toml-中的-baseurl-默认是-http:597c1832ad705093668c865e80485432&#34;&gt;1.1 使用&lt;code&gt;hugo new site&lt;/code&gt; 创建一个新站点时，配置文件&lt;code&gt;config.toml&lt;/code&gt; 中的 &lt;code&gt;baseurl&lt;/code&gt; 默认是 &lt;code&gt;http://&lt;/code&gt;&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;baseurl = &amp;quot;http://replace-this-with-your-hugo-site.com/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;clone spf13.com的博客项目中&lt;code&gt;baseurl&lt;/code&gt; 也是 &lt;code&gt;http://&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;baseurl = &amp;quot;http://spf13.com/&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在之后修改时，直接把博客地址改为了我自己的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;baseurl = &amp;quot;http://imkind.github.io/&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;1-2-自2016年6月15日起-使用github-pages默认域名搭建个人站点-已被强制要求https访问-即使用http访问-也会被重定向到https-参见-securing-your-github-pages-site-with-https-https-help-github-com-articles-securing-your-github-pages-site-with-https:597c1832ad705093668c865e80485432&#34;&gt;1.2 自2016年6月15日起，使用Github Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing your GitHub Pages site with HTTPS》 &lt;a href=&#34;https://help.github.com/articles/securing-your-github-pages-site-with-https/&#34;&gt;https://help.github.com/articles/securing-your-github-pages-site-with-https/&lt;/a&gt;&lt;/h5&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;You can enforce HTTPS to add a layer of encryption for traffic to your GitHub Pages site if it has a github.io domain.&lt;/p&gt;
+
+&lt;p&gt;With HTTPS enforcement enabled, HTTP requests to your GitHub Pages site will be transparently redirected to HTTPS.&lt;/p&gt;
+
+&lt;p&gt;HTTPS enforcement is required for GitHub Pages sites created after June 15, 2016 and using a github.io domain. If you created your GitHub Pages site before June 15, 2016, you can manually enable HTTPS enforcement. HTTPS is not supported for GitHub Pages using custom domains.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这一点可以在repository的settings中得到证实&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;√ Enforce HTTPS — Required for your site because you are using the default domain (imkind.github.io)&lt;/p&gt;
+
+&lt;p&gt;HTTPS provides a layer of encryption that prevents others from snooping on or tampering with traffic to your site.&lt;/p&gt;
+
+&lt;p&gt;When HTTPS is enforced, your site will only be served over HTTPS. Learn more.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;此时，Hugo中配置的HTTP与Github Pages强制使用的HTTPS不一致，导致站点图片、css和js文件无法加载，访问时造成上图的情况&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;If you enable HTTPS for your site, and your site&amp;rsquo;s HTML still references images, CSS, or JavaScript over HTTP, then your site is serving mixed content, and you may have trouble loading assets. Serving mixed content also makes your site less secure.&lt;/p&gt;
+
+&lt;p&gt;To remove your site&amp;rsquo;s mixed content, improve your site&amp;rsquo;s security, and resolve problems related to loading mixed content, edit your site&amp;rsquo;s HTML files and change http:// to https:// so that all of your assets are served over HTTPS.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;2-填坑-更多解决方案参见-resolving-problems-with-mixed-content-https-help-github-com-articles-securing-your-github-pages-site-with-https:597c1832ad705093668c865e80485432&#34;&gt;2. 填坑，更多解决方案参见《Resolving problems with mixed content》&lt;a href=&#34;https://help.github.com/articles/securing-your-github-pages-site-with-https/&#34;&gt;https://help.github.com/articles/securing-your-github-pages-site-with-https/&lt;/a&gt;&lt;/h4&gt;
+
+&lt;h5 id=&#34;2-1-综上-在配置文件config-toml中把-http-修改为-https:597c1832ad705093668c865e80485432&#34;&gt;2.1 综上，在配置文件config.toml中把&lt;code&gt;http&lt;/code&gt;修改为&lt;code&gt;https&lt;/code&gt;&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;baseurl = &amp;quot;http://imkind.github.io/&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;修改为&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;baseurl = &amp;quot;https://imkind.github.io/&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后，重新运行 &lt;code&gt;hugo&lt;/code&gt; 生成静态站点，分别把改动push到IMkind_blog_hugo和imkind.github.io&lt;/p&gt;
+
+&lt;h5 id=&#34;2-2-但是-我发现-spf13-com-http-spf13-com-blog-coderzh-com-http-blog-coderzh-com-nanshu-wang-http-nanshu-wang-blog-bpcoder-com-http-blog-bpcoder-com-等都能使用http正常访问-这可能是因为绑定了自己的域名:597c1832ad705093668c865e80485432&#34;&gt;2.2 但是，我发现&lt;a href=&#34;http://spf13.com/&#34;&gt;spf13.com&lt;/a&gt;、&lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;blog.coderzh.com&lt;/a&gt;、&lt;a href=&#34;http://nanshu.wang/&#34;&gt;nanshu.wang&lt;/a&gt;、&lt;a href=&#34;http://blog.bpcoder.com/&#34;&gt;blog.bpcoder.com&lt;/a&gt;等都能使用HTTP正常访问，这可能是因为绑定了自己的域名。&lt;/h5&gt;
+
+&lt;p&gt;《Securing your GitHub Pages site with HTTPS》 &lt;a href=&#34;https://help.github.com/articles/securing-your-github-pages-site-with-https/&#34;&gt;https://help.github.com/articles/securing-your-github-pages-site-with-https/&lt;/a&gt; ，第三段最后一句：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;HTTPS is not supported for GitHub Pages using custom domains.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;彩蛋:597c1832ad705093668c865e80485432&#34;&gt;&lt;em&gt;彩蛋&lt;/em&gt;&lt;/h4&gt;
+
+&lt;p&gt;附上群主大大&lt;a href=&#34;http://www.coderzh.com/&#34;&gt;@coderzh&lt;/a&gt;如何一语道破天机
+&lt;img src=&#34;https://imkind.github.io/media/hugo_tk_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>使用Hugo和Github搭建静态博客</title>

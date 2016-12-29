@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="keywords" content="Hugo, Github, Pages, Blog, ">
+
+ 
+<meta property="og:type" content="article"/>
+<meta property="og:description" content=""/>
+<meta property="og:title" content="使用Hugo和Github搭建静态博客之填坑 : imkind.github.io"/>
+<meta property="og:site_name" content="IMkind is minggui lu"/>
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://imkind.github.io/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%A1%AB%E5%9D%91/">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2016-12-14"/>
+<meta property="article:modified_time" content="2016-12-14"/>
+
+
+
+<meta property="article:tag" content="Hugo">
+<meta property="article:tag" content="Github">
+<meta property="article:tag" content="Pages">
+<meta property="article:tag" content="Blog">
+
+
+
+
+<meta name="twitter:card" content="summary">
+
+<meta name="twitter:site" content="@imkind0214">
+<meta name="twitter:title" content="使用Hugo和Github搭建静态博客之填坑 : imkind.github.io">
+<meta name="twitter:creator" content="@imkind0214">
+<meta name="twitter:description" content="">
+<meta name="twitter:image:src" content="">
+<meta name="twitter:domain" content="imkind.github.io">
+
+
+
+    <base href="https://imkind.github.io/">
+    <title> 使用Hugo和Github搭建静态博客之填坑 - imkind.github.io </title>
+    <link rel="canonical" href="https://imkind.github.io/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%A1%AB%E5%9D%91/">
+    
+
+    <link href='http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/static/css/style.css">
+
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    
+    
+    
+    
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3d1fd52b11dc0bde2abdc4760452f3dc";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-86857821-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+</head>
+
+<body lang="en" itemscope itemtype="http://schema.org/Article">
+<header id="header">
+    <figure>
+      <a href="/" border=0 id="logolink"><div class="icon-happy" id="logo"> </div></a>
+    </figure>
+    <div id="byline">Hello , IMkind</div>
+    <nav id="nav">
+            <ul id="mainnav">
+            <li>
+                <a href="/感/">
+                <span class="icon"> <i aria-hidden="true" class="icon-quill"></i></span>
+                <span> 感 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/猿/">
+                <span class="icon"> <i aria-hidden="true" class="icon-code"></i></span>
+                <span> 猿 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/狮/">
+                <span class="icon"> <i aria-hidden="true" class="icon-console"></i></span>
+                <span> 狮 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/about/index.html">
+                <span class="icon"> <i aria-hidden="true" class="icon-user"></i></span>
+                <span> 吾 </span>
+            </a>
+            </li>
+        </ul>
+
+    
+
+        <ul id="social">
+            
+            <li id="follow">
+                <span class="icon icon-heart-2"> </span>
+                <span class="title"> follow </span>
+                <div class="dropdown follow">
+                    <ul class="social"> 
+                        <li> <a href="http://github.com/imkind" target="_blank" title="GitHub" class="github"><span class="icon icon-github"></span>GitHub</a> </li>
+                        <li> <a href="http://weibo.com/kind0214" target="_blank" title="Weibo" class="github"><span class="icon icon-feed"></span>Weibo</a> </li>
+                        
+                    </ul>
+                    <span class="subcount icon-arrow-right"></span>
+                </div>
+            </li>
+        </ul>
+
+
+    </nav>
+</header>
+
+
+<section id="main">
+  <h1 itemprop="name" id="title">使用Hugo和Github搭建静态博客之填坑</h1>
+  
+
+<aside id="meta">
+
+    <div>
+        <section id="datecount">
+          <h4 id="date"> Wed Dec 14, 2016 </h4>
+          <h5 id="wc"> 300 Words </h5>
+          <h5 id="readtime"> Read in about 2 Min </h5>
+        </section>
+        <ul id="categories">
+          
+            <li><a href="https://imkind.github.io//topics/hugo">Hugo</a> </li>
+          
+            <li><a href="https://imkind.github.io//topics/github">Github</a> </li>
+          
+            <li><a href="https://imkind.github.io//topics/pages">Pages</a> </li>
+          
+            <li><a href="https://imkind.github.io//topics/blog">Blog</a> </li>
+          
+        </ul>
+        <ul id="tags">
+          
+            <li> <a href="https://imkind.github.io//tags/hugo">Hugo</a> </li>
+          
+            <li> <a href="https://imkind.github.io//tags/github">Github</a> </li>
+          
+            <li> <a href="https://imkind.github.io//tags/pages">Pages</a> </li>
+          
+            <li> <a href="https://imkind.github.io//tags/blog">Blog</a> </li>
+          
+        </ul>
+    </div>
+
+
+
+
+</aside>
+
+<meta itemprop="wordCount" content="297">
+<meta itemprop="datePublished" content="2016-12-14">
+<meta itemprop="url" content="https://imkind.github.io/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%A1%AB%E5%9D%91/">
+
+  <div>
+        <article itemprop="articleBody" id="content">
+           
+
+<blockquote>
+<p>我的静态博客已经搭建成功了，并且使用Markdown记录了过程，但期间踩了一路的坑，今天总结一下其中一个：Hugo成功部署到Github Pages，但访问博客时不加载网页布局和样式。</p>
+</blockquote>
+
+<p>这算是遇到最大的坑了，前后折腾了半个月的时间，直到找到了组织（Hugo交流QQ群：512499080），群主大大<a href="http://www.coderzh.com/">@coderzh</a> 一语道破天机。
+<img src="/media/hugo_tk_01.png" alt="" /></p>
+
+<h4 id="1-先来回顾一下如何踩上这个大坑的:597c1832ad705093668c865e80485432">1 先来回顾一下如何踩上这个大坑的</h4>
+
+<h5 id="1-1-使用-hugo-new-site-创建一个新站点时-配置文件-config-toml-中的-baseurl-默认是-http:597c1832ad705093668c865e80485432">1.1 使用<code>hugo new site</code> 创建一个新站点时，配置文件<code>config.toml</code> 中的 <code>baseurl</code> 默认是 <code>http://</code></h5>
+
+<pre><code>baseurl = &quot;http://replace-this-with-your-hugo-site.com/
+</code></pre>
+
+<p>clone spf13.com的博客项目中<code>baseurl</code> 也是 <code>http://</code></p>
+
+<pre><code>baseurl = &quot;http://spf13.com/&quot;
+</code></pre>
+
+<p>在之后修改时，直接把博客地址改为了我自己的</p>
+
+<pre><code>baseurl = &quot;http://imkind.github.io/&quot;
+</code></pre>
+
+<h5 id="1-2-自2016年6月15日起-使用github-pages默认域名搭建个人站点-已被强制要求https访问-即使用http访问-也会被重定向到https-参见-securing-your-github-pages-site-with-https-https-help-github-com-articles-securing-your-github-pages-site-with-https:597c1832ad705093668c865e80485432">1.2 自2016年6月15日起，使用Github Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing your GitHub Pages site with HTTPS》 <a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/">https://help.github.com/articles/securing-your-github-pages-site-with-https/</a></h5>
+
+<blockquote>
+<p>You can enforce HTTPS to add a layer of encryption for traffic to your GitHub Pages site if it has a github.io domain.</p>
+
+<p>With HTTPS enforcement enabled, HTTP requests to your GitHub Pages site will be transparently redirected to HTTPS.</p>
+
+<p>HTTPS enforcement is required for GitHub Pages sites created after June 15, 2016 and using a github.io domain. If you created your GitHub Pages site before June 15, 2016, you can manually enable HTTPS enforcement. HTTPS is not supported for GitHub Pages using custom domains.</p>
+</blockquote>
+
+<p>这一点可以在repository的settings中得到证实</p>
+
+<blockquote>
+<p>√ Enforce HTTPS — Required for your site because you are using the default domain (imkind.github.io)</p>
+
+<p>HTTPS provides a layer of encryption that prevents others from snooping on or tampering with traffic to your site.</p>
+
+<p>When HTTPS is enforced, your site will only be served over HTTPS. Learn more.</p>
+</blockquote>
+
+<p>此时，Hugo中配置的HTTP与Github Pages强制使用的HTTPS不一致，导致站点图片、css和js文件无法加载，访问时造成上图的情况</p>
+
+<blockquote>
+<p>If you enable HTTPS for your site, and your site&rsquo;s HTML still references images, CSS, or JavaScript over HTTP, then your site is serving mixed content, and you may have trouble loading assets. Serving mixed content also makes your site less secure.</p>
+
+<p>To remove your site&rsquo;s mixed content, improve your site&rsquo;s security, and resolve problems related to loading mixed content, edit your site&rsquo;s HTML files and change http:// to https:// so that all of your assets are served over HTTPS.</p>
+</blockquote>
+
+<h4 id="2-填坑-更多解决方案参见-resolving-problems-with-mixed-content-https-help-github-com-articles-securing-your-github-pages-site-with-https:597c1832ad705093668c865e80485432">2. 填坑，更多解决方案参见《Resolving problems with mixed content》<a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/">https://help.github.com/articles/securing-your-github-pages-site-with-https/</a></h4>
+
+<h5 id="2-1-综上-在配置文件config-toml中把-http-修改为-https:597c1832ad705093668c865e80485432">2.1 综上，在配置文件config.toml中把<code>http</code>修改为<code>https</code></h5>
+
+<pre><code>baseurl = &quot;http://imkind.github.io/&quot;
+</code></pre>
+
+<p>修改为</p>
+
+<pre><code>baseurl = &quot;https://imkind.github.io/&quot;
+</code></pre>
+
+<p>然后，重新运行 <code>hugo</code> 生成静态站点，分别把改动push到IMkind_blog_hugo和imkind.github.io</p>
+
+<h5 id="2-2-但是-我发现-spf13-com-http-spf13-com-blog-coderzh-com-http-blog-coderzh-com-nanshu-wang-http-nanshu-wang-blog-bpcoder-com-http-blog-bpcoder-com-等都能使用http正常访问-这可能是因为绑定了自己的域名:597c1832ad705093668c865e80485432">2.2 但是，我发现<a href="http://spf13.com/">spf13.com</a>、<a href="http://blog.coderzh.com/">blog.coderzh.com</a>、<a href="http://nanshu.wang/">nanshu.wang</a>、<a href="http://blog.bpcoder.com/">blog.bpcoder.com</a>等都能使用HTTP正常访问，这可能是因为绑定了自己的域名。</h5>
+
+<p>《Securing your GitHub Pages site with HTTPS》 <a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/">https://help.github.com/articles/securing-your-github-pages-site-with-https/</a> ，第三段最后一句：</p>
+
+<blockquote>
+<p>HTTPS is not supported for GitHub Pages using custom domains.</p>
+</blockquote>
+
+<h4 id="彩蛋:597c1832ad705093668c865e80485432"><em>彩蛋</em></h4>
+
+<p>附上群主大大<a href="http://www.coderzh.com/">@coderzh</a>如何一语道破天机
+<img src="/media/hugo_tk_02.png" alt="" /></p>
+
+        </article>
+  </div>
+  
+
+
+<aside id="prevnext">
+    
+
+    <div>
+        <section id="prev">
+            &nbsp;
+        </section>
+        <section id="next">
+            &nbsp;<a class="next" href="https://imkind.github.io/%E7%8C%BF/git-everything-is-local/">Git-everything-is-local <i class="icon-arrow-right"></i></a>
+        </section>
+    </div>
+
+
+</aside>
+
+<meta itemprop="wordCount" content="297">
+<meta itemprop="datePublished" content="2016-12-14">
+<meta itemprop="url" content="https://imkind.github.io/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%A1%AB%E5%9D%91/">
+
+</section>
+
+
+
+<aside id=comments>
+    <div><h2> Comments </h2></div>
+   	
+     
+
+     
+	<div class="ds-thread" data-thread-key="" data-title="使用Hugo和Github搭建静态博客之填坑" data-url="https://imkind.github.io/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%A1%AB%E5%9D%91/"></div>
+	
+	
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"imkind"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+	
+
+</aside>
+
+<footer>
+  <div>
+    <p>
+    &copy;2016 
+        <span itemprop="name">IMkind .</span>
+    Powered by <a href="http://gohugo.io">Hugo</a>.
+        Theme by <a href="http://servergrove.com">Server Francia</a>.
+    </p>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
