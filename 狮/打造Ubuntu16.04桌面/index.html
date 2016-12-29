@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="keywords" content="Linux, Ubuntu, dpkg, apt-get, ">
+
+ 
+<meta property="og:type" content="article"/>
+<meta property="og:description" content=""/>
+<meta property="og:title" content="打造Ubuntu16.04桌面 : imkind.github.io"/>
+<meta property="og:site_name" content="IMkind is minggui lu"/>
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://imkind.github.io/%E7%8B%AE/%E6%89%93%E9%80%A0Ubuntu16.04%E6%A1%8C%E9%9D%A2/">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2016-12-15"/>
+<meta property="article:modified_time" content="2016-12-15"/>
+
+
+
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Ubuntu">
+<meta property="article:tag" content="dpkg">
+<meta property="article:tag" content="apt-get">
+
+
+
+
+<meta name="twitter:card" content="summary">
+
+<meta name="twitter:site" content="@imkind0214">
+<meta name="twitter:title" content="打造Ubuntu16.04桌面 : imkind.github.io">
+<meta name="twitter:creator" content="@imkind0214">
+<meta name="twitter:description" content="">
+<meta name="twitter:image:src" content="">
+<meta name="twitter:domain" content="imkind.github.io">
+
+
+
+    <base href="https://imkind.github.io/">
+    <title> 打造Ubuntu16.04桌面 - imkind.github.io </title>
+    <link rel="canonical" href="https://imkind.github.io/%E7%8B%AE/%E6%89%93%E9%80%A0Ubuntu16.04%E6%A1%8C%E9%9D%A2/">
+    
+
+    <link href='http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/static/css/style.css">
+
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    
+    
+    
+    
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3d1fd52b11dc0bde2abdc4760452f3dc";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-86857821-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+</head>
+
+<body lang="en" itemscope itemtype="http://schema.org/Article">
+<header id="header">
+    <figure>
+      <a href="/" border=0 id="logolink"><div class="icon-happy" id="logo"> </div></a>
+    </figure>
+    <div id="byline">Hello , IMkind</div>
+    <nav id="nav">
+            <ul id="mainnav">
+            <li>
+                <a href="/感/">
+                <span class="icon"> <i aria-hidden="true" class="icon-quill"></i></span>
+                <span> 感 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/猿/">
+                <span class="icon"> <i aria-hidden="true" class="icon-code"></i></span>
+                <span> 猿 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/狮/">
+                <span class="icon"> <i aria-hidden="true" class="icon-console"></i></span>
+                <span> 狮 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/about/index.html">
+                <span class="icon"> <i aria-hidden="true" class="icon-user"></i></span>
+                <span> 吾 </span>
+            </a>
+            </li>
+        </ul>
+
+    
+
+        <ul id="social">
+            
+            <li id="follow">
+                <span class="icon icon-heart-2"> </span>
+                <span class="title"> follow </span>
+                <div class="dropdown follow">
+                    <ul class="social"> 
+                        <li> <a href="http://github.com/imkind" target="_blank" title="GitHub" class="github"><span class="icon icon-github"></span>GitHub</a> </li>
+                        <li> <a href="http://weibo.com/kind0214" target="_blank" title="Weibo" class="github"><span class="icon icon-feed"></span>Weibo</a> </li>
+                        
+                    </ul>
+                    <span class="subcount icon-arrow-right"></span>
+                </div>
+            </li>
+        </ul>
+
+
+    </nav>
+</header>
+
+
+<section id="main">
+  <h1 itemprop="name" id="title">打造Ubuntu16.04桌面</h1>
+  
+
+<aside id="meta">
+
+    <div>
+        <section id="datecount">
+          <h4 id="date"> Thu Dec 15, 2016 </h4>
+          <h5 id="wc"> 600 Words </h5>
+          <h5 id="readtime"> Read in about 3 Min </h5>
+        </section>
+        <ul id="categories">
+          
+            <li><a href="https://imkind.github.io//topics/linux">Linux</a> </li>
+          
+            <li><a href="https://imkind.github.io//topics/ubuntu">Ubuntu</a> </li>
+          
+            <li><a href="https://imkind.github.io//topics/dpkg">dpkg</a> </li>
+          
+            <li><a href="https://imkind.github.io//topics/apt-get">apt-get</a> </li>
+          
+        </ul>
+        <ul id="tags">
+          
+            <li> <a href="https://imkind.github.io//tags/linux">Linux</a> </li>
+          
+            <li> <a href="https://imkind.github.io//tags/ubuntu">Ubuntu</a> </li>
+          
+            <li> <a href="https://imkind.github.io//tags/dpkg">dpkg</a> </li>
+          
+            <li> <a href="https://imkind.github.io//tags/apt-get">apt-get</a> </li>
+          
+        </ul>
+    </div>
+
+
+
+
+</aside>
+
+<meta itemprop="wordCount" content="524">
+<meta itemprop="datePublished" content="2016-12-15">
+<meta itemprop="url" content="https://imkind.github.io/%E7%8B%AE/%E6%89%93%E9%80%A0Ubuntu16.04%E6%A1%8C%E9%9D%A2/">
+
+  <div>
+        <article itemprop="articleBody" id="content">
+           
+
+<h3 id="1-初始配置:929879312f30c80e44a6461d4788ce26">1. 初始配置</h3>
+
+<h4 id="1-1-ubuntu-16-04新特性:929879312f30c80e44a6461d4788ce26">1.1 Ubuntu 16.04新特性</h4>
+
+<ul>
+<li><p>默认禁用dash在线搜索</p></li>
+
+<li><p>使用GNOME Software代替Ubuntu软件中心</p></li>
+
+<li><p>自定义Unity所处位置</p></li>
+
+<li><p>apt命令升级：apt可代替apt-get</p></li>
+
+<li><p>支持ZFS文件系统</p></li>
+
+<li><p>软件更新：Linux4.4 LTS、LibreOffice5.1、Python3.5、Docket1.10</p></li>
+</ul>
+
+<h4 id="1-2-设置root密码:929879312f30c80e44a6461d4788ce26">1.2 设置root密码</h4>
+
+<pre><code>sudo passwd root
+</code></pre>
+
+<h4 id="1-3-切换到root用户:929879312f30c80e44a6461d4788ce26">1.3 切换到root用户</h4>
+
+<pre><code>su
+</code></pre>
+
+<p>或</p>
+
+<pre><code>sudo -i
+</code></pre>
+
+<h4 id="1-4-自定义unity所处位置:929879312f30c80e44a6461d4788ce26">1.4 自定义Unity所处位置</h4>
+
+<pre><code>gsettings set com.canonical.Unity.Launcher launcher-position Bottom|Left
+</code></pre>
+
+<h4 id="1-5-查看ubuntu版本:929879312f30c80e44a6461d4788ce26">1.5 查看Ubuntu版本</h4>
+
+<pre><code>lsb_release -a
+</code></pre>
+
+<h4 id="1-6-查看内核版本:929879312f30c80e44a6461d4788ce26">1.6 查看内核版本</h4>
+
+<pre><code>uname -a
+</code></pre>
+
+<h4 id="1-7-查看硬件驱动:929879312f30c80e44a6461d4788ce26">1.7 查看硬件驱动</h4>
+
+<pre><code>lspci
+</code></pre>
+
+<h4 id="1-8-打开终端快捷键:929879312f30c80e44a6461d4788ce26">1.8 打开终端快捷键</h4>
+
+<pre><code>Ctrl+Alt+T
+</code></pre>
+
+<h4 id="1-9-切换控制台tty1-tt6:929879312f30c80e44a6461d4788ce26">1.9 切换控制台tty1-tt6</h4>
+
+<pre><code>Ctrl+Alt+F1~F6
+</code></pre>
+
+<p>回到桌面</p>
+
+<pre><code>Ctrl+Alt+F7
+</code></pre>
+
+<h3 id="2-常用桌面软件安装:929879312f30c80e44a6461d4788ce26">2. 常用桌面软件安装</h3>
+
+<h4 id="2-1-安装vmware-tools-root用户执行:929879312f30c80e44a6461d4788ce26">2.1 安装VMware tools (root用户执行)</h4>
+
+<p>VMware Workstation ——&gt; 虚拟机 ——&gt; 安装VMware Tools
+挂载VMware Tools安装光盘</p>
+
+<pre><code>su
+
+mount /dev/sr0 /mnt
+</code></pre>
+
+<p>把VMware Tools安装文件拷贝至root主目录</p>
+
+<pre><code>cp /mnt/VMwareTools-10.0.10-4301679.tar.gz .
+</code></pre>
+
+<p>解压缩VMmareTools安装文件</p>
+
+<pre><code>tar xvf VMwareTools-10.0.10-4301679.tar.gz
+</code></pre>
+
+<p>解压完毕后进入vmware-tools-distrib目录</p>
+
+<pre><code>cd vmware-tools-distrib
+</code></pre>
+
+<p>运行vmware-install.pl</p>
+
+<pre><code>./vmware-install.pl
+</code></pre>
+
+<p>DO you still want to proceed with this legacy installer?[no]</p>
+
+<pre><code>输入 yes ，回车
+</code></pre>
+
+<p>接下来一路回车，直至安装完成。重启系统后，即可自适应窗口、拖放文件等</p>
+
+<h4 id="2-2-删除amazon链接:929879312f30c80e44a6461d4788ce26">2.2 删除Amazon链接</h4>
+
+<pre><code>sudo apt-get remove unity-webapps-common  
+</code></pre>
+
+<h4 id="2-3-卸载libreoffice:929879312f30c80e44a6461d4788ce26">2.3 卸载Libreoffice</h4>
+
+<pre><code>sudo apt-get remove libreoffice-common
+</code></pre>
+
+<h4 id="2-4-安装-unity-tweak-tool:929879312f30c80e44a6461d4788ce26">2.4 安装 Unity Tweak Tool</h4>
+
+<pre><code>sudo apt-get install unity-tweak-tool
+</code></pre>
+
+<p>查看unity-tweak-tool安装了哪些文件</p>
+
+<pre><code>dpkg -L unity-tweak-tool
+</code></pre>
+
+<p>启动Unity Tweak Tool</p>
+
+<pre><code>/usr/bin/unity-tweak-tool
+</code></pre>
+
+<h4 id="2-5-安装-numix-https-www-numixproject-org-主题和图标:929879312f30c80e44a6461d4788ce26">2.5 安装<a href="https://www.numixproject.org/">Numix</a>主题和图标</h4>
+
+<p>添加Numix源</p>
+
+<pre><code>sudo apt-add-repository ppa:numix/ppa
+sudo apt-get update
+</code></pre>
+
+<p>安装GTK主题</p>
+
+<pre><code>sudo apt-get install numix-gtk-theme
+</code></pre>
+
+<p>安装Numix图标</p>
+
+<pre><code>sudo apt-get install numix-icon-theme-circle
+</code></pre>
+
+<p>在Unity-tweak-tool中启用Numix daily主题和Numix-circle图标
+<img src="/media/Ubuntu_2_5_01.png" alt="" /></p>
+
+<h4 id="2-6-安装指示器:929879312f30c80e44a6461d4788ce26">2.6 安装指示器</h4>
+
+<p>大小写指示灯和触摸板开关</p>
+
+<pre><code>sudo add-apt-repository ppa:tsbarnes/indicator-keylock
+sudo add-apt-repository ppa:atareao/atareao
+sudo apt-get update
+sudo apt-get install indicator-keylock
+sudo apt-get install touchpad-indicator
+</code></pre>
+
+<h4 id="2-7-安装系统监测工具syspeek:929879312f30c80e44a6461d4788ce26">2.7 安装系统监测工具Syspeek</h4>
+
+<p><img src="/media/Ubuntu_2_7_01.png" alt="" /></p>
+
+<pre><code>sudo add-apt-repository ppa:nilarimogard/webupd8    
+sudo apt-get update    
+sudo apt-get install syspeek
+</code></pre>
+
+<h4 id="2-8-安装经典菜单插件:929879312f30c80e44a6461d4788ce26">2.8 安装经典菜单插件</h4>
+
+<p><img src="/media/Ubuntu_2_8_01.png" alt="" /></p>
+
+<pre><code>sudo add-apt-repository ppa:diesch/testing  
+sudo apt-get update  
+sudo apt-get install classicmenu-indicator
+</code></pre>
+
+<h4 id="2-9-安装google-chrome浏览器:929879312f30c80e44a6461d4788ce26">2.9 安装Google Chrome浏览器</h4>
+
+<pre><code>sudo apt-get install google-chrome-stable
+</code></pre>
+
+<p>解决软件包依赖关系</p>
+
+<pre><code>sudo apt-get -f install
+</code></pre>
+
+<h4 id="2-10-安装adobe-flash-player:929879312f30c80e44a6461d4788ce26">2.10 安装Adobe Flash Player</h4>
+
+<h5 id="2-10-1-在firefox中打开-https-get-adobe-com-flashplayer-loc-cn:929879312f30c80e44a6461d4788ce26">2.10.1 在Firefox中打开 <a href="https://get.adobe.com/flashplayer/?loc=cn">https://get.adobe.com/flashplayer/?loc=cn</a></h5>
+
+<p>已自动识别出：<code>Linux 64-bit, 简体中文, Firefox</code>，选择版本为</p>
+
+<pre><code>.tar.gz 适用于 Linux
+</code></pre>
+
+<p>立即下载，然后提取flash_player_npapi_linux.x86_64.tar.gz</p>
+
+<p>按照readme.txt方法</p>
+
+<pre><code>sudo cp libflashplayer.so /usr/lib/firefox-addons/plugins/ -v
+sudo cp -r usr/* /usr
+</code></pre>
+
+<h5 id="2-10-2-在chrome中打开-https-get-adobe-com-cn-flashplayer-otherversions:929879312f30c80e44a6461d4788ce26">2.10.2 在Chrome中打开 <a href="https://get.adobe.com/cn/flashplayer/otherversions/">https://get.adobe.com/cn/flashplayer/otherversions/</a></h5>
+
+<p>选择操作系统为：</p>
+
+<pre><code>Linux(64-bit)
+</code></pre>
+
+<p>选择版本为</p>
+
+<pre><code>xxx for Linux 64-bit(.tar.gz)- PPAPI
+</code></pre>
+
+<p>立即下载，然后提取flash_player_ppapi_linux.x86_64.tar.gz</p>
+
+<p>按照readme.txt方法</p>
+
+<pre><code>sudo cp ~/下载/flash_player_ppapi_linux.x86_64/* /usr/lib/adobe-flashplugin/ -rvf
+</code></pre>
+
+<p>如果<code>/usr/lib/adobe-flashplugin</code>目录不存在，可以自己创建一个再进行上一步，也起作用</p>
+
+<pre><code>sudo mkdir /usr/lib/adobe-flashplugin
+</code></pre>
+
+<h4 id="2-11-配置-老d的google-hosts-https-laod-cn-hosts-2016-google-hosts-html:929879312f30c80e44a6461d4788ce26">2.11 配置<a href="https://laod.cn/hosts/2016-google-hosts.html">老D的Google Hosts</a></h4>
+
+<p>下载老D最新的Google hosts文件，添加以下部分到 <code>/etc/hosts</code></p>
+
+<pre><code># Modified hosts start
+
+......
+
+# Modified hosts end
+</code></pre>
+
+<p>以root用户编辑 <code>/etc/hosts</code></p>
+
+<pre><code>sudo gedit /etc/hosts
+</code></pre>
+
+<p>重启网络使hosts本地解析生效</p>
+
+<pre><code>sudo systemctl restart NetworkManager
+</code></pre>
+
+<h4 id="2-12-添加ubuntu-kylin的apt源-方便安装常用的桌面软件:929879312f30c80e44a6461d4788ce26">2.12 添加Ubuntu Kylin的apt源,方便安装常用的桌面软件</h4>
+
+<pre><code>sudo vim /etc/apt/sources.list.d/ubuntukylin.list
+
+deb http://archive.ubuntukylin.com:10006/ubuntukylin trusty main
+
+sudo apt-get update
+</code></pre>
+
+<h4 id="2-13-安装搜狗输入法:929879312f30c80e44a6461d4788ce26">2.13 安装搜狗输入法</h4>
+
+<pre><code>sudo apt-get install sogoupinyin
+</code></pre>
+
+<h4 id="2-14-安装-网易云音乐-http-music-163-com:929879312f30c80e44a6461d4788ce26">2.14 安装<a href="http://music.163.com/">网易云音乐</a></h4>
+
+<pre><code>sudo apt-get install netease-cloud-music
+</code></pre>
+
+<p>或者，下载 <a href="http://music.163.com/#/download">ubuntu16.04 (64位) 版本的云音乐</a>并安装</p>
+
+<pre><code>sudo dpkg -i netease-cloud-music_1.0.0_amd64_ubuntu16.04.deb
+</code></pre>
+
+<p>解决软件包依赖关系</p>
+
+<pre><code>sudo　apt-get -f install
+</code></pre>
+
+<h4 id="2-15-安装-有道词典-http-cidian-youdao-com-index-linux-html:929879312f30c80e44a6461d4788ce26">2.15 安装<a href="http://cidian.youdao.com/index-linux.html">有道词典</a></h4>
+
+<p><img src="/media/Ubuntu_2_15_01.png" alt="" /></p>
+
+<p>参考：<a href="http://www.linuxdiyf.com/linux/20622.html">Ubuntu 16.04安装有道词典</a></p>
+
+<p>下载Ubuntu 64位的deb包：<a href="http://cidian.youdao.com/index-linux.html">youdao-dict_1.1.0-0-ubuntu_amd64.deb</a></p>
+
+<p>创建youdao-dict目录，把该deb包解压到youdao-dict目录：</p>
+
+<pre><code>sudo dpkg -X youdao-dict_1.1.0-0-ubuntu_amd64.deb  youdao-dict
+</code></pre>
+
+<p>解压deb包中的control信息（包的依赖就写在这个文件里面）：</p>
+
+<pre><code>sudo dpkg -e youdao-dict_1.1.0-0-ubuntu_amd64.deb youdao-dict/DEBIAN
+</code></pre>
+
+<p>编辑control文件，删除Depends行尾的gstreamer0.10-plugins-ugly。</p>
+
+<pre><code>sudo gedit youdao-dict/DEBIAN/control
+</code></pre>
+
+<p>重新打包：</p>
+
+<pre><code>sudo dpkg-deb -b youdao-dict youdaobuild.deb
+</code></pre>
+
+<p>安装重新打包的安装包</p>
+
+<pre><code>sudo dpkg -i youdaobuild.deb
+</code></pre>
+
+<p>安装完毕即可使用，屏幕取词和滑词翻译均能正常使用，喜大普奔！当切换到其他窗口有道词典会自动最小化到右上角任务栏</p>
+
+<p>使用apt-get和dpkg安装deb包测试多次都安装失败，原因正是因为:</p>
+
+<pre><code>未安装软件包 gstreamer0.10-plugins-ugly
+</code></pre>
+
+<h4 id="2-16-安装-wps-office-http-community-wps-cn-download:929879312f30c80e44a6461d4788ce26">2.16 安装<a href="http://community.wps.cn/download/">WPS Office</a></h4>
+
+<p>下载 wps-office_10.1.0.5672~a21_amd64.deb 并安装</p>
+
+<pre><code>sudo dpkg -i wps-office_10.1.0.5672~a21_amd64.deb
+</code></pre>
+
+<p>打开wps会提示缺失symbol、wingdings、wingdings 2、wingdings 3、webding、mtextra 6个字体，在Windows上C:\Windows\Fonts搜索拷贝这6个字体到Ubuntu的usr/share/fonts/下即可。</p>
+
+<p>百度云分享链接: <a href="http://pan.baidu.com/s/1pL6ONHL">http://pan.baidu.com/s/1pL6ONHL</a> 密码: 2stm</p>
+
+<h4 id="2-17-安装shadowsocks:929879312f30c80e44a6461d4788ce26">2.17 安装Shadowsocks</h4>
+
+<pre><code>sudo add-apt-repository ppa:hzwhuang/ss-qt5
+sudo apt-get update
+sudo apt-get install shadowsocks-qt5
+</code></pre>
+
+<h4 id="2-18-安装irssi:929879312f30c80e44a6461d4788ce26">2.18 安装Irssi</h4>
+
+<pre><code>sudo apt-get install screen
+sudo apt-get install irssi
+</code></pre>
+
+<h4 id="2-19-安装迅雷的替代者xware-desktop:929879312f30c80e44a6461d4788ce26">2.19 安装迅雷的替代者Xware-desktop</h4>
+
+<p><img src="/media/Ubuntu_2_19_01.png" alt="" /></p>
+
+<p>在百度网盘中下载最新的Xware-desktop：<a href="http://pan.baidu.com/s/1qWHMlK4">http://pan.baidu.com/s/1qWHMlK4</a></p>
+
+<pre><code>sudo chmod +x xware-desktop_0.11.20140723_amd64.deb
+sudo dpkg -i xware-desktop_0.11.20140723_amd64.deb
+sudo apt-get install -f
+</code></pre>
+
+<h4 id="2-20-安装-vivaldi浏览器-https-vivaldi-com:929879312f30c80e44a6461d4788ce26">2.20 安装<a href="https://vivaldi.com">Vivaldi浏览器</a></h4>
+
+<p><img src="/media/Ubuntu_2_20_01.png" alt="" /></p>
+
+<p>下载<a href="https://vivaldi.com/download/">Vivaldi的deb安装包</a></p>
+
+<pre><code>sudo dpkg -i vivaldi-stable_1.6.689.46-1_amd64.deb
+</code></pre>
+
+<h4 id="2-21-自定义截图快捷键:929879312f30c80e44a6461d4788ce26">2.21 自定义截图快捷键</h4>
+
+<p>系统设置——&gt;键盘——&gt;快捷键——&gt;截图</p>
+
+<p><img src="/media/Ubuntu_2_21_01.png" alt="" /></p>
+
+<h3 id="3-常用工具软件安装:929879312f30c80e44a6461d4788ce26">3. 常用工具软件安装</h3>
+
+<h4 id="3-1-安装albert:929879312f30c80e44a6461d4788ce26">3.1 安装Albert</h4>
+
+<p><img src="/media/Ubuntu_3_1_01.gif" alt="" /></p>
+
+<p>安装方法参考<a href="https://github.com/ManuelSchneid3r/albert/wiki">Albert WIki</a>的《How to install albert》</p>
+
+<pre><code>sudo add-apt-repository ppa:nilarimogard/webupd8
+sudo apt-get update
+sudo apt-get install albert
+</code></pre>
+
+<h4 id="3-2-安装vim:929879312f30c80e44a6461d4788ce26">3.2  安装Vim</h4>
+
+<pre><code>sudo apt-get install vim
+</code></pre>
+
+<h4 id="3-3-安装filezilla:929879312f30c80e44a6461d4788ce26">3.3 安装Filezilla</h4>
+
+<pre><code>sudo apt-get install filezilla
+</code></pre>
+
+<h4 id="3-4-安装-git-https-git-scm-com:929879312f30c80e44a6461d4788ce26">3.4 安装<a href="https://git-scm.com/">Git</a></h4>
+
+<pre><code>sudo apt-get install git
+</code></pre>
+
+<h4 id="3-5-安装-sublime-text-3-www-sublimetext-com:929879312f30c80e44a6461d4788ce26">3.5 安装<a href="www.sublimetext.com/">Sublime Text 3</a></h4>
+
+<pre><code>sudo add-apt-repository ppa:webupd8team/sublime-text-3    
+sudo apt-get update    
+sudo apt-get install sublime-text
+</code></pre>
+
+<p>如果修改<code>Preferences.sublime-settings - User</code>后提示没有权限保存</p>
+
+<pre><code> sudo chmode o+rwx ~/.config/sublime-text-3/ -R
+</code></pre>
+
+<p>关于Sublime Text 3在Ubuntu下无法输入中文的问题，尝试了网上很多方法都没有解决</p>
+
+<h4 id="3-6-安装-notepadqq-http-notepadqq-altervista-org-wp-download:929879312f30c80e44a6461d4788ce26">3.6 安装<a href="http://notepadqq.altervista.org/wp/download/">Notepadqq</a></h4>
+
+<p>Notepadqq功能近似于Windows下的Notepad++</p>
+
+<pre><code>sudo add-apt-repository ppa:notepadqq-team/notepadqq
+sudo apt-get update
+sudo apt-get install notepadqq
+</code></pre>
+
+<h4 id="3-7-安装-atom-https-atom-io:929879312f30c80e44a6461d4788ce26">3.7 安装<a href="https://atom.io/">Atom</a></h4>
+
+<p>安装过程因为下载速度奇慢，建议单独开一个Terminal,耐心等待</p>
+
+<pre><code>sudo add-apt-repository ppa:webupd8team/atom
+sudo apt-get update
+sudo apt-get install atom
+</code></pre>
+
+<h4 id="3-8-安装hugo-由go语言实现的静态网站生成器:929879312f30c80e44a6461d4788ce26">3.8 安装Hugo(由Go语言实现的静态网站生成器)</h4>
+
+<pre><code>sudo apt-get install hugo
+</code></pre>
+
+<h4 id="3-9-安装-vmware-workstation-https-my-vmware-com-cn-web-vmware-login:929879312f30c80e44a6461d4788ce26">3.9 安装<a href="https://my.vmware.com/cn/web/vmware/login">VMware Workstation</a></h4>
+
+<p>下载<a href="https://my.vmware.com/cn/group/vmware/details?downloadGroup=WKST-1252-LX&amp;productId=524&amp;rPId=13365">VMware Workstation Pro for Linux</a>
+安装方法参考官方文档：<a href="http://pubs.vmware.com/workstation-12/index.jsp#com.vmware.ws.using.doc/GUID-1F5B1F14-A586-4A56-83FA-2E7D8333D5CA.html">http://pubs.vmware.com/workstation-12/index.jsp#com.vmware.ws.using.doc/GUID-1F5B1F14-A586-4A56-83FA-2E7D8333D5CA.html</a></p>
+
+<pre><code>su root
+sh VMware-Workstation-Full-12.5.2-4638234.x86_64.bundle
+</code></pre>
+
+<p>稍等弹出图形化的安装界面，与windows上安装相似，一路下一步至安装完毕。</p>
+
+        </article>
+  </div>
+  
+
+
+<aside id="prevnext">
+    
+
+    <div>
+        <section id="prev">
+            &nbsp;
+        </section>
+        <section id="next">
+            &nbsp;<a class="next" href="https://imkind.github.io/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%A1%AB%E5%9D%91/">使用Hugo和Github搭建静态博客之填坑 <i class="icon-arrow-right"></i></a>
+        </section>
+    </div>
+
+
+</aside>
+
+<meta itemprop="wordCount" content="524">
+<meta itemprop="datePublished" content="2016-12-15">
+<meta itemprop="url" content="https://imkind.github.io/%E7%8B%AE/%E6%89%93%E9%80%A0Ubuntu16.04%E6%A1%8C%E9%9D%A2/">
+
+</section>
+
+
+
+<aside id=comments>
+    <div><h2> Comments </h2></div>
+   	
+     
+
+     
+	<div class="ds-thread" data-thread-key="" data-title="打造Ubuntu16.04桌面" data-url="https://imkind.github.io/%E7%8B%AE/%E6%89%93%E9%80%A0Ubuntu16.04%E6%A1%8C%E9%9D%A2/"></div>
+	
+	
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"imkind"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+	
+
+</aside>
+
+<footer>
+  <div>
+    <p>
+    &copy;2016 
+        <span itemprop="name">IMkind .</span>
+    Powered by <a href="http://gohugo.io">Hugo</a>.
+        Theme by <a href="http://servergrove.com">Server Francia</a>.
+    </p>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
