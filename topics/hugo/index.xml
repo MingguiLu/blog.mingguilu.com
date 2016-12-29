@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Continuous  Delivery</title>
-    <link>https://imkind.github.io/</link>
-    <description>Recent content on Continuous  Delivery</description>
+    <title>Hugo on Continuous  Delivery</title>
+    <link>https://imkind.github.io/topics/hugo/</link>
+    <description>Recent content in Hugo on Continuous  Delivery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2016 - 2022, IMkind; all rights reserved.</copyright>
     <lastBuildDate>Fri, 02 Dec 2016 09:53:13 +0800</lastBuildDate>
-    <atom:link href="https://imkind.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://imkind.github.io/topics/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>使用Hugo和Github搭建静态博客</title>
@@ -856,16 +856,6 @@ Branch master set up to track remote branch master from origin.
 &lt;li&gt;&lt;a href=&#34;http://nanshu.wang/post/2015-01-31/&#34;&gt;Hugo静态网站生成器中文教程&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://blog.bpcoder.com/2015/12/hugo-create-blog/&#34;&gt;利用 Hugo &amp;amp; GitHub 搭建个人博客静态网站&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>about</title>
-      <link>https://imkind.github.io/about/</link>
-      <pubDate>Wed, 30 Nov 2016 16:53:18 +0800</pubDate>
-      
-      <guid>https://imkind.github.io/about/</guid>
-      <description>&lt;p&gt;关于我，IMkind&lt;/p&gt;
 </description>
     </item>
     
