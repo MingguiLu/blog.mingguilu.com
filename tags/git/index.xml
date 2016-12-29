@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Continuous  Delivery</title>
+    <link>https://imkind.github.io/tags/git/</link>
+    <description>Recent content in Git on Continuous  Delivery</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2016 - 2022, IMkind; all rights reserved.</copyright>
+    <lastBuildDate>Thu, 08 Dec 2016 08:48:05 +0800</lastBuildDate>
+    <atom:link href="https://imkind.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Git-everything-is-local</title>
+      <link>https://imkind.github.io/%E7%8C%BF/git-everything-is-local/</link>
+      <pubDate>Thu, 08 Dec 2016 08:48:05 +0800</pubDate>
+      
+      <guid>https://imkind.github.io/%E7%8C%BF/git-everything-is-local/</guid>
+      <description>
+
+&lt;h3 id=&#34;1-安装git:0a315d94de8b55214793afe9517d8fb5&#34;&gt;1. 安装git&lt;/h3&gt;
+
+&lt;h4 id=&#34;windows:0a315d94de8b55214793afe9517d8fb5&#34;&gt;windows&lt;/h4&gt;
+
+&lt;p&gt;下载并安装&lt;a href=&#34;https://git-scm.com/downloads&#34;&gt;Git for Windows&lt;/a&gt;，默认选项安装到Ajusting your PATH environment时，勾选第二项Run Git from Windows Command Prompt，即可在windows命令行使用git命令，不过Git Bash用户体验更好&lt;/p&gt;
+
+&lt;h4 id=&#34;ubnutu:0a315d94de8b55214793afe9517d8fb5&#34;&gt;ubnutu&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;2-全局配置git:0a315d94de8b55214793afe9517d8fb5&#34;&gt;2. 全局配置git&lt;/h3&gt;
+
+&lt;p&gt;命令行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git config --global user.name [your-name]
+git config --global user.email [your-email-address]
+git config --global color.ui true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vim ~/.gitconfig
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查看全局配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git config --list
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;3-创建repository-repo:0a315d94de8b55214793afe9517d8fb5&#34;&gt;3. 创建repository/repo&lt;/h3&gt;
+
+&lt;p&gt;创建本地git repo&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;克隆线上的项目&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/[github-account]/[project-name].git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;4-添加及提交文件:0a315d94de8b55214793afe9517d8fb5&#34;&gt;4. 添加及提交文件&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/git_3_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;添加文件到staying area&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git add [file-name]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;提交改动到git repository&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git commit -m [&amp;quot;commit-description&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;直接从working directory提交到git repository&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git commit -am [&amp;quot;commit-description&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;5-查看git状态:0a315d94de8b55214793afe9517d8fb5&#34;&gt;5. 查看git状态&lt;/h3&gt;
+
+&lt;p&gt;查看git状态&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git status
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查看git状态标志&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git status -s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;标志的说明&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;A: 你本地新增的文件（服务器上没有）
+
+C: 文件的一个新拷贝
+
+D: 你本地删除的文件（服务器上还在）
+
+M: 文件的内容或者mode被修改了
+
+R: 文件名被修改了
+
+T: 文件的类型被修改了
+
+U: 文件没有被合并(你需要完成合并才能进行提交)
+
+X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;忽略~结尾的文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;*~&amp;quot; &amp;gt; .gitignore
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;6-查看文件区别:0a315d94de8b55214793afe9517d8fb5&#34;&gt;6. 查看文件区别&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/git_6_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;查看working directory 和 staying area 之间的区别&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git diff
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查看staying area 和 git repository 之间的区别&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git diff --staged
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查看history 和 working directory 之间的区别&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git diff HEAD
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用&amp;ndash;stat参数查看简短信息&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git diff --stat [--staged|HEAD]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;7-撤销误操作:0a315d94de8b55214793afe9517d8fb5&#34;&gt;7. 撤销误操作&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/git_7_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;从git repository 撤销到staying area&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git reset [file-name]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;从staying area撤销到working directory&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git checkout [file-name]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;从git repository 撤销到working directory&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git checkout HEAD [file-name]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;8-移除及重命名文件:0a315d94de8b55214793afe9517d8fb5&#34;&gt;8. 移除及重命名文件&lt;/h3&gt;
+
+&lt;p&gt;删除git文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git rm [file-name]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;删除git文件，但保留源文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git rm --cached [file-name]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;重命名git文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git mv [file-name] [file-name]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;9-暂存工作区:0a315d94de8b55214793afe9517d8fb5&#34;&gt;9. 暂存工作区&lt;/h3&gt;
+
+&lt;p&gt;放入暂存区&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git stash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查看暂存区&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git stash list
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;恢复暂存区&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git stash pop
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;10-图解commit对象:0a315d94de8b55214793afe9517d8fb5&#34;&gt;10. 图解commit对象&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/git_10_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;查看commit记录&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git log
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;或&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git log --pretty=oneline
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;或&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git log --oneline
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;或&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git reflog
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查看commit对象类型&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git cat-file -t [HEAD|short-Hash]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;commit对象类型说明&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tree 目录结构
+blob 一个二进制文件
+commit  一次提交的信息（包含tree、parent、author、committer信息）
+tag 标签（commit的别名）
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查看commit对象详细信息&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git cat-file -p [HEAD|short-Hash]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;11-理解tree-ish表达式:0a315d94de8b55214793afe9517d8fb5&#34;&gt;11. 理解tree-ish表达式&lt;/h3&gt;
+
+&lt;p&gt;查看commit对象指向的HASH值&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git rev-parse [HEAD|HEAD~|HEAD~2|master~3|master~4|...]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查看指定commit的tree的HASH值&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git rev-parse HEAD~4^{tree}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查看指定commit的blob的HASH值&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git rev-parse HEAD~6:[file-path]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;12-创建及删除分支:0a315d94de8b55214793afe9517d8fb5&#34;&gt;12. 创建及删除分支&lt;/h3&gt;
+
+&lt;p&gt;分支文件路径&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/.git/refs/heads/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查看所有分支&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git branch
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;创建分支&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git branch [branch-name]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;切换分支&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git checkout [branch-name]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;创建并切换分支&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git checkout -b [branch-name]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;删除分支&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git branch -d [branch-name]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;合并分支&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git merge [branch-name]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;13-配置github远程仓库:0a315d94de8b55214793afe9517d8fb5&#34;&gt;13. 配置Github远程仓库&lt;/h3&gt;
+
+&lt;p&gt;创建SSH Key&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh-keygen -t rsa -C &amp;quot;youremail@example.com&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;一路回车使用默认值，完成之后在用户主目录中打开 &lt;code&gt;.ssh&lt;/code&gt;目录，可以看到&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;id_rsa      私钥，不能泄露出去
+id_rsa.pub  公钥，可告诉任何人
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;登录Github，依次点击&amp;rdquo;settings&amp;rdquo;——&amp;gt;&amp;ldquo;SSH and GPG keys&amp;rdquo;——&amp;gt;&amp;ldquo;New SSH Key&amp;rdquo;
+&lt;img src=&#34;https://imkind.github.io/media/git_13_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;填写Title，在Key文本框里粘贴&lt;code&gt;id_rsa.pub&lt;/code&gt;文件的内容，点击&amp;rdquo;Add SSH Key&amp;rdquo;&lt;/p&gt;
+
+&lt;h3 id=&#34;14-同步远程github仓库:0a315d94de8b55214793afe9517d8fb5&#34;&gt;14. 同步远程Github仓库&lt;/h3&gt;
+
+&lt;p&gt;关联本地仓库与远程仓库&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git remote add origin git@github.com:[github-account]/[repo-name].git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第一次把本地库master分支推送到远程库&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;之后本地做了提交，即可推送到远程库&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git push origin master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;15-从github远程库克隆:0a315d94de8b55214793afe9517d8fb5&#34;&gt;15. 从Github远程库克隆&lt;/h3&gt;
+
+&lt;p&gt;创建Github Repositories远程库
+&lt;img src=&#34;https://imkind.github.io/media/git_15_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;把远程库克隆到本地&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone git@github.com:[github-account]/[repo-name].git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;或&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/[github-account]/[repo-name].git
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
