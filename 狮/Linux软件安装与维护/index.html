@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="keywords" content="Linux, Package Management, source, dpkg, apt-get, rpm, yum, ">
+
+ 
+<meta property="og:type" content="article"/>
+<meta property="og:description" content=""/>
+<meta property="og:title" content="Linux软件安装与维护 : imkind.github.io"/>
+<meta property="og:site_name" content="IMkind is minggui lu"/>
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://imkind.github.io/%E7%8B%AE/Linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%B4%E6%8A%A4/">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2016-12-30"/>
+<meta property="article:modified_time" content="2016-12-30"/>
+
+
+
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Package Management">
+<meta property="article:tag" content="source">
+<meta property="article:tag" content="dpkg">
+<meta property="article:tag" content="apt-get">
+<meta property="article:tag" content="rpm">
+<meta property="article:tag" content="yum">
+
+
+
+
+<meta name="twitter:card" content="summary">
+
+<meta name="twitter:site" content="@imkind0214">
+<meta name="twitter:title" content="Linux软件安装与维护 : imkind.github.io">
+<meta name="twitter:creator" content="@imkind0214">
+<meta name="twitter:description" content="">
+<meta name="twitter:image:src" content="">
+<meta name="twitter:domain" content="imkind.github.io">
+
+
+
+    <base href="https://imkind.github.io/">
+    <title> Linux软件安装与维护 - imkind.github.io </title>
+    <link rel="canonical" href="https://imkind.github.io/%E7%8B%AE/Linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%B4%E6%8A%A4/">
+    
+
+    <link href='http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/static/css/style.css">
+
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    
+    
+    
+    
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3d1fd52b11dc0bde2abdc4760452f3dc";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-86857821-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+</head>
+
+<body lang="en" itemscope itemtype="http://schema.org/Article">
+<header id="header">
+    <figure>
+      <a href="/" border=0 id="logolink"><div class="icon-happy" id="logo"> </div></a>
+    </figure>
+    <div id="byline">Hello , IMkind</div>
+    <nav id="nav">
+            <ul id="mainnav">
+            <li>
+                <a href="/感/">
+                <span class="icon"> <i aria-hidden="true" class="icon-quill"></i></span>
+                <span> 感 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/猿/">
+                <span class="icon"> <i aria-hidden="true" class="icon-code"></i></span>
+                <span> 猿 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/狮/">
+                <span class="icon"> <i aria-hidden="true" class="icon-console"></i></span>
+                <span> 狮 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/about/index.html">
+                <span class="icon"> <i aria-hidden="true" class="icon-user"></i></span>
+                <span> 吾 </span>
+            </a>
+            </li>
+        </ul>
+
+    
+
+        <ul id="social">
+            
+            <li id="follow">
+                <span class="icon icon-heart-2"> </span>
+                <span class="title"> follow </span>
+                <div class="dropdown follow">
+                    <ul class="social"> 
+                        <li> <a href="http://github.com/imkind" target="_blank" title="GitHub" class="github"><span class="icon icon-github"></span>GitHub</a> </li>
+                        <li> <a href="http://weibo.com/kind0214" target="_blank" title="Weibo" class="github"><span class="icon icon-feed"></span>Weibo</a> </li>
+                        
+                    </ul>
+                    <span class="subcount icon-arrow-right"></span>
+                </div>
+            </li>
+        </ul>
+
+
+    <div id="advertise" class="dropdown follow">
+    <a href="http://my.yizhihongxing.com/aff.php?aff=294" target="_blank" ><img src="/media/yzhx_232_215.jpg"></a>
+</div>
+
+    </nav>
+</header>
+
+
+
+<section id="main">
+  <h1 itemprop="name" id="title">Linux软件安装与维护</h1>
+  
+
+<aside id="meta">
+
+    <div>
+        <section id="datecount">
+          <h4 id="date"> Fri Dec 30, 2016 </h4>
+          <h5 id="wc"> 300 Words </h5>
+          <h5 id="readtime"> Read in about 2 Min </h5>
+        </section>
+        <ul id="categories">
+          
+        </ul>
+        <ul id="tags">
+          
+            <li> <a href="https://imkind.github.io//tags/linux">Linux</a> </li>
+          
+            <li> <a href="https://imkind.github.io//tags/package-management">Package Management</a> </li>
+          
+            <li> <a href="https://imkind.github.io//tags/source">source</a> </li>
+          
+            <li> <a href="https://imkind.github.io//tags/dpkg">dpkg</a> </li>
+          
+            <li> <a href="https://imkind.github.io//tags/apt-get">apt-get</a> </li>
+          
+            <li> <a href="https://imkind.github.io//tags/rpm">rpm</a> </li>
+          
+            <li> <a href="https://imkind.github.io//tags/yum">yum</a> </li>
+          
+        </ul>
+    </div>
+
+
+
+
+</aside>
+
+<meta itemprop="wordCount" content="229">
+<meta itemprop="datePublished" content="2016-12-30">
+<meta itemprop="url" content="https://imkind.github.io/%E7%8B%AE/Linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%B4%E6%8A%A4/">
+
+  <div>
+        <article itemprop="articleBody" id="content">
+           
+
+<h3 id="1-使用软件源码包:9667daa69c84529bfb2ccc8da43c9833">1. 使用软件源码包</h3>
+
+<h3 id="2-debian-ubuntu:9667daa69c84529bfb2ccc8da43c9833">2. Debian/Ubuntu</h3>
+
+<p>Debian系Linux发行版的软件包格式为deb</p>
+
+<h4 id="2-1-dpkg:9667daa69c84529bfb2ccc8da43c9833">2.1 dpkg</h4>
+
+<p>dpkg的是基于Debian系统的一个低级包管理器。它可以安装，删除，提供有关资料，以及建立*.deb包，但它不能自动下载并安装它们相应的依赖包。</p>
+
+<p>查看帮助</p>
+
+<pre><code>dpkg --help
+</code></pre>
+
+<p>查看指定软件包的信息</p>
+
+<pre><code>dpkg -I 下载/Software/vivaldi-stable_1.6.689.46-1_amd64.deb 
+
+#以Vivaldi浏览器deb安装包为例
+##必须使用软件包的完整名称
+</code></pre>
+
+<p>列出指定软件包里的文件目录</p>
+
+<pre><code>dpkg -c 下载/Software/vivaldi-stable_1.6.689.46-1_amd64.deb
+
+#必须使用软件包的完整名称
+</code></pre>
+
+<p>安装deb软件包</p>
+
+<pre><code>dpkg -i vivaldi-stable_1.6.689.46-1_amd64.deb
+</code></pre>
+
+<p>列出所有已安装的软件包</p>
+
+<pre><code>dpkg -l
+</code></pre>
+
+<p>查询是否已安装指定软件包</p>
+
+<pre><code>dpkg -l vivaldi-stable
+
+#即可看到软件名称、版本、架构、描述信息
+#注意软件名称必须正确，比如查询“vivaldi”就会提示“dpkg-query: 没有找到与 vivaldi 相匹配的软件包”
+#当不能确认完整的软件包名称，可以再输入“vivaldi”后，按“Tab”键，会列出所有相关包名称
+</code></pre>
+
+<p>查看已安装的软件包的详细信息</p>
+
+<pre><code>dpkg -s vivaldi-stable
+
+#同上，必须指定软件名称“vivaldi-stable”，而不能用原始的软件包名称“vivaldi-stable_1.6.689.46-1_amd64.deb”
+</code></pre>
+
+<p>列出指定软件包安装后的所有文件</p>
+
+<pre><code>dpkg -L vivaldi-stable 
+
+#同上
+</code></pre>
+
+<p>卸载软件包（保留配置文件）</p>
+
+<pre><code>dpkg -r vivaldi-stable
+
+#同上，必须指定软件名称“vivaldi-stable”，而不能用原始的软件包名称“vivaldi-stable_1.6.689.46-1_amd64.deb”
+</code></pre>
+
+<p>卸载软件包（删除配置文件）</p>
+
+<pre><code>dpkg -p vivaldi-stable
+
+#有些软件包卸载后还会遗留一些配置文件，使用`-p`就像在windows上卸载软件时勾选上“同时清除用户配置文件”
+</code></pre>
+
+<p>安装指定目录及其子目录下所有的“.deb”包</p>
+
+<pre><code>dpkg -R --install debpackages/
+
+# -R 参数表示递归，指定目录和子目录下所有的.deb包都将被安装
+</code></pre>
+
+<p>释放软件包，但不配置</p>
+
+<pre><code>dpkg --unpack vivaldi-stable_1.6.689.46-1_amd64.deb
+</code></pre>
+
+<p>重新配置软件包</p>
+
+<pre><code>dpkg --configure 
+</code></pre>
+
+<p>替换软件包信息</p>
+
+<pre><code>dpkg --update-avail 
+</code></pre>
+
+<p>清除包的当前可用信息</p>
+
+<pre><code>dpkg --clear-avail
+</code></pre>
+
+<p>丢弃所有不能安装和不可用软件包的信息</p>
+
+<pre><code>dpkg --forget-old-unavail
+</code></pre>
+
+<p>显示版本</p>
+
+<pre><code>dpkg --version
+</code></pre>
+
+<h4 id="2-2-apt-cache-apt-get:9667daa69c84529bfb2ccc8da43c9833">2.2 apt-cache、apt-get</h4>
+
+<h5 id="2-2-1-apt-cache:9667daa69c84529bfb2ccc8da43c9833">2.2.1 apt-cache</h5>
+
+<p>apt-cache是Linux下的apt软件包管理工具，使用它能查询到apt的二进制软件包缓存文件,结合一些参数使用能查寻到软件包信息和软件包依赖关系等</p>
+
+<p>列出所有软件包的名称</p>
+
+<pre><code>apt-cache pkgnames
+</code></pre>
+
+<p>列出所有以指定字符开头的软件包</p>
+
+<pre><code>apt-cache pkgnames apache2
+
+#以“apache2”为例
+</code></pre>
+
+<p>列出包含指定关键字的软件包和简介</p>
+
+<pre><code>apt-cache search apache2
+</code></pre>
+
+<p>以便于阅读的格式介绍该软件包</p>
+
+<pre><code>apt-cache show apache2
+</code></pre>
+
+<p>查询软件包的依赖关系</p>
+
+<pre><code>apt-cache showpkg apache2
+</code></pre>
+
+<p>统计全部软件包的信息</p>
+
+<pre><code>apt-cache stats
+</code></pre>
+
+<h5 id="2-2-2-apt-get:9667daa69c84529bfb2ccc8da43c9833">2.2.2 apt-get</h5>
+
+<p>apt-get是Debian及其衍生版的高级包管理器，并提供命令行方式来从多个来源检索和安装软件包，其中包括解决依赖性。和dpkg不同的是，apt-get不是直接基于.deb文件工作，而是基于软件包的正确名称。</p>
+
+<p>更新软件源（/etc/apt/source.list）</p>
+
+<pre><code>sudo apt-get update
+</code></pre>
+
+<p>升级已安装的所有软件包（不管依赖性，不添加包，也不删除包）</p>
+
+<pre><code>sudo apt-get upgrade
+</code></pre>
+
+<p>升级已安装的所有软件包（根据依赖关系的变化，添加包或删除包）</p>
+
+<pre><code>sudo apt-get dist-upgrade 
+</code></pre>
+
+<p>安装指定的软件包</p>
+
+<pre><code>sudo apt-get install apache2
+
+#以“apache2”为例
+</code></pre>
+
+<p>安装多个软件包</p>
+
+<pre><code>sudo apt-get install apache2 mysql-server php5
+
+#同时安装“apache2”、&quot;mysql-server&quot;、&quot;php5&quot;，并解决依赖性
+</code></pre>
+
+<p>安装包含指定字符串的软件包</p>
+
+<pre><code>sudo apt-get install '*name*'
+</code></pre>
+
+<p>安装软件包但不升级</p>
+
+<pre><code>sudo apt-get install packageName --no-upgrade
+</code></pre>
+
+<p>安装指定名称和版本的软件包</p>
+
+<pre><code>sudo apt-get install apache2=2.4.18-2ubuntu3.1
+</code></pre>
+
+<p>卸载软件包但不清除配置文件</p>
+
+<pre><code>sudo apt-get remove apache2
+</code></pre>
+
+<p>卸载软件包同时清除配置文件</p>
+
+<pre><code>sudo apt-get purge apaceh2
+</code></pre>
+
+<p>或者</p>
+
+<pre><code>sudo apt-get remove --purge apache2
+</code></pre>
+
+<p>清理本地软件仓库</p>
+
+<pre><code>sudo apt-get clean
+</code></pre>
+
+<p>仅下载指定软件源码包</p>
+
+<pre><code>sudo apt-get --download-only source apache2
+</code></pre>
+
+<p>下载指定软件包并解包</p>
+
+<pre><code>sudo apt-get source apache2
+</code></pre>
+
+<p>同时下载、解包并编译软件包</p>
+
+<pre><code>sudo apt-get --compile source apache2
+</code></pre>
+
+<p>仅下载不安装软件包</p>
+
+<pre><code>sudo apt-get download apache2
+</code></pre>
+
+<p>查看软件包版本变更日志</p>
+
+<pre><code>sudo apt-get changelog apache2
+</code></pre>
+
+<p>检查是否有损坏的依赖关系</p>
+
+<pre><code>sudo apt-get check
+</code></pre>
+
+<p>建立指定软件包的编译环境</p>
+
+<pre><code>sudo apt-get build-dep apache2
+
+#为手工编译软件apache2,提前把编译过程中需要用的软件包先安装配置好
+</code></pre>
+
+<p>将已经删除了的软件包的.deb安装文件从硬盘中删除掉</p>
+
+<pre><code>sudo apt-get autoclean
+</code></pre>
+
+<p>将已经安装了的所有软件包的.deb包从硬盘中删除掉</p>
+
+<pre><code>sudo apt-get clean
+</code></pre>
+
+<p>删除为了满足其他软件包的依赖而安装的，但现在不再需要的软件包</p>
+
+<pre><code>sudo apt-get autoremove apache2
+</code></pre>
+
+        </article>
+  </div>
+  
+
+
+<aside id="prevnext">
+    
+
+    <div>
+        <section id="prev">
+            &nbsp;
+        </section>
+        <section id="next">
+            &nbsp;<a class="next" href="https://imkind.github.io/%E7%8B%AE/%E6%89%93%E9%80%A0Ubuntu16.04%E6%A1%8C%E9%9D%A2/">打造Ubuntu16.04桌面 <i class="icon-arrow-right"></i></a>
+        </section>
+    </div>
+
+
+</aside>
+
+<meta itemprop="wordCount" content="229">
+<meta itemprop="datePublished" content="2016-12-30">
+<meta itemprop="url" content="https://imkind.github.io/%E7%8B%AE/Linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%B4%E6%8A%A4/">
+
+</section>
+
+
+
+<aside id=comments>
+    <div><h2> Comments </h2></div>
+   	
+     
+
+     
+	<div class="ds-thread" data-thread-key="" data-title="Linux软件安装与维护" data-url="https://imkind.github.io/%E7%8B%AE/Linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%B4%E6%8A%A4/"></div>
+	
+	
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"imkind"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+	
+
+</aside>
+
+<footer>
+  <div>
+    <p>
+    &copy;2016 
+        <span itemprop="name">IMkind .</span>
+    Powered by <a href="http://gohugo.io">Hugo</a>.
+        Theme by <a href="http://servergrove.com">Server Francia</a>.
+    </p>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
