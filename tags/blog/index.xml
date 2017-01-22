@@ -163,7 +163,7 @@ id_rsa.pub  公钥，可告诉任何人
 
 &lt;p&gt;进入工作目录&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cd d/HelloWorld/hugo/ 
+&lt;pre&gt;&lt;code&gt;$ cd d/HelloWorld/hugo/
 $ pwd
 /d/HelloWorld/hugo
 &lt;/code&gt;&lt;/pre&gt;
@@ -394,12 +394,12 @@ D:\HelloWorld\hugo\IMkind_blog_hugo\content\狮\我的第一篇狮.md created
         &amp;lt;span class=&amp;quot;icon icon-heart-2&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;
         &amp;lt;span class=&amp;quot;title&amp;quot;&amp;gt; follow &amp;lt;/span&amp;gt;
         &amp;lt;div class=&amp;quot;dropdown follow&amp;quot;&amp;gt;
-            &amp;lt;ul class=&amp;quot;social&amp;quot;&amp;gt; 
+            &amp;lt;ul class=&amp;quot;social&amp;quot;&amp;gt;
                 &amp;lt;li&amp;gt; &amp;lt;a href=&amp;quot;http://github.com/imkind&amp;quot; target=&amp;quot;_blank&amp;quot; title=&amp;quot;GitHub&amp;quot; class=&amp;quot;github&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;icon icon-github&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;GitHub&amp;lt;/a&amp;gt; &amp;lt;/li&amp;gt;
                 &amp;lt;li&amp;gt; &amp;lt;a href=&amp;quot;http://weibo.com/kind0214&amp;quot; target=&amp;quot;_blank&amp;quot; title=&amp;quot;Weibo&amp;quot; class=&amp;quot;github&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;icon icon-feed&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;Weibo&amp;lt;/a&amp;gt; &amp;lt;/li&amp;gt;
                 &amp;lt;li&amp;gt; &amp;lt;a href=&amp;quot;http://www.facebook.com/kind0214&amp;quot; target=&amp;quot;_blank&amp;quot; title=&amp;quot;Join me on Facebook&amp;quot; class=&amp;quot;facebook&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;icon icon-facebook&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;Facebook&amp;lt;/a&amp;gt; &amp;lt;/li&amp;gt;
                 &amp;lt;li&amp;gt; &amp;lt;a href=&amp;quot;http://www.twitter.com/kind0214&amp;quot; target=&amp;quot;_blank&amp;quot; title=&amp;quot;Follow me on Twitter&amp;quot; class=&amp;quot;twitter&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;icon icon-twitter&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;Twitter&amp;lt;/a&amp;gt; &amp;lt;/li&amp;gt;
-                &amp;lt;li&amp;gt; &amp;lt;a href=&amp;quot;http://www.linkedin.com/in/luminggui&amp;quot; target=&amp;quot;_blank&amp;quot; title=&amp;quot;LinkedIn&amp;quot; class=&amp;quot;linkedin&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;icon icon-linkedin&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;LinkedIn&amp;lt;/a&amp;gt; &amp;lt;/li&amp;gt; 
+                &amp;lt;li&amp;gt; &amp;lt;a href=&amp;quot;http://www.linkedin.com/in/luminggui&amp;quot; target=&amp;quot;_blank&amp;quot; title=&amp;quot;LinkedIn&amp;quot; class=&amp;quot;linkedin&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;icon icon-linkedin&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;LinkedIn&amp;lt;/a&amp;gt; &amp;lt;/li&amp;gt;
                 &amp;lt;li&amp;gt; &amp;lt;a href=&amp;quot;mailto:luminggui0214@gmail.com&amp;quot; target=&amp;quot;_blank&amp;quot; title=&amp;quot;Send an email&amp;quot; class=&amp;quot;email&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;icon icon-mail&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;Email&amp;lt;/a&amp;gt; &amp;lt;/li&amp;gt;
             &amp;lt;/ul&amp;gt;
             &amp;lt;span class=&amp;quot;subcount icon-arrow-right&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
@@ -431,7 +431,7 @@ D:\HelloWorld\hugo\IMkind_blog_hugo\content\狮\我的第一篇狮.md created
 &lt;pre&gt;&lt;code&gt;        &amp;lt;footer&amp;gt;
           &amp;lt;div&amp;gt;
             &amp;lt;p&amp;gt;
-            &amp;amp;copy;2016 
+            &amp;amp;copy;2016
                 &amp;lt;span itemprop=&amp;quot;name&amp;quot;&amp;gt;IMkind .&amp;lt;/span&amp;gt;
             Powered by &amp;lt;a href=&amp;quot;http://gohugo.io&amp;quot;&amp;gt;Hugo&amp;lt;/a&amp;gt;.
                 Theme by &amp;lt;a href=&amp;quot;http://servergrove.com&amp;quot;&amp;gt;Server Francia&amp;lt;/a&amp;gt;.
@@ -460,7 +460,7 @@ D:\HelloWorld\hugo\IMkind_blog_hugo\content\狮\我的第一篇狮.md created
 &amp;lt;div&amp;gt;&amp;lt;section id=&amp;quot;author&amp;quot;&amp;gt;
 ...
 &amp;lt;/section&amp;gt;&amp;lt;/div&amp;gt;
---&amp;gt; 
+--&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;2-8-2-修改博文创建时间-字数统计-阅读时间-tags-topics的显示位置:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.8.2 修改博文创建时间、字数统计、阅读时间、tags、topics的显示位置&lt;/h4&gt;
@@ -613,7 +613,7 @@ h1,h2{font-size:1.6em;line-height:1.8em}
 h2{font-size:1.4em;font-weight:normal}
 h3{margin:1.3em 0 1.5em}
 
-.post-meta{color:#34495e;font-size:90%} 
+.post-meta{color:#34495e;font-size:90%}
 
 body&amp;gt;footer p{margin:0;padding:0;font-size:90%;line-height:1.5em}
 
@@ -698,7 +698,7 @@ body&amp;gt;section,body&amp;gt;aside,body&amp;gt;.content,body&amp;gt;footer,#c
 &lt;pre&gt;&lt;code&gt;&amp;lt;aside id=comments&amp;gt;
     &amp;lt;div&amp;gt;&amp;lt;h2&amp;gt; Comments &amp;lt;/h2&amp;gt;&amp;lt;/div&amp;gt;
 
-     {{ template &amp;quot;_internal/disqus.html&amp;quot; . }} 
+     {{ template &amp;quot;_internal/disqus.html&amp;quot; . }}
 
 &amp;lt;/aside&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -721,7 +721,7 @@ body&amp;gt;section,body&amp;gt;aside,body&amp;gt;.content,body&amp;gt;footer,#c
             ds.type = &#39;text/javascript&#39;;ds.async = true;
             ds.src = (document.location.protocol == &#39;https:&#39; ? &#39;https:&#39; : &#39;http:&#39;) + &#39;//static.duoshuo.com/embed.js&#39;;
             ds.charset = &#39;UTF-8&#39;;
-            (document.getElementsByTagName(&#39;head&#39;)[0] 
+            (document.getElementsByTagName(&#39;head&#39;)[0]
              || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(ds);
         })();
         &amp;lt;/script&amp;gt;
@@ -748,7 +748,7 @@ body&amp;gt;section,body&amp;gt;aside,body&amp;gt;.content,body&amp;gt;footer,#c
 
 &lt;h3 id=&#34;2-13-代码高亮:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.13 代码高亮&lt;/h3&gt;
 
-&lt;h4 id=&#34;2-13-1-使用在线js-本站默认使用:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.13.1 使用在线js(本站默认使用)&lt;/h4&gt;
+&lt;h4 id=&#34;2-13-1-使用在线js-加载速度慢-不推荐使用:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.13.1 使用在线js(加载速度慢，不推荐使用)&lt;/h4&gt;
 
 &lt;p&gt;参考：&lt;a href=&#34;http://nanshu.wang/&#34;&gt;nanshu.wang&lt;/a&gt;的教程&lt;a href=&#34;http://nanshu.wang/post/2015-01-31/&#34;&gt;Hugo静态网站生成器中文教程&lt;/a&gt;&lt;/p&gt;
 
@@ -761,7 +761,7 @@ body&amp;gt;section,body&amp;gt;aside,body&amp;gt;.content,body&amp;gt;footer,#c
 
 &lt;p&gt;在浏览器查看效果&lt;/p&gt;
 
-&lt;h4 id=&#34;2-13-2-使用本地配置-highlight-js-https-highlightjs-org-未配置成功:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.13.2 使用本地配置&lt;a href=&#34;https://highlightjs.org/&#34;&gt;highlight.js&lt;/a&gt;（未配置成功）&lt;/h4&gt;
+&lt;h4 id=&#34;2-13-2-使用本地配置-highlight-js-https-highlightjs-org-推荐使用:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.13.2 使用本地配置&lt;a href=&#34;https://highlightjs.org/&#34;&gt;highlight.js&lt;/a&gt;（推荐使用）&lt;/h4&gt;
 
 &lt;p&gt;参考：&lt;a href=&#34;http://newoxygen.github.io&#34;&gt;http://newoxygen.github.io&lt;/a&gt; 的教程 &lt;a href=&#34;http://newoxygen.github.io/post/hugo%E5%BF%AB%E9%80%9F%E5%BB%BA%E7%AB%99/#2.2&#34;&gt;hugo快速建站&lt;/a&gt;&lt;/p&gt;
 
@@ -782,8 +782,8 @@ CHANGES.md  highlight.pack.js  LICENSE  README.md  README.ru.md  styles/
 &lt;p&gt;在layouts\partials\header.html 添加&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;&amp;lt;!-- Highlight.js --&amp;gt;
-&amp;lt;script src=&amp;quot;{{ .Site.BaseURL }}js/highlight.pack.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;{{ .Site.BaseURL }}css/highlight/monokai.css&amp;quot;&amp;gt;
+&amp;lt;script src=&amp;quot;{{ .Site.BaseURL }}static/js/highlight.pack.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;{{ .Site.BaseURL }}static/css/highlight/github.css&amp;quot;&amp;gt;
 &amp;lt;script&amp;gt;hljs.initHighlightingOnLoad();&amp;lt;/script&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -802,7 +802,7 @@ var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement(&amp;quot;script&amp;quot;);
   hm.src = &amp;quot;https://hm.baidu.com/hm.js?3d1fd52b11dc0bde2abdc4760452f3dc&amp;quot;;
-  var s = document.getElementsByTagName(&amp;quot;script&amp;quot;)[0]; 
+  var s = document.getElementsByTagName(&amp;quot;script&amp;quot;)[0];
   s.parentNode.insertBefore(hm, s);
 })();
 &amp;lt;/script&amp;gt;
@@ -833,7 +833,7 @@ var _hmt = _hmt || [];
 
 &lt;h4 id=&#34;3-1-在github新建-your-hugo-project-name-仓库-用于托管hugo静态博客系统源代码:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;3.1 在Github新建[your-hugo-project-name]仓库，用于托管hugo静态博客系统源代码&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;https://github.com/imkind/IMkind_blog_hugo 
+&lt;pre&gt;&lt;code&gt;https://github.com/imkind/IMkind_blog_hugo
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;3-2-在github新建-your-github-account-github-io仓库-用于存放hugo生成得静态博客站点文件:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;3.2 在Github新建[your-github-account].github.io仓库，用于存放hugo生成得静态博客站点文件&lt;/h4&gt;
@@ -848,7 +848,7 @@ var _hmt = _hmt || [];
 
 &lt;h4 id=&#34;3-4-添加远程库-把本地git仓库同远程库关联起来:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;3.4 添加远程库，把本地git仓库同远程库关联起来&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;$ git remote add origin git@github.com:[your-github-account]/[your-hugo-project-name].git 
+&lt;pre&gt;&lt;code&gt;$ git remote add origin git@github.com:[your-github-account]/[your-hugo-project-name].git
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;即&lt;/p&gt;
@@ -863,12 +863,12 @@ var _hmt = _hmt || [];
 
 &lt;h5 id=&#34;3-6-把-your-github-account-github-io设置为-your-hugo-project-name-的子项目-命令会-clone-远程仓库-your-github-account-github-io到本地并重命名为-public:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;3.6 把[your-github-account].github.io设置为[your-hugo-project-name]的子项目，命令会&lt;code&gt;clone&lt;/code&gt;远程仓库[your-github-account].github.io到本地并重命名为&lt;code&gt;public&lt;/code&gt;&lt;/h5&gt;
 
-&lt;pre&gt;&lt;code&gt;$ git submodule add https://github.com/[your-github-account]/[your-github-account].github.io.git  public
+&lt;pre&gt;&lt;code&gt;$ git submodule add git@github.com:[your-github-account]/[your-github-account].github.io.git  public
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;即&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ git submodule add https://github.com/imkind/imkind.github.io.git public
+&lt;pre&gt;&lt;code&gt;$ git submodule add git@github.com:imkind/imkind.github.io.git public
 Cloning into &#39;D:/HelloWorld/hugo/IMkind_blog_hugo/public&#39;...
 warning: You appear to have cloned an empty repository.
 fatal: You are on a branch yet to be born
