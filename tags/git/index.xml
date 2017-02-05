@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on Continuous  Delivery</title>
-    <link>https://imkind.github.io/tags/git/</link>
+    <link>https://mingguilu.github.io/tags/git/</link>
     <description>Recent content in Git on Continuous  Delivery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 2016 - 2022, IMkind; all rights reserved.</copyright>
+    <copyright>Copyright (c) 2016 - 2022, MingguiLu; all rights reserved.</copyright>
     <lastBuildDate>Sat, 14 Jan 2017 20:33:09 +0800</lastBuildDate>
-    <atom:link href="https://imkind.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mingguilu.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>感谢Hugo，让我遇见Markdown和Git</title>
-      <link>https://imkind.github.io/%E6%84%9F/%E6%84%9F%E8%B0%A2Hugo%EF%BC%8C%E8%AE%A9%E6%88%91%E9%81%87%E8%A7%81Markdown%E5%92%8CGit/</link>
+      <link>https://mingguilu.github.io/%E6%84%9F/%E6%84%9F%E8%B0%A2Hugo%EF%BC%8C%E8%AE%A9%E6%88%91%E9%81%87%E8%A7%81Markdown%E5%92%8CGit/</link>
       <pubDate>Sat, 14 Jan 2017 20:33:09 +0800</pubDate>
       
-      <guid>https://imkind.github.io/%E6%84%9F/%E6%84%9F%E8%B0%A2Hugo%EF%BC%8C%E8%AE%A9%E6%88%91%E9%81%87%E8%A7%81Markdown%E5%92%8CGit/</guid>
+      <guid>https://mingguilu.github.io/%E6%84%9F/%E6%84%9F%E8%B0%A2Hugo%EF%BC%8C%E8%AE%A9%E6%88%91%E9%81%87%E8%A7%81Markdown%E5%92%8CGit/</guid>
       <description>&lt;p&gt;去年7月在机缘巧合之下接触了静态博客的概念，深入了解了一些知识之后，特别欣喜，决定动手搭建一个自己的静态博客。时间一晃到了年底，当着手实现的时候发现并不简单&lt;/p&gt;
 
 &lt;p&gt;首先是选择哪一款生成器，在知乎上研究一番后，最终在Jekyll、Hexo和Hugo中，选择了Hugo，因为简单、生成速度快，在&lt;a href=&#34;https://staticsitegenerators.net/&#34;&gt;静态博客生成器排名榜&lt;/a&gt;上发展势头好，接着在《&lt;a href=&#34;http://www.gohugo.org&#34;&gt;Hugo中文文档&lt;/a&gt;》学习如何安装使用它，利用自己有限的网页知识在Hugo作者个人博客&lt;a href=&#34;http://sfp13.com&#34;&gt;spf13.com&lt;/a&gt;的源码基础上定制了自己的博客前端&lt;/p&gt;
@@ -35,7 +35,7 @@
 &lt;li&gt;&lt;p&gt;因为频繁的&lt;code&gt;git commit&lt;/code&gt;，&lt;code&gt;commit message&lt;/code&gt;每次随性而写，回头&lt;code&gt;git log&lt;/code&gt;一看全是一句话概括，具体改了什么自己也看不懂了&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/gan_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/gan_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;当写文档时，前一篇没写完搁置了，接着完成了另外一篇，这时commit并push就很尴尬了&lt;/li&gt;
@@ -51,7 +51,7 @@
 &lt;li&gt;&lt;p&gt;在&lt;a href=&#34;http://blog.jobbole.com/109197/&#34;&gt;《Git 最佳实践：commit msg》&lt;/a&gt;关于&lt;code&gt;commit message&lt;/code&gt;规范的指导下，重新创建了版本库，并在写message时尝试写简单易懂的标题和详尽明了的内容&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/gan_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/gan_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;近期刚好在看一本关于Devops的书《持续交付 - 发布可靠软件的系统方法》，本书前2章着重讲述了使用版本控制对构建软件可重复且可靠的自动化发布的重要意义。而这次git的实践，有助于理解书中的内容，最终使用“Continuous Delivery”作为博客标题也是因为这本书。&lt;/p&gt;
 </description>
@@ -59,10 +59,10 @@
     
     <item>
       <title>Git-everything-is-local</title>
-      <link>https://imkind.github.io/%E7%8C%BF/git-everything-is-local/</link>
+      <link>https://mingguilu.github.io/%E7%8C%BF/git-everything-is-local/</link>
       <pubDate>Thu, 08 Dec 2016 08:48:05 +0800</pubDate>
       
-      <guid>https://imkind.github.io/%E7%8C%BF/git-everything-is-local/</guid>
+      <guid>https://mingguilu.github.io/%E7%8C%BF/git-everything-is-local/</guid>
       <description>
 
 &lt;h3 id=&#34;1-安装git:0a315d94de8b55214793afe9517d8fb5&#34;&gt;1. 安装git&lt;/h3&gt;
@@ -109,7 +109,7 @@ git config --global color.ui true
 
 &lt;h3 id=&#34;4-添加及提交文件:0a315d94de8b55214793afe9517d8fb5&#34;&gt;4. 添加及提交文件&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/git_3_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/git_3_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;添加文件到staying area&lt;/p&gt;
 
@@ -164,7 +164,7 @@ X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report
 
 &lt;h3 id=&#34;6-查看文件区别:0a315d94de8b55214793afe9517d8fb5&#34;&gt;6. 查看文件区别&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/git_6_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/git_6_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;查看working directory 和 staying area 之间的区别&lt;/p&gt;
 
@@ -188,7 +188,7 @@ X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report
 
 &lt;h3 id=&#34;7-撤销误操作:0a315d94de8b55214793afe9517d8fb5&#34;&gt;7. 撤销误操作&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/git_7_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/git_7_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;从git repository 撤销到staying area&lt;/p&gt;
 
@@ -241,7 +241,7 @@ X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report
 
 &lt;h3 id=&#34;10-图解commit对象:0a315d94de8b55214793afe9517d8fb5&#34;&gt;10. 图解commit对象&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/git_10_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/git_10_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;查看commit记录&lt;/p&gt;
 
@@ -349,7 +349,7 @@ id_rsa.pub  公钥，可告诉任何人
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;登录Github，依次点击&amp;rdquo;settings&amp;rdquo;——&amp;gt;&amp;ldquo;SSH and GPG keys&amp;rdquo;——&amp;gt;&amp;ldquo;New SSH Key&amp;rdquo;
-&lt;img src=&#34;https://imkind.github.io/media/git_13_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://mingguilu.github.io/media/git_13_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;填写Title，在Key文本框里粘贴&lt;code&gt;id_rsa.pub&lt;/code&gt;文件的内容，点击&amp;rdquo;Add SSH Key&amp;rdquo;&lt;/p&gt;
 
@@ -373,7 +373,7 @@ id_rsa.pub  公钥，可告诉任何人
 &lt;h3 id=&#34;15-从github远程库克隆:0a315d94de8b55214793afe9517d8fb5&#34;&gt;15. 从Github远程库克隆&lt;/h3&gt;
 
 &lt;p&gt;创建Github Repositories远程库
-&lt;img src=&#34;https://imkind.github.io/media/git_15_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://mingguilu.github.io/media/git_15_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;把远程库克隆到本地&lt;/p&gt;
 

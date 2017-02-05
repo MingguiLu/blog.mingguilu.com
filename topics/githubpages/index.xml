@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Githubpages on Continuous  Delivery</title>
-    <link>https://imkind.github.io/topics/githubpages/</link>
+    <link>https://mingguilu.github.io/topics/githubpages/</link>
     <description>Recent content in Githubpages on Continuous  Delivery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 2016 - 2022, IMkind; all rights reserved.</copyright>
+    <copyright>Copyright (c) 2016 - 2022, MingguiLu; all rights reserved.</copyright>
     <lastBuildDate>Fri, 02 Dec 2016 09:53:13 +0800</lastBuildDate>
-    <atom:link href="https://imkind.github.io/topics/githubpages/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mingguilu.github.io/topics/githubpages/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>使用Hugo和Github搭建静态博客</title>
-      <link>https://imkind.github.io/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</link>
+      <link>https://mingguilu.github.io/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Fri, 02 Dec 2016 09:53:13 +0800</pubDate>
       
-      <guid>https://imkind.github.io/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>https://mingguilu.github.io/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</guid>
       <description>
 
 &lt;blockquote&gt;
@@ -49,7 +49,7 @@ id_rsa.pub  公钥，可告诉任何人
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;登录Github，依次点击&amp;rdquo;settings&amp;rdquo;——&amp;gt;&amp;ldquo;SSH and GPG keys&amp;rdquo;——&amp;gt;&amp;ldquo;New SSH Key&amp;rdquo;
-&lt;img src=&#34;https://imkind.github.io/media/git_13_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://mingguilu.github.io/media/git_13_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;填写Title，在Key文本框里粘贴&lt;code&gt;id_rsa.pub&lt;/code&gt;文件的内容，点击&amp;rdquo;Add SSH Key&amp;rdquo;&lt;/p&gt;
 
@@ -113,7 +113,7 @@ Press Ctrl+C to stop
 
 &lt;p&gt;在浏览器输入localhost:1313,查看效果:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_1_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_1_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;2-2-删除多余文件-修改项目名称:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.2 删除多余文件，修改项目名称&lt;/h3&gt;
 
@@ -152,7 +152,7 @@ Initialized empty Git repository in D:/HelloWorld/hugo/IMkind_blog_hugo/.git/
 
 &lt;h3 id=&#34;2-3-修改配置文件config-toml:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.3 修改配置文件config.toml&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_3_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_3_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;baseurl = &amp;quot;https://imkind.github.io/&amp;quot;
 title = &amp;quot;Continuous  Delivery&amp;quot;
@@ -180,11 +180,11 @@ MetaDataFormat = &amp;quot;yaml&amp;quot;
 
 &lt;p&gt;启动站点，在浏览器可以看到效果了：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_3_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_3_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;2-4-修改博客副标题:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.4 修改博客副标题&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_4_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_4_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;在 layouts\partials\subheader.html&lt;/p&gt;
 
@@ -204,11 +204,11 @@ MetaDataFormat = &amp;quot;yaml&amp;quot;
 
 &lt;p&gt;例如：&lt;code&gt;.icon-happy&lt;/code&gt; 即 笑脸图标，浏览器查看效果：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_4_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_4_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;2-5-修改导航条:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.5 修改导航条&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_5_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_5_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;在 layouts\partials\nav.html&lt;/p&gt;
 
@@ -288,15 +288,15 @@ D:\HelloWorld\hugo\IMkind_blog_hugo\content\狮\我的第一篇狮.md created
 
 &lt;p&gt;注意：必须往每篇博文正文写入一段内容，否则在页面上点击对应的导航标题都会跳转到空白页面。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_5_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_5_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;导航栏每行默认显示四个标题，超过会另取一行。可随意增加&lt;code&gt;&amp;lt;li&amp;gt;...&amp;lt;/li&amp;gt;&lt;/code&gt;数量，并创建对应的目录,如下：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_5_03.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_5_03.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;2-6-修改侧边栏分享和社交:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.6 修改侧边栏分享和社交&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_6_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_6_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;在 layouts\partials\social.html 按需增减、修改&lt;code&gt;&amp;lt;li&amp;gt;...&amp;lt;/li&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
@@ -331,11 +331,11 @@ D:\HelloWorld\hugo\IMkind_blog_hugo\content\狮\我的第一篇狮.md created
 
 &lt;p&gt;浏览器查看效果&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_6_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_6_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;2-7-修改脚注:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.7 修改脚注&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_7_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_7_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;在 layouts\partials\footer.html 修改脚注内容&lt;/p&gt;
 
@@ -355,15 +355,15 @@ D:\HelloWorld\hugo\IMkind_blog_hugo\content\狮\我的第一篇狮.md created
 
 &lt;p&gt;在浏览器查看效果&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_7_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_7_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;2-8-修改博文正文显示页的布局:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.8 修改博文正文显示页的布局&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_8_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_8_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;2-8-1-修改博客作者相关介绍:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.8.1 修改博客作者相关介绍&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_8_1_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_8_1_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;在 layouts\partials\details.html  对作者介绍部分 &lt;code&gt;&amp;lt;div&amp;gt;&amp;lt;section id=&amp;quot;author&amp;quot;&amp;gt;...&amp;lt;/section&amp;gt;&amp;lt;/div&amp;gt;&lt;/code&gt; 稍作修改即可，由于本人实在太过平淡无奇，索性去掉这一部分&lt;/p&gt;
 
@@ -376,7 +376,7 @@ D:\HelloWorld\hugo\IMkind_blog_hugo\content\狮\我的第一篇狮.md created
 
 &lt;h4 id=&#34;2-8-2-修改博文创建时间-字数统计-阅读时间-tags-topics的显示位置:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.8.2 修改博文创建时间、字数统计、阅读时间、tags、topics的显示位置&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_8_2_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_8_2_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;将博文创建时间、字数统计、阅读时间、tags、topics的显示位置调整到标题和正文之间&lt;/p&gt;
 
@@ -409,11 +409,11 @@ D:\HelloWorld\hugo\IMkind_blog_hugo\content\狮\我的第一篇狮.md created
 
 &lt;p&gt;在浏览器查看效果&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_8_2_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_8_2_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;2-8-3-修改上下篇链接的显示位置:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.8.3 修改上下篇链接的显示位置&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_8_3_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_8_3_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;在 layouts\partials\details.html 中删除或注释掉上下篇链接相关代码&lt;/p&gt;
 
@@ -506,7 +506,7 @@ D:\HelloWorld\hugo\IMkind_blog_hugo\content\狮\我的第一篇狮.md created
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;在浏览器查看效果
-&lt;img src=&#34;https://imkind.github.io/media/hugo_2_8_3_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_8_3_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;2-9-修改字号大小:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.9 修改字号大小&lt;/h3&gt;
 
@@ -537,7 +537,7 @@ body&amp;gt;section,body&amp;gt;aside,body&amp;gt;.content,body&amp;gt;footer,#c
 
 &lt;h3 id=&#34;2-10-修改网站标题:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.10 修改网站标题&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_10_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_10_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;在 layouts\partials\header.html&lt;/p&gt;
 
@@ -549,7 +549,7 @@ body&amp;gt;section,body&amp;gt;aside,body&amp;gt;.content,body&amp;gt;footer,#c
 &lt;pre&gt;&lt;code&gt;&amp;lt;title&amp;gt; {{ .Title }} - imkind.github.io &amp;lt;/title&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_10_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_10_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;2-11-修改og标签:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.11 修改og标签&lt;/h3&gt;
 
@@ -590,17 +590,17 @@ body&amp;gt;section,body&amp;gt;aside,body&amp;gt;.content,body&amp;gt;footer,#c
 &lt;h4 id=&#34;2-12-1-注册-多说-http-duoshuo-com-评论系统:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.12.1 注册&lt;a href=&#34;http://duoshuo.com/&#34;&gt;多说&lt;/a&gt;评论系统&lt;/h4&gt;
 
 &lt;p&gt;打开多说首页，点击“登录”，使用SNS账号登录，我选择了微博。
-&lt;img src=&#34;https://imkind.github.io/media/hugo_2_12_1_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_12_1_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;2-12-2-创建站点:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.12.2 创建站点&lt;/h4&gt;
 
 &lt;p&gt;登录之后就跳转到站点配置的页面
-&lt;img src=&#34;https://imkind.github.io/media/hugo_2_12_2_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_12_2_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;2-12-3-获取植入代码:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.12.3 获取植入代码&lt;/h4&gt;
 
 &lt;p&gt;工具——&amp;gt;获取代码——&amp;gt;稳定版
-&lt;img src=&#34;https://imkind.github.io/media/hugo_2_12_3_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_12_3_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;2-12-4-植入多说代码:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.12.4 植入多说代码&lt;/h4&gt;
 
@@ -655,7 +655,7 @@ body&amp;gt;section,body&amp;gt;aside,body&amp;gt;.content,body&amp;gt;footer,#c
 
 &lt;p&gt;在浏览器中博文下方查看效果&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_12_5_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_12_5_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;2-13-代码高亮:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;2.13 代码高亮&lt;/h3&gt;
 
@@ -704,7 +704,7 @@ CHANGES.md  highlight.pack.js  LICENSE  README.md  README.ru.md  styles/
 
 &lt;p&gt;注册&lt;a href=&#34;http://tongji.baidu.com&#34;&gt;百度统计&lt;/a&gt;，在“管理”中“新增网站”&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_14_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_14_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;拷贝“统计代码”至 layouts\partials\header.html 的&lt;code&gt;&amp;lt;/head&amp;gt;&lt;/code&gt;标签前&lt;/p&gt;
 
@@ -723,7 +723,7 @@ var _hmt = _hmt || [];
 
 &lt;p&gt;注册&lt;a href=&#34;http://www.google.cn/intl/zh-CN_ALL/analytics/features/analysis-tools.html&#34;&gt;Google Analytics (分析)&lt;/a&gt;，在“管理”——“媒体资源”中“创建新媒体资源”&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_2_15_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_2_15_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;拷贝“跟踪代码”至 layouts\partials\header.html 的&lt;code&gt;&amp;lt;/head&amp;gt;&lt;/code&gt;标签前&lt;/p&gt;
 
@@ -845,7 +845,7 @@ Branch master set up to track remote branch master from origin.
 
 &lt;h3 id=&#34;4-部署成功-在浏览器访问-https-your-github-account-github-io-就看到自己的博客了:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;4. 部署成功，在浏览器访问 https://[your-github-account].github.io 就看到自己的博客了。&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/hugo_4_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/hugo_4_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;参考:bd6ccd207b6b74639fc982765b5a80a8&#34;&gt;&lt;em&gt;参考&lt;/em&gt;&lt;/h4&gt;
 

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on Continuous  Delivery</title>
-    <link>https://imkind.github.io/topics/git/</link>
+    <link>https://mingguilu.github.io/topics/git/</link>
     <description>Recent content in Git on Continuous  Delivery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 2016 - 2022, IMkind; all rights reserved.</copyright>
+    <copyright>Copyright (c) 2016 - 2022, MingguiLu; all rights reserved.</copyright>
     <lastBuildDate>Thu, 08 Dec 2016 08:48:05 +0800</lastBuildDate>
-    <atom:link href="https://imkind.github.io/topics/git/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mingguilu.github.io/topics/git/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Git-everything-is-local</title>
-      <link>https://imkind.github.io/%E7%8C%BF/git-everything-is-local/</link>
+      <link>https://mingguilu.github.io/%E7%8C%BF/git-everything-is-local/</link>
       <pubDate>Thu, 08 Dec 2016 08:48:05 +0800</pubDate>
       
-      <guid>https://imkind.github.io/%E7%8C%BF/git-everything-is-local/</guid>
+      <guid>https://mingguilu.github.io/%E7%8C%BF/git-everything-is-local/</guid>
       <description>
 
 &lt;h3 id=&#34;1-安装git:0a315d94de8b55214793afe9517d8fb5&#34;&gt;1. 安装git&lt;/h3&gt;
@@ -62,7 +62,7 @@ git config --global color.ui true
 
 &lt;h3 id=&#34;4-添加及提交文件:0a315d94de8b55214793afe9517d8fb5&#34;&gt;4. 添加及提交文件&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/git_3_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/git_3_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;添加文件到staying area&lt;/p&gt;
 
@@ -117,7 +117,7 @@ X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report
 
 &lt;h3 id=&#34;6-查看文件区别:0a315d94de8b55214793afe9517d8fb5&#34;&gt;6. 查看文件区别&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/git_6_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/git_6_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;查看working directory 和 staying area 之间的区别&lt;/p&gt;
 
@@ -141,7 +141,7 @@ X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report
 
 &lt;h3 id=&#34;7-撤销误操作:0a315d94de8b55214793afe9517d8fb5&#34;&gt;7. 撤销误操作&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/git_7_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/git_7_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;从git repository 撤销到staying area&lt;/p&gt;
 
@@ -194,7 +194,7 @@ X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report
 
 &lt;h3 id=&#34;10-图解commit对象:0a315d94de8b55214793afe9517d8fb5&#34;&gt;10. 图解commit对象&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://imkind.github.io/media/git_10_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/git_10_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;查看commit记录&lt;/p&gt;
 
@@ -302,7 +302,7 @@ id_rsa.pub  公钥，可告诉任何人
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;登录Github，依次点击&amp;rdquo;settings&amp;rdquo;——&amp;gt;&amp;ldquo;SSH and GPG keys&amp;rdquo;——&amp;gt;&amp;ldquo;New SSH Key&amp;rdquo;
-&lt;img src=&#34;https://imkind.github.io/media/git_13_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://mingguilu.github.io/media/git_13_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;填写Title，在Key文本框里粘贴&lt;code&gt;id_rsa.pub&lt;/code&gt;文件的内容，点击&amp;rdquo;Add SSH Key&amp;rdquo;&lt;/p&gt;
 
@@ -326,7 +326,7 @@ id_rsa.pub  公钥，可告诉任何人
 &lt;h3 id=&#34;15-从github远程库克隆:0a315d94de8b55214793afe9517d8fb5&#34;&gt;15. 从Github远程库克隆&lt;/h3&gt;
 
 &lt;p&gt;创建Github Repositories远程库
-&lt;img src=&#34;https://imkind.github.io/media/git_15_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://mingguilu.github.io/media/git_15_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;把远程库克隆到本地&lt;/p&gt;
 

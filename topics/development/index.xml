@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Development on Continuous  Delivery</title>
-    <link>https://imkind.github.io/topics/development/</link>
+    <link>https://mingguilu.github.io/topics/development/</link>
     <description>Recent content in Development on Continuous  Delivery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 2016 - 2022, IMkind; all rights reserved.</copyright>
+    <copyright>Copyright (c) 2016 - 2022, MingguiLu; all rights reserved.</copyright>
     <lastBuildDate>Wed, 30 Nov 2016 16:53:18 +0800</lastBuildDate>
-    <atom:link href="https://imkind.github.io/topics/development/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mingguilu.github.io/topics/development/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>about</title>
-      <link>https://imkind.github.io/about/</link>
+      <link>https://mingguilu.github.io/about/</link>
       <pubDate>Wed, 30 Nov 2016 16:53:18 +0800</pubDate>
       
-      <guid>https://imkind.github.io/about/</guid>
+      <guid>https://mingguilu.github.io/about/</guid>
       <description>&lt;p&gt;关于我，IMkind&lt;/p&gt;
 </description>
     </item>
