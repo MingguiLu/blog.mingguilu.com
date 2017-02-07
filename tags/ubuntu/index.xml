@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ubuntu on Continuous  Delivery</title>
-    <link>https://mingguilu.github.io/tags/ubuntu/</link>
+    <link>http://blog.mingguilu.com/tags/ubuntu/</link>
     <description>Recent content in Ubuntu on Continuous  Delivery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 2016 - 2022, MingguiLu; all rights reserved.</copyright>
+    <copyright>Copyright (c) 2016 - 2021, MingguiLu; all rights reserved.</copyright>
     <lastBuildDate>Sat, 14 Jan 2017 20:33:09 +0800</lastBuildDate>
-    <atom:link href="https://mingguilu.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.mingguilu.com/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>感谢Hugo，让我遇见Markdown和Git</title>
-      <link>https://mingguilu.github.io/%E6%84%9F/%E6%84%9F%E8%B0%A2Hugo%EF%BC%8C%E8%AE%A9%E6%88%91%E9%81%87%E8%A7%81Markdown%E5%92%8CGit/</link>
+      <link>http://blog.mingguilu.com/%E6%84%9F/%E6%84%9F%E8%B0%A2Hugo%EF%BC%8C%E8%AE%A9%E6%88%91%E9%81%87%E8%A7%81Markdown%E5%92%8CGit/</link>
       <pubDate>Sat, 14 Jan 2017 20:33:09 +0800</pubDate>
       
-      <guid>https://mingguilu.github.io/%E6%84%9F/%E6%84%9F%E8%B0%A2Hugo%EF%BC%8C%E8%AE%A9%E6%88%91%E9%81%87%E8%A7%81Markdown%E5%92%8CGit/</guid>
+      <guid>http://blog.mingguilu.com/%E6%84%9F/%E6%84%9F%E8%B0%A2Hugo%EF%BC%8C%E8%AE%A9%E6%88%91%E9%81%87%E8%A7%81Markdown%E5%92%8CGit/</guid>
       <description>&lt;p&gt;去年7月在机缘巧合之下接触了静态博客的概念，深入了解了一些知识之后，特别欣喜，决定动手搭建一个自己的静态博客。时间一晃到了年底，当着手实现的时候发现并不简单&lt;/p&gt;
 
 &lt;p&gt;首先是选择哪一款生成器，在知乎上研究一番后，最终在Jekyll、Hexo和Hugo中，选择了Hugo，因为简单、生成速度快，在&lt;a href=&#34;https://staticsitegenerators.net/&#34;&gt;静态博客生成器排名榜&lt;/a&gt;上发展势头好，接着在《&lt;a href=&#34;http://www.gohugo.org&#34;&gt;Hugo中文文档&lt;/a&gt;》学习如何安装使用它，利用自己有限的网页知识在Hugo作者个人博客&lt;a href=&#34;http://sfp13.com&#34;&gt;spf13.com&lt;/a&gt;的源码基础上定制了自己的博客前端&lt;/p&gt;
@@ -35,7 +35,7 @@
 &lt;li&gt;&lt;p&gt;因为频繁的&lt;code&gt;git commit&lt;/code&gt;，&lt;code&gt;commit message&lt;/code&gt;每次随性而写，回头&lt;code&gt;git log&lt;/code&gt;一看全是一句话概括，具体改了什么自己也看不懂了&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/gan_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/gan_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;当写文档时，前一篇没写完搁置了，接着完成了另外一篇，这时commit并push就很尴尬了&lt;/li&gt;
@@ -51,7 +51,7 @@
 &lt;li&gt;&lt;p&gt;在&lt;a href=&#34;http://blog.jobbole.com/109197/&#34;&gt;《Git 最佳实践：commit msg》&lt;/a&gt;关于&lt;code&gt;commit message&lt;/code&gt;规范的指导下，重新创建了版本库，并在写message时尝试写简单易懂的标题和详尽明了的内容&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/gan_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/gan_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;近期刚好在看一本关于Devops的书《持续交付 - 发布可靠软件的系统方法》，本书前2章着重讲述了使用版本控制对构建软件可重复且可靠的自动化发布的重要意义。而这次git的实践，有助于理解书中的内容，最终使用“Continuous Delivery”作为博客标题也是因为这本书。&lt;/p&gt;
 </description>
@@ -59,10 +59,10 @@
     
     <item>
       <title>打造Ubuntu16.04桌面</title>
-      <link>https://mingguilu.github.io/%E7%8B%AE/%E6%89%93%E9%80%A0Ubuntu16.04%E6%A1%8C%E9%9D%A2/</link>
+      <link>http://blog.mingguilu.com/%E7%8B%AE/%E6%89%93%E9%80%A0Ubuntu16.04%E6%A1%8C%E9%9D%A2/</link>
       <pubDate>Thu, 15 Dec 2016 13:53:45 +0800</pubDate>
       
-      <guid>https://mingguilu.github.io/%E7%8B%AE/%E6%89%93%E9%80%A0Ubuntu16.04%E6%A1%8C%E9%9D%A2/</guid>
+      <guid>http://blog.mingguilu.com/%E7%8B%AE/%E6%89%93%E9%80%A0Ubuntu16.04%E6%A1%8C%E9%9D%A2/</guid>
       <description>
 
 &lt;h3 id=&#34;1-初始配置:929879312f30c80e44a6461d4788ce26&#34;&gt;1. 初始配置&lt;/h3&gt;
@@ -139,7 +139,7 @@
 
 &lt;p&gt;系统设置——&amp;gt;网络——&amp;gt;有线/无线——&amp;gt;选项——&amp;gt;IPv4设置——&amp;gt;自动(DHCP)/手动&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_1_10_1_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_1_10_1_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&#34;1-10-2-终端操作:929879312f30c80e44a6461d4788ce26&#34;&gt;1.10.2 终端操作&lt;/h5&gt;
 
@@ -314,7 +314,7 @@ sudo apt-get update
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;在Unity-tweak-tool中启用Numix daily主题和Numix-circle图标
-&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_2_5_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_2_5_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;2-6-安装指示器:929879312f30c80e44a6461d4788ce26&#34;&gt;2.6 安装指示器&lt;/h4&gt;
 
@@ -329,7 +329,7 @@ sudo apt-get install touchpad-indicator
 
 &lt;h4 id=&#34;2-7-安装系统监测工具syspeek:929879312f30c80e44a6461d4788ce26&#34;&gt;2.7 安装系统监测工具Syspeek&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_2_7_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_2_7_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:nilarimogard/webupd8    
 sudo apt-get update    
@@ -338,7 +338,7 @@ sudo apt-get install syspeek
 
 &lt;h4 id=&#34;2-8-安装经典菜单插件:929879312f30c80e44a6461d4788ce26&#34;&gt;2.8 安装经典菜单插件&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_2_8_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_2_8_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:diesch/testing  
 sudo apt-get update  
@@ -448,7 +448,7 @@ sudo apt-get update
 
 &lt;h4 id=&#34;2-15-安装-有道词典-http-cidian-youdao-com-index-linux-html:929879312f30c80e44a6461d4788ce26&#34;&gt;2.15 安装&lt;a href=&#34;http://cidian.youdao.com/index-linux.html&#34;&gt;有道词典&lt;/a&gt;&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_2_15_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_2_15_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;参考：&lt;a href=&#34;http://www.linuxdiyf.com/linux/20622.html&#34;&gt;Ubuntu 16.04安装有道词典&lt;/a&gt;&lt;/p&gt;
 
@@ -512,7 +512,7 @@ sudo apt-get install irssi
 
 &lt;h4 id=&#34;2-19-安装迅雷的替代者xware-desktop:929879312f30c80e44a6461d4788ce26&#34;&gt;2.19 安装迅雷的替代者Xware-desktop&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_2_19_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_2_19_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;在百度网盘中下载最新的Xware-desktop：&lt;a href=&#34;http://pan.baidu.com/s/1qWHMlK4&#34;&gt;http://pan.baidu.com/s/1qWHMlK4&lt;/a&gt;&lt;/p&gt;
 
@@ -523,7 +523,7 @@ sudo apt-get install -f
 
 &lt;h4 id=&#34;2-20-安装-vivaldi浏览器-https-vivaldi-com:929879312f30c80e44a6461d4788ce26&#34;&gt;2.20 安装&lt;a href=&#34;https://vivaldi.com&#34;&gt;Vivaldi浏览器&lt;/a&gt;&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_2_20_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_2_20_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;下载&lt;a href=&#34;https://vivaldi.com/download/&#34;&gt;Vivaldi的deb安装包&lt;/a&gt;&lt;/p&gt;
 
@@ -534,13 +534,13 @@ sudo apt-get install -f
 
 &lt;p&gt;系统设置——&amp;gt;键盘——&amp;gt;快捷键——&amp;gt;截图&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_2_21_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_2_21_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;3-常用工具软件安装:929879312f30c80e44a6461d4788ce26&#34;&gt;3. 常用工具软件安装&lt;/h3&gt;
 
 &lt;h4 id=&#34;3-1-安装albert:929879312f30c80e44a6461d4788ce26&#34;&gt;3.1 安装Albert&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_3_1_01.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_3_1_01.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;安装方法参考&lt;a href=&#34;https://github.com/ManuelSchneid3r/albert/wiki&#34;&gt;Albert WIki&lt;/a&gt;的《How to install albert》&lt;/p&gt;
 
@@ -700,7 +700,7 @@ sudo vim /etc/samba/smb.conf
 &lt;pre&gt;&lt;code&gt;\\192.168.1.114
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_4_2_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_4_2_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Windwos上断开与samba共享目录的链接&lt;/p&gt;
 
@@ -713,17 +713,17 @@ sudo vim /etc/samba/smb.conf
 #注意*代表断开所有的共享链接，如果有多个共享链接时，应避免使用*
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_4_2_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_4_2_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Windows上映射samba共享目录为网络映射驱动器&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_4_2_03.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_4_2_03.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;4-3-在ubuntu上访问windows共享目录:929879312f30c80e44a6461d4788ce26&#34;&gt;4.3 在Ubuntu上访问Windows共享目录&lt;/h4&gt;
 
 &lt;p&gt;在Ubuntu文件管理器上，点击“连接到服务器”，输入: smb://192.168.1.110 ，点击“连接”&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_4_2_04.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_4_2_04.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;在Ubuntu上使用mount挂载Windows共享目录&lt;/p&gt;
 

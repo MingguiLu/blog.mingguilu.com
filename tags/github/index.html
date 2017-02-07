@@ -21,7 +21,7 @@
 <meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="" />
 <meta property="og:image:height" content="" />
-<meta property="og:url" content="https://mingguilu.github.io/tags/github/">
+<meta property="og:url" content="http://blog.mingguilu.com/tags/github/">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2016-12-14"/>
 <meta property="article:modified_time" content="2016-12-14"/>
@@ -40,10 +40,10 @@
 <meta name="twitter:domain" content="blog.mingguilu.com">
 
 
-    <base href="https://mingguilu.github.io/">
+    <base href="http://blog.mingguilu.com">
     <title> Github - MingguiLu </title>
-    <link rel="canonical" href="https://mingguilu.github.io/tags/github/">
-    <link href="https://mingguilu.github.io/tags/github/index.xml" rel="alternate" type="application/rss+xml" title="Github" />
+    <link rel="canonical" href="http://blog.mingguilu.com/tags/github/">
+    <link href="http://blog.mingguilu.com/tags/github/index.xml" rel="alternate" type="application/rss+xml" title="Github" />
 
     <link href='http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/static/css/style.css">
@@ -60,8 +60,8 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     
-  	<script src="https://mingguilu.github.io/static/js/highlight.pack.js"></script>
-  	<link rel="stylesheet" href="https://mingguilu.github.io/static/css/highlight/github.css">
+  	<script src="http://blog.mingguilu.comstatic/js/highlight.pack.js"></script>
+  	<link rel="stylesheet" href="http://blog.mingguilu.comstatic/css/highlight/github.css">
   	<script>hljs.initHighlightingOnLoad();</script>
 
     
@@ -187,13 +187,13 @@
     
         <article class="post">
     <header>
-      <h2><a href="https://mingguilu.github.io/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%A1%AB%E5%9D%91/">使用Hugo和Github搭建静态博客之填坑 </a> </h2>
+      <h2><a href="http://blog.mingguilu.com/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%A1%AB%E5%9D%91/">使用Hugo和Github搭建静态博客之填坑 </a> </h2>
       <div class="post-meta">Wed, Dec 14, 2016 </div>
     </header>
 
     我的静态博客已经搭建成功了，并且使用Markdown记录了过程，但期间踩了一路的坑，今天总结一下其中一个：Hugo成功部署到Github Pages，但访问博客时不加载网页布局和样式。 这算是遇到最大的坑了，前后折腾了半个月的时间，直到找到了组织（Hugo交流QQ群：512499080），群主大大@coderzh 一语道破天机。 1 先来回顾一下如何踩上这个大坑的 1.1 使用hugo new site 创建一个新站点时，配置文件config.toml 中的 baseurl 默认是 http:// baseurl = &quot;http://replace-this-with-your-hugo-site.com/ clone spf13.com的博客项目中baseurl 也是 http:// baseurl = &quot;http://spf13.com/&quot; 在之后修改时，直接把博客地址改为了我自己的 baseurl = &quot;http://imkind.github.io/&quot; 1.2 自2016年6月15日起，使用Github Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing your GitHub Pages site with HTTPS》 https://help.github.com/articles/securing-your-github-pages-site-with-https/ You can enforce HTTPS to add a layer of encryption for traffic to your GitHub Pages site if it has a github.io domain. With HTTPS enforcement enabled, HTTP requests to your GitHub Pages site will be transparently redirected to HTTPS.
     <footer>
-        <a href='https://mingguilu.github.io/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%A1%AB%E5%9D%91/'><nobr>Read more →</nobr></a>
+        <a href='http://blog.mingguilu.com/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%A1%AB%E5%9D%91/'><nobr>Read more →</nobr></a>
     </footer>
 </article>
 

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dpkg on Continuous  Delivery</title>
-    <link>https://mingguilu.github.io/tags/dpkg/</link>
+    <link>http://blog.mingguilu.com/tags/dpkg/</link>
     <description>Recent content in Dpkg on Continuous  Delivery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 2016 - 2022, MingguiLu; all rights reserved.</copyright>
+    <copyright>Copyright (c) 2016 - 2021, MingguiLu; all rights reserved.</copyright>
     <lastBuildDate>Fri, 30 Dec 2016 09:09:19 +0800</lastBuildDate>
-    <atom:link href="https://mingguilu.github.io/tags/dpkg/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.mingguilu.com/tags/dpkg/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Linux软件安装与维护</title>
-      <link>https://mingguilu.github.io/%E7%8B%AE/Linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%B4%E6%8A%A4/</link>
+      <link>http://blog.mingguilu.com/%E7%8B%AE/Linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%B4%E6%8A%A4/</link>
       <pubDate>Fri, 30 Dec 2016 09:09:19 +0800</pubDate>
       
-      <guid>https://mingguilu.github.io/%E7%8B%AE/Linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%B4%E6%8A%A4/</guid>
+      <guid>http://blog.mingguilu.com/%E7%8B%AE/Linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%B4%E6%8A%A4/</guid>
       <description>
 
 &lt;h3 id=&#34;1-使用软件源码包:9667daa69c84529bfb2ccc8da43c9833&#34;&gt;1. 使用软件源码包&lt;/h3&gt;
@@ -294,10 +294,10 @@
     
     <item>
       <title>打造Ubuntu16.04桌面</title>
-      <link>https://mingguilu.github.io/%E7%8B%AE/%E6%89%93%E9%80%A0Ubuntu16.04%E6%A1%8C%E9%9D%A2/</link>
+      <link>http://blog.mingguilu.com/%E7%8B%AE/%E6%89%93%E9%80%A0Ubuntu16.04%E6%A1%8C%E9%9D%A2/</link>
       <pubDate>Thu, 15 Dec 2016 13:53:45 +0800</pubDate>
       
-      <guid>https://mingguilu.github.io/%E7%8B%AE/%E6%89%93%E9%80%A0Ubuntu16.04%E6%A1%8C%E9%9D%A2/</guid>
+      <guid>http://blog.mingguilu.com/%E7%8B%AE/%E6%89%93%E9%80%A0Ubuntu16.04%E6%A1%8C%E9%9D%A2/</guid>
       <description>
 
 &lt;h3 id=&#34;1-初始配置:929879312f30c80e44a6461d4788ce26&#34;&gt;1. 初始配置&lt;/h3&gt;
@@ -374,7 +374,7 @@
 
 &lt;p&gt;系统设置——&amp;gt;网络——&amp;gt;有线/无线——&amp;gt;选项——&amp;gt;IPv4设置——&amp;gt;自动(DHCP)/手动&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_1_10_1_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_1_10_1_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&#34;1-10-2-终端操作:929879312f30c80e44a6461d4788ce26&#34;&gt;1.10.2 终端操作&lt;/h5&gt;
 
@@ -549,7 +549,7 @@ sudo apt-get update
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;在Unity-tweak-tool中启用Numix daily主题和Numix-circle图标
-&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_2_5_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_2_5_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;2-6-安装指示器:929879312f30c80e44a6461d4788ce26&#34;&gt;2.6 安装指示器&lt;/h4&gt;
 
@@ -564,7 +564,7 @@ sudo apt-get install touchpad-indicator
 
 &lt;h4 id=&#34;2-7-安装系统监测工具syspeek:929879312f30c80e44a6461d4788ce26&#34;&gt;2.7 安装系统监测工具Syspeek&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_2_7_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_2_7_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:nilarimogard/webupd8    
 sudo apt-get update    
@@ -573,7 +573,7 @@ sudo apt-get install syspeek
 
 &lt;h4 id=&#34;2-8-安装经典菜单插件:929879312f30c80e44a6461d4788ce26&#34;&gt;2.8 安装经典菜单插件&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_2_8_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_2_8_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:diesch/testing  
 sudo apt-get update  
@@ -683,7 +683,7 @@ sudo apt-get update
 
 &lt;h4 id=&#34;2-15-安装-有道词典-http-cidian-youdao-com-index-linux-html:929879312f30c80e44a6461d4788ce26&#34;&gt;2.15 安装&lt;a href=&#34;http://cidian.youdao.com/index-linux.html&#34;&gt;有道词典&lt;/a&gt;&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_2_15_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_2_15_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;参考：&lt;a href=&#34;http://www.linuxdiyf.com/linux/20622.html&#34;&gt;Ubuntu 16.04安装有道词典&lt;/a&gt;&lt;/p&gt;
 
@@ -747,7 +747,7 @@ sudo apt-get install irssi
 
 &lt;h4 id=&#34;2-19-安装迅雷的替代者xware-desktop:929879312f30c80e44a6461d4788ce26&#34;&gt;2.19 安装迅雷的替代者Xware-desktop&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_2_19_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_2_19_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;在百度网盘中下载最新的Xware-desktop：&lt;a href=&#34;http://pan.baidu.com/s/1qWHMlK4&#34;&gt;http://pan.baidu.com/s/1qWHMlK4&lt;/a&gt;&lt;/p&gt;
 
@@ -758,7 +758,7 @@ sudo apt-get install -f
 
 &lt;h4 id=&#34;2-20-安装-vivaldi浏览器-https-vivaldi-com:929879312f30c80e44a6461d4788ce26&#34;&gt;2.20 安装&lt;a href=&#34;https://vivaldi.com&#34;&gt;Vivaldi浏览器&lt;/a&gt;&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_2_20_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_2_20_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;下载&lt;a href=&#34;https://vivaldi.com/download/&#34;&gt;Vivaldi的deb安装包&lt;/a&gt;&lt;/p&gt;
 
@@ -769,13 +769,13 @@ sudo apt-get install -f
 
 &lt;p&gt;系统设置——&amp;gt;键盘——&amp;gt;快捷键——&amp;gt;截图&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_2_21_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_2_21_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;3-常用工具软件安装:929879312f30c80e44a6461d4788ce26&#34;&gt;3. 常用工具软件安装&lt;/h3&gt;
 
 &lt;h4 id=&#34;3-1-安装albert:929879312f30c80e44a6461d4788ce26&#34;&gt;3.1 安装Albert&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_3_1_01.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_3_1_01.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;安装方法参考&lt;a href=&#34;https://github.com/ManuelSchneid3r/albert/wiki&#34;&gt;Albert WIki&lt;/a&gt;的《How to install albert》&lt;/p&gt;
 
@@ -935,7 +935,7 @@ sudo vim /etc/samba/smb.conf
 &lt;pre&gt;&lt;code&gt;\\192.168.1.114
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_4_2_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_4_2_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Windwos上断开与samba共享目录的链接&lt;/p&gt;
 
@@ -948,17 +948,17 @@ sudo vim /etc/samba/smb.conf
 #注意*代表断开所有的共享链接，如果有多个共享链接时，应避免使用*
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_4_2_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_4_2_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Windows上映射samba共享目录为网络映射驱动器&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_4_2_03.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_4_2_03.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;4-3-在ubuntu上访问windows共享目录:929879312f30c80e44a6461d4788ce26&#34;&gt;4.3 在Ubuntu上访问Windows共享目录&lt;/h4&gt;
 
 &lt;p&gt;在Ubuntu文件管理器上，点击“连接到服务器”，输入: smb://192.168.1.110 ，点击“连接”&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mingguilu.github.io/media/Ubuntu_4_2_04.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/Ubuntu_4_2_04.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;在Ubuntu上使用mount挂载Windows共享目录&lt;/p&gt;
 
