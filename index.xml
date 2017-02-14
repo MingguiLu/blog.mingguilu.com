@@ -7,8 +7,500 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2016 - 2021, MingguiLu; all rights reserved.</copyright>
-    <lastBuildDate>Sat, 14 Jan 2017 20:33:09 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 14 Feb 2017 11:57:04 +0800</lastBuildDate>
     <atom:link href="http://blog.mingguilu.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Hugo&#43;GithubPages&#43;Markdown的使用文档</title>
+      <link>http://blog.mingguilu.com/%E7%8B%AE/jennych_github_io%E5%92%8Cjennych_blog_hugo%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</link>
+      <pubDate>Tue, 14 Feb 2017 11:57:04 +0800</pubDate>
+      
+      <guid>http://blog.mingguilu.com/%E7%8B%AE/jennych_github_io%E5%92%8Cjennych_blog_hugo%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</guid>
+      <description>
+
+&lt;h3 id=&#34;一-准备:1e59df824acc334119f8c992e9445095&#34;&gt;一  准备&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/hugo_github_markdown.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;1-hugo:1e59df824acc334119f8c992e9445095&#34;&gt;1. Hugo&lt;/h4&gt;
+
+&lt;h5 id=&#34;简述:1e59df824acc334119f8c992e9445095&#34;&gt;简述:&lt;/h5&gt;
+
+&lt;p&gt;Hugo是由Go语言实现的静态网站生成器。其特点是：简单、易用、高效、易扩展、快速部署。　&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&#34;http://gohugo.io/&#34;&gt;http://gohugo.io/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;安装:1e59df824acc334119f8c992e9445095&#34;&gt;安装:&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;下载适用的windows的hugo_x.xx.x_Windows-64bit.zip&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;解压后重命名为&lt;code&gt;hugo.exe&lt;/code&gt;并存放在c:\Program Files\hugo，并把路径添加到系统环境变量Path中，然后再cmd中输入&lt;code&gt;hugo version&lt;/code&gt;测试是否可用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt;　hugo version
+Hugo Static Site Generator v0.16 BuildDate: 2016-06-06T08:33:34+08:00
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;2-github-pages:1e59df824acc334119f8c992e9445095&#34;&gt;2.  Github pages　&lt;/h4&gt;
+
+&lt;h5 id=&#34;简述-1:1e59df824acc334119f8c992e9445095&#34;&gt;简述：&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://git-scm.com/&#34;&gt;Git&lt;/a&gt;是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/&#34;&gt;GitHub&lt;/a&gt; 是一个面向开源及私有软件项目的托管平台，只支持 Git 作为唯一的版本库格式进行托管&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://pages.github.com/&#34;&gt;Github pages&lt;/a&gt;用于将托管在Github上的项目发布位个人主页网站或项目主页网站&lt;/p&gt;
+
+&lt;h5 id=&#34;安装git:1e59df824acc334119f8c992e9445095&#34;&gt;安装Git&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://git-scm.com/downloads&#34;&gt;下载Git for windows&lt;/a&gt;，以默认选项安装，在桌面双击运行&lt;code&gt;Git Bash&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;创建github仓库:1e59df824acc334119f8c992e9445095&#34;&gt;创建Github仓库&lt;/h5&gt;
+
+&lt;p&gt;在&lt;code&gt;Repositories&lt;/code&gt;页面点击&lt;code&gt;New&lt;/code&gt;创建新仓库&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;media/git_jenny_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;以下是&lt;code&gt;JennyCh&lt;/code&gt;托管在&lt;code&gt;Github&lt;/code&gt;个人主页和博客项目的仓库&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jennych/blog&#34;&gt;blog&lt;/a&gt;     托管JennyCh Blog的静态博客网页的仓库&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jennych/jennych_github_io&#34;&gt;jennych_github_io&lt;/a&gt;           托管JennyCh Blog的Hugo站点源代码的仓库&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jennych/jennych.github.io&#34;&gt;jennych.github.io&lt;/a&gt;       托管JennyCh个人主页静态网页的仓库&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jennych/jennych_blog_hugo&#34;&gt;jennych_blog_hugo&lt;/a&gt;       托管JennyCh个人主页的站点源代码的仓库&lt;/p&gt;
+
+&lt;h5 id=&#34;启用ｇithub-pages:1e59df824acc334119f8c992e9445095&#34;&gt;启用Ｇithub Pages&lt;/h5&gt;
+
+&lt;p&gt;个人主页：例如&lt;a href=&#34;https://jennych.github.io&#34;&gt;https://jennych.github.io&lt;/a&gt; ，创建&lt;code&gt;Ｇithub帐号.github.io&lt;/code&gt;的仓库，并上传个人主页静态页面项目即可&lt;/p&gt;
+
+&lt;p&gt;项目主页：例如&lt;a href=&#34;https://jennych.github.io/blog/&#34;&gt;https://jennych.github.io/blog/&lt;/a&gt; ，创建随意名称的仓库，并上传项目的静态页面，并开启Ｇithub Pages，&lt;code&gt;settings&lt;/code&gt;－－&amp;gt;&lt;code&gt;Ｇithub Pages&lt;/code&gt;－－&amp;gt;&lt;code&gt;Source&lt;/code&gt;－－&amp;gt;&lt;code&gt;master branch&lt;/code&gt;－－&amp;gt; &lt;code&gt;Save&lt;/code&gt;，即可访问项目主页&lt;code&gt;https://Github帐号.github.io/项目仓库名/&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;3-markdown:1e59df824acc334119f8c992e9445095&#34;&gt;3. Markdown&lt;/h4&gt;
+
+&lt;p&gt;Markdown 是一种轻量级的「标记语言」，它拥有很多优点，语法简洁明了、学习容易，而且功能比纯文本更强，导出格式随心所欲，因此有很多人用它写博客&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://markdownpad.com/&#34;&gt;MarkdownPad&lt;/a&gt; 是Windows下的一个多功能Markdown编辑器&lt;/p&gt;
+
+&lt;h3 id=&#34;二-使用hugo:1e59df824acc334119f8c992e9445095&#34;&gt;二　使用Hugo&lt;/h3&gt;
+
+&lt;p&gt;创建Hugo静态站点&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new site 站点名称
+
+$ hugo new site  my_website
+Congratulations! Your new Hugo site is created in &amp;quot;D:\\Hellolworld\\my_website&amp;quot;.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;添加网站主题&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd my_website/themes/
+
+$ git clone https://github.com/christianmendoza/hugo-smpl-theme
+Cloning into &#39;hugo-smpl-theme&#39;...
+remote: Counting objects: 78, done.
+remote: Compressing objects: 100% (55/55), done.
+remote: Total 78 (delta 17), reused 78 (delta 17), pack-reused 0
+Unpacking objects: 100% (78/78), done.
+
+$ cd ..
+$ pwd
+/d/Hellolworld/my_website
+
+$ ls themes/hugo-smpl-theme/
+archetypes/   images/   LICENSE    static/
+exampleSite/  layouts/  README.md  theme.toml
+
+$ cp themes/hugo-smpl-theme/exampleSite/config.toml  .
+# config.toml 为站点的配置文件
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新建文章&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new  路径/文章名称.md
+
+$ hugo new post/技术文章/第一篇技术文章.md
+D:\Hellolworld\my_website\content\post\技术文章\第一篇技术文章.md created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;测试Hugo静态站点&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo  server  -t=主题名称
+# 如果已将theme文件覆盖到站点根目录，无需使用-t指定主题文件，hugo server即可
+
+$ hugo  server  -t=hugo-smpl-theme   -w
+Started building site
+0 of 1 draft rendered
+0 future content
+0 pages created
+0 non-page files copied
+0 paginator pages created
+0 tags created
+0 categories created
+in 7 ms
+Watching for changes in D:\Hellolworld\my_website\{data,content,layouts,static,themes}
+Serving pages from memory
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;生成静态页面&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# hugo命令用于将当前站点转换为静态页面，并自动保存在public目录下
+
+$ hugo
+Started building site
+0 of 1 draft rendered
+0 future content
+1 pages created
+0 non-page files copied
+0 paginator pages created
+0 tags created
+0 categories created
+in 46 ms
+
+$ ls public/
+404.html  assets/  index.html  index.xml  post/  sitemap.xml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;三-使用git-克隆和提交代码:1e59df824acc334119f8c992e9445095&#34;&gt;三　使用Git 克隆和提交代码&lt;/h3&gt;
+
+&lt;p&gt;以下内容以JennyCh Blog的站点为例&lt;/p&gt;
+
+&lt;h4 id=&#34;1-从github远程仓库克隆jennych-blog的站点源代码:1e59df824acc334119f8c992e9445095&#34;&gt;1. 从Github远程仓库克隆JennyCh Blog的站点源代码&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone Ｇithub远程仓库地址
+#Github远程仓库地址分为两种：https和ssh ，可以在仓库主页中点开&amp;quot;Clone or Download&amp;quot;，点击`Use Https`或`Use SSH`可分别查看仓库地址
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/git_jenny_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git clone git@github.com:jennych/jennych_blog_hugo.git
+Cloning into &#39;jennych_blog_hugo&#39;...
+remote: Counting objects: 151, done.
+remote: Compressing objects: 100% (131/131), done.
+remote: Total 151 (delta 10), reused 151 (delta 10), pack-reused 0
+Receiving objects: 100% (151/151), 4.25 MiB | 124.00 KiB/s, done.
+Resolving deltas: 100% (10/10), done.
+
+$ cd jennych_blog_hugo/
+
+$ ls
+archetypes/  content/      images/   LICENSE.md  static/
+config.toml  exampleSite/  layouts/  README.md   theme.toml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;2-从github远程仓库克隆jennych-blog的静态网页:1e59df824acc334119f8c992e9445095&#34;&gt;2. 从Github远程仓库克隆JennyCh Blog的静态网页&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone Ｇithub远程仓库地址 public
+# 将JennyCh Blog的静态页面仓库克隆到本地，并重命名为public
+
+$ git  clone  git@github.com:jennych/blog.git  public
+Cloning into &#39;public&#39;...
+remote: Counting objects: 169, done.
+remote: Compressing objects: 100% (113/113), done.
+remote: Total 169 (delta 41), reused 169 (delta 41), pack-reused 0
+Receiving objects: 100% (169/169), 3.84 MiB | 124.00 KiB/s, done.
+Resolving deltas: 100% (41/41), done.
+
+$ ls public/
+404.html  categories/  fancybox/  font/       img/        js/    sitemap.xml
+about/    css/         feed.xml   highlight/  index.html  post/  tags/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;3-推送本地git版本至github远程仓库:1e59df824acc334119f8c992e9445095&#34;&gt;3. 推送本地Git版本至Github远程仓库&lt;/h4&gt;
+
+&lt;p&gt;当修改站点源代码或文章内容后，将修改内容提交为新版本，并上传到Github远程仓库&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ pwd
+/d/Hellolworld/jennych_blog_hugo
+
+$ git add -A
+# 把修改内容提交到Git缓存区
+
+$ git commit -m &amp;quot;xxxx&amp;quot;
+# 把Git缓存区的内容提交为Git新版本，`-m &amp;quot;xxxx&amp;quot; `为本次提交的版本的简述，如果不加`-m`参数，会进入编辑描述信息的状态
+
+$ git push origin master
+# 将本地新版本推送到Github远程仓库
+
+$ hugo
+# 将修改后的代码和文章转换生成新的静态页面
+Started building site
+0 draft content
+0 future content
+6 pages created
+0 non-page files copied
+0 paginator pages created
+3 tags created
+2 categories created
+in 668 ms
+
+$ cd public/
+# 进入public目录,public目录存放着转换生成后的静态页面
+
+$ pwd
+/d/Hellolworld/jennych_blog_hugo/public
+
+$ git add -A
+# 把新生成的内容提交到Git缓存区
+
+$ git commit -m &amp;quot;xxxx&amp;quot;
+# 把Git缓存区的内容提交为Git新版本，`-m &amp;quot;xxxx&amp;quot; `为本次提交的版本的简述，如果不加`-m`参数，会进入编辑描述信息的状态
+
+$ git push origin master
+# 将本地新版本推送到Github远程仓库
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;推送完成，访问&lt;a href=&#34;https://jennych.github.io/blog/&#34;&gt;https://jennych.github.io/blog/&lt;/a&gt;即可看到新内容&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>jennych_github_io和jennych_blog_hugo使用文档</title>
+      <link>http://blog.mingguilu.com/%E7%8B%AE/%E5%85%B3%E4%BA%8EHugo&#43;Github&#43;Markdown/</link>
+      <pubDate>Tue, 14 Feb 2017 11:57:04 +0800</pubDate>
+      
+      <guid>http://blog.mingguilu.com/%E7%8B%AE/%E5%85%B3%E4%BA%8EHugo&#43;Github&#43;Markdown/</guid>
+      <description>
+
+&lt;h3 id=&#34;一-准备:e5a92974c9be8a7431f4fa1dfdb18c96&#34;&gt;一  准备&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/hugo_github_markdown.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;1-hugo:e5a92974c9be8a7431f4fa1dfdb18c96&#34;&gt;1. Hugo&lt;/h4&gt;
+
+&lt;h5 id=&#34;简述:e5a92974c9be8a7431f4fa1dfdb18c96&#34;&gt;简述:&lt;/h5&gt;
+
+&lt;p&gt;Hugo是由Go语言实现的静态网站生成器。其特点是：简单、易用、高效、易扩展、快速部署。　&lt;/p&gt;
+
+&lt;p&gt;官方网站：&lt;a href=&#34;http://gohugo.io/&#34;&gt;http://gohugo.io/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;安装:e5a92974c9be8a7431f4fa1dfdb18c96&#34;&gt;安装:&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;下载适用的windows的hugo_x.xx.x_Windows-64bit.zip&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;解压后重命名为&lt;code&gt;hugo.exe&lt;/code&gt;并存放在c:\Program Files\hugo，并把路径添加到系统环境变量Path中，然后再cmd中输入&lt;code&gt;hugo version&lt;/code&gt;测试是否可用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt;　hugo version
+Hugo Static Site Generator v0.16 BuildDate: 2016-06-06T08:33:34+08:00
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;2-github-pages:e5a92974c9be8a7431f4fa1dfdb18c96&#34;&gt;2.  Github pages　&lt;/h4&gt;
+
+&lt;h5 id=&#34;简述-1:e5a92974c9be8a7431f4fa1dfdb18c96&#34;&gt;简述：&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://git-scm.com/&#34;&gt;Git&lt;/a&gt;是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/&#34;&gt;GitHub&lt;/a&gt; 是一个面向开源及私有软件项目的托管平台，只支持 Git 作为唯一的版本库格式进行托管&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://pages.github.com/&#34;&gt;Github pages&lt;/a&gt;用于将托管在Github上的项目发布位个人主页网站或项目主页网站&lt;/p&gt;
+
+&lt;h5 id=&#34;安装git:e5a92974c9be8a7431f4fa1dfdb18c96&#34;&gt;安装Git&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://git-scm.com/downloads&#34;&gt;下载Git for windows&lt;/a&gt;，以默认选项安装，在桌面双击运行&lt;code&gt;Git Bash&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;创建github仓库:e5a92974c9be8a7431f4fa1dfdb18c96&#34;&gt;创建Github仓库&lt;/h5&gt;
+
+&lt;p&gt;在&lt;code&gt;Repositories&lt;/code&gt;页面点击&lt;code&gt;New&lt;/code&gt;创建新仓库&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;media/git_jenny_01.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;以下是&lt;code&gt;JennyCh&lt;/code&gt;托管在&lt;code&gt;Github&lt;/code&gt;个人主页和博客项目的仓库&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jennych/blog&#34;&gt;blog&lt;/a&gt;     托管JennyCh Blog的静态博客网页的仓库&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jennych/jennych_github_io&#34;&gt;jennych_github_io&lt;/a&gt;           托管JennyCh Blog的Hugo站点源代码的仓库&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jennych/jennych.github.io&#34;&gt;jennych.github.io&lt;/a&gt;       托管JennyCh个人主页静态网页的仓库&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jennych/jennych_blog_hugo&#34;&gt;jennych_blog_hugo&lt;/a&gt;       托管JennyCh个人主页的站点源代码的仓库&lt;/p&gt;
+
+&lt;h5 id=&#34;启用ｇithub-pages:e5a92974c9be8a7431f4fa1dfdb18c96&#34;&gt;启用Ｇithub Pages&lt;/h5&gt;
+
+&lt;p&gt;个人主页：例如&lt;a href=&#34;https://jennych.github.io&#34;&gt;https://jennych.github.io&lt;/a&gt; ，创建&lt;code&gt;Ｇithub帐号.github.io&lt;/code&gt;的仓库，并上传个人主页静态页面项目即可&lt;/p&gt;
+
+&lt;p&gt;项目主页：例如&lt;a href=&#34;https://jennych.github.io/blog/&#34;&gt;https://jennych.github.io/blog/&lt;/a&gt; ，创建随意名称的仓库，并上传项目的静态页面，并开启Ｇithub Pages，&lt;code&gt;settings&lt;/code&gt;－－&amp;gt;&lt;code&gt;Ｇithub Pages&lt;/code&gt;－－&amp;gt;&lt;code&gt;Source&lt;/code&gt;－－&amp;gt;&lt;code&gt;master branch&lt;/code&gt;－－&amp;gt; &lt;code&gt;Save&lt;/code&gt;，即可访问项目主页&lt;code&gt;https://Github帐号.github.io/项目仓库名/&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;3-markdown:e5a92974c9be8a7431f4fa1dfdb18c96&#34;&gt;3. Markdown&lt;/h4&gt;
+
+&lt;p&gt;Markdown 是一种轻量级的「标记语言」，它拥有很多优点，语法简洁明了、学习容易，而且功能比纯文本更强，导出格式随心所欲，因此有很多人用它写博客&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://markdownpad.com/&#34;&gt;MarkdownPad&lt;/a&gt; 是Windows下的一个多功能Markdown编辑器&lt;/p&gt;
+
+&lt;h3 id=&#34;二-使用hugo:e5a92974c9be8a7431f4fa1dfdb18c96&#34;&gt;二　使用Hugo&lt;/h3&gt;
+
+&lt;p&gt;创建Hugo静态站点&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new site 站点名称
+
+$ hugo new site  my_website
+Congratulations! Your new Hugo site is created in &amp;quot;D:\\Hellolworld\\my_website&amp;quot;.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;添加网站主题&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd my_website/themes/
+
+$ git clone https://github.com/christianmendoza/hugo-smpl-theme
+Cloning into &#39;hugo-smpl-theme&#39;...
+remote: Counting objects: 78, done.
+remote: Compressing objects: 100% (55/55), done.
+remote: Total 78 (delta 17), reused 78 (delta 17), pack-reused 0
+Unpacking objects: 100% (78/78), done.
+
+$ cd ..
+$ pwd
+/d/Hellolworld/my_website
+
+$ ls themes/hugo-smpl-theme/
+archetypes/   images/   LICENSE    static/
+exampleSite/  layouts/  README.md  theme.toml
+
+$ cp themes/hugo-smpl-theme/exampleSite/config.toml  .
+# config.toml 为站点的配置文件
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新建文章&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new  路径/文章名称.md
+
+$ hugo new post/技术文章/第一篇技术文章.md
+D:\Hellolworld\my_website\content\post\技术文章\第一篇技术文章.md created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;测试Hugo静态站点&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo  server  -t=主题名称
+# 如果已将theme文件覆盖到站点根目录，无需使用-t指定主题文件，hugo server即可
+
+$ hugo  server  -t=hugo-smpl-theme   -w
+Started building site
+0 of 1 draft rendered
+0 future content
+0 pages created
+0 non-page files copied
+0 paginator pages created
+0 tags created
+0 categories created
+in 7 ms
+Watching for changes in D:\Hellolworld\my_website\{data,content,layouts,static,themes}
+Serving pages from memory
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;生成静态页面&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# hugo命令用于将当前站点转换为静态页面，并自动保存在public目录下
+
+$ hugo
+Started building site
+0 of 1 draft rendered
+0 future content
+1 pages created
+0 non-page files copied
+0 paginator pages created
+0 tags created
+0 categories created
+in 46 ms
+
+$ ls public/
+404.html  assets/  index.html  index.xml  post/  sitemap.xml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;三-使用git-克隆和提交代码:e5a92974c9be8a7431f4fa1dfdb18c96&#34;&gt;三　使用Git 克隆和提交代码&lt;/h3&gt;
+
+&lt;p&gt;以下内容以JennyCh Blog的站点为例&lt;/p&gt;
+
+&lt;h4 id=&#34;1-从github远程仓库克隆jennych-blog的站点源代码:e5a92974c9be8a7431f4fa1dfdb18c96&#34;&gt;1. 从Github远程仓库克隆JennyCh Blog的站点源代码&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone Ｇithub远程仓库地址
+#Github远程仓库地址分为两种：https和ssh ，可以在仓库主页中点开&amp;quot;Clone or Download&amp;quot;，点击`Use Https`或`Use SSH`可分别查看仓库地址
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/git_jenny_02.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git clone git@github.com:jennych/jennych_blog_hugo.git
+Cloning into &#39;jennych_blog_hugo&#39;...
+remote: Counting objects: 151, done.
+remote: Compressing objects: 100% (131/131), done.
+remote: Total 151 (delta 10), reused 151 (delta 10), pack-reused 0
+Receiving objects: 100% (151/151), 4.25 MiB | 124.00 KiB/s, done.
+Resolving deltas: 100% (10/10), done.
+
+$ cd jennych_blog_hugo/
+
+$ ls
+archetypes/  content/      images/   LICENSE.md  static/
+config.toml  exampleSite/  layouts/  README.md   theme.toml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;2-从github远程仓库克隆jennych-blog的静态网页:e5a92974c9be8a7431f4fa1dfdb18c96&#34;&gt;2. 从Github远程仓库克隆JennyCh Blog的静态网页&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone Ｇithub远程仓库地址 public
+# 将JennyCh Blog的静态页面仓库克隆到本地，并重命名为public
+
+$ git  clone  git@github.com:jennych/blog.git  public
+Cloning into &#39;public&#39;...
+remote: Counting objects: 169, done.
+remote: Compressing objects: 100% (113/113), done.
+remote: Total 169 (delta 41), reused 169 (delta 41), pack-reused 0
+Receiving objects: 100% (169/169), 3.84 MiB | 124.00 KiB/s, done.
+Resolving deltas: 100% (41/41), done.
+
+$ ls public/
+404.html  categories/  fancybox/  font/       img/        js/    sitemap.xml
+about/    css/         feed.xml   highlight/  index.html  post/  tags/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;3-推送本地git版本至github远程仓库:e5a92974c9be8a7431f4fa1dfdb18c96&#34;&gt;3. 推送本地Git版本至Github远程仓库&lt;/h4&gt;
+
+&lt;p&gt;当修改站点源代码或文章内容后，将修改内容提交为新版本，并上传到Github远程仓库&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ pwd
+/d/Hellolworld/jennych_blog_hugo
+
+$ git add -A
+# 把修改内容提交到Git缓存区
+
+$ git commit -m &amp;quot;xxxx&amp;quot;
+# 把Git缓存区的内容提交为Git新版本，`-m &amp;quot;xxxx&amp;quot; `为本次提交的版本的简述，如果不加`-m`参数，会进入编辑描述信息的状态
+
+$ git push origin master
+# 将本地新版本推送到Github远程仓库
+
+$ hugo
+# 将修改后的代码和文章转换生成新的静态页面
+Started building site
+0 draft content
+0 future content
+6 pages created
+0 non-page files copied
+0 paginator pages created
+3 tags created
+2 categories created
+in 668 ms
+
+$ cd public/
+# 进入public目录,public目录存放着转换生成后的静态页面
+
+$ pwd
+/d/Hellolworld/jennych_blog_hugo/public
+
+$ git add -A
+# 把新生成的内容提交到Git缓存区
+
+$ git commit -m &amp;quot;xxxx&amp;quot;
+# 把Git缓存区的内容提交为Git新版本，`-m &amp;quot;xxxx&amp;quot; `为本次提交的版本的简述，如果不加`-m`参数，会进入编辑描述信息的状态
+
+$ git push origin master
+# 将本地新版本推送到Github远程仓库
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;推送完成，访问&lt;a href=&#34;https://jennych.github.io/blog/&#34;&gt;https://jennych.github.io/blog/&lt;/a&gt;即可看到新内容&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>感谢Hugo，让我遇见Markdown和Git</title>
