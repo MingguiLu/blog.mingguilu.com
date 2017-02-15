@@ -30,6 +30,8 @@
 
 &lt;p&gt;官方网站：&lt;a href=&#34;http://gohugo.io/&#34;&gt;http://gohugo.io/&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;入门推荐：&lt;a href=&#34;http://www.gohugo.org/&#34;&gt;Hugo中文文档&lt;/a&gt;&lt;/p&gt;
+
 &lt;h5 id=&#34;安装:f3d75005242de1a1c600b325bf235b42&#34;&gt;安装:&lt;/h5&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;下载适用的windows的hugo_x.xx.x_Windows-64bit.zip&lt;/a&gt;&lt;/p&gt;
@@ -45,6 +47,8 @@ Hugo Static Site Generator v0.16 BuildDate: 2016-06-06T08:33:34+08:00
 &lt;h5 id=&#34;简述-1:f3d75005242de1a1c600b325bf235b42&#34;&gt;简述：&lt;/h5&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://git-scm.com/&#34;&gt;Git&lt;/a&gt;是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目&lt;/p&gt;
+
+&lt;p&gt;入门推荐：&lt;a href=&#34;http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000&#34;&gt;廖雪峰Git教程&lt;/a&gt;、&lt;a href=&#34;http://rogerdudler.github.io/git-guide/index.zh.html&#34;&gt;git - 简明指南&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/&#34;&gt;GitHub&lt;/a&gt; 是一个面向开源及私有软件项目的托管平台，只支持 Git 作为唯一的版本库格式进行托管&lt;/p&gt;
 
@@ -74,11 +78,13 @@ Hugo Static Site Generator v0.16 BuildDate: 2016-06-06T08:33:34+08:00
 
 &lt;p&gt;个人主页：例如&lt;a href=&#34;https://jennych.github.io&#34;&gt;https://jennych.github.io&lt;/a&gt; ，创建&lt;code&gt;Ｇithub帐号.github.io&lt;/code&gt;的仓库，并上传个人主页静态页面项目即可&lt;/p&gt;
 
-&lt;p&gt;项目主页：例如&lt;a href=&#34;https://jennych.github.io/blog/&#34;&gt;https://jennych.github.io/blog/&lt;/a&gt; ，创建随意名称的仓库，并上传项目的静态页面，并开启Ｇithub Pages，&lt;code&gt;settings&lt;/code&gt;－－&amp;gt;&lt;code&gt;Ｇithub Pages&lt;/code&gt;－－&amp;gt;&lt;code&gt;Source&lt;/code&gt;－－&amp;gt;&lt;code&gt;master branch&lt;/code&gt;－－&amp;gt; &lt;code&gt;Save&lt;/code&gt;，即可访问项目主页&lt;code&gt;https://Github帐号.github.io/项目仓库名/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;项目主页：例如&lt;a href=&#34;https://jennych.github.io/blog/&#34;&gt;https://jennych.github.io/blog/&lt;/a&gt; ，创建随意名称的仓库，并上传项目的静态页面，只要在根目录下存在index.html，即可开启Ｇithub Pages，&lt;code&gt;settings&lt;/code&gt;－－&amp;gt;&lt;code&gt;Ｇithub Pages&lt;/code&gt;－－&amp;gt;&lt;code&gt;Source&lt;/code&gt;－－&amp;gt;&lt;code&gt;master branch&lt;/code&gt;－－&amp;gt; &lt;code&gt;Save&lt;/code&gt;，即可访问项目主页&lt;code&gt;https://Github帐号.github.io/项目仓库名/&lt;/code&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;3-markdown:f3d75005242de1a1c600b325bf235b42&#34;&gt;3. Markdown&lt;/h4&gt;
 
 &lt;p&gt;Markdown 是一种轻量级的「标记语言」，它拥有很多优点，语法简洁明了、学习容易，而且功能比纯文本更强，导出格式随心所欲，因此有很多人用它写博客&lt;/p&gt;
+
+&lt;p&gt;入门推荐：&lt;a href=&#34;http://www.jianshu.com/p/1e402922ee32/&#34;&gt;Markdown——入门指南&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://markdownpad.com/&#34;&gt;MarkdownPad&lt;/a&gt; 是Windows下的一个多功能Markdown编辑器&lt;/p&gt;
 
@@ -91,6 +97,18 @@ Hugo Static Site Generator v0.16 BuildDate: 2016-06-06T08:33:34+08:00
 $ hugo new site  my_website
 Congratulations! Your new Hugo site is created in &amp;quot;D:\\Hellolworld\\my_website&amp;quot;.
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hugo站点下包含如下目录和文件：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;archetypes：存放创建新文章时自动生成内容的模板&lt;/li&gt;
+&lt;li&gt;content：存放markdown格式的文章&lt;/li&gt;
+&lt;li&gt;layouts：存放网站前端的html模板&lt;/li&gt;
+&lt;li&gt;static：存放img、font、css、js等文件&lt;/li&gt;
+&lt;li&gt;public: 存放生成的静态网页内容&lt;/li&gt;
+&lt;li&gt;theme: 存放网站主题模板(一般将模板内容直接覆盖到根目录)&lt;/li&gt;
+&lt;li&gt;config.toml: 网站的配置文件，一般包括baseurl、title、languageCode等配置参数&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;添加网站主题&lt;/p&gt;
 
@@ -112,7 +130,7 @@ archetypes/   images/   LICENSE    static/
 exampleSite/  layouts/  README.md  theme.toml
 
 $ cp themes/hugo-smpl-theme/exampleSite/config.toml  .
-# config.toml 为站点的配置文件
+# 使用theme文件时，需要适配的config.toml(一般在theme根目录或exampleSite目录下可以找到)，并指定theme = &amp;quot;theme-name&amp;quot;参数才能启动网站
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;新建文章&lt;/p&gt;
@@ -123,9 +141,9 @@ $ hugo new post/技术文章/第一篇技术文章.md
 D:\Hellolworld\my_website\content\post\技术文章\第一篇技术文章.md created
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;测试Hugo静态站点&lt;/p&gt;
+&lt;p&gt;启动Hugo静态站点&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;hugo  server  -t=主题名称
+&lt;pre&gt;&lt;code&gt;hugo server -t=主题名称
 # 如果已将theme文件覆盖到站点根目录，无需使用-t指定主题文件，hugo server即可
 
 $ hugo  server  -t=hugo-smpl-theme   -w
@@ -210,7 +228,7 @@ about/    css/         feed.xml   highlight/  index.html  post/  tags/
 
 &lt;h4 id=&#34;3-推送本地git版本至github远程仓库:f3d75005242de1a1c600b325bf235b42&#34;&gt;3. 推送本地Git版本至Github远程仓库&lt;/h4&gt;
 
-&lt;p&gt;当修改站点源代码或文章内容后，将修改内容提交为新版本，并上传到Github远程仓库&lt;/p&gt;
+&lt;p&gt;当修改站点源代码或文章内容后，将修改内容提交为新版本，并推送到Github远程仓库jennych_blog_hugo&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ pwd
 /d/Hellolworld/jennych_blog_hugo
@@ -223,8 +241,11 @@ $ git commit -m &amp;quot;xxxx&amp;quot;
 
 $ git push origin master
 # 将本地新版本推送到Github远程仓库
+&lt;/code&gt;&lt;/pre&gt;
 
-$ hugo
+&lt;p&gt;生成新的静态页面后提交为新版本，并推送到Github远程仓库blog&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hugo
 # 将修改后的代码和文章转换生成新的静态页面
 Started building site
 0 draft content
