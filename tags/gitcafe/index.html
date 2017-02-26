@@ -15,16 +15,16 @@
  
 <meta property="og:type" content="article"/>
 <meta property="og:description" content=""/>
-<meta property="og:title" content="Topics : blog.mingguilu.com"/>
+<meta property="og:title" content="Gitcafe : blog.mingguilu.com"/>
 <meta property="og:site_name" content="minggui lu"/>
 <meta property="og:image" content="" />
 <meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="" />
 <meta property="og:image:height" content="" />
-<meta property="og:url" content="http://blog.mingguilu.com/topics/">
+<meta property="og:url" content="http://blog.mingguilu.com/tags/gitcafe/">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="0001-01-01"/>
-<meta property="article:modified_time" content="0001-01-01"/>
+<meta property="article:published_time" content="2017-02-26"/>
+<meta property="article:modified_time" content="2017-02-26"/>
 
 
 
@@ -33,7 +33,7 @@
 <meta name="twitter:card" content="summary">
 
 <meta name="twitter:site" content="@imkind0214">
-<meta name="twitter:title" content="Topics : blog.mingguilu.com">
+<meta name="twitter:title" content="Gitcafe : blog.mingguilu.com">
 <meta name="twitter:creator" content="@imkind0214">
 <meta name="twitter:description" content="">
 <meta name="twitter:image:src" content="">
@@ -41,9 +41,9 @@
 
 
     <base href="http://blog.mingguilu.com">
-    <title> Topics - MingguiLu </title>
-    <link rel="canonical" href="http://blog.mingguilu.com/topics/">
-    <link href="http://blog.mingguilu.com/topics/index.xml" rel="alternate" type="application/rss+xml" title="Topics" />
+    <title> Gitcafe - MingguiLu </title>
+    <link rel="canonical" href="http://blog.mingguilu.com/tags/gitcafe/">
+    <link href="http://blog.mingguilu.com/tags/gitcafe/index.xml" rel="alternate" type="application/rss+xml" title="Gitcafe" />
 
     <link href='http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/static/css/style.css">
@@ -183,32 +183,20 @@
 
 <section id="main">
   <div>
-   <h1 id="title">Topics</h1>
-   
+   <h1 id="title">Gitcafe</h1>
     
-    <h2><a href="topics/hugo"> hugo </a> 2 </h2>
-    
-    <h2><a href="topics/blog"> blog </a> 2 </h2>
-    
-    <h2><a href="topics/pages"> pages </a> 1 </h2>
-    
-    <h2><a href="topics/golang"> golang </a> 1 </h2>
-    
-    <h2><a href="topics/linux"> linux </a> 1 </h2>
-    
-    <h2><a href="topics/ubuntu"> ubuntu </a> 1 </h2>
-    
-    <h2><a href="topics/git"> git </a> 1 </h2>
-    
-    <h2><a href="topics/githubpages"> githubpages </a> 1 </h2>
-    
-    <h2><a href="topics/development"> development </a> 1 </h2>
-    
-    <h2><a href="topics/dpkg"> dpkg </a> 1 </h2>
-    
-    <h2><a href="topics/apt-get"> apt-get </a> 1 </h2>
-    
-    <h2><a href="topics/github"> github </a> 1 </h2>
+        <article class="post">
+    <header>
+      <h2><a href="http://blog.mingguilu.com/%E7%8B%AE/Github_Pages%E7%81%BE%E5%A4%87%E8%87%B3Coding_Pages/">Github_Pages灾备至Coding_Pages </a> </h2>
+      <div class="post-meta">Sun, Feb 26, 2017 </div>
+    </header>
+
+    周四晚间在家访问我托管在Github Pages上的Blog时发现网站打不开，确认本地网络没问题，尝试清理浏览器缓存，刷新系统缓存，问题依旧。下意识的回想起来今天我修改代码啦？调整过DNSPod的解析记录啦？还是站点没备案被和谐了？&hellip;&hellip;打开微博刷新了一下，看到关注的几个技术大V:Easy、刘巍峰、梁斌penny都发布或转发了Github无法访问的消息，我有点惊讶：卧槽！why？ 随即查看了DNSPod的监控，看到托管在Github Pages的三个站点全部告警。 零点前后部分地区开始恢复访问，但周五上午我在工地访问Github依然时断时续，速度极慢，而github.io始终无法访问，直到中午才恢复正常。事后没能找到关于本次Github无法访问的详细解析，但发现相对我这样的Git小白用户，真正的开发人员似乎都见怪不怪，这次只是又一次而已。 我想起来刚接触Hugo时在Hugo中文文档看到的那篇通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages，那时完全看不懂，其实现在也是&hellip;&hellip; 不过我突然明白为什么托管在Github上的代码也要容灾，虽然Github的服务相对稳定可靠，但我们的网络并非如此，将代码备份到国内的代码托管服务上是很有必要的。目前我并不需要自动部署项目至Github和GitCafe，我只希望能够将本地代码同时push到两个远程库，手工创建版本库，并推送到远程仓库，可以让我更熟练Git的常用命令。 这个方法很简单：先将Github上已有的仓库导入到Coding，在本地.git版本库配置文件中添加Coding远程仓库的地址，一次push即可将代码同时推送到Github和Coding。 1. 注册Coding 起初我是冲着GitCafe去的，但现在已经合并到Coding了。 2. 创建项目的同时导入Github的仓库 3. 本地.git版本库追加Coding远程仓库地址 修改 .gitmodules $ vim .gitmodules [submodule &quot;public&quot;] path = public url = git@github.com:mingguilu/blog.mingguilu.com.git url = git@git.coding.net:Mingguilu/blog.mingguilu.com.git # 添加Coding远程仓库地址 修改 .git/config $ vim .git/config [core] repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true [remote &quot;origin&quot;] url = git@github.com:mingguilu/blog_mingguilu_com.git url = git@git.coding.net:Mingguilu/blog_mingguilu_com.git # 添加Coding远程仓库地址 fetch = +refs/heads/*:refs/remotes/origin/* [branch &quot;master&quot;] remote = origin merge = refs/heads/master [submodule &quot;public&quot;] url = git@github.com:mingguilu/blog.mingguilu.com.git url = git@git.coding.net:Mingguilu/blog.mingguilu.com.git # 添加Coding远程仓库地址 修改 .git/modules/public/config $ vim .git/modules/public/config [core] repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true worktree = ../../../public [remote &quot;origin&quot;] url = git@github.com:mingguilu/blog.mingguilu.com.git url = git@git.coding.net:Mingguilu/blog.mingguilu.com.git # 添加Coding远程仓库地址 fetch = +refs/heads/*:refs/remotes/origin/* [branch &quot;master&quot;] remote = origin merge = refs/heads/master 4.
+    <footer>
+        <a href='http://blog.mingguilu.com/%E7%8B%AE/Github_Pages%E7%81%BE%E5%A4%87%E8%87%B3Coding_Pages/'><nobr>Read more →</nobr></a>
+    </footer>
+</article>
+
     
   </div>
 </section>
