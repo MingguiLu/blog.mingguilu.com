@@ -7,8 +7,127 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016 - 2021, MingguiLu; all rights reserved.</copyright>
-    <lastBuildDate>Thu, 08 Dec 2016 08:48:05 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 12 Mar 2017 13:06:28 +0800</lastBuildDate>
     <atom:link href="http://blog.mingguilu.com/%E7%8C%BF/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Python3从文件中读取数据</title>
+      <link>http://blog.mingguilu.com/%E7%8C%BF/Python3%E4%BB%8E%E6%96%87%E4%BB%B6%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Sun, 12 Mar 2017 13:06:28 +0800</pubDate>
+      
+      <guid>http://blog.mingguilu.com/%E7%8C%BF/Python3%E4%BB%8E%E6%96%87%E4%BB%B6%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE/</guid>
+      <description>
+
+&lt;p&gt;Python3有三种从文件中读取数据的方法：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;read()　读取整个文件内容；占用内存多&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;readline()　每次读取并返回一行数据；读取速度慢，每次占用内存少&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;readlines()　读取每一行数据，并作为元素存储在一个列表中&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;下面我将圆周率π的部分数值拆分为三行存储在文件&lt;code&gt;pi_digits.txt&lt;/code&gt;中，然后使用python读取文件并拼接为完整的&lt;code&gt;π&lt;/code&gt;：3.141592653589793238462643383279，注意得到结果是字符串，并不是数字&lt;/p&gt;
+
+&lt;p&gt;使用&lt;code&gt;.read()&lt;/code&gt;读取文件&lt;code&gt;pi_digits.txt&lt;/code&gt;的全部内容&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;with open(&#39;pi_digits.txt&#39;) as file_object:
+    &#39;&#39;&#39;打开文件&#39;&#39;&#39;
+    print(file_object.read())
+    &#39;&#39;&#39;打印文件内容&#39;&#39;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;打印结果：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;3.1415926535
+  8979323846
+  2643383279
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;方法一-read:70c1948403385fde2f5c586d29c1840f&#34;&gt;方法一：.read()&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;with open(&#39;pi_digits.txt&#39;) as file_object:
+    &#39;&#39;&#39;打开文件&#39;&#39;&#39;
+    pi = file_object.read()
+    &#39;&#39;&#39;读取文件内容并赋给变量content&#39;&#39;&#39;
+    print(pi.replace(&amp;quot;\n&amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot; &amp;quot;,&amp;quot;&amp;quot;))
+    &#39;&#39;&#39;使用.replace()将每行末尾的换行符和空格，替换为空，打印拼接完成的π&#39;&#39;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;方法二-逐行读取:70c1948403385fde2f5c586d29c1840f&#34;&gt;方法二：逐行读取&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;with open(&#39;pi_digits.txt&#39;) as file_object:
+    &#39;&#39;&#39;打开文件&#39;&#39;&#39;
+    pi = &#39;&#39;
+    &#39;&#39;&#39;初始化变量pi&#39;&#39;&#39;
+    for line in file_object:
+        &#39;&#39;&#39;逐行读取文件的每一行内容&#39;&#39;&#39;
+        pi += line.strip()
+        &#39;&#39;&#39;剔除元素首尾的空字符后做字符串拼接，并赋给pi&#39;&#39;&#39;
+        # pi += &amp;quot;&amp;quot;.join(line.strip())
+    print(pi)
+    &#39;&#39;&#39;打印拼接完成的π&#39;&#39;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;方法三-readline:70c1948403385fde2f5c586d29c1840f&#34;&gt;方法三：.readline()&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;with open(&#39;pi_digits.txt&#39;) as file_object:
+    &#39;&#39;&#39;打开文件&#39;&#39;&#39;
+    pi = &#39;&#39;
+    &#39;&#39;&#39;初始化变量pi&#39;&#39;&#39;
+    while True:
+        &#39;&#39;&#39;???&#39;&#39;&#39;
+        line = file_object.readline()
+        &#39;&#39;&#39;读取一行内容赋给变量line&#39;&#39;&#39;
+        if line:
+            &#39;&#39;&#39;如果读取到一行数据&#39;&#39;&#39;
+            #print(line)
+            pi += line.strip()
+            &#39;&#39;&#39;剔除这行数据两端的空字符之后拼接并赋给pi&#39;&#39;&#39;
+        else:
+            &#39;&#39;&#39;如果读取内容为空&#39;&#39;&#39;
+            break
+            &#39;&#39;&#39;退出循环&#39;&#39;&#39;
+     print(pi)
+     &#39;&#39;&#39;打印拼接完成的π&#39;&#39;&#39; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;方法四-readlines:70c1948403385fde2f5c586d29c1840f&#34;&gt;方法四：.readlines()&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;with open(&#39;pi_digits.txt&#39;) as file_object:
+    &#39;&#39;&#39;打开文件&#39;&#39;&#39;
+    lines = file_object.readlines()
+    &#39;&#39;&#39;读取文件的每行作为元素存入列表&#39;&#39;&#39;
+    print(lines)
+    &#39;&#39;&#39;打印列表&#39;&#39;&#39;
+    pi = &#39;&#39;
+    &#39;&#39;&#39;初始化变量pi&#39;&#39;&#39;
+    for line in lines:
+        &#39;&#39;&#39;遍历列表的元素&#39;&#39;&#39;
+        pi += line.strip()
+        &#39;&#39;&#39;剔除元素首尾的空字符后做字符串拼接，并赋给pi&#39;&#39;&#39;
+    print(pi)
+    &#39;&#39;&#39;打印拼接完成的π&#39;&#39;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;方法五-read-split:70c1948403385fde2f5c586d29c1840f&#34;&gt;方法五：.read().split()&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;with open(&#39;pi_digits.txt&#39;) as file_object:
+    &#39;&#39;&#39;打开文件&#39;&#39;&#39;
+    lines = file_object.read().split()
+    &#39;&#39;&#39;将文件分割为字符串列表，相对于.readlines(),这种方法在分割内容时，就剔除了空字符&#39;&#39;&#39;
+    print(lines)
+    &#39;&#39;&#39;打印列表&#39;&#39;&#39;
+    pi = &#39;&#39;
+    &#39;&#39;&#39;初始化变量pi，用于表示完整的π&#39;&#39;&#39;
+    for line in lines:
+        &#39;&#39;&#39;遍历列表的元素&#39;&#39;&#39;
+        pi += line
+        &#39;&#39;&#39;将每个元素做字符串拼接，并赋给pi&#39;&#39;&#39;
+    print(pi)
+    &#39;&#39;&#39;打印拼接完成的π&#39;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Git-everything-is-local</title>

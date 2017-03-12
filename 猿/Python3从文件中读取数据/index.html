@@ -10,27 +10,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="keywords" content="Github Pages, Coding Pages, GitCafe, ">
+<meta name="keywords" content="Python, Python3, read(), readline(), readlines(), ">
 
  
 <meta property="og:type" content="article"/>
 <meta property="og:description" content=""/>
-<meta property="og:title" content="Github_Pages灾备至Coding_Pages : blog.mingguilu.com"/>
+<meta property="og:title" content="Python3从文件中读取数据 : blog.mingguilu.com"/>
 <meta property="og:site_name" content="minggui lu"/>
 <meta property="og:image" content="" />
 <meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="" />
 <meta property="og:image:height" content="" />
-<meta property="og:url" content="http://blog.mingguilu.com/%E7%8B%AE/Github_Pages%E7%81%BE%E5%A4%87%E8%87%B3Coding_Pages/">
+<meta property="og:url" content="http://blog.mingguilu.com/%E7%8C%BF/Python3%E4%BB%8E%E6%96%87%E4%BB%B6%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE/">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2017-02-26"/>
-<meta property="article:modified_time" content="2017-02-26"/>
+<meta property="article:published_time" content="2017-03-12"/>
+<meta property="article:modified_time" content="2017-03-12"/>
 
 
 
-<meta property="article:tag" content="Github Pages">
-<meta property="article:tag" content="Coding Pages">
-<meta property="article:tag" content="GitCafe">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Python3">
+<meta property="article:tag" content="read()">
+<meta property="article:tag" content="readline()">
+<meta property="article:tag" content="readlines()">
 
 
 
@@ -38,7 +40,7 @@
 <meta name="twitter:card" content="summary">
 
 <meta name="twitter:site" content="@imkind0214">
-<meta name="twitter:title" content="Github_Pages灾备至Coding_Pages : blog.mingguilu.com">
+<meta name="twitter:title" content="Python3从文件中读取数据 : blog.mingguilu.com">
 <meta name="twitter:creator" content="@imkind0214">
 <meta name="twitter:description" content="">
 <meta name="twitter:image:src" content="">
@@ -46,8 +48,8 @@
 
 
     <base href="http://blog.mingguilu.com">
-    <title> Github_Pages灾备至Coding_Pages - MingguiLu </title>
-    <link rel="canonical" href="http://blog.mingguilu.com/%E7%8B%AE/Github_Pages%E7%81%BE%E5%A4%87%E8%87%B3Coding_Pages/">
+    <title> Python3从文件中读取数据 - MingguiLu </title>
+    <link rel="canonical" href="http://blog.mingguilu.com/%E7%8C%BF/Python3%E4%BB%8E%E6%96%87%E4%BB%B6%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE/">
     
 
     <link href='http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'>
@@ -188,27 +190,31 @@
 
 
 <section id="main">
-  <h1 itemprop="name" id="title">Github_Pages灾备至Coding_Pages</h1>
+  <h1 itemprop="name" id="title">Python3从文件中读取数据</h1>
   
 
 <aside id="meta">
 
     <div>
         <section id="datecount">
-          <h4 id="date"> Sun Feb 26, 2017 </h4>
-          <h5 id="wc"> 300 Words </h5>
-          <h5 id="readtime"> Read in about 2 Min </h5>
+          <h4 id="date"> Sun Mar 12, 2017 </h4>
+          <h5 id="wc"> 200 Words </h5>
+          <h5 id="readtime"> Read in about 1 Min </h5>
         </section>
         <ul id="categories">
           
         </ul>
         <ul id="tags">
           
-            <li> <a href="http://blog.mingguilu.com/tags/github-pages">Github Pages</a> </li>
+            <li> <a href="http://blog.mingguilu.com/tags/python">Python</a> </li>
           
-            <li> <a href="http://blog.mingguilu.com/tags/coding-pages">Coding Pages</a> </li>
+            <li> <a href="http://blog.mingguilu.com/tags/python3">Python3</a> </li>
           
-            <li> <a href="http://blog.mingguilu.com/tags/gitcafe">GitCafe</a> </li>
+            <li> <a href="http://blog.mingguilu.com/tags/read">read()</a> </li>
+          
+            <li> <a href="http://blog.mingguilu.com/tags/readline">readline()</a> </li>
+          
+            <li> <a href="http://blog.mingguilu.com/tags/readlines">readlines()</a> </li>
           
         </ul>
     </div>
@@ -218,114 +224,122 @@
 
 </aside>
 
-<meta itemprop="wordCount" content="226">
-<meta itemprop="datePublished" content="2017-02-26">
-<meta itemprop="url" content="http://blog.mingguilu.com/%E7%8B%AE/Github_Pages%E7%81%BE%E5%A4%87%E8%87%B3Coding_Pages/">
+<meta itemprop="wordCount" content="143">
+<meta itemprop="datePublished" content="2017-03-12">
+<meta itemprop="url" content="http://blog.mingguilu.com/%E7%8C%BF/Python3%E4%BB%8E%E6%96%87%E4%BB%B6%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE/">
 
   <div>
         <article itemprop="articleBody" id="content">
            
 
-<p>周四晚间在家访问我托管在Github Pages上的Blog时发现网站打不开，确认本地网络没问题，尝试清理浏览器缓存，刷新系统缓存，问题依旧。下意识的回想起来今天我修改代码啦？调整过DNSPod的解析记录啦？还是站点没备案被和谐了？&hellip;&hellip;打开微博刷新了一下，看到关注的几个技术大V:Easy、刘巍峰、梁斌penny都发布或转发了Github无法访问的消息，我有点惊讶：卧槽！why？</p>
+<p>Python3有三种从文件中读取数据的方法：</p>
 
-<p>随即查看了DNSPod的监控，看到托管在Github Pages的三个站点全部告警。</p>
+<ul>
+<li>read()　读取整个文件内容；占用内存多<br /></li>
+<li>readline()　每次读取并返回一行数据；读取速度慢，每次占用内存少<br /></li>
+<li>readlines()　读取每一行数据，并作为元素存储在一个列表中<br /></li>
+</ul>
 
-<p><img src="/media/170226_01_01.jpg" alt="" /></p>
+<p>下面我将圆周率π的部分数值拆分为三行存储在文件<code>pi_digits.txt</code>中，然后使用python读取文件并拼接为完整的<code>π</code>：3.141592653589793238462643383279，注意得到结果是字符串，并不是数字</p>
 
-<p>零点前后部分地区开始恢复访问，但周五上午我在工地访问Github依然时断时续，速度极慢，而github.io始终无法访问，直到中午才恢复正常。事后没能找到关于本次Github无法访问的详细解析，但发现相对我这样的Git小白用户，真正的开发人员似乎都见怪不怪，这次只是又一次而已。</p>
+<p>使用<code>.read()</code>读取文件<code>pi_digits.txt</code>的全部内容</p>
 
-<p><img src="/media/170226_01_02.jpg" alt="" /></p>
-
-<p>我想起来刚接触Hugo时在<a href="http://www.gohugo.org/">Hugo中文文档</a>看到的那篇<a href="http://www.gohugo.org/post/coderzh-automated-deploy-hugo/">通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages</a>，那时完全看不懂，其实现在也是&hellip;&hellip; 不过我突然明白为什么托管在Github上的代码也要容灾，虽然Github的服务相对稳定可靠，但我们的网络并非如此，将代码备份到国内的代码托管服务上是很有必要的。目前我并不需要自动部署项目至Github和GitCafe，我只希望能够将本地代码同时push到两个远程库，手工创建版本库，并推送到远程仓库，可以让我更熟练Git的常用命令。</p>
-
-<p>这个方法很简单：先将Github上已有的仓库导入到Coding，在本地.git版本库配置文件中添加Coding远程仓库的地址，一次push即可将代码同时推送到Github和Coding。</p>
-
-<h3 id="1-注册coding:e7706393a2e33dc7c49d540b3db4cdd9">1. 注册Coding</h3>
-
-<p>起初我是冲着<a href="https://gitcafe.com/">GitCafe</a>去的，但现在已经合并到<a href="https://coding.net">Coding</a>了。</p>
-
-<p><img src="/media/170226_01_01_01.png" alt="" /></p>
-
-<h3 id="2-创建项目的同时导入github的仓库:e7706393a2e33dc7c49d540b3db4cdd9">2. 创建项目的同时导入Github的仓库</h3>
-
-<p><img src="/media/170226_01_02_01.png" alt="" /></p>
-
-<h3 id="3-本地-git版本库追加coding远程仓库地址:e7706393a2e33dc7c49d540b3db4cdd9">3. 本地.git版本库追加Coding远程仓库地址</h3>
-
-<p>修改 .gitmodules</p>
-
-<pre><code>$ vim .gitmodules 
-[submodule &quot;public&quot;]
-    path = public
-    url = git@github.com:mingguilu/blog.mingguilu.com.git
-    url = git@git.coding.net:Mingguilu/blog.mingguilu.com.git       # 添加Coding远程仓库地址
+<pre><code>with open('pi_digits.txt') as file_object:
+    '''打开文件'''
+    print(file_object.read())
+    '''打印文件内容'''
 </code></pre>
 
-<p>修改 .git/config</p>
+<p>打印结果：</p>
 
-<pre><code>$ vim .git/config 
-[core]
-    repositoryformatversion = 0
-    filemode = true
-    bare = false
-    logallrefupdates = true
-[remote &quot;origin&quot;]
-    url = git@github.com:mingguilu/blog_mingguilu_com.git
-    url = git@git.coding.net:Mingguilu/blog_mingguilu_com.git       # 添加Coding远程仓库地址
-    fetch = +refs/heads/*:refs/remotes/origin/*
-[branch &quot;master&quot;]
-    remote = origin
-    merge = refs/heads/master
-[submodule &quot;public&quot;]
-    url = git@github.com:mingguilu/blog.mingguilu.com.git
-    url = git@git.coding.net:Mingguilu/blog.mingguilu.com.git       # 添加Coding远程仓库地址
+<pre><code>3.1415926535
+  8979323846
+  2643383279
 </code></pre>
 
-<p>修改 .git/modules/public/config</p>
+<h4 id="方法一-read:70c1948403385fde2f5c586d29c1840f">方法一：.read()</h4>
 
-<pre><code>$ vim .git/modules/public/config 
-[core]
-    repositoryformatversion = 0
-    filemode = true
-    bare = false
-    logallrefupdates = true
-    worktree = ../../../public
-[remote &quot;origin&quot;]
-    url = git@github.com:mingguilu/blog.mingguilu.com.git
-    url = git@git.coding.net:Mingguilu/blog.mingguilu.com.git       # 添加Coding远程仓库地址
-    fetch = +refs/heads/*:refs/remotes/origin/*
-[branch &quot;master&quot;]
-    remote = origin
-    merge = refs/heads/master
+<pre><code>with open('pi_digits.txt') as file_object:
+    '''打开文件'''
+    pi = file_object.read()
+    '''读取文件内容并赋给变量content'''
+    print(pi.replace(&quot;\n&quot;,&quot;&quot;).replace(&quot; &quot;,&quot;&quot;))
+    '''使用.replace()将每行末尾的换行符和空格，替换为空，打印拼接完成的π'''
 </code></pre>
 
-<h3 id="4-至此-一次push即可同时推送到github和coding:e7706393a2e33dc7c49d540b3db4cdd9">4. 至此，一次push即可同时推送到Github和Coding</h3>
+<h4 id="方法二-逐行读取:70c1948403385fde2f5c586d29c1840f">方法二：逐行读取</h4>
 
-<pre><code>$ git push  origin master 
-对象计数中: 13, 完成.
-Delta compression using up to 4 threads.
-压缩对象中: 100% (13/13), 完成.
-写入对象中: 100% (13/13), 1.68 MiB | 368.00 KiB/s, 完成.
-Total 13 (delta 5), reused 0 (delta 0)
-remote: Resolving deltas: 100% (5/5), completed with 5 local objects.
-To git@github.com:mingguilu/blog.mingguilu.com.git          # 推送至Github远程仓库
-   c5e9106..ebb5fca  master -&gt; master
-对象计数中: 13, 完成.
-Delta compression using up to 4 threads.
-压缩对象中: 100% (13/13), 完成.
-写入对象中: 100% (13/13), 1.68 MiB | 0 bytes/s, 完成.
-Total 13 (delta 5), reused 0 (delta 0)
-To git@git.coding.net:Mingguilu/blog.mingguilu.com.git      # 推送至Coding远程仓库
-   c5e9106..ebb5fca  master -&gt; master
+<pre><code>with open('pi_digits.txt') as file_object:
+    '''打开文件'''
+    pi = ''
+    '''初始化变量pi'''
+    for line in file_object:
+        '''逐行读取文件的每一行内容'''
+        pi += line.strip()
+        '''剔除元素首尾的空字符后做字符串拼接，并赋给pi'''
+        # pi += &quot;&quot;.join(line.strip())
+    print(pi)
+    '''打印拼接完成的π'''
 </code></pre>
 
-<h3 id="5-开启coding仓库的pages服务并绑定域名:e7706393a2e33dc7c49d540b3db4cdd9">5. 开启Coding仓库的Pages服务并绑定域名</h3>
+<h4 id="方法三-readline:70c1948403385fde2f5c586d29c1840f">方法三：.readline()</h4>
 
-<p><img src="/media/170226_01_05_01.png" alt="" /></p>
+<pre><code>with open('pi_digits.txt') as file_object:
+    '''打开文件'''
+    pi = ''
+    '''初始化变量pi'''
+    while True:
+        '''???'''
+        line = file_object.readline()
+        '''读取一行内容赋给变量line'''
+        if line:
+            '''如果读取到一行数据'''
+            #print(line)
+            pi += line.strip()
+            '''剔除这行数据两端的空字符之后拼接并赋给pi'''
+        else:
+            '''如果读取内容为空'''
+            break
+            '''退出循环'''
+     print(pi)
+     '''打印拼接完成的π''' 
+</code></pre>
 
-<h3 id="6-在dnspod的增加域名别名解析记录至pages-coding-me-并设置为默认线路-xxx-github-io设置为国外线路:e7706393a2e33dc7c49d540b3db4cdd9">6. 在DNSPod的增加域名别名解析记录至pages.coding.me.，并设置为默认线路，xxx.github.io设置为国外线路</h3>
+<h4 id="方法四-readlines:70c1948403385fde2f5c586d29c1840f">方法四：.readlines()</h4>
 
-<p>到这里，已完成将Github仓库导入到Coding项目作为备份，并实现Blog的在线访问的灾备，和国内访问速度的优化。</p>
+<pre><code>with open('pi_digits.txt') as file_object:
+    '''打开文件'''
+    lines = file_object.readlines()
+    '''读取文件的每行作为元素存入列表'''
+    print(lines)
+    '''打印列表'''
+    pi = ''
+    '''初始化变量pi'''
+    for line in lines:
+        '''遍历列表的元素'''
+        pi += line.strip()
+        '''剔除元素首尾的空字符后做字符串拼接，并赋给pi'''
+    print(pi)
+    '''打印拼接完成的π'''
+</code></pre>
+
+<h4 id="方法五-read-split:70c1948403385fde2f5c586d29c1840f">方法五：.read().split()</h4>
+
+<pre><code>with open('pi_digits.txt') as file_object:
+    '''打开文件'''
+    lines = file_object.read().split()
+    '''将文件分割为字符串列表，相对于.readlines(),这种方法在分割内容时，就剔除了空字符'''
+    print(lines)
+    '''打印列表'''
+    pi = ''
+    '''初始化变量pi，用于表示完整的π'''
+    for line in lines:
+        '''遍历列表的元素'''
+        pi += line
+        '''将每个元素做字符串拼接，并赋给pi'''
+    print(pi)
+    '''打印拼接完成的π''
+</code></pre>
 
         </article>
   </div>
@@ -337,19 +351,19 @@ To git@git.coding.net:Mingguilu/blog.mingguilu.com.git      # 推送至Coding远
 
     <div>
         <section id="prev">
-            &nbsp;<a class="previous" href="http://blog.mingguilu.com/%E7%8C%BF/Python3%E4%BB%8E%E6%96%87%E4%BB%B6%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE/"><i class="icon-arrow-left"></i> Python3从文件中读取数据</a><br>
+            &nbsp;
         </section>
         <section id="next">
-            &nbsp;<a class="next" href="http://blog.mingguilu.com/%E7%8B%AE/%E5%85%B3%E4%BA%8EJennyCh_Blog%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/">关于JennyCh_Blog的使用文档 <i class="icon-arrow-right"></i></a>
+            &nbsp;<a class="next" href="http://blog.mingguilu.com/%E7%8B%AE/Github_Pages%E7%81%BE%E5%A4%87%E8%87%B3Coding_Pages/">Github_Pages灾备至Coding_Pages <i class="icon-arrow-right"></i></a>
         </section>
     </div>
 
 
 </aside>
 
-<meta itemprop="wordCount" content="226">
-<meta itemprop="datePublished" content="2017-02-26">
-<meta itemprop="url" content="http://blog.mingguilu.com/%E7%8B%AE/Github_Pages%E7%81%BE%E5%A4%87%E8%87%B3Coding_Pages/">
+<meta itemprop="wordCount" content="143">
+<meta itemprop="datePublished" content="2017-03-12">
+<meta itemprop="url" content="http://blog.mingguilu.com/%E7%8C%BF/Python3%E4%BB%8E%E6%96%87%E4%BB%B6%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE/">
 
 </section>
 
@@ -361,7 +375,7 @@ To git@git.coding.net:Mingguilu/blog.mingguilu.com.git      # 推送至Coding远
      
 
      
-	<div class="ds-thread" data-thread-key="" data-title="Github_Pages灾备至Coding_Pages" data-url="http://blog.mingguilu.com/%E7%8B%AE/Github_Pages%E7%81%BE%E5%A4%87%E8%87%B3Coding_Pages/"></div>
+	<div class="ds-thread" data-thread-key="" data-title="Python3从文件中读取数据" data-url="http://blog.mingguilu.com/%E7%8C%BF/Python3%E4%BB%8E%E6%96%87%E4%BB%B6%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE/"></div>
 	
 	
 	<script type="text/javascript">
