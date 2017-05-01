@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="keywords" content="AutoIt, AutoIt3, Helpdesk, 自动化, ">
+
+ 
+<meta property="og:type" content="article"/>
+<meta property="og:description" content=""/>
+<meta property="og:title" content="AutoIt3开发Helpdesk自动化工具之二:常用语法 : blog.mingguilu.com"/>
+<meta property="og:site_name" content="minggui lu"/>
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%BA%8C:%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-04-21"/>
+<meta property="article:modified_time" content="2017-04-21"/>
+
+
+
+<meta property="article:tag" content="AutoIt">
+<meta property="article:tag" content="AutoIt3">
+<meta property="article:tag" content="Helpdesk">
+<meta property="article:tag" content="自动化">
+
+
+
+
+<meta name="twitter:card" content="summary">
+
+<meta name="twitter:site" content="@imkind0214">
+<meta name="twitter:title" content="AutoIt3开发Helpdesk自动化工具之二:常用语法 : blog.mingguilu.com">
+<meta name="twitter:creator" content="@imkind0214">
+<meta name="twitter:description" content="">
+<meta name="twitter:image:src" content="">
+<meta name="twitter:domain" content="blog.mingguilu.com">
+
+
+    <base href="http://blog.mingguilu.com">
+    <title> AutoIt3开发Helpdesk自动化工具之二:常用语法 - MingguiLu </title>
+    <link rel="canonical" href="http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%BA%8C:%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/">
+    
+
+    <link href='http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" id="font-awesome-css" href="/static/fonts/font-awesome.min.css" type="text/css" media="all"/>
+
+
+
+
+
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    
+  	<script src="http://blog.mingguilu.comstatic/js/highlight.pack.js"></script>
+  	<link rel="stylesheet" href="http://blog.mingguilu.comstatic/css/highlight/github.css">
+  	<script>hljs.initHighlightingOnLoad();</script>
+
+    
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3d1fd52b11dc0bde2abdc4760452f3dc";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-86857821-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+</head>
+
+<body lang="en" itemscope itemtype="http://schema.org/Article">
+<header id="header">
+    <figure>
+      <a href="/" border=0 id="logolink">
+        <img id="logo-img" src="/static/img/mingguilu.jpg">
+        
+      </a>
+    </figure>
+    <div id="byline">ＭingguiLu Blog</div>
+    <nav id="nav">
+            <ul id="mainnav">
+            <li>
+                <a href="/感/">
+                <span class="icon"> <i aria-hidden="true" class="icon-quill"></i></span>
+                <span> 感 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/猿/">
+                <span class="icon"> <i aria-hidden="true" class="icon-code"></i></span>
+                <span> 猿 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/狮/">
+                <span class="icon"> <i aria-hidden="true" class="icon-console"></i></span>
+                <span> 狮 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/about/index.html">
+                <span class="icon"> <i aria-hidden="true" class="icon-user"></i></span>
+                <span> 吾 </span>
+            </a>
+            </li>
+        </ul>
+
+    
+
+        <ul id="social">
+            
+            <li id="follow">
+                <span class="icon icon-heart-2"> </span>
+                <span class="title"> 驻留 </span>
+                <div class="dropdown follow">
+                    <ul class="social">
+                        <li> <a href="http://github.com/mingguilu" target="_blank" title="GitHub" class="github"><span class="icon icon-github"></span>GitHub</a> </li>
+                        <li> <a href="http://weibo.com/kind0214" target="_blank" title="Weibo" class="github"><span class="fa fa-weibo weibo"></span>Weibo</a> </li>
+                        <li> <a href="http://www.facebook.com/kind0214" target="_blank" title="Join me on Facebook" class="facebook"><span class="icon icon-facebook"></span>Facebook</a> </li>
+                        <li> <a href="http://www.twitter.com/kind0214" target="_blank" title="Follow me on Twitter" class="twitter"><span class="icon icon-twitter"></span>Twitter</a> </li>
+                        
+                    </ul>
+                    <span class="subcount icon-arrow-right"></span>
+                </div>
+            </li>
+
+            <li id="friendlink">
+                <span class="icon icon-heart-2"> </span>
+                <span class="title"> 友链 </span>
+                <div class="dropdown friendlink">
+                    <ul class="social">
+                        <li> <a href="http://spf13.com/" target="_blank" title="Hacking Management" class="facebook">spf13.com</a> </li>
+                        <li> <a href="http://coderzh.com/" target="_blank" title="CoderZh Blog" class="twitter">coderzh.com</a> </li>
+                        <li> <a href="https://didadandan.github.io" target="_blank" title="DidaDandan Blog" class="linkedin">DidaDandan</a> </li>
+                        <li> <a href="https://longlizl.github.io/" target="_blank" title="LongLi Blog" class="facebook">LongLi</a> </li>
+                    </ul>
+                    <a href="https://simpleprogrammer.com/" target="_blank" title="simpleprogrammer" class="rss">simpleprogrammer.com</a>
+                    <span class="subcount icon-arrow-right"></span>
+                </div>
+            </li>
+
+        </ul>
+
+    
+        <ul id="social">
+            <li id="reading">
+                <span class="icon icon-idea"> </span>
+                <span class="title"> 我正在读... </span>
+                <div class="dropdown reading">
+                    <img src="/media/reading/3.菜鸟侦探挑战数据分析.jpg">
+                    <span class="subcount icon-arrow-right"></span>
+                </div>
+            </li>
+        </ul>
+
+    <div id="advertise" class="dropdown follow">
+    <a href="http://my.yizhihongxing.com/aff.php?aff=294" target="_blank" ><img src="/media/yzhx_232_215.jpg"></a>
+</div>
+
+    </nav>
+</header>
+
+
+
+<section id="main">
+  <h1 itemprop="name" id="title">AutoIt3开发Helpdesk自动化工具之二:常用语法</h1>
+  
+
+<aside id="meta">
+
+    <div>
+        <section id="datecount">
+          <h4 id="date"> Fri Apr 21, 2017 </h4>
+          <h5 id="wc"> 700 Words </h5>
+          <h5 id="readtime"> Read in about 3 Min </h5>
+        </section>
+        <ul id="categories">
+          
+        </ul>
+        <ul id="tags">
+          
+            <li> <a href="http://blog.mingguilu.com/tags/autoit">AutoIt</a> </li>
+          
+            <li> <a href="http://blog.mingguilu.com/tags/autoit3">AutoIt3</a> </li>
+          
+            <li> <a href="http://blog.mingguilu.com/tags/helpdesk">Helpdesk</a> </li>
+          
+            <li> <a href="http://blog.mingguilu.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96">自动化</a> </li>
+          
+        </ul>
+    </div>
+
+
+
+
+</aside>
+
+<meta itemprop="wordCount" content="616">
+<meta itemprop="datePublished" content="2017-04-21">
+<meta itemprop="url" content="http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%BA%8C:%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/">
+
+  <div>
+        <article itemprop="articleBody" id="content">
+           
+
+<p>在正式开始脚本工具编写之前，先熟悉一下AutoIt3常用的语法</p>
+
+<h4 id="参考文档:338b28e343cf68126d23434ed1836511">参考文档：</h4>
+
+<ul>
+<li>AutoIt3安装目录中的官方英文手册 v3.3.14.2 ： AutoIt.chm<br /></li>
+<li>AutoIt 在线手册中文版_脚本之家 v3.1.1  :  <a href="http://www.jb51.net/shouce/autoit/">http://www.jb51.net/shouce/autoit/</a><br /></li>
+</ul>
+
+<h4 id="编辑器:338b28e343cf68126d23434ed1836511">编辑器</h4>
+
+<p>自带的编辑器是SciTe，带有所有的语法高亮功能，同时还整合了很多AutoIt的第三方工具（比如语法错误检查和脚本整理等）</p>
+
+<p>AutoIt3脚本文件的后缀名是<code>.au3</code>，在安装AutoIt软件的系统上可直接运行，在未安装的系统上需编译为<code>.exe</code>程序。创建<code>.au3</code>格式的脚本文件方法：</p>
+
+<ul>
+<li>右键 ——&gt; 新建 ——&gt; AutoIt v3 Script</li>
+</ul>
+
+<p>建议使用这种方法，优势在于脚本会自动添加一段头注释模板：</p>
+
+<pre><code>#cs ----------------------------------------------------------------------------
+
+ AutoIt Version: 3.3.14.2
+ Author:         myName
+
+ Script Function:
+    Template AutoIt script.
+
+#ce ----------------------------------------------------------------------------
+
+; Script Start - Add your code below here
+</code></pre>
+
+<ul>
+<li>在编辑器上 File ——&gt; New、直接点击New图标、或者使用快捷键 <code>Ctrl + N</code>，这些不会自动添加头注释</li>
+</ul>
+
+<h4 id="注释:338b28e343cf68126d23434ed1836511">注释</h4>
+
+<ul>
+<li>单行注释  分号“;”之后的内容作为注释内容</li>
+
+<li><p>多行注释</p>
+
+<p>#comments-start 注释开始，可简写为：#cs</p>
+
+<p>;code   脚本代码</p>
+
+<p>#comments-end   注释结束，可简写为：#ce</p></li>
+</ul>
+
+<h4 id="暂停执行脚本:338b28e343cf68126d23434ed1836511">暂停执行脚本</h4>
+
+<pre><code>Sleep ( 暂停时间 )  ;暂停执行的时间以毫秒为单位，1000毫秒 = 1秒
+
+Sleep(500)
+;推荐在每次等待窗口出现之后和模拟键鼠操作控件时使用Sleep暂停执行脚本半秒钟，以优化自动任务的可视效果
+</code></pre>
+
+<h4 id="运行外部程序:338b28e343cf68126d23434ed1836511">运行外部程序</h4>
+
+<pre><code>Run ( &quot;文件名&quot; [, &quot;工作目录&quot; [, 标志]] )
+</code></pre>
+
+<ul>
+<li><p>.exe 可执行程序</p>
+
+<p>Run(&ldquo;notepad.exe&rdquo;)</p>
+
+<p>Run(&ldquo;C:\Program Files\Microsoft Office\Office16\OUTLOOK.EXE&rdquo;)   ;绝对路径</p>
+
+<p>Run(&rdquo;\\wh-filesrv-01\Installers\LinPhone\Linphone-3.10.2-win32.exe&rdquo;)  ;网络共享路径</p></li>
+
+<li><p>.msi 微软格式的安装包</p>
+
+<p>Run(&ldquo;msiexec /i \\wh-filesrv-01\Installers\Synjones\二代证读验机具USB驱动\USBDrv3.0-x64.msi&rdquo;)<br />
+;调用系统程序<code>msiexec.exe</code>操作.msi程序， <code>/i</code>参数表示安装</p></li>
+
+<li><p>.cpl     控制面板项</p>
+
+<p>Run(&ldquo;control sysdm.cpl&rdquo;)    ;打开系统属性窗口</p></li>
+
+<li><p>.cer  证书文件</p>
+
+<p>Run(&ldquo;explorer  \\wh-filesrv-01\Installers\AD\CA.cer&rdquo;) ;打开安装证书窗口</p></li>
+
+<li><p>DOS命令</p>
+
+<p>Run(&ldquo;net user admin abc@123 /add&rdquo;) ;创建本地用户admin，密码为abc@123</p>
+
+<p>Run(&ldquo;net localgroup users admin /add&rdquo;) ;将本地用户admin加入users组</p></li>
+
+<li><p>系统目录</p>
+
+<p>Run(&ldquo;explorer &rdquo; &amp; @ProgramFilesDir) ;打开C:\Program Files (x86)</p></li>
+</ul>
+
+<h4 id="以其它用户运行外部程序:338b28e343cf68126d23434ed1836511">以其它用户运行外部程序</h4>
+
+<pre><code>RunAs ( &quot;用户名&quot;, &quot;域&quot;, &quot;密码&quot;, 注册标志, &quot;程序&quot; [, &quot;工作目录&quot; [, 显示标志 [, 选项标志 ]]] )
+;注册标志：0 - 不加载配置文件的交互式登录. 1 - 加载配置文件的交互式登录. 2 - 使用网络证书. 4 - 继承调用进程的环境, 而不是用户环境
+</code></pre>
+
+<ul>
+<li><p>以本地管理员Administrator运行</p>
+
+<p>Global $rootUserName = &ldquo;administrator&rdquo;<br />
+Global $rootPassword = &ldquo;password@123456&rdquo;<br />
+Local $tempUserName = @UserName</p>
+
+<p>RunAs($rootUserName,@ComputerName,$rootPassWord,0,&rdquo;\\wh-filesrv-01\Installers\LinPhone\Linphone-3.10.2-win32.exe&rdquo;,&ldquo;&rdquo;)</p>
+
+<p>RunAs($rootUserName,@ComputerName,$rootPassword,0,&ldquo;net localgroup /delete  administrators &rdquo; &amp; $tempUserName,&ldquo;&rdquo;)</p>
+
+<p>RunAs($rootUserName,@ComputerName,$rootPassWord,0,&ldquo;certutil -addstore -f Root \\wh-filesrv-01\Installers\AD\CA.cer&rdquo;,&ldquo;&rdquo;)</p></li>
+</ul>
+
+<h4 id="使用shellexecute运行外部程序:338b28e343cf68126d23434ed1836511">使用ShellExecute运行外部程序</h4>
+
+<pre><code>ShellExecute ( &quot;文件名&quot; [, &quot;参数&quot; [, &quot;工作目录&quot; [, &quot;动作&quot; [, 显示标志]]]] )
+;理论上windows能识别的文件，即双击能打开的文件，使用ShellExecute也能打开
+</code></pre>
+
+<ul>
+<li><p>.msi 微软格式的安装包</p>
+
+<p>ShellExecute(&rdquo;\\wh-filesrv-01\Installers\Synjones\二代证读验机具USB驱动\USBDrv3.0-x64.msi&rdquo;)    ;安装共享目录的.msi程序</p></li>
+
+<li><p>.msc 微软管理控制台窗口</p>
+
+<p>ShellExecute(@SystemDir &amp; &ldquo;\compmgmt.msc&rdquo;)  ;打开计算机管理</p></li>
+
+<li><p>.docx、.xlsx、.pptx  Office文档</p>
+
+<p>ShellExecute(&ldquo;test.docx&rdquo;)   ;打开当前目录中的Word文件
+ShellExecute(&ldquo;test.xlsx&rdquo;)   ;打开当前目录中的Excel文件
+ShellExecute(&ldquo;test.pptx&rdquo;)   ;打开当前目录中的PPT文件</p></li>
+
+<li><p>.lnk  快捷方式</p>
+
+<p>ShellExecute(@UserProfileDir &amp; &ldquo;\desktop\微信.lnk&rdquo;)   ;通过快捷方式运行微信</p></li>
+</ul>
+
+<h4 id="窗口操作:338b28e343cf68126d23434ed1836511">窗口操作</h4>
+
+<ul>
+<li><p>最小化所有窗口</p>
+
+<p>WinMinimizeAll()<br />
+;我习惯在每个任务开头加上这个函数，以便仅显示任务的活动窗口</p></li>
+
+<li><p>等待指定窗口出现</p>
+
+<p>WinWait ( &ldquo;窗口标题&rdquo; [, &ldquo;窗口文本&rdquo; [, 超时时间]] )</p></li>
+
+<li><p>激活指定的窗口</p>
+
+<p>WinActivate ( &ldquo;窗口标题&rdquo; [, &ldquo;窗口文本&rdquo;] )</p></li>
+
+<li><p>等待指定的窗口被激活</p>
+
+<p>WinWaitActive ( &ldquo;窗口标题&rdquo;, [&ldquo;窗口文本&rdquo;], [超时时间] )</p></li>
+
+<li><p>关闭指定的窗口</p>
+
+<p>WinClose ( &ldquo;窗口标题&rdquo; [, &ldquo;窗口文本&rdquo;] )</p></li>
+
+<li><p>等待指定的窗口被关闭</p>
+
+<p>WinWaitClose ( &ldquo;窗口标题&rdquo; [, &ldquo;窗口文本&rdquo; [, 超时时间]] )</p></li>
+
+<li><p>检查指定的窗口是否存在</p>
+
+<p>WinExists ( &ldquo;窗口标题&rdquo; [, &ldquo;窗口文本&rdquo;] )<br />
+;返回值：若目标窗口确实存在则返回值为1，否则返回值为0</p></li>
+
+<li><p>检查指定的窗口是否存在且当前被激活</p>
+
+<p>WinActive ( &ldquo;窗口标题&rdquo; [, &ldquo;窗口文本&rdquo;] )<br />
+;返回值：若目标窗口确实存在并被激活了则返回1，否则返回值为0</p></li>
+
+<li><p>获取指定窗口的完整标题名</p>
+
+<p>WinGetTitle ( &ldquo;窗口标题&rdquo; [, &ldquo;窗口文本&rdquo;] )<br />
+;返回值：返回一个含有目标窗口的完整标题的字符串。若无匹配窗口则返回值为1</p></li>
+
+<li><p>获取指定窗口中的文本</p>
+
+<p>WinGetText ( &ldquo;窗口标题&rdquo; [, &ldquo;窗口文本&rdquo;] )<br />
+;返回值：返回一个含有获得的窗口文本的字符串。若无匹配窗口则返回值为1</p></li>
+</ul>
+
+<h4 id="控件操作:338b28e343cf68126d23434ed1836511">控件操作</h4>
+
+<ul>
+<li><p>向指定控件发送鼠标点击命令</p>
+
+<p>ControlClick ( &ldquo;窗口标题&rdquo;, &ldquo;窗口文本&rdquo;, &ldquo;控件ID&rdquo; [, 按钮] [, 点击次数]] )<br />
+;按钮：默认“left”，还可以是“right”、“middle”；点击次数：默认“1”</p></li>
+
+<li><p>选中或撤销选中指定的复选/单选框</p>
+
+<p>ControlCommand ( &ldquo;窗口标题&rdquo;, &ldquo;窗口文本&rdquo;, 控件ID, &ldquo;命令&rdquo;, &ldquo;选项&rdquo; )<br />
+;命令：“Check”使目标按钮（复选框/单选框）变为选中状态 ;“UnCheck”撤销目标按钮（复选框/单选框）的选中状态</p></li>
+
+<li><p>向指定的控件发送字符串</p>
+
+<p>ControlSend ( &ldquo;窗口标题&rdquo;, &ldquo;窗口文本&rdquo;, 控件ID, &ldquo;字符串&rdquo; [, 标志] )<br />
+;向控件发送指定的字符串，并追加到原有字符串后面</p></li>
+
+<li><p>修改指定控件的文本</p>
+
+<p>ControlSetText( &ldquo;窗口标题&rdquo;, &ldquo;窗口文本&rdquo;, 控件ID, &ldquo;新文本&rdquo; )<br />
+;向控件发送指定的字符串，并替换原有的字符串</p></li>
+</ul>
+
+<h4 id="模拟键击操作:338b28e343cf68126d23434ed1836511">模拟键击操作</h4>
+
+<p>参考文档：<a href="http://www.jb51.net/shouce/autoit/AutoIt_CN/html/functions/Send.htm">Send - AutoIt 在线手册中文版_脚本之家</a></p>
+
+<pre><code>Send ( &quot;按键&quot; [, 标志] )  
+;向激活窗口发送模拟键击操作
+
+!  表示 Alt  
++ 表示 Shift  
+^ 表示 Ctrl  
+# 表示 Windows  
+
+Send(&quot;!y&quot;)  ;按下Alt+Y键
+Send(&quot;^s&quot;)  ;按下Ctrl+S键
+Send(&quot;#r&quot;)  ;按下Win+R键，打开运行
+
+Send(&quot;{TAB}&quot;)  ;按下Tab键  
+Send(&quot;+{TAB 4}&quot;)  ;连续按下4次Shift+Tab键  
+Send(&quot;{ENTER}&quot;)  ;按下回车键  
+Send(&quot;{SPACE}&quot;)  ;按下空格键  
+
+Send(&quot;{UP}&quot;)  ;方向键上  
+Send(&quot;{DOWN 3}&quot;)  ;连续按3次方向键下  
+Send(&quot;{LEFT}&quot;)  ;方向键左  
+Send(&quot;{RIGHT 5}&quot;)  ;连续按5次方向键右  
+</code></pre>
+
+<h4 id="消息框:338b28e343cf68126d23434ed1836511">消息框</h4>
+
+<pre><code>MsgBox ( 标志, &quot;标题&quot;, &quot;文本&quot; [, 超时时间] )  
+;显示一个简单的对话框（可设置超时属性）
+
+$i = 5
+While $i &gt; 0
+   MsgBox(64, &quot;测试&quot;, &quot;此对话框将会在&quot; &amp; $i &amp; &quot;秒后自动消失&quot;,1)
+   Sleep(1000)
+   $i = $i - 1
+WEnd
+</code></pre>
+
+<h4 id="输入框:338b28e343cf68126d23434ed1836511">输入框</h4>
+
+<pre><code>InputBox ( &quot;标题&quot;, &quot;提示信息&quot; [, &quot;默认数据&quot; [, &quot;密码字符&quot; [, 宽度, 高度 [, 左边, 上边 [, 超时时间]]]]] )  
+;显示一个输入框以供用户输入数据
+
+$yourName = InputBox(&quot;提问&quot;,&quot;请输入你的姓名：&quot;,&quot;Please enter your name&quot;)
+MsgBox(64,&quot;欢迎&quot;,&quot;Wellcome, &quot; &amp; $yourName &amp; &quot; !&quot;)
+</code></pre>
+
+<h4 id="检查当前用户是否拥有管理员权限:338b28e343cf68126d23434ed1836511">检查当前用户是否拥有管理员权限</h4>
+
+<pre><code>IsAdmin()
+; 返回值为 1，说明当前用户拥有管理员权限  ;返回值为0，说明用户不是管理员
+
+If IsAdmin() Then
+   MsgBox(64,&quot;提示&quot;,&quot;当前用户为系统管理员！请继续操作！&quot;)
+Else
+   MsgBox(64,&quot;提示&quot;,&quot;当前用户非系统管理员！请切换管理员操作！&quot;)
+EndIf
+</code></pre>
+
+<h4 id="检查某个字符串是否含有给定的子串:338b28e343cf68126d23434ed1836511">检查某个字符串是否含有给定的子串</h4>
+
+<pre><code>StringInStr ( &quot;字符串&quot;, &quot;子串&quot; [, 区分大小写 [, 出现次序]] )
+;成功：返回子串的位置  ;失败：返回值为0，说明未发现匹配子串
+</code></pre>
+
+<p>尝试运行2次下面的脚本示例：</p>
+
+<pre><code>WinMinimizeAll()
+Run(&quot;notepad.exe&quot;)
+WinWaitActive(&quot;无标题 - 记事本&quot;)
+Sleep(500)
+ControlSend(&quot;无标题 - 记事本&quot;,&quot;&quot;,&quot;Edit1&quot;,&quot;写入一段演示的文本内容！&quot;)
+Sleep(500)
+$tempText = WinGetText(&quot;&quot;)
+If StringInStr($tempText,&quot;一段演示&quot;) Then
+   MsgBox(64,&quot;提示&quot;,&quot;文本写入成功&quot;,1)
+EndIf
+Sleep(500)
+WinClose(&quot;无标题 - 记事本&quot;)
+WinWaitActive(&quot;记事本&quot;,&quot;保存(&amp;S)&quot;)
+Sleep(500)
+Send(&quot;!s&quot;)
+WinWaitActive(&quot;另存为&quot;,&quot;命名空间树控件&quot;)
+Sleep(500)
+ControlSetText(&quot;另存为&quot;,&quot;命名空间树控件&quot;,&quot;Edit1&quot;,&quot;test.txt&quot;)
+Sleep(500)
+Send(&quot;!s&quot;)
+Sleep(500)
+If WinExists(&quot;确认另存为&quot;) Then
+   ;WinActivate(&quot;确认另存为&quot;)
+   ;WinWaitActive(&quot;确认另存为&quot;)
+   Send(&quot;!y&quot;)
+EndIf   
+</code></pre>
+
+<h4 id="操作注册表:338b28e343cf68126d23434ed1836511">操作注册表</h4>
+
+<ul>
+<li><p>读取注册表指定的值</p>
+
+<p>RegRead ( &ldquo;键名&rdquo;, &ldquo;值项&rdquo; )</p></li>
+
+<li><p>创建一个主键、子键或值项</p>
+
+<p>RegWrite ( &ldquo;键名&rdquo; [,&ldquo;值项&rdquo;, &ldquo;类型&rdquo;, 数据] )</p></li>
+
+<li><p>从注册表中删除指定键值</p>
+
+<p>RegDelete ( &ldquo;键名&rdquo; [, &ldquo;值项&rdquo;] )</p>
+
+<p>;修改注册表实现开机自动登录：</p>
+
+<p>RegWrite(&ldquo;HKEY_LOCAL_MACHINE64\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon&rdquo;, &ldquo;AutoAdminLogon&rdquo;, &ldquo;REG_SZ&rdquo;, &ldquo;1&rdquo;)<br />
+RegWrite(&ldquo;HKEY_LOCAL_MACHINE64\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon&rdquo;, &ldquo;DefaultDomainName&rdquo;, &ldquo;REG_SZ&rdquo;, $domainName)<br />
+RegWrite(&ldquo;HKEY_LOCAL_MACHINE64\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon&rdquo;, &ldquo;DefaultUserName&rdquo;, &ldquo;REG_SZ&rdquo;, $userName)<br />
+RegWrite(&ldquo;HKEY_LOCAL_MACHINE64\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon&rdquo;, &ldquo;DefaultPassword&rdquo;, &ldquo;REG_SZ&rdquo;, $userPassword)</p>
+
+<p>;修改注册表取消开机自动登录：</p>
+
+<p>RegWrite(&ldquo;HKEY_LOCAL_MACHINE64\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon&rdquo;, &ldquo;AutoAdminLogon&rdquo;, &ldquo;REG_SZ&rdquo;, &ldquo;0&rdquo;)<br />
+RegWrite(&ldquo;HKEY_LOCAL_MACHINE64\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon&rdquo;, &ldquo;DefaultDomainName&rdquo;, &ldquo;REG_SZ&rdquo;, &ldquo;.&rdquo;)<br />
+RegWrite(&ldquo;HKEY_LOCAL_MACHINE64\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon&rdquo;, &ldquo;DefaultUserName&rdquo;, &ldquo;REG_SZ&rdquo;,&ldquo;administrator&rdquo;)<br />
+RegDelete(&ldquo;HKEY_LOCAL_MACHINE64\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon&rdquo;, &ldquo;DefaultPassword&rdquo;)</p></li>
+</ul>
+
+<p>注意！操作注册表有一个技巧十分重要，如果是Windows x64系统，需在“HKEY_LOCAL_MACHINE”后加上“64”，否则操作会被重定向至 “HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node”</p>
+
+<h4 id="关机:338b28e343cf68126d23434ed1836511">关机</h4>
+
+<pre><code>Shutdown ( 代码 )
+
+0 = Logoff（注销）
+1 = Shutdown（关机）
+2 = Reboot（重启）
+4 = Force（强制执行）
+8 = Power down（断电）
+32= Suspend（待机）
+64= Hibernate（休眠）
+可按需把相应数值相加。比如，要关机并断电，则应指定数值 9 （shutdown + power down = 1 + 8 = 9）
+</code></pre>
+
+        </article>
+  </div>
+  
+
+
+<aside id="prevnext">
+    
+
+    <div>
+        <section id="prev">
+            &nbsp;
+        </section>
+        <section id="next">
+            &nbsp;<a class="next" href="http://blog.mingguilu.com/%E7%8C%BF/AutoIT3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%B8%80:%E7%AE%80%E4%BB%8B/">AutoIt3开发Helpdesk自动化工具之一:简介 <i class="icon-arrow-right"></i></a>
+        </section>
+    </div>
+
+
+</aside>
+
+<meta itemprop="wordCount" content="616">
+<meta itemprop="datePublished" content="2017-04-21">
+<meta itemprop="url" content="http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%BA%8C:%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/">
+
+</section>
+
+
+
+<aside id=comments>
+    <div><h2> Comments </h2></div>
+
+     
+
+     
+	<div class="ds-thread" data-thread-key="" data-title="AutoIt3开发Helpdesk自动化工具之二:常用语法" data-url="http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%BA%8C:%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/"></div>
+	
+	
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"imkind"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0]
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+	
+
+</aside>
+
+<footer>
+  <p class="back_top"><a href="javascript:scroll(0,0)" target="_self"> <span class="icon icon-rocket"></span>回到顶部<span class="icon icon-rocket"></span> </a></p>
+  <div>
+    <p>
+    &copy;2016
+        <span itemprop="name">MingguiLu .</span>
+        Theme by <a href="http://servergrove.com">Server Francia</a>.
+        Powered by <a href="http://gohugo.io">Hugo</a>.
+        Hosted by <a href="https://github.com/">Github</a>.
+
+    </p>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
+
