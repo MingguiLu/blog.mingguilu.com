@@ -7,8 +7,252 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016 - 2021, MingguiLu; all rights reserved.</copyright>
-    <lastBuildDate>Fri, 21 Apr 2017 09:11:59 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 23 Apr 2017 14:55:43 +0800</lastBuildDate>
     <atom:link href="http://blog.mingguilu.com/tags/autoit/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>AutoIt3开发Helpdesk自动化工具之三:系统配置</title>
+      <link>http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%B8%89:%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Sun, 23 Apr 2017 14:55:43 +0800</pubDate>
+      
+      <guid>http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%B8%89:%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/</guid>
+      <description>
+
+&lt;p&gt;本章将结合示例，演示如何编写自动配置系统的脚本&lt;/p&gt;
+
+&lt;h3 id=&#34;一-修改administrator密码:c9ffc739bb4ddbbc027821a37c325092&#34;&gt;一、修改administrator密码&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;#cs ----------------------------------------------------------------------------
+
+ AutoIt Version: 3.3.14.2
+ Author:         MingguiLu
+
+ Script Function:
+    修改Administrator密码.
+
+#ce ----------------------------------------------------------------------------
+
+; Script Start - Add your code below here
+
+;;最小化所有窗口
+WinMinimizeAll()
+
+;;定义变量用于存储administrator的密码
+Global $administratorPassword = &amp;quot;Root@1024&amp;quot;
+
+;;如果当前为管理员即可重设密码，如果为普通用户弹出警告提示
+If IsAdmin() Then
+   Run(&amp;quot;net user administrator &amp;quot; &amp;amp; $administratorPassword)
+   SLEEP(500)
+Else
+   MsgBox(64,&amp;quot;警告&amp;quot;,&amp;quot;当前用户无权操作administrator密码，请切换其它管理员帐户操作！&amp;quot;)
+   SLEEP(500)
+EndIf
+
+; Script End
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;二-创建普通用户admin:c9ffc739bb4ddbbc027821a37c325092&#34;&gt;二、创建普通用户Admin&lt;/h3&gt;
+
+&lt;p&gt;当电脑在外网或脱域、administrator密码被篡改或不便告知用户、用户忘记了域账户的登录密码等极端情况下，无法登录到桌面时，可使用admin用户登录到桌面后运行远程协助软件&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/170423_01_02_01.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; #cs ----------------------------------------------------------------------------
+
+ AutoIt Version: 3.3.14.2
+ Author:         MingguiLu
+
+ Script Function:
+    创建普通用户admin
+
+#ce ----------------------------------------------------------------------------
+
+; Script Start - Add your code below here
+
+;;最小化所有窗口
+WinMinimizeAll()
+
+If IsAdmin() Then
+   ;;创建用户admin,密码设置为:abc@123
+   Run(&amp;quot;net user admin abc@123 /add&amp;quot;)
+   ;;将用户admin添加到本地组users中
+   Run(&amp;quot;net localgroup users admin /add&amp;quot;)
+   ;;打开计算机管理控制台
+   ShellExecute(@SystemDir &amp;amp; &amp;quot;\compmgmt.msc&amp;quot;)
+   WinWaitActive(&amp;quot;计算机管理&amp;quot;,&amp;quot;计算机管理(本地)&amp;quot;)
+   ;;暂停脚本半秒钟
+   SLEEP(500)
+   ;;按下方向键下键
+   Send(&amp;quot;{DOWN}&amp;quot;,5)
+   SLEEP(500)
+   Send(&amp;quot;{DOWN}&amp;quot;)
+   SLEEP(500)
+   Send(&amp;quot;{DOWN}&amp;quot;)
+   SLEEP(500)
+   Send(&amp;quot;{DOWN}&amp;quot;)
+   SLEEP(500)
+   Send(&amp;quot;{DOWN}&amp;quot;)
+   SLEEP(500)
+   ;;按下方向键右键
+   Send(&amp;quot;{RIGHT}&amp;quot;)
+   SLEEP(500)
+   Send(&amp;quot;{DOWN}&amp;quot;)
+   SLEEP(500)
+   ;;按下Tab键
+   Send(&amp;quot;{TAB}&amp;quot;)
+   SLEEP(500)
+   ;;按下回车键
+   Send(&amp;quot;{ENTER}&amp;quot;)
+   WinWaitActive(&amp;quot;admin 属性&amp;quot;,&amp;quot;常规&amp;quot;)
+   SLEEP(500)
+   ;;选中“用户不能更改密码”
+   ControlCommand(&amp;quot;admin 属性&amp;quot;,&amp;quot;常规&amp;quot;,&amp;quot;Button2&amp;quot;,&amp;quot;Check&amp;quot;,&amp;quot;&amp;quot;)
+   SLEEP(500)
+   ;;选中“密码永不过期”
+   ControlCommand(&amp;quot;admin 属性&amp;quot;,&amp;quot;常规&amp;quot;,&amp;quot;Button3&amp;quot;,&amp;quot;Check&amp;quot;,&amp;quot;&amp;quot;)
+   SLEEP(500)
+   ;;点击“确定”
+   ControlClick(&amp;quot;admin 属性&amp;quot;,&amp;quot;常规&amp;quot;,&amp;quot;Button6&amp;quot;,&amp;quot;left&amp;quot;,1)
+   WinActivate(&amp;quot;计算机管理&amp;quot;,&amp;quot;计算机管理(本地)&amp;quot;)
+   WinWaitActive(&amp;quot;计算机管理&amp;quot;,&amp;quot;计算机管理(本地)&amp;quot;)
+   SLEEP(500)
+   WinClose(&amp;quot;计算机管理&amp;quot;,&amp;quot;计算机管理(本地)&amp;quot;)
+   WinWaitClose(&amp;quot;计算机管理&amp;quot;,&amp;quot;计算机管理(本地)&amp;quot;)
+Else
+   MsgBox(64,&amp;quot;警告&amp;quot;,&amp;quot;当前用户无权操作用户和组，请切换其它管理员帐户操作！&amp;quot;)
+EndIf
+
+; Script End   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;三-修改计算机名并加域:c9ffc739bb4ddbbc027821a37c325092&#34;&gt;三、修改计算机名并加域&lt;/h3&gt;
+
+&lt;p&gt;当开始运行脚本时，弹出一个交互窗口用于输入计算机名，并存储到变量中以便之后调用。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#cs ----------------------------------------------------------------------------
+
+ AutoIt Version: 3.3.14.2
+ Author:         MingguiLu
+
+ Script Function:
+    修改计算机名并加域.
+
+#ce ----------------------------------------------------------------------------
+
+; Script Start - Add your code below here
+
+;;最小化所有窗口
+WinMinimizeAll()
+
+Global $administratorUserName = &amp;quot;administrator&amp;quot;
+Global $administratorPassword = &amp;quot;Root@1024&amp;quot;
+
+;;定义变量$domainName存储域名
+Global $domainName = &amp;quot;awesomeit.com&amp;quot;
+;;定义变量$itUserName存储IT的账户
+Global $itUserName = &amp;quot;mingguilu&amp;quot;
+;;定义变量$itPassword存储IT的密码
+Global $itPassword = &amp;quot;Password@1024&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/170423_01_03_01.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;;;定义变量$hostName存储用户交互中输入的计算机名
+Global $hostName
+Global $hostName = InputBox(&amp;quot;输入&amp;quot;,&amp;quot;请输入计算机名：&amp;quot;,&amp;quot;&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/170423_01_03_02.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;If IsAdmin() Then
+   ;;打开系统属性控制台
+   Run(&amp;quot;control sysdm.cpl&amp;quot;)
+Else
+   ;;以管理员模式打开系统属性控制台
+   RunAs($administratorUserName,@ComputerName,$administratorPassword,0,&amp;quot;control sysdm.cpl&amp;quot;)
+EndIf
+WinWaitActive(&amp;quot;系统属性&amp;quot;,&amp;quot;计算机名&amp;quot;)
+SLEEP(500)
+;;进入“更改”
+Send(&amp;quot;!c&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/170423_01_03_03.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;WinWaitActive(&amp;quot;计算机名/域更改&amp;quot;,&amp;quot;计算机名(&amp;amp;C):&amp;quot;)
+SLEEP(500)
+WinActivate(&amp;quot;计算机名/域更改&amp;quot;,&amp;quot;计算机名(&amp;amp;C):&amp;quot;)
+;;自动填写计算机名
+ControlSetText(&amp;quot;计算机名/域更改&amp;quot;,&amp;quot;计算机名(&amp;amp;C):&amp;quot;,&amp;quot;Edit1&amp;quot;,$hostName)
+SLEEP(500)
+;;选中“域（D）”
+ControlCommand(&amp;quot;计算机名/域更改&amp;quot;,&amp;quot;计算机名(&amp;amp;C):&amp;quot;,&amp;quot;Button3&amp;quot;,&amp;quot;Check&amp;quot;)
+SLEEP(500)
+;;自动填写域名
+ControlSetText(&amp;quot;计算机名/域更改&amp;quot;,&amp;quot;计算机名(&amp;amp;C):&amp;quot;,&amp;quot;Edit3&amp;quot;,$domainName)
+SLEEP(500)
+;;点击“确定”
+ControlClick(&amp;quot;计算机名/域更改&amp;quot;,&amp;quot;计算机名(&amp;amp;C):&amp;quot;,&amp;quot;Button6&amp;quot;,&amp;quot;left&amp;quot;,1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/170423_01_03_04.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;WinWaitActive(&amp;quot;Windows 安全&amp;quot;)
+SLEEP(500)
+;;自动填写IT人员账号
+ControlSetText(&amp;quot;Windows 安全&amp;quot;,&amp;quot;&amp;quot;,&amp;quot;Edit1&amp;quot;,$itUserName)
+SLEEP(500)
+;;自动填写IT人员密码
+ControlSetText(&amp;quot;Windows 安全&amp;quot;,&amp;quot;&amp;quot;,&amp;quot;Edit2&amp;quot;,$itPassword)
+SLEEP(500)
+;;点击“确定”
+ControlClick(&amp;quot;Windows 安全&amp;quot;,&amp;quot;&amp;quot;,&amp;quot;Button2&amp;quot;,&amp;quot;left&amp;quot;,1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/170423_01_03_05.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;WinWaitActive(&amp;quot;计算机名/域更改&amp;quot;,&amp;quot;欢迎加入 awesomeit.com 域&amp;quot;)
+SLEEP(500)
+ControlClick(&amp;quot;计算机名/域更改&amp;quot;,&amp;quot;欢迎加入 awesomeit.com 域&amp;quot;,&amp;quot;Button1&amp;quot;,&amp;quot;left&amp;quot;,1) 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;为了兼容可能弹出的提示框，使用while循环结合if条件判断，做应对的操作：如果8秒钟之内弹出“帐户名与安全标识间无任何映射完成”的提示框，则按下回车键关闭提示框并跳出循环；如果没有弹出这个提示框，则8秒之后结束循环&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Local $i = 0
+    While $i &amp;lt;= 8000
+       If WinExists(&amp;quot;计算机名/域更改&amp;quot;,&amp;quot;帐户名与安全标识间无任何映射完成&amp;quot;) Then
+              WinActivate(&amp;quot;计算机名/域更改&amp;quot;,&amp;quot;帐户名与安全标识间无任何映射完成&amp;quot;)
+              WinWaitActive(&amp;quot;计算机名/域更改&amp;quot;,&amp;quot;帐户名与安全标识间无任何映射完成&amp;quot;)
+              SLEEP(500)
+              Send(&amp;quot;{ENTER}&amp;quot;)
+              ExitLoop
+       Else
+              SLEEP(1000)
+              $i = $i + 1000
+       EndIf
+WEnd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.mingguilu.com/media/170423_01_03_06.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;WinWaitActive(&amp;quot;计算机名/域更改&amp;quot;,&amp;quot;确定&amp;quot;)
+SLEEP(500)
+Send(&amp;quot;{ENTER}&amp;quot;)
+
+WinWaitActive(&amp;quot;系统属性&amp;quot;,&amp;quot;计算机名&amp;quot;)
+SLEEP(500)
+ControlClick(&amp;quot;系统属性&amp;quot;,&amp;quot;计算机名&amp;quot;,&amp;quot;Button3&amp;quot;,&amp;quot;left&amp;quot;,1)
+
+WinWaitActive(&amp;quot;Microsoft Windows&amp;quot;)
+SLEEP(500)
+Send(&amp;quot;!l&amp;quot;)
+WinWaitClose(&amp;quot;Microsoft Windows&amp;quot;)
+
+; Script End
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>AutoIt3开发Helpdesk自动化工具之二:常用语法</title>
