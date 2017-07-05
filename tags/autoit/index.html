@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="" />
 <meta property="og:url" content="http://blog.mingguilu.com/tags/autoit/">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2017-04-23"/>
-<meta property="article:modified_time" content="2017-04-23"/>
+<meta property="article:published_time" content="2017-04-25"/>
+<meta property="article:modified_time" content="2017-04-25"/>
 
 
 
@@ -184,6 +184,19 @@
 <section id="main">
   <div>
    <h1 id="title">Autoit</h1>
+    
+        <article class="post">
+    <header>
+      <h2><a href="http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E5%9B%9B:%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">AutoIt3开发Helpdesk自动化工具之四:软件安装 </a> </h2>
+      <div class="post-meta">Tue, Apr 25, 2017 </div>
+    </header>
+
+    本章将结合示例，演示如何编写自动安装软件的脚本 为了便于访问软件安装程序，我将所需的软件放置在共享文件夹中，并设置共享和NTFS权限为everyone可读 一、安装Adobe Flash Player 由于Adobe Flash Player的更新升级非常频繁，安装文件名称随着每次升级变更，所以将安装文件名称修改为“Adobe_flashplayer_installer.exe”，这样每当更新安装文件之后，无需修改脚本内容。 #cs ---------------------------------------------------------------------------- AutoIt Version: 3.3.14.2 Author: MingguiLu Script Function: Adobe Flash Player #ce ---------------------------------------------------------------------------- ; Script Start - Add your code below here WinMinimizeAll() Global $administratorUserName = &quot;administrator&quot; Global $administratorPassword = &quot;Root@1024&quot; If IsAdmin() Then Run(&quot;\\wh-filesrv-01\Software\Adobe\Adobe_flashplayer_installer.exe&quot;) Else ;;以管理员账户运行安装软件 RunAs($administratorUserName,@ComputerName,$administratorPassword,0,&quot;\\wh-filesrv-01\Software\Adobe\Adobe_flashplayer_installer.exe&quot;,&quot;&quot;) EndIf ;; “”表示当前活动窗口 WinWaitActive(&quot;&quot;) ;;获取当前活动窗口的标题，存储到变量tempFlashTitle中 Local $tempFlashTitle = WinGetTitle(&quot;&quot;) WinWaitActive($tempFlashTitle,&quot;我已经阅读并同意&quot;) SLEEP(500) ;;勾选“我已经阅读并同意Flash Player 许可协议的条款。” ControlCommand($tempFlashTitle,&quot;我已经阅读并同意&quot;,&quot;Button4&quot;,&quot;Check&quot;,&quot;&quot;) SLEEP(500) ;;点击“安装” ControlClick($tempFlashTitle,&quot;我已经阅读并同意&quot;,&quot;Button2&quot;,&quot;left&quot;,1) Adobe Flash Player安装程序和IE浏览器会冲突，导致安装过程中会报错，需要使用if条件判断语句处理报错窗口 WinWaitActive(&quot;&quot;) ;;获取当前活动窗口的文本，存储到变量tempFlashText中
+    <footer>
+        <a href='http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E5%9B%9B:%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/'><nobr>Read more →</nobr></a>
+    </footer>
+</article>
+
     
         <article class="post">
     <header>
