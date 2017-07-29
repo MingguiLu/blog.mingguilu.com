@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="" />
 <meta property="og:url" content="http://blog.mingguilu.com/tags/helpdesk/">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2017-04-25"/>
-<meta property="article:modified_time" content="2017-04-25"/>
+<meta property="article:published_time" content="2017-04-27"/>
+<meta property="article:modified_time" content="2017-04-27"/>
 
 
 
@@ -184,6 +184,19 @@
 <section id="main">
   <div>
    <h1 id="title">Helpdesk</h1>
+    
+        <article class="post">
+    <header>
+      <h2><a href="http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%BA%94:%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BB%84%E5%90%88/">AutoIt3开发Helpdesk自动化工具之五:多任务组合 </a> </h2>
+      <div class="post-meta">Thu, Apr 27, 2017 </div>
+    </header>
+
+    前两篇示例中，分别创建了系统配置和软件安装的3个脚本，通过“Compile Script to .exe (x86/x64)”将.au3脚本转换为.exe可执行程序，之后运行对应程序即可进行自动安装配置。 ├── 修改administrator密码.au3 ├── 创建admin用户.au3 ├── 修改计算机名并加域.au3 ├── Cisco VPN Client.au3 ├── Adobe Flash.au3 └── Linphone.au3 但是单独使用某一个脚本的场景并不多，通常我们根据不同需要自动完成多个任务，例如 呼叫中心的电话销售： 修改administrator密码 + 修改计算机名并加域 + Adobe Flash + Linphone 各城市门店的业务员： 修改administrator密码 + 创建admin用户 + 修改计算机名并加域 + Adobe Flash + Cisco VPN Client 可以通过AutoIt3的用户自定义函数实现多个任务的组合 将每个功能脚本定义为一个函数 将所有的自定义函数放在同一个脚本 通过依次调用多个函数实现多个自动化任务 下面看一下脚本模型 #cs ---------------------------------------------------------------------------- AutoIt Version: 3.3.14.2 Author: MingguiLu Script Function: Helpdesk自动化配置脚本. #ce ---------------------------------------------------------------------------- ; Script Start - Add your code below here _changePassword()
+    <footer>
+        <a href='http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%BA%94:%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BB%84%E5%90%88/'><nobr>Read more →</nobr></a>
+    </footer>
+</article>
+
     
         <article class="post">
     <header>

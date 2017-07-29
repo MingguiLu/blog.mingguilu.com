@@ -157,6 +157,19 @@
     
         <article class="post">
     <header>
+      <h2><a href="http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%BA%94:%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BB%84%E5%90%88/">AutoIt3开发Helpdesk自动化工具之五:多任务组合 </a> </h2>
+      <div class="post-meta">Thu, Apr 27, 2017 </div>
+    </header>
+
+    前两篇示例中，分别创建了系统配置和软件安装的3个脚本，通过“Compile Script to .exe (x86/x64)”将.au3脚本转换为.exe可执行程序，之后运行对应程序即可进行自动安装配置。 ├── 修改administrator密码.au3 ├── 创建admin用户.au3 ├── 修改计算机名并加域.au3 ├── Cisco VPN Client.au3 ├── Adobe Flash.au3 └── Linphone.au3 但是单独使用某一个脚本的场景并不多，通常我们根据不同需要自动完成多个任务，例如 呼叫中心的电话销售： 修改administrator密码 + 修改计算机名并加域 + Adobe Flash + Linphone 各城市门店的业务员： 修改administrator密码 + 创建admin用户 + 修改计算机名并加域 + Adobe Flash + Cisco VPN Client 可以通过AutoIt3的用户自定义函数实现多个任务的组合 将每个功能脚本定义为一个函数 将所有的自定义函数放在同一个脚本 通过依次调用多个函数实现多个自动化任务 下面看一下脚本模型 #cs ---------------------------------------------------------------------------- AutoIt Version: 3.3.14.2 Author: MingguiLu Script Function: Helpdesk自动化配置脚本. #ce ---------------------------------------------------------------------------- ; Script Start - Add your code below here _changePassword()
+    <footer>
+        <a href='http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%BA%94:%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BB%84%E5%90%88/'><nobr>Read more →</nobr></a>
+    </footer>
+</article>
+
+    
+        <article class="post">
+    <header>
       <h2><a href="http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E5%9B%9B:%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">AutoIt3开发Helpdesk自动化工具之四:软件安装 </a> </h2>
       <div class="post-meta">Tue, Apr 25, 2017 </div>
     </header>
@@ -268,19 +281,6 @@
     我的静态博客已经搭建成功了，并且使用Markdown记录了过程，但期间踩了一路的坑，今天总结一下其中一个：Hugo成功部署到Github Pages，但访问博客时不加载网页布局和样式。 这算是遇到最大的坑了，前后折腾了半个月的时间，直到找到了组织（Hugo交流QQ群：512499080），群主大大@coderzh 一语道破天机。 1 先来回顾一下如何踩上这个大坑的 1.1 使用hugo new site 创建一个新站点时，配置文件config.toml 中的 baseurl 默认是 http:// baseurl = &quot;http://replace-this-with-your-hugo-site.com/ clone spf13.com的博客项目中baseurl 也是 http:// baseurl = &quot;http://spf13.com/&quot; 在之后修改时，直接把博客地址改为了我自己的 baseurl = &quot;http://imkind.github.io/&quot; 1.2 自2016年6月15日起，使用Github Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing your GitHub Pages site with HTTPS》 https://help.github.com/articles/securing-your-github-pages-site-with-https/ You can enforce HTTPS to add a layer of encryption for traffic to your GitHub Pages site if it has a github.io domain. With HTTPS enforcement enabled, HTTP requests to your GitHub Pages site will be transparently redirected to HTTPS.
     <footer>
         <a href='http://blog.mingguilu.com/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%A1%AB%E5%9D%91/'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
-
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://blog.mingguilu.com/%E7%8C%BF/git-everything-is-local/">Git-everything-is-local </a> </h2>
-      <div class="post-meta">Thu, Dec 8, 2016 </div>
-    </header>
-
-    1. 安装git windows 下载并安装Git for Windows，默认选项安装到Ajusting your PATH environment时，勾选第二项Run Git from Windows Command Prompt，即可在windows命令行使用git命令，不过Git Bash用户体验更好 ubnutu sudo apt-get install git 2. 全局配置git 命令行 git config --global user.name [your-name] git config --global user.email [your-email-address] git config --global color.ui true 配置文件 vim ~/.gitconfig 查看全局配置 git config --list 3. 创建repository/repo 创建本地git repo git init 克隆线上的项目 git clone https://github.com/[github-account]/[project-name].git 4. 添加及提交文件 添加文件到staying area git add [file-name] 提交改动到git repository git commit -m [&quot;commit-description&quot;] 直接从working directory提交到git repository git commit -am [&quot;commit-description&quot;] 5.
-    <footer>
-        <a href='http://blog.mingguilu.com/%E7%8C%BF/git-everything-is-local/'><nobr>Read more →</nobr></a>
     </footer>
 </article>
 
