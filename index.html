@@ -157,6 +157,19 @@
     
         <article class="post">
     <header>
+      <h2><a href="http://blog.mingguilu.com/%E7%8B%AE/Windows%E4%B8%8B%E7%9A%84git_clone%E9%97%AE%E9%A2%98/">Windows下的git_clone问题 </a> </h2>
+      <div class="post-meta">Thu, Aug 10, 2017 </div>
+    </header>
+
+    近期为了方便学习数据挖掘与数据分析，将系统由Linux Mint换回windows10开发者预览版，并安装了Ubuntu on Windows 10，由于硬盘格式化了，需要从Github上克隆博客代码，却遇到了问题。 Windows10的分区挂载在Ubuntu on Windows 10的/mnt目录下，ls可以看到Windows的C、D两个分区 mingguilu@DESKTOP-KME2TBI:~$ cd /mnt/ mingguilu@DESKTOP-KME2TBI:/mnt$ ls c d mingguilu@DESKTOP-KME2TBI:/mnt$ 准备将博客代码克隆到D盘下，便于Windows和Ubuntu都能操作，但是克隆时却报错了： mingguilu@DESKTOP-KME2TBI:/mnt/d/helloworld/hugo$ git clone git@github.com:mingguilu/blog_mingguilu_com.git Cloning into 'blog_mingguilu_com'... remote: Counting objects: 522, done. remote: Compressing objects: 100% (5/5), done. remote: Total 522 (delta 0), reused 1 (delta 0), pack-reused 517 Receiving objects: 100% (522/522), 16.24 MiB | 1.36 MiB/s, done. Resolving deltas: 100% (188/188), done. Checking connectivity... done. error: unable to create file content/猿/AutoIT3开发Helpdesk自动化工具之一:简介.md (Invalid argument) error: unable to create file content/猿/AutoIt3开发Helpdesk自动化工具之三:系统配置.md (Invalid argument) error: unable to create file content/猿/AutoIt3开发Helpdesk自动化工具之二:常用语法.md (Invalid argument) error: unable to create file content/猿/AutoIt3开发Helpdesk自动化工具之五:多任务组合.md (Invalid argument) error: unable to create file content/猿/AutoIt3开发Helpdesk自动化工具之四:软件安装.md (Invalid argument) fatal: unable to checkout working tree warning: Clone succeeded, but checkout failed.
+    <footer>
+        <a href='http://blog.mingguilu.com/%E7%8B%AE/Windows%E4%B8%8B%E7%9A%84git_clone%E9%97%AE%E9%A2%98/'><nobr>Read more →</nobr></a>
+    </footer>
+</article>
+
+    
+        <article class="post">
+    <header>
       <h2><a href="http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%BA%94:%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BB%84%E5%90%88/">AutoIt3开发Helpdesk自动化工具之五:多任务组合 </a> </h2>
       <div class="post-meta">Thu, Apr 27, 2017 </div>
     </header>
@@ -268,19 +281,6 @@
     去年7月在机缘巧合之下接触了静态博客的概念，深入了解了一些知识之后，特别欣喜，决定动手搭建一个自己的静态博客。时间一晃到了年底，当着手实现的时候发现并不简单 首先是选择哪一款生成器，在知乎上研究一番后，最终在Jekyll、Hexo和Hugo中，选择了Hugo，因为简单、生成速度快，在静态博客生成器排名榜上发展势头好，接着在《Hugo中文文档》学习如何安装使用它，利用自己有限的网页知识在Hugo作者个人博客spf13.com的源码基础上定制了自己的博客前端 然后编写文档需要学习一门新的文本标记语言Markdown，所幸Markdown语法相对容易，常用的也不多，看完Te_Lee 分享的《认识与入门 Markdown》和《Markdown——入门指南》，就可以入门了 最后为了将Hugo发布到Github Pages的个人主页上，必须得学习Git。我并非一名程序，虽然之前使用过svn和github，但并不了解这个强大并让我之后受益匪浅的Git。花了大概一周的时间潜心学习了廖学锋老师的《Git教程》和贺永康老师的《深入理解Git》 经过1个月的折腾，终于把博客上线了。然而，收获不仅是有了这个博客，还促使自己学习了Markdown和Git，更重要的是，Git的版本控制思想让我受益匪浅！ 为了记录博客搭建的过程，除了写文档，还用git版本记录代码改动，经过实践发现很多问题： 前端代码经常改了又改，有时仅仅1处字体px大小；有时修改bug到一半不得要领，先去解决另外一个，这样导致频繁的git commit，且一个commit掺和多处修改 因为频繁的git commit，commit message每次随性而写，回头git log一看全是一句话概括，具体改了什么自己也看不懂了 当写文档时，前一篇没写完搁置了，接着完成了另外一篇，这时commit并push就很尴尬了 有时候不得不感慨，真是想什么来什么！这段时间伯乐在线官方微博刚好推荐了两篇git干货，《Git 最佳实践：commit msg》和《Git 最佳实践：分支管理》。虽然自己没法全部理解两篇文章的内容，但依然指导我做些改变 多使用git分支，在新分支里开始一篇文档，在新分支里修改前端的代码，当文档完成可以发表，或代码修改完测试没有问题，再将新分支合并到marst分支，并push到github的远程仓库里 基于以上的分支，commit即可灵活很多，坚持一次commit只完成一个任务，并确保每次commit的正确性。因为“每次提交的代码都可能产生一个可发布的版本，坚持这个实践，那么软件会一直处于可用状态 —— 《持续交付》” 在《Git 最佳实践：commit msg》关于commit message规范的指导下，重新创建了版本库，并在写message时尝试写简单易懂的标题和详尽明了的内容 近期刚好在看一本关于Devops的书《持续交付 - 发布可靠软件的系统方法》，本书前2章着重讲述了使用版本控制对构建软件可重复且可靠的自动化发布的重要意义。而这次git的实践，有助于理解书中的内容，最终使用“Continuous Delivery”作为博客标题也是因为这本书。
     <footer>
         <a href='http://blog.mingguilu.com/%E6%84%9F/%E6%84%9F%E8%B0%A2Hugo%EF%BC%8C%E8%AE%A9%E6%88%91%E9%81%87%E8%A7%81Markdown%E5%92%8CGit/'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
-
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://blog.mingguilu.com/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%A1%AB%E5%9D%91/">使用Hugo和Github搭建静态博客之填坑 </a> </h2>
-      <div class="post-meta">Wed, Dec 14, 2016 </div>
-    </header>
-
-    我的静态博客已经搭建成功了，并且使用Markdown记录了过程，但期间踩了一路的坑，今天总结一下其中一个：Hugo成功部署到Github Pages，但访问博客时不加载网页布局和样式。 这算是遇到最大的坑了，前后折腾了半个月的时间，直到找到了组织（Hugo交流QQ群：512499080），群主大大@coderzh 一语道破天机。 1 先来回顾一下如何踩上这个大坑的 1.1 使用hugo new site 创建一个新站点时，配置文件config.toml 中的 baseurl 默认是 http:// baseurl = &quot;http://replace-this-with-your-hugo-site.com/ clone spf13.com的博客项目中baseurl 也是 http:// baseurl = &quot;http://spf13.com/&quot; 在之后修改时，直接把博客地址改为了我自己的 baseurl = &quot;http://imkind.github.io/&quot; 1.2 自2016年6月15日起，使用Github Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing your GitHub Pages site with HTTPS》 https://help.github.com/articles/securing-your-github-pages-site-with-https/ You can enforce HTTPS to add a layer of encryption for traffic to your GitHub Pages site if it has a github.io domain. With HTTPS enforcement enabled, HTTP requests to your GitHub Pages site will be transparently redirected to HTTPS.
-    <footer>
-        <a href='http://blog.mingguilu.com/%E7%8B%AE/%E4%BD%BF%E7%94%A8Hugo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E4%B9%8B%E5%A1%AB%E5%9D%91/'><nobr>Read more →</nobr></a>
     </footer>
 </article>
 
