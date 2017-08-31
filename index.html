@@ -1,314 +1,485 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<html>
 <head>
-    <meta charset="utf-8">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="description" content="">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-<meta name="keywords" content="">
-
- 
-<meta property="og:type" content="article"/>
-<meta property="og:description" content=""/>
-<meta property="og:title" content="Continuous  Delivery : blog.mingguilu.com"/>
-<meta property="og:site_name" content="minggui lu"/>
-<meta property="og:image" content="" />
-<meta property="og:image:type" content="image/jpeg" />
-<meta property="og:image:width" content="" />
-<meta property="og:image:height" content="" />
-<meta property="og:url" content="http://blog.mingguilu.com/">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="0001-01-01"/>
-<meta property="article:modified_time" content="0001-01-01"/>
-
-
-
-
-
+  <meta charset="utf-8">
+  
+  <title>MingguiLu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Continuous Delivery">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MingguiLu Blog">
+<meta property="og:url" content="http://blog.mingguilu.com/index.html">
+<meta property="og:site_name" content="MingguiLu Blog">
+<meta property="og:description" content="Continuous Delivery">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MingguiLu Blog">
+<meta name="twitter:description" content="Continuous Delivery">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
 
-<meta name="twitter:site" content="@imkind0214">
-<meta name="twitter:title" content="Continuous  Delivery : blog.mingguilu.com">
-<meta name="twitter:creator" content="@imkind0214">
-<meta name="twitter:description" content="">
-<meta name="twitter:image:src" content="">
-<meta name="twitter:domain" content="blog.mingguilu.com">
+  <script src="/js/jquery-3.1.1.min.js"></script>
 
-
-    <base href="http://blog.mingguilu.com">
-    <title>MingguiLu - Blog</title>
-    <link rel="canonical" href="http://blog.mingguilu.com/">
-    <link href="http://blog.mingguilu.com/index.xml" rel="alternate" type="application/rss+xml" title="Continuous  Delivery" />
-
-    <link href='http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/static/css/style.css">
-<link rel="stylesheet" id="font-awesome-css" href="/static/fonts/font-awesome.min.css" type="text/css" media="all"/>
-
-
-
-
-
-
-
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
 
 </head>
-<body lang="en">
 
-<header id="header">
-    <figure>
-      <a href="/" border=0 id="logolink">
-        <img id="logo-img" src="/static/img/mingguilu.jpg">
-        
-      </a>
-    </figure>
-    <div id="byline">ＭingguiLu Blog</div>
-    <nav id="nav">
-            <ul id="mainnav">
-            <li>
-                <a href="/感/">
-                <span class="icon"> <i aria-hidden="true" class="icon-quill"></i></span>
-                <span> 感 </span>
-            </a>
-            </li>
-            <li>
-            <a href="/猿/">
-                <span class="icon"> <i aria-hidden="true" class="icon-code"></i></span>
-                <span> 猿 </span>
-            </a>
-            </li>
-            <li>
-            <a href="/狮/">
-                <span class="icon"> <i aria-hidden="true" class="icon-console"></i></span>
-                <span> 狮 </span>
-            </a>
-            </li>
-            <li>
-            <a href="/about/index.html">
-                <span class="icon"> <i aria-hidden="true" class="icon-user"></i></span>
-                <span> 吾 </span>
-            </a>
-            </li>
-        </ul>
+<script>
+var themeMenus = {};
 
-    
+  themeMenus["/"] = "首页"; 
 
-        <ul id="social">
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/categories"] = "分类"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body>
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
             
-            <li id="follow">
-                <span class="icon icon-heart-2"> </span>
-                <span class="title"> 驻留 </span>
-                <div class="dropdown follow">
-                    <ul class="social">
-                        <li> <a href="http://github.com/mingguilu" target="_blank" title="GitHub" class="github"><span class="icon icon-github"></span>GitHub</a> </li>
-                        <li> <a href="http://weibo.com/kind0214" target="_blank" title="Weibo" class="github"><span class="fa fa-weibo weibo"></span>Weibo</a> </li>
-                        <li> <a href="http://www.facebook.com/kind0214" target="_blank" title="Join me on Facebook" class="facebook"><span class="icon icon-facebook"></span>Facebook</a> </li>
-                        <li> <a href="http://www.twitter.com/kind0214" target="_blank" title="Follow me on Twitter" class="twitter"><span class="icon icon-twitter"></span>Twitter</a> </li>
-                        
-                    </ul>
-                    <span class="subcount icon-arrow-right"></span>
-                </div>
-            </li>
+              <a href="/" title="MingguiLu Blog" rel="home"> MingguiLu Blog </a>
+            
+          </h1>
 
-            <li id="friendlink">
-                <span class="icon icon-heart-2"> </span>
-                <span class="title"> 友链 </span>
-                <div class="dropdown friendlink">
-                    <ul class="social">
-                        <li> <a href="http://spf13.com/" target="_blank" title="Hacking Management" class="facebook">spf13.com</a> </li>
-                        <li> <a href="http://coderzh.com/" target="_blank" title="CoderZh Blog" class="twitter">coderzh.com</a> </li>
-                        <li> <a href="https://didadandan.github.io" target="_blank" title="DidaDandan Blog" class="linkedin">DidaDandan</a> </li>
-                        <li> <a href="https://longlizl.github.io/" target="_blank" title="LongLi Blog" class="facebook">LongLi</a> </li>
-                        <li> <a href="https://imkindu.com/" target="_blank" title="Imkindu Home Page" class="facebook">imkindu.com</a> </li>
-                        <li> <a href="http://blog.imkindu.com/" target="_blank" title="Imkindu Blog" class="linkedin">blog.imkindu.com</a> </li>
-			
-                    </ul>
-                    <a href="https://simpleprogrammer.com/" target="_blank" title="simpleprogrammer" class="rss">simpleprogrammer.com</a>
-                    <span class="subcount icon-arrow-right"></span>
-                </div>
-            </li>
+          
+            <div class="site-description">Continuous Delivery</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
 
-        </ul>
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
 
-    
-        <ul id="social">
-            <li id="reading">
-                <span class="icon icon-idea"> </span>
-                <span class="title"> 我正在读... </span>
-                <div class="dropdown reading">
-                    <img src="/media/reading/3.菜鸟侦探挑战数据分析.jpg">
-                    <span class="subcount icon-arrow-right"></span>
-                </div>
-            </li>
-        </ul>
 
-    <div id="advertise" class="dropdown follow">
-    <a href="http://my.yizhihongxing.com/aff.php?aff=294" target="_blank" ><img src="/media/yzhx_232_215.jpg"></a>
-</div>
-
-    </nav>
+      </div>
+  </div>
 </header>
 
 
-<section id="main">
-  <div>
-      <h1 id="title">Continuous  Delivery</h1>
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://blog.mingguilu.com/%E7%8B%AE/Windows%E4%B8%8B%E7%9A%84git_clone%E9%97%AE%E9%A2%98/">Windows下的git_clone问题 </a> </h2>
-      <div class="post-meta">Thu, Aug 10, 2017 </div>
-    </header>
 
-    近期为了方便学习数据挖掘与数据分析，将系统由Linux Mint换回windows10开发者预览版，并安装了Ubuntu on Windows 10，由于硬盘格式化了，需要从Github上克隆博客代码，却遇到了问题。 Windows10的分区挂载在Ubuntu on Windows 10的/mnt目录下，ls可以看到Windows的C、D两个分区 mingguilu@DESKTOP-KME2TBI:~$ cd /mnt/ mingguilu@DESKTOP-KME2TBI:/mnt$ ls c d mingguilu@DESKTOP-KME2TBI:/mnt$ 准备将博客代码克隆到D盘下，便于Windows和Ubuntu都能操作，但是克隆时却报错了： mingguilu@DESKTOP-KME2TBI:/mnt/d/helloworld/hugo$ git clone git@github.com:mingguilu/blog_mingguilu_com.git Cloning into 'blog_mingguilu_com'... remote: Counting objects: 522, done. remote: Compressing objects: 100% (5/5), done. remote: Total 522 (delta 0), reused 1 (delta 0), pack-reused 517 Receiving objects: 100% (522/522), 16.24 MiB | 1.36 MiB/s, done. Resolving deltas: 100% (188/188), done. Checking connectivity... done. error: unable to create file content/猿/AutoIT3开发Helpdesk自动化工具之一:简介.md (Invalid argument) error: unable to create file content/猿/AutoIt3开发Helpdesk自动化工具之三:系统配置.md (Invalid argument) error: unable to create file content/猿/AutoIt3开发Helpdesk自动化工具之二:常用语法.md (Invalid argument) error: unable to create file content/猿/AutoIt3开发Helpdesk自动化工具之五:多任务组合.md (Invalid argument) error: unable to create file content/猿/AutoIt3开发Helpdesk自动化工具之四:软件安装.md (Invalid argument) fatal: unable to checkout working tree warning: Clone succeeded, but checkout failed.
-    <footer>
-        <a href='http://blog.mingguilu.com/%E7%8B%AE/Windows%E4%B8%8B%E7%9A%84git_clone%E9%97%AE%E9%A2%98/'><nobr>Read more →</nobr></a>
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main">
+  
+    <article id="post-test"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2016/01/30/test/">test</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2016/01/30/test/" class="article-date">
+	  <time datetime="2016-01-30T05:00:24.000Z" itemprop="datePublished">一月 30, 2016</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div class="entry-thumbnail">
+            <a href="/2016/01/30/test/"><img width="250" height="175" src="/images/timg.gif" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          testtesttesttest
+testtest
+testtest
+testtest
+
+test
+
+
+        
+          <p class="article-more-link">
+            <a href="/2016/01/30/test/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/感/">感</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+
+      
+
+      
     </footer>
-</article>
-
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%BA%94:%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BB%84%E5%90%88/">AutoIt3开发Helpdesk自动化工具之五:多任务组合 </a> </h2>
-      <div class="post-meta">Thu, Apr 27, 2017 </div>
-    </header>
-
-    前两篇示例中，分别创建了系统配置和软件安装的3个脚本，通过“Compile Script to .exe (x86/x64)”将.au3脚本转换为.exe可执行程序，之后运行对应程序即可进行自动安装配置。 ├── 修改administrator密码.au3 ├── 创建admin用户.au3 ├── 修改计算机名并加域.au3 ├── Cisco VPN Client.au3 ├── Adobe Flash.au3 └── Linphone.au3 但是单独使用某一个脚本的场景并不多，通常我们根据不同需要自动完成多个任务，例如 呼叫中心的电话销售： 修改administrator密码 + 修改计算机名并加域 + Adobe Flash + Linphone 各城市门店的业务员： 修改administrator密码 + 创建admin用户 + 修改计算机名并加域 + Adobe Flash + Cisco VPN Client 可以通过AutoIt3的用户自定义函数实现多个任务的组合 将每个功能脚本定义为一个函数 将所有的自定义函数放在同一个脚本 通过依次调用多个函数实现多个自动化任务 下面看一下脚本模型 #cs ---------------------------------------------------------------------------- AutoIt Version: 3.3.14.2 Author: MingguiLu Script Function: Helpdesk自动化配置脚本. #ce ---------------------------------------------------------------------------- ; Script Start - Add your code below here _changePassword()
-    <footer>
-        <a href='http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%BA%94:%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BB%84%E5%90%88/'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
-
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E5%9B%9B:%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">AutoIt3开发Helpdesk自动化工具之四:软件安装 </a> </h2>
-      <div class="post-meta">Tue, Apr 25, 2017 </div>
-    </header>
-
-    本章将结合示例，演示如何编写自动安装软件的脚本 为了便于访问软件安装程序，我将所需的软件放置在共享文件夹中，并设置共享和NTFS权限为everyone可读 一、安装Adobe Flash Player 由于Adobe Flash Player的更新升级非常频繁，安装文件名称随着每次升级变更，所以将安装文件名称修改为“Adobe_flashplayer_installer.exe”，这样每当更新安装文件之后，无需修改脚本内容。 #cs ---------------------------------------------------------------------------- AutoIt Version: 3.3.14.2 Author: MingguiLu Script Function: Adobe Flash Player #ce ---------------------------------------------------------------------------- ; Script Start - Add your code below here WinMinimizeAll() Global $administratorUserName = &quot;administrator&quot; Global $administratorPassword = &quot;Root@1024&quot; If IsAdmin() Then Run(&quot;\\wh-filesrv-01\Software\Adobe\Adobe_flashplayer_installer.exe&quot;) Else ;;以管理员账户运行安装软件 RunAs($administratorUserName,@ComputerName,$administratorPassword,0,&quot;\\wh-filesrv-01\Software\Adobe\Adobe_flashplayer_installer.exe&quot;,&quot;&quot;) EndIf ;; “”表示当前活动窗口 WinWaitActive(&quot;&quot;) ;;获取当前活动窗口的标题，存储到变量tempFlashTitle中 Local $tempFlashTitle = WinGetTitle(&quot;&quot;) WinWaitActive($tempFlashTitle,&quot;我已经阅读并同意&quot;) SLEEP(500) ;;勾选“我已经阅读并同意Flash Player 许可协议的条款。” ControlCommand($tempFlashTitle,&quot;我已经阅读并同意&quot;,&quot;Button4&quot;,&quot;Check&quot;,&quot;&quot;) SLEEP(500) ;;点击“安装” ControlClick($tempFlashTitle,&quot;我已经阅读并同意&quot;,&quot;Button2&quot;,&quot;left&quot;,1) Adobe Flash Player安装程序和IE浏览器会冲突，导致安装过程中会报错，需要使用if条件判断语句处理报错窗口 WinWaitActive(&quot;&quot;) ;;获取当前活动窗口的文本，存储到变量tempFlashText中
-    <footer>
-        <a href='http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E5%9B%9B:%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
-
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%B8%89:%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/">AutoIt3开发Helpdesk自动化工具之三:系统配置 </a> </h2>
-      <div class="post-meta">Sun, Apr 23, 2017 </div>
-    </header>
-
-    本章将结合示例，演示如何编写自动配置系统的脚本 一、修改administrator密码 #cs ---------------------------------------------------------------------------- AutoIt Version: 3.3.14.2 Author: MingguiLu Script Function: 修改Administrator密码. #ce ---------------------------------------------------------------------------- ; Script Start - Add your code below here ;;最小化所有窗口 WinMinimizeAll() ;;定义变量用于存储administrator的密码 Global $administratorPassword = &quot;Root@1024&quot; ;;如果当前为管理员即可重设密码，如果为普通用户弹出警告提示 If IsAdmin() Then Run(&quot;net user administrator &quot; &amp; $administratorPassword) SLEEP(500) Else MsgBox(64,&quot;警告&quot;,&quot;当前用户无权操作administrator密码，请切换其它管理员帐户操作！&quot;) SLEEP(500) EndIf ; Script End 二、创建普通用户Admin 当电脑在外网或脱域、administrator密码被篡改或不便告知用户、用户忘记了域账户的登录密码等极端情况下，无法登录到桌面时，可使用admin用户登录到桌面后运行远程协助软件 #cs ---------------------------------------------------------------------------- AutoIt Version: 3.3.14.2 Author: MingguiLu Script Function: 创建普通用户admin #ce ---------------------------------------------------------------------------- ; Script Start - Add your code below here ;;最小化所有窗口 WinMinimizeAll() If IsAdmin() Then ;;创建用户admin,密码设置为:abc@123 Run(&quot;net user admin abc@123 /add&quot;) ;;将用户admin添加到本地组users中 Run(&quot;net localgroup users admin /add&quot;) ;;打开计算机管理控制台 ShellExecute(@SystemDir &amp; &quot;\compmgmt.msc&quot;) WinWaitActive(&quot;计算机管理&quot;,&quot;计算机管理(本地)&quot;) ;;暂停脚本半秒钟 SLEEP(500) ;;按下方向键下键 Send(&quot;{DOWN}&quot;,5) SLEEP(500) Send(&quot;{DOWN}&quot;) SLEEP(500) Send(&quot;{DOWN}&quot;) SLEEP(500) Send(&quot;{DOWN}&quot;) SLEEP(500) Send(&quot;{DOWN}&quot;) SLEEP(500) ;;按下方向键右键 Send(&quot;{RIGHT}&quot;) SLEEP(500) Send(&quot;{DOWN}&quot;) SLEEP(500) ;;按下Tab键 Send(&quot;{TAB}&quot;) SLEEP(500) ;;按下回车键 Send(&quot;{ENTER}&quot;) WinWaitActive(&quot;admin 属性&quot;,&quot;常规&quot;) SLEEP(500) ;;选中“用户不能更改密码” ControlCommand(&quot;admin 属性&quot;,&quot;常规&quot;,&quot;Button2&quot;,&quot;Check&quot;,&quot;&quot;) SLEEP(500) ;;选中“密码永不过期” ControlCommand(&quot;admin 属性&quot;,&quot;常规&quot;,&quot;Button3&quot;,&quot;Check&quot;,&quot;&quot;) SLEEP(500) ;;点击“确定” ControlClick(&quot;admin 属性&quot;,&quot;常规&quot;,&quot;Button6&quot;,&quot;left&quot;,1) WinActivate(&quot;计算机管理&quot;,&quot;计算机管理(本地)&quot;) WinWaitActive(&quot;计算机管理&quot;,&quot;计算机管理(本地)&quot;) SLEEP(500) WinClose(&quot;计算机管理&quot;,&quot;计算机管理(本地)&quot;) WinWaitClose(&quot;计算机管理&quot;,&quot;计算机管理(本地)&quot;) Else MsgBox(64,&quot;警告&quot;,&quot;当前用户无权操作用户和组，请切换其它管理员帐户操作！&quot;) EndIf ; Script End 三、修改计算机名并加域 当开始运行脚本时，弹出一个交互窗口用于输入计算机名，并存储到变量中以便之后调用。 #cs ---------------------------------------------------------------------------- AutoIt Version: 3.3.14.2 Author: MingguiLu Script Function: 修改计算机名并加域.
-    <footer>
-        <a href='http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%B8%89:%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
-
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%BA%8C:%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/">AutoIt3开发Helpdesk自动化工具之二:常用语法 </a> </h2>
-      <div class="post-meta">Fri, Apr 21, 2017 </div>
-    </header>
-
-    在正式开始脚本工具编写之前，先熟悉一下AutoIt3常用的语法 参考文档： AutoIt3安装目录中的官方英文手册 v3.3.14.2 ： AutoIt.chm AutoIt 在线手册中文版_脚本之家 v3.1.1 : http://www.jb51.net/shouce/autoit/ 编辑器 自带的编辑器是SciTe，带有所有的语法高亮功能，同时还整合了很多AutoIt的第三方工具（比如语法错误检查和脚本整理等） AutoIt3脚本文件的后缀名是.au3，在安装AutoIt软件的系统上可直接运行，在未安装的系统上需编译为.exe程序。创建.au3格式的脚本文件方法： 右键 ——&gt; 新建 ——&gt; AutoIt v3 Script 建议使用这种方法，优势在于脚本会自动添加一段头注释模板： #cs ---------------------------------------------------------------------------- AutoIt Version: 3.3.14.2 Author: myName Script Function: Template AutoIt script. #ce ---------------------------------------------------------------------------- ; Script Start - Add your code below here 在编辑器上 File ——&gt; New、直接点击New图标、或者使用快捷键 Ctrl + N，这些不会自动添加头注释 注释 单行注释 分号“;”之后的内容作为注释内容 多行注释 #comments-start 注释开始，可简写为：#cs ;code 脚本代码 #comments-end 注释结束，可简写为：#ce 暂停执行脚本 Sleep ( 暂停时间 ) ;暂停执行的时间以毫秒为单位，1000毫秒 = 1秒 Sleep(500) ;推荐在每次等待窗口出现之后和模拟键鼠操作控件时使用Sleep暂停执行脚本半秒钟，以优化自动任务的可视效果 运行外部程序 Run ( &quot;文件名&quot; [, &quot;工作目录&quot; [, 标志]] ) .exe 可执行程序 Run(&ldquo;notepad.exe&rdquo;) Run(&ldquo;C:\Program Files\Microsoft Office\Office16\OUTLOOK.EXE&rdquo;) ;绝对路径 Run(&rdquo;\\wh-filesrv-01\Installers\LinPhone\Linphone-3.10.2-win32.exe&rdquo;) ;网络共享路径 .msi 微软格式的安装包 Run(&ldquo;msiexec /i \\wh-filesrv-01\Installers\Synjones\二代证读验机具USB驱动\USBDrv3.0-x64.msi&rdquo;) ;调用系统程序msiexec.exe操作.msi程序， /i参数表示安装 .cpl 控制面板项 Run(&ldquo;control sysdm.cpl&rdquo;) ;打开系统属性窗口 .cer 证书文件 Run(&ldquo;explorer \\wh-filesrv-01\Installers\AD\CA.cer&rdquo;) ;打开安装证书窗口 DOS命令 Run(&ldquo;net user admin abc@123 /add&rdquo;) ;创建本地用户admin，密码为abc@123 Run(&ldquo;net localgroup users admin /add&rdquo;) ;将本地用户admin加入users组 系统目录 Run(&ldquo;explorer &rdquo; &amp; @ProgramFilesDir) ;打开C:\Program Files (x86) 以其它用户运行外部程序 RunAs ( &quot;用户名&quot;, &quot;域&quot;, &quot;密码&quot;, 注册标志, &quot;程序&quot; [, &quot;工作目录&quot; [, 显示标志 [, 选项标志 ]]] ) ;注册标志：0 - 不加载配置文件的交互式登录.
-    <footer>
-        <a href='http://blog.mingguilu.com/%E7%8C%BF/AutoIt3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%BA%8C:%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
-
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://blog.mingguilu.com/%E7%8C%BF/AutoIT3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%B8%80:%E7%AE%80%E4%BB%8B/">AutoIt3开发Helpdesk自动化工具之一:简介 </a> </h2>
-      <div class="post-meta">Tue, Apr 18, 2017 </div>
-    </header>
-
-    在员工数量较多的大中型公司，Hekpdesk工程师每天重复处理大量简单而繁琐的桌面软硬件请求和报障，这些工作大多在初期进行短暂的技术学习后，很快演变为经验积累，但再丰富的经验如果无法解放时间和双手，枯燥和疲惫一直如影随形。细想一下，有些工作场景中Helpdesk工程师像机器一样在每台PC上按照相同的流程，打开相同的窗口，安装相同的软件，设置相同的选项&hellip;&hellip;.听起来让人很不安？但这样的情景时常上演，比如需要给30名新员工配置办公电脑、部门需要统一安装某几款软件并进行设置、或者反过来要卸载某款软件&hellip;&hellip;那么何必把自己当做机器呢，电脑本身不就是一台聪明的机器吗！ 接下来，我们将使用AutoIt3来开发一个让电脑自己执行重复任务的自动化脚本工具，并打造一个简洁实用的图形界面。 一、AutoIt v3 简介 AutoIt v3是一种免费的基于类BASIC的脚本语言，用于自动化Windows GUI和通用脚本。 它使用模拟键盘，鼠标移动和窗口/控制操作的组合，以便以其他语言（例如VBScript和SendKeys）不可能或不可靠的方式自动执行任务。 AutoIt也非常小，独立，将运行在所有版本的Windows开箱即用，不需要烦人的“runtime”要求！ AutoIt最初设计用于PC“大批量交付”情况，可靠地自动化并配置成千上万的个人电脑。 随着时间的推移，它已经成为一种强大的语言，它支持复杂的表达式，用户自定义函数，循环以及经验丰富的脚本编写期望。 AutoIt v3 的优秀特性: 简单易学的类BASIC语法 模拟按键和鼠标移动 操作窗口和进程 与所有标准的Windows控件进行交互 脚本可以编译成独立的可执行文件 创建图形用户界面（GUI） 支持COM 正则表达式 直接调用外部DLL和Windows API函数 Scriptable RunAs函数 详细的帮助文件和大型社区支持论坛 兼容Windows XP / Server 2003 / Vista / Windows 7 / Server 2008 / Server 2008 R2 / Windows 8 / Server 2012 R2 支持Unicode和x64 支持数字签名 适用于Windows Vista的用户帐户控制（UAC） 最重要的是，AutoIt将持续免费 - 但是如果你想支持在项目和网络托管上花费的时间，金钱和精力，那么你可以捐赠。 搭建AutoIt v3 脚本开发环境 下载AutoIt v3 开发工具 下载时建议选择AutoIt3完全安装程序，它包含了： AutoIt 脚本运行软件、文档和实例 Aut2Exe -
-    <footer>
-        <a href='http://blog.mingguilu.com/%E7%8C%BF/AutoIT3%E5%BC%80%E5%8F%91Helpdesk%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7%E4%B9%8B%E4%B8%80:%E7%AE%80%E4%BB%8B/'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
-
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://blog.mingguilu.com/%E7%8C%BF/Python3%E4%BB%8E%E6%96%87%E4%BB%B6%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE/">Python3从文件中读取数据 </a> </h2>
-      <div class="post-meta">Sun, Mar 12, 2017 </div>
-    </header>
-
-    Python3有三种从文件中读取数据的方法： read() 读取整个文件内容；占用内存多 readline() 每次读取并返回一行数据；读取速度慢，每次占用内存少 readlines() 读取每一行数据，并作为元素存储在一个列表中 下面我将圆周率π的部分数值拆分为三行存储在文件pi_digits.txt中，然后使用python读取文件并拼接为完整的π：3.141592653589793238462643383279，注意得到结果是字符串，并不是数字 使用.read()读取文件pi_digits.txt的全部内容 with open('pi_digits.txt') as file_object: '''打开文件''' print(file_object.read()) '''打印文件内容''' 打印结果： 3.1415926535 8979323846 2643383279 方法一：.read() with open('pi_digits.txt') as file_object: '''打开文件''' pi = file_object.read() '''读取文件内容并赋给变量content''' print(pi.replace(&quot;\n&quot;,&quot;&quot;).replace(&quot; &quot;,&quot;&quot;)) '''使用.replace()将每行末尾的换行符和空格，替换为空，打印拼接完成的π''' 方法二：逐行读取 with open('pi_digits.txt') as file_object: '''打开文件''' pi = '' '''初始化变量pi''' for line in file_object: '''逐行读取文件的每一行内容''' pi += line.strip() '''剔除元素首尾的空字符后做字符串拼接，并赋给pi''' # pi += &quot;&quot;.join(line.strip()) print(pi) '''打印拼接完成的π''' 方法三：.readline() with open('pi_digits.txt') as file_object: '''打开文件''' pi = '' '''初始化变量pi''' while True:
-    <footer>
-        <a href='http://blog.mingguilu.com/%E7%8C%BF/Python3%E4%BB%8E%E6%96%87%E4%BB%B6%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE/'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
-
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://blog.mingguilu.com/%E7%8B%AE/Github_Pages%E7%81%BE%E5%A4%87%E8%87%B3Coding_Pages/">Github_Pages灾备至Coding_Pages </a> </h2>
-      <div class="post-meta">Sun, Feb 26, 2017 </div>
-    </header>
-
-    周四晚间在家访问我托管在Github Pages上的Blog时发现网站打不开，确认本地网络没问题，尝试清理浏览器缓存，刷新系统缓存，问题依旧。下意识的回想起来今天我修改代码啦？调整过DNSPod的解析记录啦？还是站点没备案被和谐了？&hellip;&hellip;打开微博刷新了一下，看到关注的几个技术大V:Easy、刘巍峰、梁斌penny都发布或转发了Github无法访问的消息，我有点惊讶：卧槽！why？ 随即查看了DNSPod的监控，看到托管在Github Pages的三个站点全部告警。 零点前后部分地区开始恢复访问，但周五上午我在工地访问Github依然时断时续，速度极慢，而github.io始终无法访问，直到中午才恢复正常。事后没能找到关于本次Github无法访问的详细解析，但发现相对我这样的Git小白用户，真正的开发人员似乎都见怪不怪，这次只是又一次而已。 我想起来刚接触Hugo时在Hugo中文文档看到的那篇通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages，那时完全看不懂，其实现在也是&hellip;&hellip; 不过我突然明白为什么托管在Github上的代码也要容灾，虽然Github的服务相对稳定可靠，但我们的网络并非如此，将代码备份到国内的代码托管服务上是很有必要的。目前我并不需要自动部署项目至Github和GitCafe，我只希望能够将本地代码同时push到两个远程库，手工创建版本库，并推送到远程仓库，可以让我更熟练Git的常用命令。 这个方法很简单：先将Github上已有的仓库导入到Coding，在本地.git版本库配置文件中添加Coding远程仓库的地址，一次push即可将代码同时推送到Github和Coding。 1. 注册Coding 起初我是冲着GitCafe去的，但现在已经合并到Coding了。 2. 创建项目的同时导入Github的仓库 3. 本地.git版本库追加Coding远程仓库地址 修改 .gitmodules $ vim .gitmodules [submodule &quot;public&quot;] path = public url = git@github.com:mingguilu/blog.mingguilu.com.git url = git@git.coding.net:Mingguilu/blog.mingguilu.com.git # 添加Coding远程仓库地址 修改 .git/config $ vim .git/config [core] repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true [remote &quot;origin&quot;] url = git@github.com:mingguilu/blog_mingguilu_com.git url = git@git.coding.net:Mingguilu/blog_mingguilu_com.git # 添加Coding远程仓库地址 fetch = +refs/heads/*:refs/remotes/origin/* [branch &quot;master&quot;] remote = origin merge = refs/heads/master [submodule &quot;public&quot;] url = git@github.com:mingguilu/blog.mingguilu.com.git url = git@git.coding.net:Mingguilu/blog.mingguilu.com.git # 添加Coding远程仓库地址 修改 .git/modules/public/config $ vim .git/modules/public/config [core] repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true worktree = ../../../public [remote &quot;origin&quot;] url = git@github.com:mingguilu/blog.mingguilu.com.git url = git@git.coding.net:Mingguilu/blog.mingguilu.com.git # 添加Coding远程仓库地址 fetch = +refs/heads/*:refs/remotes/origin/* [branch &quot;master&quot;] remote = origin merge = refs/heads/master 4.
-    <footer>
-        <a href='http://blog.mingguilu.com/%E7%8B%AE/Github_Pages%E7%81%BE%E5%A4%87%E8%87%B3Coding_Pages/'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
-
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://blog.mingguilu.com/%E7%8B%AE/%E5%85%B3%E4%BA%8EJennyCh_Blog%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/">关于JennyCh_Blog的使用文档 </a> </h2>
-      <div class="post-meta">Tue, Feb 14, 2017 </div>
-    </header>
-
-    一 准备 1. Hugo 简述: Hugo是由Go语言实现的静态网站生成器。其特点是：简单、易用、高效、易扩展、快速部署。 官方网站：http://gohugo.io/ 入门推荐：Hugo中文文档 安装: 下载适用的windows的hugo_x.xx.x_Windows-64bit.zip 解压后重命名为hugo.exe并存放在c:\Program Files\hugo，并把路径添加到系统环境变量Path中，然后再cmd中输入hugo version测试是否可用 &gt; hugo version Hugo Static Site Generator v0.16 BuildDate: 2016-06-06T08:33:34+08:00 2. Github pages 简述： Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目 入门推荐：廖雪峰Git教程、git - 简明指南 GitHub 是一个面向开源及私有软件项目的托管平台，只支持 Git 作为唯一的版本库格式进行托管 Github pages用于将托管在Github上的项目发布位个人主页网站或项目主页网站 安装Git 下载Git for windows，以默认选项安装，在桌面双击运行Git Bash 创建Github仓库 在Repositories页面点击New创建新仓库 以下是JennyCh托管在Github个人主页和博客项目的仓库 blog 托管JennyCh Blog的静态博客网页的仓库 jennych_blog_hugo 托管JennyCh Blog的站点源代码的仓库 jennych.github.io 托管JennyCh个人主页静态网页的仓库 jennych_github_io 托管JennyCh个人主页的站点源代码的仓库 启用Github Pages 个人主页：例如https://jennych.github.io ，创建Ｇithub帐号.github.io的仓库，并上传个人主页静态页面项目即可 项目主页：例如https://jennych.github.io/blog/ ，创建随意名称的仓库，并上传项目的静态页面，只要在根目录下存在index.html，即可开启Ｇithub Pages，settings－－&gt;Ｇithub Pages－－&gt;Source－－&gt;master branch－－&gt; Save，即可访问项目主页https://Github帐号.github.io/项目仓库名/ 3. Markdown Markdown 是一种轻量级的「标记语言」，它拥有很多优点，语法简洁明了、学习容易，而且功能比纯文本更强，导出格式随心所欲，因此有很多人用它写博客 入门推荐：Markdown——入门指南 MarkdownPad 是Windows下的一个多功能Markdown编辑器 二 使用Hugo 创建Hugo静态站点 hugo new site 站点名称 $ hugo new site my_website Congratulations!
-    <footer>
-        <a href='http://blog.mingguilu.com/%E7%8B%AE/%E5%85%B3%E4%BA%8EJennyCh_Blog%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
-
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://blog.mingguilu.com/%E6%84%9F/%E6%84%9F%E8%B0%A2Hugo%EF%BC%8C%E8%AE%A9%E6%88%91%E9%81%87%E8%A7%81Markdown%E5%92%8CGit/">感谢Hugo，让我遇见Markdown和Git </a> </h2>
-      <div class="post-meta">Sat, Jan 14, 2017 </div>
-    </header>
-
-    去年7月在机缘巧合之下接触了静态博客的概念，深入了解了一些知识之后，特别欣喜，决定动手搭建一个自己的静态博客。时间一晃到了年底，当着手实现的时候发现并不简单 首先是选择哪一款生成器，在知乎上研究一番后，最终在Jekyll、Hexo和Hugo中，选择了Hugo，因为简单、生成速度快，在静态博客生成器排名榜上发展势头好，接着在《Hugo中文文档》学习如何安装使用它，利用自己有限的网页知识在Hugo作者个人博客spf13.com的源码基础上定制了自己的博客前端 然后编写文档需要学习一门新的文本标记语言Markdown，所幸Markdown语法相对容易，常用的也不多，看完Te_Lee 分享的《认识与入门 Markdown》和《Markdown——入门指南》，就可以入门了 最后为了将Hugo发布到Github Pages的个人主页上，必须得学习Git。我并非一名程序，虽然之前使用过svn和github，但并不了解这个强大并让我之后受益匪浅的Git。花了大概一周的时间潜心学习了廖学锋老师的《Git教程》和贺永康老师的《深入理解Git》 经过1个月的折腾，终于把博客上线了。然而，收获不仅是有了这个博客，还促使自己学习了Markdown和Git，更重要的是，Git的版本控制思想让我受益匪浅！ 为了记录博客搭建的过程，除了写文档，还用git版本记录代码改动，经过实践发现很多问题： 前端代码经常改了又改，有时仅仅1处字体px大小；有时修改bug到一半不得要领，先去解决另外一个，这样导致频繁的git commit，且一个commit掺和多处修改 因为频繁的git commit，commit message每次随性而写，回头git log一看全是一句话概括，具体改了什么自己也看不懂了 当写文档时，前一篇没写完搁置了，接着完成了另外一篇，这时commit并push就很尴尬了 有时候不得不感慨，真是想什么来什么！这段时间伯乐在线官方微博刚好推荐了两篇git干货，《Git 最佳实践：commit msg》和《Git 最佳实践：分支管理》。虽然自己没法全部理解两篇文章的内容，但依然指导我做些改变 多使用git分支，在新分支里开始一篇文档，在新分支里修改前端的代码，当文档完成可以发表，或代码修改完测试没有问题，再将新分支合并到marst分支，并push到github的远程仓库里 基于以上的分支，commit即可灵活很多，坚持一次commit只完成一个任务，并确保每次commit的正确性。因为“每次提交的代码都可能产生一个可发布的版本，坚持这个实践，那么软件会一直处于可用状态 —— 《持续交付》” 在《Git 最佳实践：commit msg》关于commit message规范的指导下，重新创建了版本库，并在写message时尝试写简单易懂的标题和详尽明了的内容 近期刚好在看一本关于Devops的书《持续交付 - 发布可靠软件的系统方法》，本书前2章着重讲述了使用版本控制对构建软件可重复且可靠的自动化发布的重要意义。而这次git的实践，有助于理解书中的内容，最终使用“Continuous Delivery”作为博客标题也是因为这本书。
-    <footer>
-        <a href='http://blog.mingguilu.com/%E6%84%9F/%E6%84%9F%E8%B0%A2Hugo%EF%BC%8C%E8%AE%A9%E6%88%91%E9%81%87%E8%A7%81Markdown%E5%92%8CGit/'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
-
-    
   </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+
+
 </section>
+          <aside id="sidebar">
+  
+    <div class="widget-wrap" style="margin: 20px 0;">
+	<div id="search-form-wrap">
 
-<aside id="meta"> </aside>
+    <form class="search-form">
+        <label style="width: 75%;">
+            <span class="screen-reader-text">Search for:</span>
+            <input type="search" class="search-field" style="height: 42px;" placeholder=" 搜索…" value="" name="s" title="Search for:">
+        </label>
+        <input type="submit" class="search-form-submit" value="搜索">
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
 
-<footer>
-  <p class="back_top"><a href="javascript:scroll(0,0)" target="_self"> <span class="icon icon-rocket"></span>回到顶部<span class="icon icon-rocket"></span> </a></p>
-  <div>
-    <p>
-    &copy;2016
-        <span itemprop="name">MingguiLu .</span>
-        Theme by <a href="http://servergrove.com">Server Francia</a>.
-        Powered by <a href="http://gohugo.io">Hugo</a>.
-        Hosted by <a href="https://coding.net">Coding</a> Pages and <a href="https://github.com/">Github</a> Pages.
+</div>
+</div>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">联系我们</h3>
+    <div class="widget widget_athemes_social_icons">
 
-    </p>
+    	<ul class="clearfix widget-social-icons">   
+    	
+          
+     			  <li><a href="https://github.com/mingguilu" title="Github" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="http://weibo.com/kind0214" title="Weibo" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="https://twitter.com/kind0214" title="Twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="https://www.facebook.com/kind0214" title="Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="https://www.instagram.com/kind0214/" title="Instagram" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+            <li><a href="mailto:luminggui0214@gmail.com?subject=请联系我&body=我能帮你什么" title="email" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
+          
+   		
+   		</ul>
+
+
+   		<!--
+   		<ul class="clearfix widget-social-icons">   		
+   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
+		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
+			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
+			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
+			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
+			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
+		</ul> -->
+
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget_athemes_tabs">
+    <ul id="widget-tab" class="clearfix widget-tab-nav">
+      <li class="active"><a>最新文章</a></li>
+    </ul>
+    <div class="widget">
+      <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/2016/01/30/test/" title=""><img width="50" height="50" src="/images/timg.gif" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2016/01/30/test/">test</a></h6>
+              <span>一月 30, 2016</span>
+            </div>
+
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/感/">感</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/test/" style="font-size: 10px;">test</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友链</h3>
+
+    <div class="widget">
+      <ul class="archive-list">
+				<li class="archive-list-item"><a class="archive-list-link" href="https://imkindu.com/" target="_blank" title="Imkindu Home Page">imkindu.com</a></li>
+				<li class="archive-list-item"><a class="archive-list-link" href="http://blog.imkindu.com/" target="_blank" title="Imkindu Blog">imkindu blog</a></li>
+				<li class="archive-list-item"><a class="archive-list-link" href="https://longlizl.github.io/" target="_blank" title="LongLi Blog">longli blog</a></li>
+				<li class="archive-list-item"><a class="archive-list-link" href="https://didadandan.github.io" target="_blank" title="DidaDandan Blog">didadandan blog</a></li>
+			</ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 MingguiLu Blog All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Powered_by <a href="https://hexo.io/" target="_blank">Hexo .</a>
+        Theme_by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">Hiero .</a>
+        Hosted_by <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+      </div>
   </div>
 </footer>
 
 
+<!-- min height -->
 
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Baidu tongji -->
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>
-
