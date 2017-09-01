@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>autoit3开发helpdesk自动化工具之五:多任务组合 | MingguiLu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="AutoItAutoIt3Helpdesk自动化" />
+  
+  
+  
+  
+  <meta name="description" content="前两篇示例中，分别创建了系统配置和软件安装的3个脚本，通过“Compile Script to .exe (x86/x64)”将.au3脚本转换为.exe可执行程序，之后运行对应程序即可进行自动安装配置。 ├── 修改administrator密码.au3 ├── 创建admin用户.au3 ├── 修改计算机名并加域.au3 ├── Cisco VPN  Client.au3 ├── Adobe">
+<meta name="keywords" content="AutoIt,AutoIt3,Helpdesk,自动化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AutoIt3开发Helpdesk自动化工具之五:多任务组合">
+<meta property="og:url" content="http://blog.mingguilu.com/2017/04/27/AutoIt3开发Helpdesk自动化工具之五/index.html">
+<meta property="og:site_name" content="MingguiLu Blog">
+<meta property="og:description" content="前两篇示例中，分别创建了系统配置和软件安装的3个脚本，通过“Compile Script to .exe (x86/x64)”将.au3脚本转换为.exe可执行程序，之后运行对应程序即可进行自动安装配置。 ├── 修改administrator密码.au3 ├── 创建admin用户.au3 ├── 修改计算机名并加域.au3 ├── Cisco VPN  Client.au3 ├── Adobe">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.mingguilu.com/images/autoit3.png">
+<meta property="og:updated_time" content="2017-09-01T17:04:31.288Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AutoIt3开发Helpdesk自动化工具之五:多任务组合">
+<meta name="twitter:description" content="前两篇示例中，分别创建了系统配置和软件安装的3个脚本，通过“Compile Script to .exe (x86/x64)”将.au3脚本转换为.exe可执行程序，之后运行对应程序即可进行自动安装配置。 ├── 修改administrator密码.au3 ├── 创建admin用户.au3 ├── 修改计算机名并加域.au3 ├── Cisco VPN  Client.au3 ├── Adobe">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/autoit3.png">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/categories"] = "分类"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="MingguiLu Blog" rel="home"> MingguiLu Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Continuous Delivery</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1136006/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-AutoIt3开发Helpdesk自动化工具之五" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!-- 不在文章内容页面顶部显示图片 -->
+<!-- 
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/images/autoit3.png" rel="gallery_cj724t7fo0006pwdfxtz0vkx6">
+        <img src="/images/autoit3.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+-->
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      AutoIt3开发Helpdesk自动化工具之五:多任务组合
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/04/27/AutoIt3开发Helpdesk自动化工具之五/" class="article-date">
+	  <time datetime="2017-04-26T23:05:10.000Z" itemprop="datePublished">四月 27, 2017</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前两篇示例中，分别创建了系统配置和软件安装的3个脚本，通过“Compile Script to .exe (x86/x64)”将.au3脚本转换为.exe可执行程序，之后运行对应程序即可进行自动安装配置。</p>
+<pre><code>├── 修改administrator密码.au3
+├── 创建admin用户.au3
+├── 修改计算机名并加域.au3
+├── Cisco VPN  Client.au3
+├── Adobe Flash.au3
+└── Linphone.au3
+</code></pre><p>但是单独使用某一个脚本的场景并不多，通常我们根据不同需要自动完成多个任务，例如</p>
+<p>呼叫中心的电话销售：</p>
+<p>修改administrator密码 + 修改计算机名并加域 + Adobe Flash + Linphone</p>
+<p>各城市门店的业务员：</p>
+<p>修改administrator密码 + 创建admin用户 + 修改计算机名并加域 + Adobe Flash + Cisco VPN Client</p>
+<a id="more"></a>
+<h4 id="可以通过AutoIt3的用户自定义函数实现多个任务的组合"><a href="#可以通过AutoIt3的用户自定义函数实现多个任务的组合" class="headerlink" title="可以通过AutoIt3的用户自定义函数实现多个任务的组合"></a>可以通过AutoIt3的用户自定义函数实现多个任务的组合</h4><ul>
+<li>将每个功能脚本定义为一个函数</li>
+<li>将所有的自定义函数放在同一个脚本</li>
+<li>通过依次调用多个函数实现多个自动化任务</li>
+</ul>
+<p>下面看一下脚本模型</p>
+<pre><code>#cs ----------------------------------------------------------------------------
+
+ AutoIt Version: 3.3.14.2
+ Author:         MingguiLu
+
+ Script Function:
+    Helpdesk自动化配置脚本.
+
+#ce ----------------------------------------------------------------------------
+
+; Script Start - Add your code below here
+
+_changePassword()    ;;调用函数 _changePassword()，即执行“修改administrator密码”的脚本
+;_createAdmin()  ;;添加了注释符号，不会调用函数 _createAdmin()，即不执行“创建admin用户”的脚本
+_joinDomain()   ;;调用函数 _joinDomain()，即执行“修改计算机名并加域”的脚本
+_adobeFlash()   ;;调用函数 _adobeFlash()，即执行“Adobe Flash”的脚本
+;_linPhone()    ;;添加了注释符号，不会调用函数 _linPhone()，即不执行 “Linphone”的脚本
+_ciscoVpnClient()   ;;调用函数 _ciscoVpnClient()，即执行“Cisco VPN Client”的脚本
+
+
+Func _changePassword()  ;;创建一个自定义函数 _changePassword()
+
+   ;;Script    “修改administrator密码”的脚本
+
+EndFunc
+
+
+Func _createAdmin()
+
+   ;;Script “创建admin用户”的脚本
+
+EndFunc
+
+Func _joinDomain()
+
+   ;;Script “修改计算机名并加域”的脚本
+
+EndFunc
+
+Func _adobeFlash()
+
+   ;;Script “Adobe Flash”的脚本
+
+EndFunc
+
+Func _linPhone()
+
+   ;;Script “Linphone”的脚本
+
+EndFunc
+
+Func _ciscoVpnClient()
+
+   ;;Script “Cisco VPN Client”的脚本
+
+EndFunc
+
+; Script End
+</code></pre><p>使用以上的脚本模型，我们可以持续维护一份脚本，优化现有的函数或者添加新的函数，需要执行不同任务组合时，拷贝一份脚本并调用相应的函数即可。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AutoIt/">AutoIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AutoIt3/">AutoIt3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Helpdesk/">Helpdesk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自动化/">自动化</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wechatpay.png',
+  alipayImage: '/css/images/alipay.jpg'
+});
+</script>
+      
+
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDU3OC83MTMz">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/10/Windows下的git_clone问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Windows下的git_clone问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/25/AutoIt3开发Helpdesk自动化工具之四/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">AutoIt3开发Helpdesk自动化工具之四:软件安装</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#可以通过AutoIt3的用户自定义函数实现多个任务的组合"><span class="nav-number">1.</span> <span class="nav-text">可以通过AutoIt3的用户自定义函数实现多个任务的组合</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 MingguiLu Blog All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Powered_by <a href="https://hexo.io/" target="_blank">Hexo .</a>
+        Theme_by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">Hiero .</a>
+        Hosted_by <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Baidu tongji -->
+<!--
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+-->
+
+<!-- Google Analytics -->
+<!--
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86857821-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+-->
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86857821-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

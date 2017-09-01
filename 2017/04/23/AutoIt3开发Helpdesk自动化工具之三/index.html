@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>autoit3开发helpdesk自动化工具之三:系统配置 | MingguiLu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="AutoItAutoIt3Helpdesk自动化" />
+  
+  
+  
+  
+  <meta name="description" content="本章将结合示例，演示如何编写自动配置系统的脚本">
+<meta name="keywords" content="AutoIt,AutoIt3,Helpdesk,自动化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AutoIt3开发Helpdesk自动化工具之三:系统配置">
+<meta property="og:url" content="http://blog.mingguilu.com/2017/04/23/AutoIt3开发Helpdesk自动化工具之三/index.html">
+<meta property="og:site_name" content="MingguiLu Blog">
+<meta property="og:description" content="本章将结合示例，演示如何编写自动配置系统的脚本">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.mingguilu.com/images/autoit3.png">
+<meta property="og:updated_time" content="2017-09-01T16:27:41.702Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AutoIt3开发Helpdesk自动化工具之三:系统配置">
+<meta name="twitter:description" content="本章将结合示例，演示如何编写自动配置系统的脚本">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/autoit3.png">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/categories"] = "分类"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="MingguiLu Blog" rel="home"> MingguiLu Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Continuous Delivery</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1136006/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-AutoIt3开发Helpdesk自动化工具之三" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!-- 不在文章内容页面顶部显示图片 -->
+<!-- 
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/images/autoit3.png" rel="gallery_cj724t7eu0001pwdfgwgq859d">
+        <img src="/images/autoit3.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+-->
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      AutoIt3开发Helpdesk自动化工具之三:系统配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/04/23/AutoIt3开发Helpdesk自动化工具之三/" class="article-date">
+	  <time datetime="2017-04-22T22:55:43.000Z" itemprop="datePublished">四月 23, 2017</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本章将结合示例，演示如何编写自动配置系统的脚本</p>
+<a id="more"></a>
+<h3 id="一、修改administrator密码"><a href="#一、修改administrator密码" class="headerlink" title="一、修改administrator密码"></a>一、修改administrator密码</h3><pre><code>#cs ----------------------------------------------------------------------------
+
+ AutoIt Version: 3.3.14.2
+ Author:         MingguiLu
+
+ Script Function:
+    修改Administrator密码.
+
+#ce ----------------------------------------------------------------------------
+
+; Script Start - Add your code below here
+
+;;最小化所有窗口
+WinMinimizeAll()
+
+;;定义变量用于存储administrator的密码
+Global $administratorPassword = &quot;Root@1024&quot;
+
+;;如果当前为管理员即可重设密码，如果为普通用户弹出警告提示
+If IsAdmin() Then
+   Run(&quot;net user administrator &quot; &amp; $administratorPassword)
+   SLEEP(500)
+Else
+   MsgBox(64,&quot;警告&quot;,&quot;当前用户无权操作administrator密码，请切换其它管理员帐户操作！&quot;)
+   SLEEP(500)
+EndIf
+
+; Script End
+</code></pre><h3 id="二、创建普通用户Admin"><a href="#二、创建普通用户Admin" class="headerlink" title="二、创建普通用户Admin"></a>二、创建普通用户Admin</h3><p>当电脑在外网或脱域、administrator密码被篡改或不便告知用户、用户忘记了域账户的登录密码等极端情况下，无法登录到桌面时，可使用admin用户登录到桌面后运行远程协助软件</p>
+<p><img src="/images/170423_01_02_01.jpg" alt=""></p>
+<pre><code> #cs ----------------------------------------------------------------------------
+
+ AutoIt Version: 3.3.14.2
+ Author:         MingguiLu
+
+ Script Function:
+    创建普通用户admin
+
+#ce ----------------------------------------------------------------------------
+
+; Script Start - Add your code below here
+
+;;最小化所有窗口
+WinMinimizeAll()
+
+If IsAdmin() Then
+   ;;创建用户admin,密码设置为:abc@123
+   Run(&quot;net user admin abc@123 /add&quot;)
+   ;;将用户admin添加到本地组users中
+   Run(&quot;net localgroup users admin /add&quot;)
+   ;;打开计算机管理控制台
+   ShellExecute(@SystemDir &amp; &quot;\compmgmt.msc&quot;)
+   WinWaitActive(&quot;计算机管理&quot;,&quot;计算机管理(本地)&quot;)
+   ;;暂停脚本半秒钟
+   SLEEP(500)
+   ;;按下方向键下键
+   Send(&quot;{DOWN}&quot;,5)
+   SLEEP(500)
+   Send(&quot;{DOWN}&quot;)
+   SLEEP(500)
+   Send(&quot;{DOWN}&quot;)
+   SLEEP(500)
+   Send(&quot;{DOWN}&quot;)
+   SLEEP(500)
+   Send(&quot;{DOWN}&quot;)
+   SLEEP(500)
+   ;;按下方向键右键
+   Send(&quot;{RIGHT}&quot;)
+   SLEEP(500)
+   Send(&quot;{DOWN}&quot;)
+   SLEEP(500)
+   ;;按下Tab键
+   Send(&quot;{TAB}&quot;)
+   SLEEP(500)
+   ;;按下回车键
+   Send(&quot;{ENTER}&quot;)
+   WinWaitActive(&quot;admin 属性&quot;,&quot;常规&quot;)
+   SLEEP(500)
+   ;;选中“用户不能更改密码”
+   ControlCommand(&quot;admin 属性&quot;,&quot;常规&quot;,&quot;Button2&quot;,&quot;Check&quot;,&quot;&quot;)
+   SLEEP(500)
+   ;;选中“密码永不过期”
+   ControlCommand(&quot;admin 属性&quot;,&quot;常规&quot;,&quot;Button3&quot;,&quot;Check&quot;,&quot;&quot;)
+   SLEEP(500)
+   ;;点击“确定”
+   ControlClick(&quot;admin 属性&quot;,&quot;常规&quot;,&quot;Button6&quot;,&quot;left&quot;,1)
+   WinActivate(&quot;计算机管理&quot;,&quot;计算机管理(本地)&quot;)
+   WinWaitActive(&quot;计算机管理&quot;,&quot;计算机管理(本地)&quot;)
+   SLEEP(500)
+   WinClose(&quot;计算机管理&quot;,&quot;计算机管理(本地)&quot;)
+   WinWaitClose(&quot;计算机管理&quot;,&quot;计算机管理(本地)&quot;)
+Else
+   MsgBox(64,&quot;警告&quot;,&quot;当前用户无权操作用户和组，请切换其它管理员帐户操作！&quot;)
+EndIf
+
+; Script End   
+</code></pre><h3 id="三、修改计算机名并加域"><a href="#三、修改计算机名并加域" class="headerlink" title="三、修改计算机名并加域"></a>三、修改计算机名并加域</h3><p>当开始运行脚本时，弹出一个交互窗口用于输入计算机名，并存储到变量中以便之后调用。</p>
+<pre><code>#cs ----------------------------------------------------------------------------
+
+ AutoIt Version: 3.3.14.2
+ Author:         MingguiLu
+
+ Script Function:
+    修改计算机名并加域.
+
+#ce ----------------------------------------------------------------------------
+
+; Script Start - Add your code below here
+
+;;最小化所有窗口
+WinMinimizeAll()
+
+Global $administratorUserName = &quot;administrator&quot;
+Global $administratorPassword = &quot;Root@1024&quot;
+
+;;定义变量$domainName存储域名
+Global $domainName = &quot;awesomeit.com&quot;
+;;定义变量$itUserName存储IT的账户
+Global $itUserName = &quot;mingguilu&quot;
+;;定义变量$itPassword存储IT的密码
+Global $itPassword = &quot;Password@1024&quot;
+</code></pre><p><img src="/images/170423_01_03_01.jpg" alt=""></p>
+<pre><code>;;定义变量$hostName存储用户交互中输入的计算机名
+Global $hostName
+Global $hostName = InputBox(&quot;输入&quot;,&quot;请输入计算机名：&quot;,&quot;&quot;)
+</code></pre><p><img src="/images/170423_01_03_02.jpg" alt=""></p>
+<pre><code>If IsAdmin() Then
+   ;;打开系统属性控制台
+   Run(&quot;control sysdm.cpl&quot;)
+Else
+   ;;以管理员模式打开系统属性控制台
+   RunAs($administratorUserName,@ComputerName,$administratorPassword,0,&quot;control sysdm.cpl&quot;)
+EndIf
+WinWaitActive(&quot;系统属性&quot;,&quot;计算机名&quot;)
+SLEEP(500)
+;;进入“更改”
+Send(&quot;!c&quot;)
+</code></pre><p><img src="/images/170423_01_03_03.jpg" alt="">  </p>
+<pre><code>WinWaitActive(&quot;计算机名/域更改&quot;,&quot;计算机名(&amp;C):&quot;)
+SLEEP(500)
+WinActivate(&quot;计算机名/域更改&quot;,&quot;计算机名(&amp;C):&quot;)
+;;自动填写计算机名
+ControlSetText(&quot;计算机名/域更改&quot;,&quot;计算机名(&amp;C):&quot;,&quot;Edit1&quot;,$hostName)
+SLEEP(500)
+;;选中“域（D）”
+ControlCommand(&quot;计算机名/域更改&quot;,&quot;计算机名(&amp;C):&quot;,&quot;Button3&quot;,&quot;Check&quot;)
+SLEEP(500)
+;;自动填写域名
+ControlSetText(&quot;计算机名/域更改&quot;,&quot;计算机名(&amp;C):&quot;,&quot;Edit3&quot;,$domainName)
+SLEEP(500)
+;;点击“确定”
+ControlClick(&quot;计算机名/域更改&quot;,&quot;计算机名(&amp;C):&quot;,&quot;Button6&quot;,&quot;left&quot;,1)
+</code></pre><p><img src="/images/170423_01_03_04.jpg" alt="">  </p>
+<pre><code>WinWaitActive(&quot;Windows 安全&quot;)
+SLEEP(500)
+;;自动填写IT人员账号
+ControlSetText(&quot;Windows 安全&quot;,&quot;&quot;,&quot;Edit1&quot;,$itUserName)
+SLEEP(500)
+;;自动填写IT人员密码
+ControlSetText(&quot;Windows 安全&quot;,&quot;&quot;,&quot;Edit2&quot;,$itPassword)
+SLEEP(500)
+;;点击“确定”
+ControlClick(&quot;Windows 安全&quot;,&quot;&quot;,&quot;Button2&quot;,&quot;left&quot;,1)
+</code></pre><p><img src="/images/170423_01_03_05.jpg" alt="">  </p>
+<pre><code>WinWaitActive(&quot;计算机名/域更改&quot;,&quot;欢迎加入 awesomeit.com 域&quot;)
+SLEEP(500)
+ControlClick(&quot;计算机名/域更改&quot;,&quot;欢迎加入 awesomeit.com 域&quot;,&quot;Button1&quot;,&quot;left&quot;,1) 
+</code></pre><p>为了兼容可能弹出的提示框，使用while循环结合if条件判断，做应对的操作：如果8秒钟之内弹出“帐户名与安全标识间无任何映射完成”的提示框，则按下回车键关闭提示框并跳出循环；如果没有弹出这个提示框，则8秒之后结束循环</p>
+<pre><code>Local $i = 0
+    While $i &lt;= 8000
+       If WinExists(&quot;计算机名/域更改&quot;,&quot;帐户名与安全标识间无任何映射完成&quot;) Then
+              WinActivate(&quot;计算机名/域更改&quot;,&quot;帐户名与安全标识间无任何映射完成&quot;)
+              WinWaitActive(&quot;计算机名/域更改&quot;,&quot;帐户名与安全标识间无任何映射完成&quot;)
+              SLEEP(500)
+              Send(&quot;{ENTER}&quot;)
+              ExitLoop
+       Else
+              SLEEP(1000)
+              $i = $i + 1000
+       EndIf
+WEnd
+</code></pre><p><img src="/images/170423_01_03_06.jpg" alt=""> </p>
+<pre><code>WinWaitActive(&quot;计算机名/域更改&quot;,&quot;确定&quot;)
+SLEEP(500)
+Send(&quot;{ENTER}&quot;)
+
+WinWaitActive(&quot;系统属性&quot;,&quot;计算机名&quot;)
+SLEEP(500)
+ControlClick(&quot;系统属性&quot;,&quot;计算机名&quot;,&quot;Button3&quot;,&quot;left&quot;,1)
+
+WinWaitActive(&quot;Microsoft Windows&quot;)
+SLEEP(500)
+Send(&quot;!l&quot;)
+WinWaitClose(&quot;Microsoft Windows&quot;)
+
+; Script End
+</code></pre>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AutoIt/">AutoIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AutoIt3/">AutoIt3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Helpdesk/">Helpdesk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自动化/">自动化</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wechatpay.png',
+  alipayImage: '/css/images/alipay.jpg'
+});
+</script>
+      
+
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDU3OC83MTMz">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/25/AutoIt3开发Helpdesk自动化工具之四/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          AutoIt3开发Helpdesk自动化工具之四:软件安装
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/21/AutoIt3开发Helpdesk自动化工具之二/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">AutoIt3开发Helpdesk自动化工具之二:常用语法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、修改administrator密码"><span class="nav-number">1.</span> <span class="nav-text">一、修改administrator密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、创建普通用户Admin"><span class="nav-number">2.</span> <span class="nav-text">二、创建普通用户Admin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、修改计算机名并加域"><span class="nav-number">3.</span> <span class="nav-text">三、修改计算机名并加域</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 MingguiLu Blog All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Powered_by <a href="https://hexo.io/" target="_blank">Hexo .</a>
+        Theme_by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">Hiero .</a>
+        Hosted_by <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Baidu tongji -->
+<!--
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+-->
+
+<!-- Google Analytics -->
+<!--
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86857821-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+-->
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86857821-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

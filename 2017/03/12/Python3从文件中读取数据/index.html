@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python3从文件中读取数据 | MingguiLu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="PythonPython3read()readline()readlines()" />
+  
+  
+  
+  
+  <meta name="description" content="Python3有三种从文件中读取数据的方法：  read()　读取整个文件内容；占用内存多   readline()　每次读取并返回一行数据；读取速度慢，每次占用内存少   readlines()　读取每一行数据，并作为元素存储在一个列表中    下面我将圆周率π的部分数值拆分为三行存储在文件pi_digits.txt中，然后使用python读取文件并拼接为完整的π：3.1415926535897">
+<meta name="keywords" content="Python,Python3,read(),readline(),readlines()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python3从文件中读取数据">
+<meta property="og:url" content="http://blog.mingguilu.com/2017/03/12/Python3从文件中读取数据/index.html">
+<meta property="og:site_name" content="MingguiLu Blog">
+<meta property="og:description" content="Python3有三种从文件中读取数据的方法：  read()　读取整个文件内容；占用内存多   readline()　每次读取并返回一行数据；读取速度慢，每次占用内存少   readlines()　读取每一行数据，并作为元素存储在一个列表中    下面我将圆周率π的部分数值拆分为三行存储在文件pi_digits.txt中，然后使用python读取文件并拼接为完整的π：3.1415926535897">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.mingguilu.com/images/python.png">
+<meta property="og:updated_time" content="2017-09-01T16:45:23.505Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python3从文件中读取数据">
+<meta name="twitter:description" content="Python3有三种从文件中读取数据的方法：  read()　读取整个文件内容；占用内存多   readline()　每次读取并返回一行数据；读取速度慢，每次占用内存少   readlines()　读取每一行数据，并作为元素存储在一个列表中    下面我将圆周率π的部分数值拆分为三行存储在文件pi_digits.txt中，然后使用python读取文件并拼接为完整的π：3.1415926535897">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/python.png">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/categories"] = "分类"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="MingguiLu Blog" rel="home"> MingguiLu Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Continuous Delivery</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1136006/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Python3从文件中读取数据" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!-- 不在文章内容页面顶部显示图片 -->
+<!-- 
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/images/python.png" rel="gallery_cj724t7g0000cpwdfpgsf54p0">
+        <img src="/images/python.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+-->
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python3从文件中读取数据
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/03/12/Python3从文件中读取数据/" class="article-date">
+	  <time datetime="2017-03-11T21:06:28.000Z" itemprop="datePublished">三月 12, 2017</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Python3有三种从文件中读取数据的方法：</p>
+<ul>
+<li>read()　读取整个文件内容；占用内存多  </li>
+<li>readline()　每次读取并返回一行数据；读取速度慢，每次占用内存少  </li>
+<li>readlines()　读取每一行数据，并作为元素存储在一个列表中  </li>
+</ul>
+<p>下面我将圆周率π的部分数值拆分为三行存储在文件<code>pi_digits.txt</code>中，然后使用python读取文件并拼接为完整的<code>π</code>：3.141592653589793238462643383279，注意得到结果是字符串，并不是数字</p>
+<p>使用<code>.read()</code>读取文件<code>pi_digits.txt</code>的全部内容</p>
+<pre><code>with open(&apos;pi_digits.txt&apos;) as file_object:
+    &apos;&apos;&apos;打开文件&apos;&apos;&apos;
+    print(file_object.read())
+    &apos;&apos;&apos;打印文件内容&apos;&apos;&apos;
+</code></pre><p>打印结果：</p>
+<pre><code>3.1415926535
+  8979323846
+  2643383279
+</code></pre><a id="more"></a>      
+<h4 id="方法一：-read"><a href="#方法一：-read" class="headerlink" title="方法一：.read()"></a>方法一：.read()</h4><pre><code>with open(&apos;pi_digits.txt&apos;) as file_object:
+    &apos;&apos;&apos;打开文件&apos;&apos;&apos;
+    pi = file_object.read()
+    &apos;&apos;&apos;读取文件内容并赋给变量content&apos;&apos;&apos;
+    print(pi.replace(&quot;\n&quot;,&quot;&quot;).replace(&quot; &quot;,&quot;&quot;))
+    &apos;&apos;&apos;使用.replace()将每行末尾的换行符和空格，替换为空，打印拼接完成的π&apos;&apos;&apos;
+</code></pre><h4 id="方法二：逐行读取"><a href="#方法二：逐行读取" class="headerlink" title="方法二：逐行读取"></a>方法二：逐行读取</h4><pre><code>with open(&apos;pi_digits.txt&apos;) as file_object:
+    &apos;&apos;&apos;打开文件&apos;&apos;&apos;
+    pi = &apos;&apos;
+    &apos;&apos;&apos;初始化变量pi&apos;&apos;&apos;
+    for line in file_object:
+        &apos;&apos;&apos;逐行读取文件的每一行内容&apos;&apos;&apos;
+        pi += line.strip()
+        &apos;&apos;&apos;剔除元素首尾的空字符后做字符串拼接，并赋给pi&apos;&apos;&apos;
+        # pi += &quot;&quot;.join(line.strip())
+    print(pi)
+    &apos;&apos;&apos;打印拼接完成的π&apos;&apos;&apos;
+</code></pre><h4 id="方法三：-readline"><a href="#方法三：-readline" class="headerlink" title="方法三：.readline()"></a>方法三：.readline()</h4><pre><code>with open(&apos;pi_digits.txt&apos;) as file_object:
+    &apos;&apos;&apos;打开文件&apos;&apos;&apos;
+    pi = &apos;&apos;
+    &apos;&apos;&apos;初始化变量pi&apos;&apos;&apos;
+    while True:
+        &apos;&apos;&apos;???&apos;&apos;&apos;
+        line = file_object.readline()
+        &apos;&apos;&apos;读取一行内容赋给变量line&apos;&apos;&apos;
+        if line:
+            &apos;&apos;&apos;如果读取到一行数据&apos;&apos;&apos;
+            #print(line)
+            pi += line.strip()
+            &apos;&apos;&apos;剔除这行数据两端的空字符之后拼接并赋给pi&apos;&apos;&apos;
+        else:
+            &apos;&apos;&apos;如果读取内容为空&apos;&apos;&apos;
+            break
+            &apos;&apos;&apos;退出循环&apos;&apos;&apos;
+     print(pi)
+     &apos;&apos;&apos;打印拼接完成的π&apos;&apos;&apos;    
+</code></pre><h4 id="方法四：-readlines"><a href="#方法四：-readlines" class="headerlink" title="方法四：.readlines()"></a>方法四：.readlines()</h4><pre><code>with open(&apos;pi_digits.txt&apos;) as file_object:
+    &apos;&apos;&apos;打开文件&apos;&apos;&apos;
+    lines = file_object.readlines()
+    &apos;&apos;&apos;读取文件的每行作为元素存入列表&apos;&apos;&apos;
+    print(lines)
+    &apos;&apos;&apos;打印列表&apos;&apos;&apos;
+    pi = &apos;&apos;
+    &apos;&apos;&apos;初始化变量pi&apos;&apos;&apos;
+    for line in lines:
+        &apos;&apos;&apos;遍历列表的元素&apos;&apos;&apos;
+        pi += line.strip()
+        &apos;&apos;&apos;剔除元素首尾的空字符后做字符串拼接，并赋给pi&apos;&apos;&apos;
+    print(pi)
+    &apos;&apos;&apos;打印拼接完成的π&apos;&apos;&apos;
+</code></pre><h4 id="方法五：-read-split"><a href="#方法五：-read-split" class="headerlink" title="方法五：.read().split()"></a>方法五：.read().split()</h4><pre><code>with open(&apos;pi_digits.txt&apos;) as file_object:
+    &apos;&apos;&apos;打开文件&apos;&apos;&apos;
+    lines = file_object.read().split()
+    &apos;&apos;&apos;将文件分割为字符串列表，相对于.readlines(),这种方法在分割内容时，就剔除了空字符&apos;&apos;&apos;
+    print(lines)
+    &apos;&apos;&apos;打印列表&apos;&apos;&apos;
+    pi = &apos;&apos;
+    &apos;&apos;&apos;初始化变量pi，用于表示完整的π&apos;&apos;&apos;
+    for line in lines:
+        &apos;&apos;&apos;遍历列表的元素&apos;&apos;&apos;
+        pi += line
+        &apos;&apos;&apos;将每个元素做字符串拼接，并赋给pi&apos;&apos;&apos;
+    print(pi)
+    &apos;&apos;&apos;打印拼接完成的π&apos;&apos;
+</code></pre>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python3/">Python3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/read/">read()</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/readline/">readline()</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/readlines/">readlines()</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wechatpay.png',
+  alipayImage: '/css/images/alipay.jpg'
+});
+</script>
+      
+
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDU3OC83MTMz">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/18/AutoIT3开发Helpdesk自动化工具之一/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          AutoIt3开发Helpdesk自动化工具之一:简介
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/26/Github_Pages灾备至Coding_Pages/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Github_Pages灾备至Coding_Pages</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一：-read"><span class="nav-number">1.</span> <span class="nav-text">方法一：.read()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二：逐行读取"><span class="nav-number">2.</span> <span class="nav-text">方法二：逐行读取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法三：-readline"><span class="nav-number">3.</span> <span class="nav-text">方法三：.readline()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法四：-readlines"><span class="nav-number">4.</span> <span class="nav-text">方法四：.readlines()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法五：-read-split"><span class="nav-number">5.</span> <span class="nav-text">方法五：.read().split()</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 MingguiLu Blog All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Powered_by <a href="https://hexo.io/" target="_blank">Hexo .</a>
+        Theme_by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">Hiero .</a>
+        Hosted_by <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Baidu tongji -->
+<!--
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+-->
+
+<!-- Google Analytics -->
+<!--
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86857821-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+-->
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86857821-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>git-everything-is-local | MingguiLu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="gitgitbash" />
+  
+  
+  
+  
+  <meta name="description" content="1. 安装gitwindows下载并安装Git for Windows，默认选项安装到Ajusting your PATH environment时，勾选第二项Run Git from Windows Command Prompt，即可在windows命令行使用git命令，不过Git Bash用户体验更好 ubnutusudo apt-get install git">
+<meta name="keywords" content="git,gitbash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git-everything-is-local">
+<meta property="og:url" content="http://blog.mingguilu.com/2016/12/08/git-everything-is-local/index.html">
+<meta property="og:site_name" content="MingguiLu Blog">
+<meta property="og:description" content="1. 安装gitwindows下载并安装Git for Windows，默认选项安装到Ajusting your PATH environment时，勾选第二项Run Git from Windows Command Prompt，即可在windows命令行使用git命令，不过Git Bash用户体验更好 ubnutusudo apt-get install git">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.mingguilu.com/images/git_00.png">
+<meta property="og:updated_time" content="2017-09-01T16:29:25.254Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git-everything-is-local">
+<meta name="twitter:description" content="1. 安装gitwindows下载并安装Git for Windows，默认选项安装到Ajusting your PATH environment时，勾选第二项Run Git from Windows Command Prompt，即可在windows命令行使用git命令，不过Git Bash用户体验更好 ubnutusudo apt-get install git">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/git_00.png">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/categories"] = "分类"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="MingguiLu Blog" rel="home"> MingguiLu Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Continuous Delivery</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1136006/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-git-everything-is-local" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!-- 不在文章内容页面顶部显示图片 -->
+<!-- 
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/images/git_00.png" rel="gallery_cj724t7gk000ipwdfct11b8le">
+        <img src="/images/git_00.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+-->
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Git-everything-is-local
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2016/12/08/git-everything-is-local/" class="article-date">
+	  <time datetime="2016-12-07T16:48:05.000Z" itemprop="datePublished">十二月 8, 2016</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-安装git"><a href="#1-安装git" class="headerlink" title="1. 安装git"></a>1. 安装git</h3><h4 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h4><p>下载并安装<a href="https://git-scm.com/downloads" target="_blank" rel="external">Git for Windows</a>，默认选项安装到Ajusting your PATH environment时，勾选第二项Run Git from Windows Command Prompt，即可在windows命令行使用git命令，不过Git Bash用户体验更好</p>
+<h4 id="ubnutu"><a href="#ubnutu" class="headerlink" title="ubnutu"></a>ubnutu</h4><pre><code>sudo apt-get install git
+</code></pre><a id="more"></a>
+<h3 id="2-全局配置git"><a href="#2-全局配置git" class="headerlink" title="2. 全局配置git"></a>2. 全局配置git</h3><p>命令行</p>
+<pre><code>git config --global user.name [your-name]
+git config --global user.email [your-email-address]
+git config --global color.ui true
+</code></pre><p>配置文件</p>
+<pre><code>vim ~/.gitconfig
+</code></pre><p>查看全局配置</p>
+<pre><code>git config --list
+</code></pre><h3 id="3-创建repository-repo"><a href="#3-创建repository-repo" class="headerlink" title="3. 创建repository/repo"></a>3. 创建repository/repo</h3><p>创建本地git repo</p>
+<pre><code>git init
+</code></pre><p>克隆线上的项目</p>
+<pre><code>git clone https://github.com/[github-account]/[project-name].git
+</code></pre><h3 id="4-添加及提交文件"><a href="#4-添加及提交文件" class="headerlink" title="4. 添加及提交文件"></a>4. 添加及提交文件</h3><p><img src="/images/git_3_01.png" alt=""></p>
+<p>添加文件到staying area</p>
+<pre><code>git add [file-name]
+</code></pre><p>提交改动到git repository</p>
+<pre><code>git commit -m [&quot;commit-description&quot;]
+</code></pre><p>直接从working directory提交到git repository</p>
+<pre><code>git commit -am [&quot;commit-description&quot;]
+</code></pre><h3 id="5-查看git状态"><a href="#5-查看git状态" class="headerlink" title="5. 查看git状态"></a>5. 查看git状态</h3><p>查看git状态</p>
+<pre><code>git status
+</code></pre><p>查看git状态标志</p>
+<pre><code>git status -s
+</code></pre><p>标志的说明</p>
+<pre><code>A: 你本地新增的文件（服务器上没有）
+
+C: 文件的一个新拷贝
+
+D: 你本地删除的文件（服务器上还在）
+
+M: 文件的内容或者mode被修改了
+
+R: 文件名被修改了
+
+T: 文件的类型被修改了
+
+U: 文件没有被合并(你需要完成合并才能进行提交)
+
+X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report)
+</code></pre><p>忽略~结尾的文件</p>
+<pre><code>echo &quot;*~&quot; &gt; .gitignore
+</code></pre><h3 id="6-查看文件区别"><a href="#6-查看文件区别" class="headerlink" title="6. 查看文件区别"></a>6. 查看文件区别</h3><p><img src="/images/git_6_01.png" alt=""></p>
+<p>查看working directory 和 staying area 之间的区别</p>
+<pre><code>git diff
+</code></pre><p>查看staying area 和 git repository 之间的区别</p>
+<pre><code>git diff --staged
+</code></pre><p>查看history 和 working directory 之间的区别</p>
+<pre><code>git diff HEAD
+</code></pre><p>使用–stat参数查看简短信息</p>
+<pre><code>git diff --stat [--staged|HEAD]
+</code></pre><h3 id="7-撤销误操作"><a href="#7-撤销误操作" class="headerlink" title="7. 撤销误操作"></a>7. 撤销误操作</h3><p><img src="/images/git_7_01.png" alt=""></p>
+<p>从git repository 撤销到staying area</p>
+<pre><code>git reset [file-name]
+</code></pre><p>从staying area撤销到working directory</p>
+<pre><code>git checkout [file-name]
+</code></pre><p>从git repository 撤销到working directory</p>
+<pre><code>git checkout HEAD [file-name]
+</code></pre><h3 id="8-移除及重命名文件"><a href="#8-移除及重命名文件" class="headerlink" title="8. 移除及重命名文件"></a>8. 移除及重命名文件</h3><p>删除git文件</p>
+<pre><code>git rm [file-name]
+</code></pre><p>删除git文件，但保留源文件</p>
+<pre><code>git rm --cached [file-name]
+</code></pre><p>重命名git文件</p>
+<pre><code>git mv [file-name] [file-name]
+</code></pre><h3 id="9-暂存工作区"><a href="#9-暂存工作区" class="headerlink" title="9. 暂存工作区"></a>9. 暂存工作区</h3><p>放入暂存区</p>
+<pre><code>git stash
+</code></pre><p>查看暂存区</p>
+<pre><code>git stash list
+</code></pre><p>恢复暂存区</p>
+<pre><code>git stash pop
+</code></pre><h3 id="10-图解commit对象"><a href="#10-图解commit对象" class="headerlink" title="10. 图解commit对象"></a>10. 图解commit对象</h3><p><img src="/images/git_10_01.png" alt=""></p>
+<p>查看commit记录</p>
+<pre><code>git log
+</code></pre><p>或</p>
+<pre><code>git log --pretty=oneline
+</code></pre><p>或</p>
+<pre><code>git log --oneline
+</code></pre><p>或</p>
+<pre><code>git reflog
+</code></pre><p>查看commit对象类型</p>
+<pre><code>git cat-file -t [HEAD|short-Hash]
+</code></pre><p>commit对象类型说明</p>
+<pre><code>tree 目录结构
+blob 一个二进制文件
+commit    一次提交的信息（包含tree、parent、author、committer信息）
+tag 标签（commit的别名）
+</code></pre><p>查看commit对象详细信息</p>
+<pre><code>git cat-file -p [HEAD|short-Hash]
+</code></pre><h3 id="11-理解tree-ish表达式"><a href="#11-理解tree-ish表达式" class="headerlink" title="11. 理解tree-ish表达式"></a>11. 理解tree-ish表达式</h3><p>查看commit对象指向的HASH值</p>
+<pre><code>git rev-parse [HEAD|HEAD~|HEAD~2|master~3|master~4|...]
+</code></pre><p>查看指定commit的tree的HASH值</p>
+<pre><code>git rev-parse HEAD~4^{tree}
+</code></pre><p>查看指定commit的blob的HASH值</p>
+<pre><code>git rev-parse HEAD~6:[file-path]
+</code></pre><h3 id="12-创建及删除分支"><a href="#12-创建及删除分支" class="headerlink" title="12. 创建及删除分支"></a>12. 创建及删除分支</h3><p>分支文件路径</p>
+<pre><code>/.git/refs/heads/
+</code></pre><p>查看所有分支</p>
+<pre><code>git branch
+</code></pre><p>创建分支</p>
+<pre><code>git branch [branch-name]
+</code></pre><p>切换分支</p>
+<pre><code>git checkout [branch-name]
+</code></pre><p>创建并切换分支</p>
+<pre><code>git checkout -b [branch-name]
+</code></pre><p>删除分支</p>
+<pre><code>git branch -d [branch-name]
+</code></pre><p>合并分支</p>
+<pre><code>git merge [branch-name]
+</code></pre><h3 id="13-配置Github远程仓库"><a href="#13-配置Github远程仓库" class="headerlink" title="13. 配置Github远程仓库"></a>13. 配置Github远程仓库</h3><p>创建SSH Key</p>
+<pre><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot;
+</code></pre><p>一路回车使用默认值，完成之后在用户主目录中打开 <code>.ssh</code>目录，可以看到</p>
+<pre><code>id_rsa        私钥，不能泄露出去
+id_rsa.pub    公钥，可告诉任何人
+</code></pre><p>登录Github，依次点击”settings”——&gt;”SSH and GPG keys”——&gt;”New SSH Key”<br><img src="/images/git_13_01.png" alt=""></p>
+<p>填写Title，在Key文本框里粘贴<code>id_rsa.pub</code>文件的内容，点击”Add SSH Key”</p>
+<h3 id="14-同步远程Github仓库"><a href="#14-同步远程Github仓库" class="headerlink" title="14. 同步远程Github仓库"></a>14. 同步远程Github仓库</h3><p>关联本地仓库与远程仓库</p>
+<pre><code>git remote add origin git@github.com:[github-account]/[repo-name].git
+</code></pre><p>第一次把本地库master分支推送到远程库</p>
+<pre><code>git push -u origin master
+</code></pre><p>之后本地做了提交，即可推送到远程库</p>
+<pre><code>git push origin master
+</code></pre><h3 id="15-从Github远程库克隆"><a href="#15-从Github远程库克隆" class="headerlink" title="15. 从Github远程库克隆"></a>15. 从Github远程库克隆</h3><p>创建Github Repositories远程库<br><img src="/images/git_15_01.png" alt=""></p>
+<p>把远程库克隆到本地</p>
+<pre><code>git clone git@github.com:[github-account]/[repo-name].git
+</code></pre><p>或</p>
+<pre><code>git clone https://github.com/[github-account]/[repo-name].git
+</code></pre>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitbash/">gitbash</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wechatpay.png',
+  alipayImage: '/css/images/alipay.jpg'
+});
+</script>
+      
+
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDU3OC83MTMz">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/14/使用Hugo和Github搭建静态博客之填坑/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          使用Hugo和Github搭建静态博客之填坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/02/使用Hugo和Github搭建静态博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">使用Hugo和Github搭建静态博客</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装git"><span class="nav-number">1.</span> <span class="nav-text">1. 安装git</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#windows"><span class="nav-number">1.1.</span> <span class="nav-text">windows</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ubnutu"><span class="nav-number">1.2.</span> <span class="nav-text">ubnutu</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-全局配置git"><span class="nav-number">2.</span> <span class="nav-text">2. 全局配置git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-创建repository-repo"><span class="nav-number">3.</span> <span class="nav-text">3. 创建repository/repo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-添加及提交文件"><span class="nav-number">4.</span> <span class="nav-text">4. 添加及提交文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-查看git状态"><span class="nav-number">5.</span> <span class="nav-text">5. 查看git状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-查看文件区别"><span class="nav-number">6.</span> <span class="nav-text">6. 查看文件区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-撤销误操作"><span class="nav-number">7.</span> <span class="nav-text">7. 撤销误操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-移除及重命名文件"><span class="nav-number">8.</span> <span class="nav-text">8. 移除及重命名文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-暂存工作区"><span class="nav-number">9.</span> <span class="nav-text">9. 暂存工作区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-图解commit对象"><span class="nav-number">10.</span> <span class="nav-text">10. 图解commit对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-理解tree-ish表达式"><span class="nav-number">11.</span> <span class="nav-text">11. 理解tree-ish表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-创建及删除分支"><span class="nav-number">12.</span> <span class="nav-text">12. 创建及删除分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-配置Github远程仓库"><span class="nav-number">13.</span> <span class="nav-text">13. 配置Github远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-同步远程Github仓库"><span class="nav-number">14.</span> <span class="nav-text">14. 同步远程Github仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-从Github远程库克隆"><span class="nav-number">15.</span> <span class="nav-text">15. 从Github远程库克隆</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 MingguiLu Blog All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Powered_by <a href="https://hexo.io/" target="_blank">Hexo .</a>
+        Theme_by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">Hiero .</a>
+        Hosted_by <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Baidu tongji -->
+<!--
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+-->
+
+<!-- Google Analytics -->
+<!--
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86857821-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+-->
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86857821-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

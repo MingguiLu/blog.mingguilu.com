@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用hugo和github搭建静态博客 | MingguiLu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Github Pagesimkindhugoblog" />
+  
+  
+  
+  
+  <meta name="description" content="我的静态博客使用Hugo生成，部署在Github Pages个人主页上，为了完成搭建，期间学习了Hugo、Git、Markdown。由于接触静态博客不久，对很多东西一知半解，本文仅记录了在Windows 10上基于Hugo作者Steve Francia的个人博客http://spf13.com/的源代码定制自己博客的过程，绝不权威，仅供参考。">
+<meta name="keywords" content="Github Pages,imkind,hugo,blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Hugo和Github搭建静态博客">
+<meta property="og:url" content="http://blog.mingguilu.com/2016/12/02/使用Hugo和Github搭建静态博客/index.html">
+<meta property="og:site_name" content="MingguiLu Blog">
+<meta property="og:description" content="我的静态博客使用Hugo生成，部署在Github Pages个人主页上，为了完成搭建，期间学习了Hugo、Git、Markdown。由于接触静态博客不久，对很多东西一知半解，本文仅记录了在Windows 10上基于Hugo作者Steve Francia的个人博客http://spf13.com/的源代码定制自己博客的过程，绝不权威，仅供参考。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.mingguilu.com/images/hugo_00.png">
+<meta property="og:updated_time" content="2017-09-01T17:05:20.804Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Hugo和Github搭建静态博客">
+<meta name="twitter:description" content="我的静态博客使用Hugo生成，部署在Github Pages个人主页上，为了完成搭建，期间学习了Hugo、Git、Markdown。由于接触静态博客不久，对很多东西一知半解，本文仅记录了在Windows 10上基于Hugo作者Steve Francia的个人博客http://spf13.com/的源代码定制自己博客的过程，绝不权威，仅供参考。">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/hugo_00.png">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/categories"] = "分类"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="MingguiLu Blog" rel="home"> MingguiLu Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Continuous Delivery</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1136006/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-使用Hugo和Github搭建静态博客" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!-- 不在文章内容页面顶部显示图片 -->
+<!-- 
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/images/hugo_00.png" rel="gallery_cj724t7hs002epwdfgqwk5on7">
+        <img src="/images/hugo_00.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+-->
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      使用Hugo和Github搭建静态博客
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2016/12/02/使用Hugo和Github搭建静态博客/" class="article-date">
+	  <time datetime="2016-12-01T17:53:13.000Z" itemprop="datePublished">十二月 2, 2016</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>我的静态博客使用Hugo生成，部署在Github Pages个人主页上，为了完成搭建，期间学习了Hugo、Git、Markdown。由于接触静态博客不久，对很多东西一知半解，本文仅记录了在Windows 10上基于Hugo作者<a href="https://stevefrancia.com/" target="_blank" rel="external">Steve Francia</a>的个人博客<a href="http://spf13.com/" target="_blank" rel="external">http://spf13.com/</a>的源代码定制自己博客的过程，绝不权威，仅供参考。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="1-准备"><a href="#1-准备" class="headerlink" title="1.准备"></a>1.准备</h2><h3 id="1-1-注册Github"><a href="#1-1-注册Github" class="headerlink" title="1.1 注册Github"></a>1.1 <a href="https://github.com/" target="_blank" rel="external">注册Github</a></h3><h3 id="1-2-安装并配置Git-for-Windows"><a href="#1-2-安装并配置Git-for-Windows" class="headerlink" title="1.2 安装并配置Git for Windows"></a>1.2 <a href="https://git-scm.com/downloads" target="_blank" rel="external">安装并配置Git for Windows</a></h3><p>默认选项安装到Ajusting your PATH environment时，勾选第二项Run Git from Windows Command Prompt，即可在windows命令行使用git命令，不过Git Bash用户体验更好。</p>
+<p>Git全局配置</p>
+<pre><code>git config --global user.name [your-name]
+git config --global user.email [your-email-address]
+git config --global color.ui true
+</code></pre><p>配置SSH Key</p>
+<pre><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot;
+</code></pre><p>一路回车使用默认值，完成之后在用户主目录中进入 <code>.ssh</code>目录，可以看到</p>
+<pre><code>id_rsa        私钥，不能泄露出去
+id_rsa.pub    公钥，可告诉任何人
+</code></pre><p>登录Github，依次点击”settings”——&gt;”SSH and GPG keys”——&gt;”New SSH Key”<br><img src="/images/git_13_01.png" alt=""></p>
+<p>填写Title，在Key文本框里粘贴<code>id_rsa.pub</code>文件的内容，点击”Add SSH Key”</p>
+<h3 id="1-3-安装Hugo"><a href="#1-3-安装Hugo" class="headerlink" title="1.3 安装Hugo"></a>1.3 <a href="https://github.com/spf13/hugo/releases" target="_blank" rel="external">安装Hugo</a></h3><h4 id="1-3-2-Ubuntu"><a href="#1-3-2-Ubuntu" class="headerlink" title="1.3.2 Ubuntu"></a>1.3.2 Ubuntu</h4><pre><code>sudo apt-get install hugo
+</code></pre><h4 id="1-3-1-Windows-10"><a href="#1-3-1-Windows-10" class="headerlink" title="1.3.1 Windows 10"></a>1.3.1 Windows 10</h4><ol>
+<li>下载hugo-0.17-Windows-64bit.zip，并解压缩到C:\Program Files\Hugo\</li>
+<li>将hugo-0.17-windows-amd64.exe修改为hugo.exe</li>
+<li>运行sysdm.cpl，添加环境变量：高级-环境变量-系统变量-编辑PATH-新建-‪C:\Program Files\Hugo</li>
+</ol>
+<h2 id="2-定制Hugo"><a href="#2-定制Hugo" class="headerlink" title="2. 定制Hugo"></a>2. 定制Hugo</h2><h3 id="2-1-Clone大神spf13的博客项目源代码"><a href="#2-1-Clone大神spf13的博客项目源代码" class="headerlink" title="2.1 Clone大神spf13的博客项目源代码"></a>2.1 Clone大神spf13的博客项目源代码</h3><p>进入工作目录</p>
+<pre><code>$ cd d/HelloWorld/hugo/
+$ pwd
+/d/HelloWorld/hugo
+</code></pre><p>clone大神spf13的博客项目源代码：<a href="https://github.com/spf13/spf13.com" target="_blank" rel="external">spf13.com</a></p>
+<pre><code>$ git clone https://github.com/spf13/spf13.com.git
+Cloning into &apos;spf13.com&apos;...
+remote: Counting objects: 894, done.
+remote: Total 894 (delta 0), reused 0 (delta 0), pack-reused 894
+Receiving objects: 100% (894/894), 17.35 MiB | 20.00 KiB/s, done.
+Resolving deltas: 100% (346/346), done.
+Checking out files: 100% (366/366), done.
+$ ls -A spf13.com/
+.git/  .gitignore  archetypes/  config.toml  content/  layouts/  README.md  static/
+</code></pre><p>重新打开一个git bash，运行站点</p>
+<pre><code>$ cd /d/HelloWorld/hugo/spf13.com/
+$ hugo server -w
+Started building site
+0 of 12 drafts rendered
+0 future content
+151 pages created
+0 non-page files copied
+0 paginator pages created
+273 tags created
+22 topics created
+in 718 ms
+Watching for changes in D:\HelloWorld\hugo\spf13.com\{content,layouts,static}
+Serving pages from memory
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
+</code></pre><p>在浏览器输入localhost:1313,查看效果:</p>
+<p><img src="/images/hugo_2_1_01.png" alt=""></p>
+<h3 id="2-2-删除多余文件，修改项目名称"><a href="#2-2-删除多余文件，修改项目名称" class="headerlink" title="2.2 删除多余文件，修改项目名称"></a>2.2 删除多余文件，修改项目名称</h3><p>删除spf13.com\content\下三个目录post、presentation、project,这是导航栏对应的博文存放目录，删除后，稍后将创建自己的分类博文目录</p>
+<pre><code>$ rm -r spf13.com/content/post/
+$ rm -r spf13.com/content/presentation/
+$ rm -r spf13.com/content/project/
+</code></pre><p>删除spf13.com\static\media\下的所有图片文件(spf13博文中的图片)</p>
+<pre><code>rm spf13.com/static/images/*
+</code></pre><p>Ctrl+C停止站点运行，修改目录名为自己的项目名称</p>
+<pre><code>$ mv spf13.com/ IMkind_blog_hugo
+</code></pre><p>删除项目的Git版本库</p>
+<pre><code>$ rm -rf IMkind_blog_hugo/ .git/
+$ rm IMkind_blog_hugo/ .gitignore
+
+$ cd IMkind_blog_hugo/
+$ git status
+fatal: Not a git repository (or any of the parent directories): .git
+</code></pre><p>创建新的版本库</p>
+<pre><code>$ git init
+Initialized empty Git repository in D:/HelloWorld/hugo/IMkind_blog_hugo/.git/
+</code></pre><h3 id="2-3-修改配置文件config-toml"><a href="#2-3-修改配置文件config-toml" class="headerlink" title="2.3 修改配置文件config.toml"></a>2.3 修改配置文件config.toml</h3><p><img src="/images/hugo_2_3_01.png" alt=""></p>
+<pre><code>baseurl = &quot;https://imkind.github.io/&quot;
+title = &quot;Continuous  Delivery&quot;
+languageCode = &quot;en-us&quot;
+disqusShortname = &quot;&quot;
+copyright = &quot;&quot;
+MetaDataFormat = &quot;yaml&quot;
+
+[author]
+    name = &quot;IMkind&quot;
+
+[indexes]
+    tag = &quot;tags&quot;
+    topic = &quot;topics&quot;
+</code></pre><ul>
+<li>baeurl 博客地址，必须使用<code>https://</code>,切记！</li>
+<li>title    博客标题</li>
+<li>disqusShortname  Disqus的用户名，不使用评论功能可留空</li>
+<li>copyright    版权信息</li>
+<li>name    博客作者署名</li>
+<li>其它项默认参数即可</li>
+</ul>
+<p>启动站点，在浏览器可以看到效果了：</p>
+<p><img src="/images/hugo_2_3_02.png" alt=""></p>
+<h3 id="2-4-修改博客副标题"><a href="#2-4-修改博客副标题" class="headerlink" title="2.4 修改博客副标题"></a>2.4 修改博客副标题</h3><p><img src="/images/hugo_2_4_01.png" alt=""></p>
+<p>在 layouts\partials\subheader.html</p>
+<pre><code>&lt;div class=&quot;icon-spf13-3&quot; id=&quot;logo&quot;&gt;
+
+&lt;div id=&quot;byline&quot;&gt;by Steve Francia&lt;/div&gt;
+</code></pre><p>修改为</p>
+<pre><code>&lt;div class=&quot;icon-happy&quot; id=&quot;logo&quot;&gt;
+
+&lt;div id=&quot;byline&quot;&gt;Hello , IMkind&lt;/div&gt;
+</code></pre><p><strong>spf13.com博客中所有的图标都是以 <code>css类</code> 来实现，<code>\static\static\css</code> 中以 <code>.icon-</code> 开头的类各自定义了一个图标。</strong></p>
+<p>例如：<code>.icon-happy</code> 即 笑脸图标，浏览器查看效果：</p>
+<p><img src="/images/hugo_2_4_02.png" alt=""></p>
+<h3 id="2-5-修改导航条"><a href="#2-5-修改导航条" class="headerlink" title="2.5 修改导航条"></a>2.5 修改导航条</h3><p><img src="/images/hugo_2_5_01.png" alt=""></p>
+<p>在 layouts\partials\nav.html</p>
+<pre><code>&lt;ul id=&quot;mainnav&quot;&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/post/&quot;&gt;
+        &lt;span class=&quot;icon&quot;&gt; &lt;i aria-hidden=&quot;true&quot; class=&quot;icon-quill&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+        &lt;span&gt; blog &lt;/span&gt;
+    &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+    &lt;a href=&quot;/project/&quot;&gt;
+        &lt;span class=&quot;icon&quot;&gt; &lt;i aria-hidden=&quot;true&quot; class=&quot;icon-console&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+        &lt;span&gt; code &lt;/span&gt;
+    &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+    &lt;a href=&quot;/presentation/&quot;&gt;
+        &lt;span class=&quot;icon&quot;&gt; &lt;i aria-hidden=&quot;true&quot; class=&quot;icon-stats&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+        &lt;span&gt; talks &lt;/span&gt;
+    &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+    &lt;a href=&quot;http://stevefrancia.com&quot;&gt;
+        &lt;span class=&quot;icon&quot;&gt; &lt;i aria-hidden=&quot;true&quot; class=&quot;icon-13&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+        &lt;span&gt; me &lt;/span&gt;
+    &lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><p>修改为</p>
+<pre><code>&lt;ul id=&quot;mainnav&quot;&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/感/&quot;&gt;
+        &lt;span class=&quot;icon&quot;&gt; &lt;i aria-hidden=&quot;true&quot; class=&quot;icon-quill&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+        &lt;span&gt; 感 &lt;/span&gt;
+    &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+    &lt;a href=&quot;/猿/&quot;&gt;
+        &lt;span class=&quot;icon&quot;&gt; &lt;i aria-hidden=&quot;true&quot; class=&quot;icon-code&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+        &lt;span&gt; 猿 &lt;/span&gt;
+    &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+    &lt;a href=&quot;/狮/&quot;&gt;
+        &lt;span class=&quot;icon&quot;&gt; &lt;i aria-hidden=&quot;true&quot; class=&quot;icon-console&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+        &lt;span&gt; 狮 &lt;/span&gt;
+    &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+    &lt;a href=&quot;/about/index.html&quot;&gt;
+        &lt;span class=&quot;icon&quot;&gt; &lt;i aria-hidden=&quot;true&quot; class=&quot;icon-user&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+        &lt;span&gt; 吾 &lt;/span&gt;
+    &lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><p>注意：在源码中修改了每个导航标题之后，还要到www\content下创建对应的目录。但是直接创建的目录并不能起作用，即使目录中存在Markdown格式的文档，点击之后也会是一片空白。</p>
+<p>到底该怎么创建对应的目录呢？使用hugo new 命令：</p>
+<pre><code>$ hugo new about.md
+D:\HelloWorld\hugo\IMkind_blog_hugo\content\about.md created
+$ hugo new 感/我的第一篇感.md
+D:\HelloWorld\hugo\IMkind_blog_hugo\content\感\我的第一篇感.md created
+$ hugo new 猿/我的第一篇猿.md
+D:\HelloWorld\hugo\IMkind_blog_hugo\content\猿\我的第一篇猿.md created
+$ hugo new 狮/我的第一篇狮.md
+D:\HelloWorld\hugo\IMkind_blog_hugo\content\狮\我的第一篇狮.md created
+</code></pre><p>这样就创建好了三个对应目录感、猿、狮，并同时创建了markdown格式的博文，往每篇博文中写入一段内容，即可在浏览器看到效果，在导航栏点击对应的标题，显示对应目录下所有的博文标题。</p>
+<p>注意：必须往每篇博文正文写入一段内容，否则在页面上点击对应的导航标题都会跳转到空白页面。</p>
+<p><img src="/images/hugo_2_5_02.png" alt=""></p>
+<p>导航栏每行默认显示四个标题，超过会另取一行。可随意增加<code>&lt;li&gt;...&lt;/li&gt;</code>数量，并创建对应的目录,如下：</p>
+<p><img src="/images/hugo_2_5_03.png" alt=""></p>
+<h3 id="2-6-修改侧边栏分享和社交"><a href="#2-6-修改侧边栏分享和社交" class="headerlink" title="2.6 修改侧边栏分享和社交"></a>2.6 修改侧边栏分享和社交</h3><p><img src="/images/hugo_2_6_01.png" alt=""></p>
+<p>在 layouts\partials\social.html 按需增减、修改<code>&lt;li&gt;...&lt;/li&gt;</code></p>
+<pre><code>&lt;ul id=&quot;social&quot;&gt;
+    &lt;li id=&quot;follow&quot;&gt;
+        &lt;span class=&quot;icon icon-heart-2&quot;&gt; &lt;/span&gt;
+        &lt;span class=&quot;title&quot;&gt; follow &lt;/span&gt;
+        &lt;div class=&quot;dropdown follow&quot;&gt;
+            &lt;ul class=&quot;social&quot;&gt;
+                &lt;li&gt; &lt;a href=&quot;http://github.com/imkind&quot; target=&quot;_blank&quot; title=&quot;GitHub&quot; class=&quot;github&quot;&gt;&lt;span class=&quot;icon icon-github&quot;&gt;&lt;/span&gt;GitHub&lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt; &lt;a href=&quot;http://weibo.com/kind0214&quot; target=&quot;_blank&quot; title=&quot;Weibo&quot; class=&quot;github&quot;&gt;&lt;span class=&quot;icon icon-feed&quot;&gt;&lt;/span&gt;Weibo&lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt; &lt;a href=&quot;http://www.facebook.com/kind0214&quot; target=&quot;_blank&quot; title=&quot;Join me on Facebook&quot; class=&quot;facebook&quot;&gt;&lt;span class=&quot;icon icon-facebook&quot;&gt;&lt;/span&gt;Facebook&lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt; &lt;a href=&quot;http://www.twitter.com/kind0214&quot; target=&quot;_blank&quot; title=&quot;Follow me on Twitter&quot; class=&quot;twitter&quot;&gt;&lt;span class=&quot;icon icon-twitter&quot;&gt;&lt;/span&gt;Twitter&lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt; &lt;a href=&quot;http://www.linkedin.com/in/luminggui&quot; target=&quot;_blank&quot; title=&quot;LinkedIn&quot; class=&quot;linkedin&quot;&gt;&lt;span class=&quot;icon icon-linkedin&quot;&gt;&lt;/span&gt;LinkedIn&lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt; &lt;a href=&quot;mailto:luminggui0214@gmail.com&quot; target=&quot;_blank&quot; title=&quot;Send an email&quot; class=&quot;email&quot;&gt;&lt;span class=&quot;icon icon-mail&quot;&gt;&lt;/span&gt;Email&lt;/a&gt; &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;span class=&quot;subcount icon-arrow-right&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><p>在 static\css\style.css 调整侧边栏位置</p>
+<pre><code>#social{position:absolute;bottom:2em;width:90%;left:5%}
+</code></pre><p>修改为</p>
+<pre><code>#social{position:relative;top:1em;width:90%;left:5%}
+</code></pre><p>浏览器查看效果</p>
+<p><img src="/images/hugo_2_6_02.png" alt=""></p>
+<h3 id="2-7-修改脚注"><a href="#2-7-修改脚注" class="headerlink" title="2.7 修改脚注"></a>2.7 修改脚注</h3><p><img src="/images/hugo_2_7_01.png" alt=""></p>
+<p>在 layouts\partials\footer.html 修改脚注内容</p>
+<pre><code>        &lt;footer&gt;
+          &lt;div&gt;
+            &lt;p&gt;
+            &amp;copy;2016
+                &lt;span itemprop=&quot;name&quot;&gt;IMkind .&lt;/span&gt;
+            Powered by &lt;a href=&quot;http://gohugo.io&quot;&gt;Hugo&lt;/a&gt;.
+                Theme by &lt;a href=&quot;http://servergrove.com&quot;&gt;Server Francia&lt;/a&gt;.
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/footer&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>在浏览器查看效果</p>
+<p><img src="/images/hugo_2_7_02.png" alt=""></p>
+<h3 id="2-8-修改博文正文显示页的布局"><a href="#2-8-修改博文正文显示页的布局" class="headerlink" title="2.8 修改博文正文显示页的布局"></a>2.8 修改博文正文显示页的布局</h3><p><img src="/images/hugo_2_8_01.png" alt=""></p>
+<h4 id="2-8-1-修改博客作者相关介绍"><a href="#2-8-1-修改博客作者相关介绍" class="headerlink" title="2.8.1 修改博客作者相关介绍"></a>2.8.1 修改博客作者相关介绍</h4><p><img src="/images/hugo_2_8_1_01.png" alt=""></p>
+<p>在 layouts\partials\details.html  对作者介绍部分 <code>&lt;div&gt;&lt;section id=&quot;author&quot;&gt;...&lt;/section&gt;&lt;/div&gt;</code> 稍作修改即可，由于本人实在太过平淡无奇，索性去掉这一部分</p>
+<pre><code>&lt;!--
+&lt;div&gt;&lt;section id=&quot;author&quot;&gt;
+...
+&lt;/section&gt;&lt;/div&gt;
+--&gt;
+</code></pre><h4 id="2-8-2-修改博文创建时间、字数统计、阅读时间、tags、topics的显示位置"><a href="#2-8-2-修改博文创建时间、字数统计、阅读时间、tags、topics的显示位置" class="headerlink" title="2.8.2 修改博文创建时间、字数统计、阅读时间、tags、topics的显示位置"></a>2.8.2 修改博文创建时间、字数统计、阅读时间、tags、topics的显示位置</h4><p><img src="/images/hugo_2_8_2_01.png" alt=""></p>
+<p>将博文创建时间、字数统计、阅读时间、tags、topics的显示位置调整到标题和正文之间</p>
+<p>在 layouts_default\single.html</p>
+<pre><code>&lt;section id=&quot;main&quot;&gt;
+  &lt;h1 itemprop=&quot;name&quot; id=&quot;title&quot;&gt;{{ .Title }}&lt;/h1&gt;
+  &lt;div&gt;
+        &lt;article itemprop=&quot;articleBody&quot; id=&quot;content&quot;&gt;
+           {{ .Content }}
+        &lt;/article&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+{{ partial "meta_aside.html" . }}
+</code></pre><p>修改为</p>
+<pre><code>&lt;section id=&quot;main&quot;&gt;
+  &lt;h1 itemprop=&quot;name&quot; id=&quot;title&quot;&gt;{{ .Title }}&lt;/h1&gt;
+  {{ partial "meta_aside.html" . }}
+  &lt;div&gt;
+        &lt;article itemprop=&quot;articleBody&quot; id=&quot;content&quot;&gt;
+           {{ .Content }}
+        &lt;/article&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre><p>在浏览器查看效果</p>
+<p><img src="/images/hugo_2_8_2_02.png" alt=""></p>
+<h4 id="2-8-3-修改上下篇链接的显示位置"><a href="#2-8-3-修改上下篇链接的显示位置" class="headerlink" title="2.8.3 修改上下篇链接的显示位置"></a>2.8.3 修改上下篇链接的显示位置</h4><p><img src="/images/hugo_2_8_3_01.png" alt=""></p>
+<p>在 layouts\partials\details.html 中删除或注释掉上下篇链接相关代码</p>
+<pre><code>&lt;!--
+&lt;div&gt;
+    &lt;section id=&quot;prev&quot;&gt;
+        &amp;nbsp;{{if .Prev}}&lt;a class=&quot;previous&quot; href=&quot;{{.Prev.Permalink}}&quot;&gt;&lt;i class=&quot;icon-arrow-left&quot;&gt;&lt;/i&gt; {{.Prev.Title}}&lt;/a&gt;&lt;br&gt;{{end}}
+    &lt;/section&gt;
+    &lt;section id=&quot;next&quot;&gt;
+        &amp;nbsp;{{if .Next}}&lt;a class=&quot;next&quot; href=&quot;{{.Next.Permalink}}&quot;&gt;{{.Next.Title}} &lt;i class=&quot;icon-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;{{end}}
+    &lt;/section&gt;
+&lt;/div&gt;
+--&gt;
+</code></pre><p>新建 layouts\partials\prevnext.html，代码如下</p>
+<pre><code>&lt;div&gt;
+    &lt;section id=&quot;prev&quot;&gt;
+        &amp;nbsp;{{if .Prev}}&lt;a class=&quot;previous&quot; href=&quot;{{.Prev.Permalink}}&quot;&gt;&lt;i class=&quot;icon-arrow-left&quot;&gt;&lt;/i&gt; {{.Prev.Title}}&lt;/a&gt;&lt;br&gt;{{end}}
+    &lt;/section&gt;
+    &lt;section id=&quot;next&quot;&gt;
+        &amp;nbsp;{{if .Next}}&lt;a class=&quot;next&quot; href=&quot;{{.Next.Permalink}}&quot;&gt;{{.Next.Title}} &lt;i class=&quot;icon-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;{{end}}
+    &lt;/section&gt;
+&lt;/div&gt;
+</code></pre><p>新建 layouts\partials\prevnext_aside.html，代码如下</p>
+<pre><code>{{ $baseurl := .Site.BaseURL }}
+
+&lt;aside id=&quot;prevnext&quot;&gt;
+{{ partial "prevnext.html" . }}
+&lt;/aside&gt;
+
+&lt;meta itemprop=&quot;wordCount&quot; content=&quot;{{ .WordCount }}&quot;&gt;
+&lt;meta itemprop=&quot;datePublished&quot; content=&quot;{{ .Date.Format "2006-01-02" }}&quot;&gt;
+&lt;meta itemprop=&quot;url&quot; content=&quot;{{ .Permalink }}&quot;&gt;
+</code></pre><p>在 layouts_default\single.html</p>
+<pre><code>&lt;section id=&quot;main&quot;&gt;
+  &lt;h1 itemprop=&quot;name&quot; id=&quot;title&quot;&gt;{{ .Title }}&lt;/h1&gt;
+  {{ partial "meta_aside.html" . }}
+  &lt;div&gt;
+        &lt;article itemprop=&quot;articleBody&quot; id=&quot;content&quot;&gt;
+           {{ .Content }}
+        &lt;/article&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+{{ partial "disqus.html" . }}
+{{ partial "footer.html" . }}
+</code></pre><p>修改为</p>
+<pre><code>&lt;section id=&quot;main&quot;&gt;
+  &lt;h1 itemprop=&quot;name&quot; id=&quot;title&quot;&gt;{{ .Title }}&lt;/h1&gt;
+  {{ partial "meta_aside.html" . }}
+  &lt;div&gt;
+        &lt;article itemprop=&quot;articleBody&quot; id=&quot;content&quot;&gt;
+           {{ .Content }}
+        &lt;/article&gt;
+  &lt;/div&gt;
+{{ partial "prevnext_aside.html" . }}
+&lt;/section&gt;
+
+{{ partial "disqus.html" . }}
+{{ partial "footer.html" . }}
+</code></pre><p>在 static\css\style.css</p>
+<pre><code>#main&gt;div,footer&gt;div,#meta&gt;div,#content,#comments&gt;div{position:relative;text-align:left;margin:0 auto;word-wrap:break-word}
+
+#next,#prev{width:50% !important;padding-top:2em}
+
+#main&gt;div,footer&gt;div,#meta&gt;div,#meta&gt;section,#content,#comments&gt;div{max-width:38em}
+</code></pre><p>修改为</p>
+<pre><code>#main&gt;div,footer&gt;div,#meta&gt;div,#content,#comments&gt;div,#prevnext&gt;div{position:relative;text-align:left;margin:0 auto;word-wrap:break-word}
+
+#next,#prev{width:50% !important;padding-top:2em;float:left;}
+
+#main&gt;div,footer&gt;div,#meta&gt;div,#meta&gt;section,#content,#comments&gt;div,#prevnext&gt;div{max-width:100%}
+</code></pre><p>在浏览器查看效果<br><img src="/images/hugo_2_8_3_02.png" alt=""></p>
+<h3 id="2-9-修改字号大小"><a href="#2-9-修改字号大小" class="headerlink" title="2.9 修改字号大小"></a>2.9 修改字号大小</h3><p>在 static\css\style.css</p>
+<pre><code>body{font-size:0.9em;line-height:1.8em}
+h1{font-size:1.6em;line-height:1.8em}
+h2{font-size:1.4em;line-height:1.8em}
+h3{font-size:1.2em;line-height:1.8em}
+h4{font-size:1.1em;line-height:1.8em}
+h5{font-size:1em;line-height:1.8em}
+
+h1#title{font-size:1.6em !important;line-height:1.8em}
+h1,h2{font-size:1.6em;line-height:1.8em}
+h2{font-size:1.4em;font-weight:normal}
+h3{margin:1.3em 0 1.5em}
+
+.post-meta{color:#34495e;font-size:90%}
+
+body&gt;footer p{margin:0;padding:0;font-size:90%;line-height:1.5em}
+
+body&gt;section,body&gt;aside,body&gt;footer,body&gt;.content{font-size:0.9em;line-height:1.8em}
+
+body&gt;section,body&gt;aside,body&gt;.content,body&gt;footer,#comments{margin:1em 7.14286% 0 28.57143%;font-size:0.9em;line-height:1.8em;*zoom:1}
+
+body&gt;section,body&gt;aside,body&gt;.content,body&gt;footer,#comments{margin:1em 21.42857% 0 21.42857%;font-size:0.9em;line-height:1.8em;*zoom:1}
+</code></pre><h3 id="2-10-修改网站标题"><a href="#2-10-修改网站标题" class="headerlink" title="2.10 修改网站标题"></a>2.10 修改网站标题</h3><p><img src="/images/hugo_2_10_01.png" alt=""></p>
+<p>在 layouts\partials\header.html</p>
+<pre><code>&lt;title&gt; {{ .Title }} - spf13.com &lt;/title&gt;
+</code></pre><p>将网站标题spf13.com修改为imkind.github.io</p>
+<pre><code>&lt;title&gt; {{ .Title }} - imkind.github.io &lt;/title&gt;
+</code></pre><p><img src="/images/hugo_2_10_02.png" alt=""></p>
+<h3 id="2-11-修改og标签"><a href="#2-11-修改og标签" class="headerlink" title="2.11 修改og标签"></a>2.11 修改og标签</h3><p>摘自知乎：<br><code>og是一种新的HTTP头部标记，即Open Graph Protocol，用了Meta Property=og标签，就是你同意了网页内容可以被其他社会化网站引用等</code></p>
+<p>在 layouts\partials\meta.html 将大神spf13相关的信息修改为自己的，或者注释掉这一部分</p>
+<pre><code>&lt;!-- open graph --&gt;
+&lt;meta property=&quot;og:type&quot; content=&quot;article&quot;/&gt;
+&lt;meta property=&quot;og:description&quot; content=&quot;{{ .Description }}&quot;/&gt;
+&lt;meta property=&quot;og:title&quot; content=&quot;{{ .Title }} : spf13.com&quot;/&gt;
+&lt;meta property=&quot;og:site_name&quot; content=&quot;spf13 is Steve Francia&quot;/&gt;
+&lt;meta property=&quot;og:image&quot; content=&quot;&quot; /&gt;
+&lt;meta property=&quot;og:image:type&quot; content=&quot;image/jpeg&quot; /&gt;
+&lt;meta property=&quot;og:image:width&quot; content=&quot;&quot; /&gt;
+&lt;meta property=&quot;og:image:height&quot; content=&quot;&quot; /&gt;
+&lt;meta property=&quot;og:url&quot; content=&quot;{{ .Permalink }}&quot;&gt;
+&lt;meta property=&quot;og:locale&quot; content=&quot;en_US&quot;&gt;
+&lt;meta property=&quot;article:published_time&quot; content=&quot;{{ .Date.Format "2006-01-02" }}&quot;/&gt;
+&lt;meta property=&quot;article:modified_time&quot; content=&quot;{{ .Date.Format "2006-01-02" }}&quot;/&gt;
+
+&lt;!--Twitter Cards--&gt;
+&lt;meta name=&quot;twitter:card&quot; content=&quot;summary&quot;&gt;
+&lt;!--&lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;&gt;--&gt;
+&lt;meta name=&quot;twitter:site&quot; content=&quot;@spf13&quot;&gt;
+&lt;meta name=&quot;twitter:title&quot; content=&quot;{{ .Title }} : spf13.com&quot;&gt;
+&lt;meta name=&quot;twitter:creator&quot; content=&quot;@spf13&quot;&gt;
+&lt;meta name=&quot;twitter:description&quot; content=&quot;{{ .Description }}&quot;&gt;
+&lt;meta name=&quot;twitter:image:src&quot; content=&quot;&quot;&gt;
+&lt;meta name=&quot;twitter:domain&quot; content=&quot;spf13.com&quot;&gt;
+</code></pre><h3 id="2-12-多说评论系统"><a href="#2-12-多说评论系统" class="headerlink" title="2.12 多说评论系统"></a>2.12 多说评论系统</h3><p>spf13.com默认使用了<a href="https://disqus.com/" target="_blank" rel="external">Disqus</a>评论系统，我去注册并在博客配置之后，无法显示评论区，而且在打开博文时因为连接Disqus服务器严重拖慢速度，于是更换了国产的<a href="http://duoshuo.com/" target="_blank" rel="external">多说</a>评论系统，相对于内置了Disqus，多说评论系统的植入稍微复杂一点。</p>
+<h4 id="2-12-1-注册多说评论系统"><a href="#2-12-1-注册多说评论系统" class="headerlink" title="2.12.1 注册多说评论系统"></a>2.12.1 注册<a href="http://duoshuo.com/" target="_blank" rel="external">多说</a>评论系统</h4><p>打开多说首页，点击“登录”，使用SNS账号登录，我选择了微博。<br><img src="/images/hugo_2_12_1_01.png" alt=""></p>
+<h4 id="2-12-2-创建站点"><a href="#2-12-2-创建站点" class="headerlink" title="2.12.2 创建站点"></a>2.12.2 创建站点</h4><p>登录之后就跳转到站点配置的页面<br><img src="/images/hugo_2_12_2_01.png" alt=""></p>
+<h4 id="2-12-3-获取植入代码"><a href="#2-12-3-获取植入代码" class="headerlink" title="2.12.3 获取植入代码"></a>2.12.3 获取植入代码</h4><p>工具——&gt;获取代码——&gt;稳定版<br><img src="/images/hugo_2_12_3_01.png" alt=""></p>
+<h4 id="2-12-4-植入多说代码"><a href="#2-12-4-植入多说代码" class="headerlink" title="2.12.4 植入多说代码"></a>2.12.4 植入多说代码</h4><p>在 layouts\partials\disqus.html</p>
+<pre><code>&lt;aside id=comments&gt;
+    &lt;div&gt;&lt;h2&gt; Comments &lt;/h2&gt;&lt;/div&gt;
+
+     {{ template "_internal/disqus.html" . }}
+
+&lt;/aside&gt;
+</code></pre><p>修改为</p>
+<pre><code>&lt;aside id=comments&gt;
+    &lt;div&gt;&lt;h2&gt; Comments &lt;/h2&gt;&lt;/div&gt;
+
+     &lt;!-- {{ template "_internal/disqus.html" . }} --&gt;
+
+     &lt;!-- 多说评论框 start --&gt;
+    &lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;{{ .URL }}&quot; data-title=&quot;{{ .Title }}&quot; data-url=&quot;{{ .Permalink }}&quot;&gt;&lt;/div&gt;
+    &lt;!-- 多说评论框 end --&gt;
+    &lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    var duoshuoQuery = {short_name:&quot;imkind&quot;};
+        (function() {
+            var ds = document.createElement(&apos;script&apos;);
+            ds.type = &apos;text/javascript&apos;;ds.async = true;
+            ds.src = (document.location.protocol == &apos;https:&apos; ? &apos;https:&apos; : &apos;http:&apos;) + &apos;//static.duoshuo.com/embed.js&apos;;
+            ds.charset = &apos;UTF-8&apos;;
+            (document.getElementsByTagName(&apos;head&apos;)[0]
+             || document.getElementsByTagName(&apos;body&apos;)[0]).appendChild(ds);
+        })();
+        &lt;/script&gt;
+    &lt;!-- 多说公共JS代码 end --&gt;
+
+&lt;/aside&gt;
+</code></pre><h4 id="2-12-5-设置duoshuoShortname"><a href="#2-12-5-设置duoshuoShortname" class="headerlink" title="2.12.5 设置duoshuoShortname"></a>2.12.5 设置duoshuoShortname</h4><p>在 config.toml</p>
+<pre><code>disqusShortname = &quot;&quot;
+</code></pre><p>修改为</p>
+<pre><code>duoshuoShortname = &quot;imkind&quot;
+</code></pre><p>在浏览器中博文下方查看效果</p>
+<p><img src="/images/hugo_2_12_5_01.png" alt=""></p>
+<h3 id="2-13-代码高亮"><a href="#2-13-代码高亮" class="headerlink" title="2.13 代码高亮"></a>2.13 代码高亮</h3><h4 id="2-13-1-使用在线js-加载速度慢，不推荐使用"><a href="#2-13-1-使用在线js-加载速度慢，不推荐使用" class="headerlink" title="2.13.1 使用在线js(加载速度慢，不推荐使用)"></a>2.13.1 使用在线js(加载速度慢，不推荐使用)</h4><p>参考：<a href="http://nanshu.wang/" target="_blank" rel="external">nanshu.wang</a>的教程<a href="http://nanshu.wang/post/2015-01-31/" target="_blank" rel="external">Hugo静态网站生成器中文教程</a></p>
+<p>在 layouts\partials\head_includes.html 添加</p>
+<pre><code>&lt;script src=&quot;https://yandex.st/highlightjs/8.0/highlight.min.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://yandex.st/highlightjs/8.0/styles/default.min.css&quot;&gt;
+&lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
+</code></pre><p>在浏览器查看效果</p>
+<h4 id="2-13-2-使用本地配置highlight-js（推荐使用）"><a href="#2-13-2-使用本地配置highlight-js（推荐使用）" class="headerlink" title="2.13.2 使用本地配置highlight.js（推荐使用）"></a>2.13.2 使用本地配置<a href="https://highlightjs.org/" target="_blank" rel="external">highlight.js</a>（推荐使用）</h4><p>参考：<a href="http://newoxygen.github.io" target="_blank" rel="external">http://newoxygen.github.io</a> 的教程 <a href="http://newoxygen.github.io/post/hugo%E5%BF%AB%E9%80%9F%E5%BB%BA%E7%AB%99/#2.2" target="_blank" rel="external">hugo快速建站</a></p>
+<h5 id="2-13-2-1-下载-highlight-js"><a href="#2-13-2-1-下载-highlight-js" class="headerlink" title="2.13.2.1 下载 highlight.js"></a>2.13.2.1 下载 <a href="https://highlightjs.org/" target="_blank" rel="external">highlight.js</a></h5><p>打开<a href="https://highlightjs.org/" target="_blank" rel="external">highlight.js</a>首页，点击 <a href="https://highlightjs.org/download/" target="_blank" rel="external">Get version 9.8.0</a>，勾选常用的编程语言，点击“Download”下载，解压</p>
+<pre><code>$ ls highlight/
+CHANGES.md  highlight.pack.js  LICENSE  README.md  README.ru.md  styles/
+</code></pre><h5 id="2-13-2-2-植入highlight-js"><a href="#2-13-2-2-植入highlight-js" class="headerlink" title="2.13.2.2 植入highlight.js"></a>2.13.2.2 植入highlight.js</h5><p>复制 highlight.pack.js 到 static\static\js</p>
+<p>重命名 styles 为 highlight，并复制到 static\static\css</p>
+<p>在layouts\partials\header.html 添加</p>
+<pre><code>&lt;!-- Highlight.js --&gt;
+&lt;script src=&quot;{{ .Site.BaseURL }}static/js/highlight.pack.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;{{ .Site.BaseURL }}static/css/highlight/github.css&quot;&gt;
+&lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
+</code></pre><p>可根据个人爱好调用 static\static\css\highlight 中的css样式。</p>
+<h4 id="2-14-植入百度统计"><a href="#2-14-植入百度统计" class="headerlink" title="2.14 植入百度统计"></a>2.14 植入百度统计</h4><p>注册<a href="http://tongji.baidu.com" target="_blank" rel="external">百度统计</a>，在“管理”中“新增网站”</p>
+<p><img src="/images/hugo_2_14_01.png" alt=""></p>
+<p>拷贝“统计代码”至 layouts\partials\header.html 的<code>&lt;/head&gt;</code>标签前</p>
+<pre><code>&lt;script&gt;]
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement(&quot;script&quot;);
+  hm.src = &quot;https://hm.baidu.com/hm.js?3d1fd52b11dc0bde2abdc4760452f3dc&quot;;
+  var s = document.getElementsByTagName(&quot;script&quot;)[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+&lt;/script&gt;
+</code></pre><h4 id="2-15-植入Google-Analytics-分析"><a href="#2-15-植入Google-Analytics-分析" class="headerlink" title="2.15 植入Google Analytics(分析)"></a>2.15 植入Google Analytics(分析)</h4><p>注册<a href="http://www.google.cn/intl/zh-CN_ALL/analytics/features/analysis-tools.html" target="_blank" rel="external">Google Analytics (分析)</a>，在“管理”——“媒体资源”中“创建新媒体资源”</p>
+<p><img src="/images/hugo_2_15_01.png" alt=""></p>
+<p>拷贝“跟踪代码”至 layouts\partials\header.html 的<code>&lt;/head&gt;</code>标签前</p>
+<pre><code>&lt;script&gt;
+  (function(i,s,o,g,r,a,m){i[&apos;GoogleAnalyticsObject&apos;]=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,&apos;script&apos;,&apos;https://www.google-analytics.com/analytics.js&apos;,&apos;ga&apos;);
+
+  ga(&apos;create&apos;, &apos;UA-86857821-1&apos;, &apos;auto&apos;);
+  ga(&apos;send&apos;, &apos;pageview&apos;);
+&lt;/script&gt;
+</code></pre><h3 id="3-部署hugo到Github-pages个人主页"><a href="#3-部署hugo到Github-pages个人主页" class="headerlink" title="3. 部署hugo到Github pages个人主页"></a>3. 部署hugo到Github pages个人主页</h3><p><a href="https://pages.github.com/#user-site" target="_blank" rel="external">Github pages</a>有两种类型，个人主页（User site）和项目主页（Project site）。个人主页一个账号只能有一个，必须以[your-github-account].github.io命名来创建repository。</p>
+<h4 id="3-1-在Github新建-your-hugo-project-name-仓库，用于托管hugo静态博客系统源代码"><a href="#3-1-在Github新建-your-hugo-project-name-仓库，用于托管hugo静态博客系统源代码" class="headerlink" title="3.1 在Github新建[your-hugo-project-name]仓库，用于托管hugo静态博客系统源代码"></a>3.1 在Github新建[your-hugo-project-name]仓库，用于托管hugo静态博客系统源代码</h4><pre><code>https://github.com/imkind/IMkind_blog_hugo
+</code></pre><h4 id="3-2-在Github新建-your-github-account-github-io仓库，用于存放hugo生成得静态博客站点文件"><a href="#3-2-在Github新建-your-github-account-github-io仓库，用于存放hugo生成得静态博客站点文件" class="headerlink" title="3.2 在Github新建[your-github-account].github.io仓库，用于存放hugo生成得静态博客站点文件"></a>3.2 在Github新建[your-github-account].github.io仓库，用于存放hugo生成得静态博客站点文件</h4><pre><code>https://github.com/imkind/imkind.github.io
+</code></pre><h4 id="3-3-创建本地的git仓库"><a href="#3-3-创建本地的git仓库" class="headerlink" title="3.3 创建本地的git仓库"></a>3.3 创建本地的git仓库</h4><pre><code>$ git init
+</code></pre><h4 id="3-4-添加远程库，把本地git仓库同远程库关联起来"><a href="#3-4-添加远程库，把本地git仓库同远程库关联起来" class="headerlink" title="3.4 添加远程库，把本地git仓库同远程库关联起来"></a>3.4 添加远程库，把本地git仓库同远程库关联起来</h4><pre><code>$ git remote add origin git@github.com:[your-github-account]/[your-hugo-project-name].git
+</code></pre><p>即</p>
+<pre><code>$ git remote add origin git@github.com:imkind/IMkind_blog_hugo.git
+</code></pre><h4 id="3-5-查看项目下是否有生成了静态页面的public目录，如果有删除掉（只要执行hugo即可重新生成），因为下一步配置子项目时，会再创建一个public目录"><a href="#3-5-查看项目下是否有生成了静态页面的public目录，如果有删除掉（只要执行hugo即可重新生成），因为下一步配置子项目时，会再创建一个public目录" class="headerlink" title="3.5 查看项目下是否有生成了静态页面的public目录，如果有删除掉（只要执行hugo即可重新生成），因为下一步配置子项目时，会再创建一个public目录"></a>3.5 查看项目下是否有生成了静态页面的<code>public</code>目录，如果有删除掉（只要执行<code>hugo</code>即可重新生成），因为下一步配置子项目时，会再创建一个public目录</h4><pre><code>$ rm -rf public/
+</code></pre><h5 id="3-6-把-your-github-account-github-io设置为-your-hugo-project-name-的子项目，命令会clone远程仓库-your-github-account-github-io到本地并重命名为public"><a href="#3-6-把-your-github-account-github-io设置为-your-hugo-project-name-的子项目，命令会clone远程仓库-your-github-account-github-io到本地并重命名为public" class="headerlink" title="3.6 把[your-github-account].github.io设置为[your-hugo-project-name]的子项目，命令会clone远程仓库[your-github-account].github.io到本地并重命名为public"></a>3.6 把[your-github-account].github.io设置为[your-hugo-project-name]的子项目，命令会<code>clone</code>远程仓库[your-github-account].github.io到本地并重命名为<code>public</code></h5><pre><code>$ git submodule add git@github.com:[your-github-account]/[your-github-account].github.io.git  public
+</code></pre><p>即</p>
+<pre><code>$ git submodule add git@github.com:imkind/imkind.github.io.git public
+Cloning into &apos;D:/HelloWorld/hugo/IMkind_blog_hugo/public&apos;...
+warning: You appear to have cloned an empty repository.
+fatal: You are on a branch yet to be born
+Unable to checkout submodule &apos;public&apos;
+</code></pre><h4 id="3-7-把pulic目录写入-gitignore文件，在之后提交hugo项目源代码时就会忽略public目录"><a href="#3-7-把pulic目录写入-gitignore文件，在之后提交hugo项目源代码时就会忽略public目录" class="headerlink" title="3.7 把pulic目录写入.gitignore文件，在之后提交hugo项目源代码时就会忽略public目录"></a>3.7 把pulic目录写入.gitignore文件，在之后提交hugo项目源代码时就会忽略public目录</h4><pre><code>$ echo &quot;/public&quot; &gt; .gitignore
+</code></pre><h4 id="3-8-把submodule配置写入-gitmodules文件。如ls-A看不到该文件，可自行创建并添加内容。"><a href="#3-8-把submodule配置写入-gitmodules文件。如ls-A看不到该文件，可自行创建并添加内容。" class="headerlink" title="3.8 把submodule配置写入.gitmodules文件。如ls -A看不到该文件，可自行创建并添加内容。"></a>3.8 把submodule配置写入.gitmodules文件。如ls -A看不到该文件，可自行创建并添加内容。</h4><pre><code>$ vim .gitmodules
+
+[submodule &quot;public&quot;]
+    path = public
+    url = git@github.com:imkind/imkind.github.io.git
+</code></pre><h4 id="3-9-初次提交至github远程仓库-使用了-u参数-之后改动代码提交到github，只需git-push-origin-master"><a href="#3-9-初次提交至github远程仓库-使用了-u参数-之后改动代码提交到github，只需git-push-origin-master" class="headerlink" title="3.9 初次提交至github远程仓库,使用了-u参数,之后改动代码提交到github，只需git push origin master"></a>3.9 初次提交至github远程仓库,使用了<code>-u</code>参数,之后改动代码提交到github，只需<code>git push origin master</code></h4><pre><code>$ git add -A
+
+$ git commit -m &quot;first commit&quot;
+
+$ git push -u origin master
+Counting objects: 379, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (368/368), done.
+Writing objects: 100% (379/379), 1.15 MiB | 0 bytes/s, done.
+Total 379 (delta 157), reused 0 (delta 0)
+remote: Resolving deltas: 100% (157/157), done.
+To github.com:imkind/IMkind_blog_hugo.git
+ * [new branch]      master -&gt; master
+Branch master set up to track remote branch master from origin.
+</code></pre><h4 id="3-10-生成静态站点到public目录下"><a href="#3-10-生成静态站点到public目录下" class="headerlink" title="3.10 生成静态站点到public目录下"></a>3.10 生成静态站点到public目录下</h4><pre><code>$ hugo
+</code></pre><h4 id="3-11-初次提交pubic目录下的静态站点内容到远程仓库"><a href="#3-11-初次提交pubic目录下的静态站点内容到远程仓库" class="headerlink" title="3.11 初次提交pubic目录下的静态站点内容到远程仓库"></a>3.11 初次提交pubic目录下的静态站点内容到远程仓库</h4><pre><code>$ cd public
+
+$ git add -A
+
+$ git commit -m &quot;first post&quot;
+
+$ git push -u origin master
+Counting objects: 219, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (210/210), done.
+Writing objects: 100% (219/219), 1.16 MiB | 51.00 KiB/s, done.
+Total 219 (delta 71), reused 0 (delta 0)
+remote: Resolving deltas: 100% (71/71), done.
+To https://github.com/imkind/imkind.github.io.git
+ * [new branch]      master -&gt; master
+Branch master set up to track remote branch master from origin.
+</code></pre><h3 id="4-部署成功，在浏览器访问-https-your-github-account-github-io-就看到自己的博客了。"><a href="#4-部署成功，在浏览器访问-https-your-github-account-github-io-就看到自己的博客了。" class="headerlink" title="4. 部署成功，在浏览器访问 https://[your-github-account].github.io 就看到自己的博客了。"></a>4. 部署成功，在浏览器访问 <a href="https://[your-github-account].github.io" target="_blank" rel="external">https://[your-github-account].github.io</a> 就看到自己的博客了。</h3><p><img src="/images/hugo_4_01.png" alt=""></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a><em>参考</em></h4><ul>
+<li><a href="http://spf13.com/" target="_blank" rel="external">Steve Francia</a></li>
+<li><a href="http://www.gohugo.org/" target="_blank" rel="external">Hugo中文文档</a></li>
+<li><a href="http://www.gohugo.org/post/coderzh-hugo/" target="_blank" rel="external">使用hugo搭建个人博客站点</a></li>
+<li><a href="http://nanshu.wang/post/2015-01-31/" target="_blank" rel="external">Hugo静态网站生成器中文教程</a></li>
+<li><a href="http://blog.bpcoder.com/2015/12/hugo-create-blog/" target="_blank" rel="external">利用 Hugo &amp; GitHub 搭建个人博客静态网站</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github-Pages/">Github Pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hugo/">hugo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/imkind/">imkind</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wechatpay.png',
+  alipayImage: '/css/images/alipay.jpg'
+});
+</script>
+      
+
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDU3OC83MTMz">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/08/git-everything-is-local/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Git-everything-is-local
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-准备"><span class="nav-number">1.</span> <span class="nav-text">1.准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-注册Github"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 注册Github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-安装并配置Git-for-Windows"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 安装并配置Git for Windows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-安装Hugo"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 安装Hugo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-2-Ubuntu"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.3.2 Ubuntu</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-1-Windows-10"><span class="nav-number">1.3.2.</span> <span class="nav-text">1.3.1 Windows 10</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-定制Hugo"><span class="nav-number">2.</span> <span class="nav-text">2. 定制Hugo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Clone大神spf13的博客项目源代码"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Clone大神spf13的博客项目源代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-删除多余文件，修改项目名称"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 删除多余文件，修改项目名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-修改配置文件config-toml"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 修改配置文件config.toml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-修改博客副标题"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 修改博客副标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-修改导航条"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 修改导航条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-修改侧边栏分享和社交"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 修改侧边栏分享和社交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-修改脚注"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 修改脚注</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-修改博文正文显示页的布局"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 修改博文正文显示页的布局</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-1-修改博客作者相关介绍"><span class="nav-number">2.8.1.</span> <span class="nav-text">2.8.1 修改博客作者相关介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-2-修改博文创建时间、字数统计、阅读时间、tags、topics的显示位置"><span class="nav-number">2.8.2.</span> <span class="nav-text">2.8.2 修改博文创建时间、字数统计、阅读时间、tags、topics的显示位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-3-修改上下篇链接的显示位置"><span class="nav-number">2.8.3.</span> <span class="nav-text">2.8.3 修改上下篇链接的显示位置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-修改字号大小"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 修改字号大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-修改网站标题"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 修改网站标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-11-修改og标签"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 修改og标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-12-多说评论系统"><span class="nav-number">2.12.</span> <span class="nav-text">2.12 多说评论系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-12-1-注册多说评论系统"><span class="nav-number">2.12.1.</span> <span class="nav-text">2.12.1 注册多说评论系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-12-2-创建站点"><span class="nav-number">2.12.2.</span> <span class="nav-text">2.12.2 创建站点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-12-3-获取植入代码"><span class="nav-number">2.12.3.</span> <span class="nav-text">2.12.3 获取植入代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-12-4-植入多说代码"><span class="nav-number">2.12.4.</span> <span class="nav-text">2.12.4 植入多说代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-12-5-设置duoshuoShortname"><span class="nav-number">2.12.5.</span> <span class="nav-text">2.12.5 设置duoshuoShortname</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-13-代码高亮"><span class="nav-number">2.13.</span> <span class="nav-text">2.13 代码高亮</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-13-1-使用在线js-加载速度慢，不推荐使用"><span class="nav-number">2.13.1.</span> <span class="nav-text">2.13.1 使用在线js(加载速度慢，不推荐使用)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-13-2-使用本地配置highlight-js（推荐使用）"><span class="nav-number">2.13.2.</span> <span class="nav-text">2.13.2 使用本地配置highlight.js（推荐使用）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-13-2-1-下载-highlight-js"><span class="nav-number">2.13.2.1.</span> <span class="nav-text">2.13.2.1 下载 highlight.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-13-2-2-植入highlight-js"><span class="nav-number">2.13.2.2.</span> <span class="nav-text">2.13.2.2 植入highlight.js</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-14-植入百度统计"><span class="nav-number">2.13.3.</span> <span class="nav-text">2.14 植入百度统计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-15-植入Google-Analytics-分析"><span class="nav-number">2.13.4.</span> <span class="nav-text">2.15 植入Google Analytics(分析)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-部署hugo到Github-pages个人主页"><span class="nav-number">2.14.</span> <span class="nav-text">3. 部署hugo到Github pages个人主页</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-在Github新建-your-hugo-project-name-仓库，用于托管hugo静态博客系统源代码"><span class="nav-number">2.14.1.</span> <span class="nav-text">3.1 在Github新建[your-hugo-project-name]仓库，用于托管hugo静态博客系统源代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-在Github新建-your-github-account-github-io仓库，用于存放hugo生成得静态博客站点文件"><span class="nav-number">2.14.2.</span> <span class="nav-text">3.2 在Github新建[your-github-account].github.io仓库，用于存放hugo生成得静态博客站点文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-创建本地的git仓库"><span class="nav-number">2.14.3.</span> <span class="nav-text">3.3 创建本地的git仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-添加远程库，把本地git仓库同远程库关联起来"><span class="nav-number">2.14.4.</span> <span class="nav-text">3.4 添加远程库，把本地git仓库同远程库关联起来</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-查看项目下是否有生成了静态页面的public目录，如果有删除掉（只要执行hugo即可重新生成），因为下一步配置子项目时，会再创建一个public目录"><span class="nav-number">2.14.5.</span> <span class="nav-text">3.5 查看项目下是否有生成了静态页面的public目录，如果有删除掉（只要执行hugo即可重新生成），因为下一步配置子项目时，会再创建一个public目录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-把-your-github-account-github-io设置为-your-hugo-project-name-的子项目，命令会clone远程仓库-your-github-account-github-io到本地并重命名为public"><span class="nav-number">2.14.5.1.</span> <span class="nav-text">3.6 把[your-github-account].github.io设置为[your-hugo-project-name]的子项目，命令会clone远程仓库[your-github-account].github.io到本地并重命名为public</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-把pulic目录写入-gitignore文件，在之后提交hugo项目源代码时就会忽略public目录"><span class="nav-number">2.14.6.</span> <span class="nav-text">3.7 把pulic目录写入.gitignore文件，在之后提交hugo项目源代码时就会忽略public目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-把submodule配置写入-gitmodules文件。如ls-A看不到该文件，可自行创建并添加内容。"><span class="nav-number">2.14.7.</span> <span class="nav-text">3.8 把submodule配置写入.gitmodules文件。如ls -A看不到该文件，可自行创建并添加内容。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-9-初次提交至github远程仓库-使用了-u参数-之后改动代码提交到github，只需git-push-origin-master"><span class="nav-number">2.14.8.</span> <span class="nav-text">3.9 初次提交至github远程仓库,使用了-u参数,之后改动代码提交到github，只需git push origin master</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-10-生成静态站点到public目录下"><span class="nav-number">2.14.9.</span> <span class="nav-text">3.10 生成静态站点到public目录下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-11-初次提交pubic目录下的静态站点内容到远程仓库"><span class="nav-number">2.14.10.</span> <span class="nav-text">3.11 初次提交pubic目录下的静态站点内容到远程仓库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-部署成功，在浏览器访问-https-your-github-account-github-io-就看到自己的博客了。"><span class="nav-number">2.15.</span> <span class="nav-text">4. 部署成功，在浏览器访问 https://[your-github-account].github.io 就看到自己的博客了。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">2.15.1.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 MingguiLu Blog All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Powered_by <a href="https://hexo.io/" target="_blank">Hexo .</a>
+        Theme_by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">Hiero .</a>
+        Hosted_by <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Baidu tongji -->
+<!--
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+-->
+
+<!-- Google Analytics -->
+<!--
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86857821-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+-->
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86857821-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

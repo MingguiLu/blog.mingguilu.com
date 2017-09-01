@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>autoit3开发helpdesk自动化工具之一:简介 | MingguiLu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="AutoItAutoIt3Helpdesk自动化" />
+  
+  
+  
+  
+  <meta name="description" content="在员工数量较多的大中型公司，Hekpdesk工程师每天重复处理大量简单而繁琐的桌面软硬件请求和报障，这些工作大多在初期进行短暂的技术学习后，很快演变为经验积累，但再丰富的经验如果无法解放时间和双手，枯燥和疲惫一直如影随形。细想一下，有些工作场景中Helpdesk工程师像机器一样在每台PC上按照相同的流程，打开相同的窗口，安装相同的软件，设置相同的选项…….听起来让人很不安？但这样的情景时常上演，比">
+<meta name="keywords" content="AutoIt,AutoIt3,Helpdesk,自动化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AutoIt3开发Helpdesk自动化工具之一:简介">
+<meta property="og:url" content="http://blog.mingguilu.com/2017/04/18/AutoIT3开发Helpdesk自动化工具之一/index.html">
+<meta property="og:site_name" content="MingguiLu Blog">
+<meta property="og:description" content="在员工数量较多的大中型公司，Hekpdesk工程师每天重复处理大量简单而繁琐的桌面软硬件请求和报障，这些工作大多在初期进行短暂的技术学习后，很快演变为经验积累，但再丰富的经验如果无法解放时间和双手，枯燥和疲惫一直如影随形。细想一下，有些工作场景中Helpdesk工程师像机器一样在每台PC上按照相同的流程，打开相同的窗口，安装相同的软件，设置相同的选项…….听起来让人很不安？但这样的情景时常上演，比">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.mingguilu.com/images/autoit3.png">
+<meta property="og:updated_time" content="2017-09-01T17:04:34.606Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AutoIt3开发Helpdesk自动化工具之一:简介">
+<meta name="twitter:description" content="在员工数量较多的大中型公司，Hekpdesk工程师每天重复处理大量简单而繁琐的桌面软硬件请求和报障，这些工作大多在初期进行短暂的技术学习后，很快演变为经验积累，但再丰富的经验如果无法解放时间和双手，枯燥和疲惫一直如影随形。细想一下，有些工作场景中Helpdesk工程师像机器一样在每台PC上按照相同的流程，打开相同的窗口，安装相同的软件，设置相同的选项…….听起来让人很不安？但这样的情景时常上演，比">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/autoit3.png">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/categories"] = "分类"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="MingguiLu Blog" rel="home"> MingguiLu Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Continuous Delivery</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1136006/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-AutoIT3开发Helpdesk自动化工具之一" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!-- 不在文章内容页面顶部显示图片 -->
+<!-- 
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/images/autoit3.png" rel="gallery_cj724t7f20002pwdf1on8gvwa">
+        <img src="/images/autoit3.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+-->
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      AutoIt3开发Helpdesk自动化工具之一:简介
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/04/18/AutoIT3开发Helpdesk自动化工具之一/" class="article-date">
+	  <time datetime="2017-04-18T00:30:57.000Z" itemprop="datePublished">四月 18, 2017</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在员工数量较多的大中型公司，Hekpdesk工程师每天重复处理大量简单而繁琐的桌面软硬件请求和报障，这些工作大多在初期进行短暂的技术学习后，很快演变为经验积累，但再丰富的经验如果无法解放时间和双手，枯燥和疲惫一直如影随形。细想一下，有些工作场景中Helpdesk工程师像机器一样在每台PC上按照相同的流程，打开相同的窗口，安装相同的软件，设置相同的选项…….听起来让人很不安？但这样的情景时常上演，比如需要给30名新员工配置办公电脑、部门需要统一安装某几款软件并进行设置、或者反过来要卸载某款软件……那么何必把自己当做机器呢，电脑本身不就是一台聪明的机器吗！</p>
+<p> 接下来，我们将使用AutoIt3来开发一个让电脑自己执行重复任务的自动化脚本工具，并打造一个简洁实用的图形界面。</p>
+ <a id="more"></a>
+<h3 id="一、AutoIt-v3-简介"><a href="#一、AutoIt-v3-简介" class="headerlink" title="一、AutoIt v3 简介"></a>一、<a href="https://www.autoitscript.com/site/autoit/" target="_blank" rel="external">AutoIt v3 简介</a></h3><p>AutoIt v3是一种免费的基于类BASIC的脚本语言，用于自动化Windows GUI和通用脚本。 它使用模拟键盘，鼠标移动和窗口/控制操作的组合，以便以其他语言（例如VBScript和SendKeys）不可能或不可靠的方式自动执行任务。 AutoIt也非常小，独立，将运行在所有版本的Windows开箱即用，不需要烦人的“runtime”要求！</p>
+<p>AutoIt最初设计用于PC“大批量交付”情况，可靠地自动化并配置成千上万的个人电脑。 随着时间的推移，它已经成为一种强大的语言，它支持复杂的表达式，用户自定义函数，循环以及经验丰富的脚本编写期望。</p>
+<h4 id="AutoIt-v3-的优秀特性"><a href="#AutoIt-v3-的优秀特性" class="headerlink" title="AutoIt v3 的优秀特性:"></a>AutoIt v3 的优秀特性:</h4> <p>
+
+<ul>
+<li>简单易学的类BASIC语法</li>
+<li>模拟按键和鼠标移动</li>
+<li>操作窗口和进程</li>
+<li>与所有标准的Windows控件进行交互</li>
+<li>脚本可以编译成独立的可执行文件</li>
+<li>创建图形用户界面（GUI）</li>
+<li>支持COM</li>
+<li>正则表达式</li>
+<li>直接调用外部DLL和Windows API函数</li>
+<li>Scriptable RunAs函数</li>
+<li>详细的帮助文件和大型社区支持论坛</li>
+<li>兼容Windows XP / Server 2003 / Vista / Windows 7 / Server 2008 / Server  2008 R2 / Windows 8 / Server 2012 R2</li>
+<li>支持Unicode和x64</li>
+<li>支持数字签名</li>
+<li>适用于Windows Vista的用户帐户控制（UAC）</li>
+</ul>
+</p><p>最重要的是，AutoIt将持续免费 - 但是如果你想支持在项目和网络托管上花费的时间，金钱和精力，那么你可以<a href="https://www.autoitscript.com/site/donate/" target="_blank" rel="external">捐赠</a>。</p>
+<h4 id="搭建AutoIt-v3-脚本开发环境"><a href="#搭建AutoIt-v3-脚本开发环境" class="headerlink" title="搭建AutoIt v3 脚本开发环境"></a>搭建AutoIt v3 脚本开发环境</h4><p></p><p><br><a href="https://www.autoitscript.com/site/autoit/downloads/" target="_blank" rel="external">下载AutoIt v3 开发工具</a></p>
+<p>下载时建议选择AutoIt3完全安装程序，它包含了：</p>
+<ul>
+<li>AutoIt 脚本运行软件、文档和实例</li>
+<li>Aut2Exe - 将可执行脚本转换为独立的.exe文件</li>
+<li>AutoitX - DLL/COM control。 具体作用我也不明白，安装后该目录中存放着写.dll文件</li>
+<li>Editor - 一个删减版本的SciTE脚本编辑器</li>
+<li>Au3Info - 用于探测指定窗口的详细信息，包括窗口大小和坐标、标题和文本、控件类型和ID等</li>
+</ul>
+<p>安装时以缺省配置安装即可，安装完成即可获得我们所需的全部环境</p>
+<h3 id="二、项目简介"><a href="#二、项目简介" class="headerlink" title="二、项目简介"></a>二、项目简介</h3><p>接下来将使用AutoIt3开发一个“Helpdesk自动化工具”，并打造一个简洁实用的用户图形界面以便交互。</p>
+<p><img src="/images/170419_01_02_01.png" alt=""></p>
+<h4 id="主要用途"><a href="#主要用途" class="headerlink" title="主要用途"></a>主要用途</h4><p> 用于新员工入职后电脑的自动化配置</p>
+<h4 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h4><ul>
+<li>随时随地开箱即用：通过文件共享在内网每一台PC上运行本工具和软件，并兼容各种意外的情况</li>
+</ul>
+<p>我们更希望完全实现无人值守，但这并不容易。由于AutoIt3通常使用标题和文本来等待、激活、操作窗口，所以意外窗口使得自动化过程很脆弱。管理员用户和普通用户下、软件重复安装时、电脑运行速度、甚至工具本身都可能造成意外窗口，这需要反复调试来使脚本兼容各种场景。</p>
+<ul>
+<li>自动进行多任务的组合：在图形界面上通过点击预设的操作选项和用户选项，自动勾选所需的功能模块</li>
+</ul>
+<p>如上图，点击“驻地(含VPN)”，会自动勾选上所需的系统配置、软件安装项和自动重启系统+登录域账户选项，在点击“运行”后自动配置安装，并自动重启，自动登录用户账户；当用户帐号登陆后，再次运行工具勾选对应的“用户选项”进行outlook、skype等配置</p>
+<ul>
+<li>自动进行系统配置： 为了实现桌面统一规范化管理或应对之后可能面临的需求</li>
+</ul>
+<p>例如：创建一个本地用户Admin、添加IT组至本地管理员组    </p>
+<p>公司在各地开设分职场，但由于员工数量较少未安排驻留的Helpdesk工程师，所有的需求和故障通过电话或远程桌面进行支持，为了应对电脑出现脱域无法登录，或本地管理员密码被爆破的情况，可以在初始配置时创建一个本地admin用户，加入users组，以便用户能顺利登录桌面提供TeamViewer远程授权；而事先将Helpdesk组加入电脑本地管理员组，可在远程到用户桌面后通过切换用户，夺回管理员权限并重置密码</p>
+<ul>
+<li>自动进行软件安装：为了安装多个软件组合时，自动启动安装程序，自动配置选项直至安装完成</li>
+</ul>
+<p>一般我们会将操纵系统和常用的办公软件通过MDT做统一部署，比如Office、输入法、PDF阅读器、桌面词典等，而各部门专用的业务软件则会在配置电脑时进行安装</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AutoIt/">AutoIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AutoIt3/">AutoIt3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Helpdesk/">Helpdesk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自动化/">自动化</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wechatpay.png',
+  alipayImage: '/css/images/alipay.jpg'
+});
+</script>
+      
+
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDU3OC83MTMz">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/21/AutoIt3开发Helpdesk自动化工具之二/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          AutoIt3开发Helpdesk自动化工具之二:常用语法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/12/Python3从文件中读取数据/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Python3从文件中读取数据</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、AutoIt-v3-简介"><span class="nav-number">1.</span> <span class="nav-text">一、AutoIt v3 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AutoIt-v3-的优秀特性"><span class="nav-number">1.1.</span> <span class="nav-text">AutoIt v3 的优秀特性:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#搭建AutoIt-v3-脚本开发环境"><span class="nav-number">1.2.</span> <span class="nav-text">搭建AutoIt v3 脚本开发环境</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、项目简介"><span class="nav-number">2.</span> <span class="nav-text">二、项目简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主要用途"><span class="nav-number">2.1.</span> <span class="nav-text">主要用途</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#功能实现"><span class="nav-number">2.2.</span> <span class="nav-text">功能实现</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 MingguiLu Blog All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Powered_by <a href="https://hexo.io/" target="_blank">Hexo .</a>
+        Theme_by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">Hiero .</a>
+        Hosted_by <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Baidu tongji -->
+<!--
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+-->
+
+<!-- Google Analytics -->
+<!--
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86857821-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+-->
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86857821-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

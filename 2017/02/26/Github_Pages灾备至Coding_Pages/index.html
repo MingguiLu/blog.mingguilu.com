@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>github_pages灾备至coding_pages | MingguiLu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Github PagesCoding PagesGitCafe" />
+  
+  
+  
+  
+  <meta name="description" content="周四晚间在家访问我托管在Github Pages上的Blog时发现网站打不开，确认本地网络没问题，尝试清理浏览器缓存，刷新系统缓存，问题依旧。下意识的回想起来今天我修改代码啦？调整过DNSPod的解析记录啦？还是站点没备案被和谐了？……打开微博刷新了一下，看到关注的几个技术大V:Easy、刘巍峰、梁斌penny都发布或转发了Github无法访问的消息，我有点惊讶：卧槽！why？">
+<meta name="keywords" content="Github Pages,Coding Pages,GitCafe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Github_Pages灾备至Coding_Pages">
+<meta property="og:url" content="http://blog.mingguilu.com/2017/02/26/Github_Pages灾备至Coding_Pages/index.html">
+<meta property="og:site_name" content="MingguiLu Blog">
+<meta property="og:description" content="周四晚间在家访问我托管在Github Pages上的Blog时发现网站打不开，确认本地网络没问题，尝试清理浏览器缓存，刷新系统缓存，问题依旧。下意识的回想起来今天我修改代码啦？调整过DNSPod的解析记录啦？还是站点没备案被和谐了？……打开微博刷新了一下，看到关注的几个技术大V:Easy、刘巍峰、梁斌penny都发布或转发了Github无法访问的消息，我有点惊讶：卧槽！why？">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.mingguilu.com/images/170226_01_02.jpg">
+<meta property="og:updated_time" content="2017-09-01T16:52:31.445Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Github_Pages灾备至Coding_Pages">
+<meta name="twitter:description" content="周四晚间在家访问我托管在Github Pages上的Blog时发现网站打不开，确认本地网络没问题，尝试清理浏览器缓存，刷新系统缓存，问题依旧。下意识的回想起来今天我修改代码啦？调整过DNSPod的解析记录啦？还是站点没备案被和谐了？……打开微博刷新了一下，看到关注的几个技术大V:Easy、刘巍峰、梁斌penny都发布或转发了Github无法访问的消息，我有点惊讶：卧槽！why？">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/170226_01_02.jpg">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/categories"] = "分类"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="MingguiLu Blog" rel="home"> MingguiLu Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Continuous Delivery</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1136006/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Github_Pages灾备至Coding_Pages" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!-- 不在文章内容页面顶部显示图片 -->
+<!-- 
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/images/170226_01_02.jpg" rel="gallery_cj724t7fw000apwdfju7nsckq">
+        <img src="/images/170226_01_02.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+-->
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Github_Pages灾备至Coding_Pages
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/02/26/Github_Pages灾备至Coding_Pages/" class="article-date">
+	  <time datetime="2017-02-26T01:32:57.000Z" itemprop="datePublished">二月 26, 2017</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>周四晚间在家访问我托管在Github Pages上的Blog时发现网站打不开，确认本地网络没问题，尝试清理浏览器缓存，刷新系统缓存，问题依旧。下意识的回想起来今天我修改代码啦？调整过DNSPod的解析记录啦？还是站点没备案被和谐了？……打开微博刷新了一下，看到关注的几个技术大V:Easy、刘巍峰、梁斌penny都发布或转发了Github无法访问的消息，我有点惊讶：卧槽！why？</p>
+<a id="more"></a>
+<p>随即查看了DNSPod的监控，看到托管在Github Pages的三个站点全部告警。</p>
+<p><img src="/images/170226_01_01.jpg" alt=""></p>
+<p>零点前后部分地区开始恢复访问，但周五上午我在工地访问Github依然时断时续，速度极慢，而github.io始终无法访问，直到中午才恢复正常。事后没能找到关于本次Github无法访问的详细解析，但发现相对我这样的Git小白用户，真正的开发人员似乎都见怪不怪，这次只是又一次而已。</p>
+<p>我想起来刚接触Hugo时在<a href="http://www.gohugo.org/" target="_blank" rel="external">Hugo中文文档</a>看到的那篇<a href="http://www.gohugo.org/post/coderzh-automated-deploy-hugo/" target="_blank" rel="external">通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages</a>，那时完全看不懂，其实现在也是…… 不过我突然明白为什么托管在Github上的代码也要容灾，虽然Github的服务相对稳定可靠，但我们的网络并非如此，将代码备份到国内的代码托管服务上是很有必要的。目前我并不需要自动部署项目至Github和GitCafe，我只希望能够将本地代码同时push到两个远程库，手工创建版本库，并推送到远程仓库，可以让我更熟练Git的常用命令。</p>
+<p>这个方法很简单：先将Github上已有的仓库导入到Coding，在本地.git版本库配置文件中添加Coding远程仓库的地址，一次push即可将代码同时推送到Github和Coding。</p>
+<h3 id="1-注册Coding"><a href="#1-注册Coding" class="headerlink" title="1. 注册Coding"></a>1. 注册Coding</h3><p>起初我是冲着<a href="https://gitcafe.com/" target="_blank" rel="external">GitCafe</a>去的，但现在已经合并到<a href="https://coding.net" target="_blank" rel="external">Coding</a>了。</p>
+<p><img src="/images/170226_01_01_01.png" alt=""></p>
+<h3 id="2-创建项目的同时导入Github的仓库"><a href="#2-创建项目的同时导入Github的仓库" class="headerlink" title="2. 创建项目的同时导入Github的仓库"></a>2. 创建项目的同时导入Github的仓库</h3><p><img src="/images/170226_01_02_01.png" alt=""></p>
+<h3 id="3-本地-git版本库追加Coding远程仓库地址"><a href="#3-本地-git版本库追加Coding远程仓库地址" class="headerlink" title="3. 本地.git版本库追加Coding远程仓库地址"></a>3. 本地.git版本库追加Coding远程仓库地址</h3><p>修改 .gitmodules </p>
+<pre><code>$ vim .gitmodules 
+[submodule &quot;public&quot;]
+    path = public
+    url = git@github.com:mingguilu/blog.mingguilu.com.git
+    url = git@git.coding.net:Mingguilu/blog.mingguilu.com.git        # 添加Coding远程仓库地址
+</code></pre><p>修改 .git/config</p>
+<pre><code>$ vim .git/config 
+[core]
+    repositoryformatversion = 0
+    filemode = true
+    bare = false
+    logallrefupdates = true
+[remote &quot;origin&quot;]
+    url = git@github.com:mingguilu/blog_mingguilu_com.git
+    url = git@git.coding.net:Mingguilu/blog_mingguilu_com.git        # 添加Coding远程仓库地址
+    fetch = +refs/heads/*:refs/remotes/origin/*
+[branch &quot;master&quot;]
+    remote = origin
+    merge = refs/heads/master
+[submodule &quot;public&quot;]
+    url = git@github.com:mingguilu/blog.mingguilu.com.git
+    url = git@git.coding.net:Mingguilu/blog.mingguilu.com.git        # 添加Coding远程仓库地址
+</code></pre><p>修改 .git/modules/public/config</p>
+<pre><code>$ vim .git/modules/public/config 
+[core]
+    repositoryformatversion = 0
+    filemode = true
+    bare = false
+    logallrefupdates = true
+    worktree = ../../../public
+[remote &quot;origin&quot;]
+    url = git@github.com:mingguilu/blog.mingguilu.com.git
+    url = git@git.coding.net:Mingguilu/blog.mingguilu.com.git        # 添加Coding远程仓库地址
+    fetch = +refs/heads/*:refs/remotes/origin/*
+[branch &quot;master&quot;]
+    remote = origin
+    merge = refs/heads/master
+</code></pre><h3 id="4-至此，一次push即可同时推送到Github和Coding"><a href="#4-至此，一次push即可同时推送到Github和Coding" class="headerlink" title="4. 至此，一次push即可同时推送到Github和Coding"></a>4. 至此，一次push即可同时推送到Github和Coding</h3><pre><code>$ git push  origin master 
+对象计数中: 13, 完成.
+Delta compression using up to 4 threads.
+压缩对象中: 100% (13/13), 完成.
+写入对象中: 100% (13/13), 1.68 MiB | 368.00 KiB/s, 完成.
+Total 13 (delta 5), reused 0 (delta 0)
+remote: Resolving deltas: 100% (5/5), completed with 5 local objects.
+To git@github.com:mingguilu/blog.mingguilu.com.git            # 推送至Github远程仓库
+   c5e9106..ebb5fca  master -&gt; master
+对象计数中: 13, 完成.
+Delta compression using up to 4 threads.
+压缩对象中: 100% (13/13), 完成.
+写入对象中: 100% (13/13), 1.68 MiB | 0 bytes/s, 完成.
+Total 13 (delta 5), reused 0 (delta 0)
+To git@git.coding.net:Mingguilu/blog.mingguilu.com.git        # 推送至Coding远程仓库
+   c5e9106..ebb5fca  master -&gt; master
+</code></pre><h3 id="5-开启Coding仓库的Pages服务并绑定域名"><a href="#5-开启Coding仓库的Pages服务并绑定域名" class="headerlink" title="5. 开启Coding仓库的Pages服务并绑定域名"></a>5. 开启Coding仓库的Pages服务并绑定域名</h3><p><img src="/images/170226_01_05_01.png" alt=""></p>
+<h3 id="6-在DNSPod的增加域名别名解析记录至pages-coding-me-，并设置为默认线路，xxx-github-io设置为国外线路"><a href="#6-在DNSPod的增加域名别名解析记录至pages-coding-me-，并设置为默认线路，xxx-github-io设置为国外线路" class="headerlink" title="6. 在DNSPod的增加域名别名解析记录至pages.coding.me.，并设置为默认线路，xxx.github.io设置为国外线路"></a>6. 在DNSPod的增加域名别名解析记录至pages.coding.me.，并设置为默认线路，xxx.github.io设置为国外线路</h3><p>到这里，已完成将Github仓库导入到Coding项目作为备份，并实现Blog的在线访问的灾备，和国内访问速度的优化。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Coding-Pages/">Coding Pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitCafe/">GitCafe</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github-Pages/">Github Pages</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wechatpay.png',
+  alipayImage: '/css/images/alipay.jpg'
+});
+</script>
+      
+
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDU3OC83MTMz">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/12/Python3从文件中读取数据/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Python3从文件中读取数据
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/14/关于JennyCh_Blog的使用文档/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">关于JennyCh_Blog的使用文档</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-注册Coding"><span class="nav-number">1.</span> <span class="nav-text">1. 注册Coding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-创建项目的同时导入Github的仓库"><span class="nav-number">2.</span> <span class="nav-text">2. 创建项目的同时导入Github的仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-本地-git版本库追加Coding远程仓库地址"><span class="nav-number">3.</span> <span class="nav-text">3. 本地.git版本库追加Coding远程仓库地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-至此，一次push即可同时推送到Github和Coding"><span class="nav-number">4.</span> <span class="nav-text">4. 至此，一次push即可同时推送到Github和Coding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-开启Coding仓库的Pages服务并绑定域名"><span class="nav-number">5.</span> <span class="nav-text">5. 开启Coding仓库的Pages服务并绑定域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-在DNSPod的增加域名别名解析记录至pages-coding-me-，并设置为默认线路，xxx-github-io设置为国外线路"><span class="nav-number">6.</span> <span class="nav-text">6. 在DNSPod的增加域名别名解析记录至pages.coding.me.，并设置为默认线路，xxx.github.io设置为国外线路</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 MingguiLu Blog All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Powered_by <a href="https://hexo.io/" target="_blank">Hexo .</a>
+        Theme_by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">Hiero .</a>
+        Hosted_by <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Baidu tongji -->
+<!--
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+-->
+
+<!-- Google Analytics -->
+<!--
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86857821-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+-->
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86857821-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
