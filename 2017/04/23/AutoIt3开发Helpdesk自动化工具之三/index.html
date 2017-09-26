@@ -19,12 +19,12 @@
 <meta property="og:site_name" content="MingguiLu Blog">
 <meta property="og:description" content="本章将结合示例，演示如何编写自动配置系统的脚本">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://blog.mingguilu.com/images/autoit3.png">
-<meta property="og:updated_time" content="2017-09-01T16:27:41.702Z">
+<meta property="og:image" content="http://blog.mingguilu.com/images/photos/autoit3.png">
+<meta property="og:updated_time" content="2017-09-26T08:24:31.354Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AutoIt3开发Helpdesk自动化工具之三:系统配置">
 <meta name="twitter:description" content="本章将结合示例，演示如何编写自动配置系统的脚本">
-<meta name="twitter:image" content="http://blog.mingguilu.com/images/autoit3.png">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/photos/autoit3.png">
   
   <link rel="icon" href="/css/images/favicon.ico">
   
@@ -147,8 +147,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/autoit3.png" rel="gallery_cj78o1ekd0001h0dfs3pm407i">
-        <img src="/images/autoit3.png" itemprop="image">
+      <a class="article-gallery-img fancybox" href="/images/photos/autoit3.png" rel="gallery_cj81cf1kt0003mwdfz5ewnz1y">
+        <img src="/images/photos/autoit3.png" itemprop="image">
       </a>
     
   </div>
@@ -211,7 +211,7 @@ EndIf
 
 ; Script End
 </code></pre><h3 id="二、创建普通用户Admin"><a href="#二、创建普通用户Admin" class="headerlink" title="二、创建普通用户Admin"></a>二、创建普通用户Admin</h3><p>当电脑在外网或脱域、administrator密码被篡改或不便告知用户、用户忘记了域账户的登录密码等极端情况下，无法登录到桌面时，可使用admin用户登录到桌面后运行远程协助软件</p>
-<p><img src="/images/170423_01_02_01.jpg" alt=""></p>
+<p><img src="/images/20170423/170423_01_02_01.jpg" alt=""></p>
 <pre><code> #cs ----------------------------------------------------------------------------
 
  AutoIt Version: 3.3.14.2
@@ -303,11 +303,11 @@ Global $domainName = &quot;awesomeit.com&quot;
 Global $itUserName = &quot;mingguilu&quot;
 ;;定义变量$itPassword存储IT的密码
 Global $itPassword = &quot;Password@1024&quot;
-</code></pre><p><img src="/images/170423_01_03_01.jpg" alt=""></p>
+</code></pre><p><img src="/images/20170423/170423_01_03_01.jpg" alt=""></p>
 <pre><code>;;定义变量$hostName存储用户交互中输入的计算机名
 Global $hostName
 Global $hostName = InputBox(&quot;输入&quot;,&quot;请输入计算机名：&quot;,&quot;&quot;)
-</code></pre><p><img src="/images/170423_01_03_02.jpg" alt=""></p>
+</code></pre><p><img src="/images/20170423/170423_01_03_02.jpg" alt=""></p>
 <pre><code>If IsAdmin() Then
    ;;打开系统属性控制台
    Run(&quot;control sysdm.cpl&quot;)
@@ -319,7 +319,7 @@ WinWaitActive(&quot;系统属性&quot;,&quot;计算机名&quot;)
 SLEEP(500)
 ;;进入“更改”
 Send(&quot;!c&quot;)
-</code></pre><p><img src="/images/170423_01_03_03.jpg" alt="">  </p>
+</code></pre><p><img src="/images/20170423/170423_01_03_03.jpg" alt="">  </p>
 <pre><code>WinWaitActive(&quot;计算机名/域更改&quot;,&quot;计算机名(&amp;C):&quot;)
 SLEEP(500)
 WinActivate(&quot;计算机名/域更改&quot;,&quot;计算机名(&amp;C):&quot;)
@@ -334,7 +334,7 @@ ControlSetText(&quot;计算机名/域更改&quot;,&quot;计算机名(&amp;C):&qu
 SLEEP(500)
 ;;点击“确定”
 ControlClick(&quot;计算机名/域更改&quot;,&quot;计算机名(&amp;C):&quot;,&quot;Button6&quot;,&quot;left&quot;,1)
-</code></pre><p><img src="/images/170423_01_03_04.jpg" alt="">  </p>
+</code></pre><p><img src="/images/20170423/170423_01_03_04.jpg" alt="">  </p>
 <pre><code>WinWaitActive(&quot;Windows 安全&quot;)
 SLEEP(500)
 ;;自动填写IT人员账号
@@ -345,7 +345,7 @@ ControlSetText(&quot;Windows 安全&quot;,&quot;&quot;,&quot;Edit2&quot;,$itPass
 SLEEP(500)
 ;;点击“确定”
 ControlClick(&quot;Windows 安全&quot;,&quot;&quot;,&quot;Button2&quot;,&quot;left&quot;,1)
-</code></pre><p><img src="/images/170423_01_03_05.jpg" alt="">  </p>
+</code></pre><p><img src="/images/20170423/170423_01_03_05.jpg" alt="">  </p>
 <pre><code>WinWaitActive(&quot;计算机名/域更改&quot;,&quot;欢迎加入 awesomeit.com 域&quot;)
 SLEEP(500)
 ControlClick(&quot;计算机名/域更改&quot;,&quot;欢迎加入 awesomeit.com 域&quot;,&quot;Button1&quot;,&quot;left&quot;,1) 
@@ -363,7 +363,7 @@ ControlClick(&quot;计算机名/域更改&quot;,&quot;欢迎加入 awesomeit.com
               $i = $i + 1000
        EndIf
 WEnd
-</code></pre><p><img src="/images/170423_01_03_06.jpg" alt=""> </p>
+</code></pre><p><img src="/images/20170423/170423_01_03_06.jpg" alt=""> </p>
 <pre><code>WinWaitActive(&quot;计算机名/域更改&quot;,&quot;确定&quot;)
 SLEEP(500)
 Send(&quot;{ENTER}&quot;)

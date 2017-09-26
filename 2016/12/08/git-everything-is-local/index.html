@@ -19,12 +19,12 @@
 <meta property="og:site_name" content="MingguiLu Blog">
 <meta property="og:description" content="1. 安装gitwindows下载并安装Git for Windows，默认选项安装到Ajusting your PATH environment时，勾选第二项Run Git from Windows Command Prompt，即可在windows命令行使用git命令，不过Git Bash用户体验更好 ubnutusudo apt-get install git">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://blog.mingguilu.com/images/git_00.png">
-<meta property="og:updated_time" content="2017-09-01T16:29:25.254Z">
+<meta property="og:image" content="http://blog.mingguilu.com/images/photos/git_00.png">
+<meta property="og:updated_time" content="2017-09-26T08:24:52.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git-everything-is-local">
 <meta name="twitter:description" content="1. 安装gitwindows下载并安装Git for Windows，默认选项安装到Ajusting your PATH environment时，勾选第二项Run Git from Windows Command Prompt，即可在windows命令行使用git命令，不过Git Bash用户体验更好 ubnutusudo apt-get install git">
-<meta name="twitter:image" content="http://blog.mingguilu.com/images/git_00.png">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/photos/git_00.png">
   
   <link rel="icon" href="/css/images/favicon.ico">
   
@@ -147,8 +147,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/git_00.png" rel="gallery_cj78o1eln000lh0dfoou5kus1">
-        <img src="/images/git_00.png" itemprop="image">
+      <a class="article-gallery-img fancybox" href="/images/photos/git_00.png" rel="gallery_cj81cf1ln000jmwdf59z4eoq1">
+        <img src="/images/photos/git_00.png" itemprop="image">
       </a>
     
   </div>
@@ -195,7 +195,7 @@ git config --global color.ui true
 <pre><code>git init
 </code></pre><p>克隆线上的项目</p>
 <pre><code>git clone https://github.com/[github-account]/[project-name].git
-</code></pre><h3 id="4-添加及提交文件"><a href="#4-添加及提交文件" class="headerlink" title="4. 添加及提交文件"></a>4. 添加及提交文件</h3><p><img src="/images/git_3_01.png" alt=""></p>
+</code></pre><h3 id="4-添加及提交文件"><a href="#4-添加及提交文件" class="headerlink" title="4. 添加及提交文件"></a>4. 添加及提交文件</h3><p><img src="/images/20161208/git_3_01.png" alt=""></p>
 <p>添加文件到staying area</p>
 <pre><code>git add [file-name]
 </code></pre><p>提交改动到git repository</p>
@@ -224,7 +224,7 @@ U: 文件没有被合并(你需要完成合并才能进行提交)
 X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report)
 </code></pre><p>忽略~结尾的文件</p>
 <pre><code>echo &quot;*~&quot; &gt; .gitignore
-</code></pre><h3 id="6-查看文件区别"><a href="#6-查看文件区别" class="headerlink" title="6. 查看文件区别"></a>6. 查看文件区别</h3><p><img src="/images/git_6_01.png" alt=""></p>
+</code></pre><h3 id="6-查看文件区别"><a href="#6-查看文件区别" class="headerlink" title="6. 查看文件区别"></a>6. 查看文件区别</h3><p><img src="/images/20161208/git_6_01.png" alt=""></p>
 <p>查看working directory 和 staying area 之间的区别</p>
 <pre><code>git diff
 </code></pre><p>查看staying area 和 git repository 之间的区别</p>
@@ -233,7 +233,7 @@ X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report
 <pre><code>git diff HEAD
 </code></pre><p>使用–stat参数查看简短信息</p>
 <pre><code>git diff --stat [--staged|HEAD]
-</code></pre><h3 id="7-撤销误操作"><a href="#7-撤销误操作" class="headerlink" title="7. 撤销误操作"></a>7. 撤销误操作</h3><p><img src="/images/git_7_01.png" alt=""></p>
+</code></pre><h3 id="7-撤销误操作"><a href="#7-撤销误操作" class="headerlink" title="7. 撤销误操作"></a>7. 撤销误操作</h3><p><img src="/images/20161208/git_7_01.png" alt=""></p>
 <p>从git repository 撤销到staying area</p>
 <pre><code>git reset [file-name]
 </code></pre><p>从staying area撤销到working directory</p>
@@ -252,7 +252,7 @@ X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report
 <pre><code>git stash list
 </code></pre><p>恢复暂存区</p>
 <pre><code>git stash pop
-</code></pre><h3 id="10-图解commit对象"><a href="#10-图解commit对象" class="headerlink" title="10. 图解commit对象"></a>10. 图解commit对象</h3><p><img src="/images/git_10_01.png" alt=""></p>
+</code></pre><h3 id="10-图解commit对象"><a href="#10-图解commit对象" class="headerlink" title="10. 图解commit对象"></a>10. 图解commit对象</h3><p><img src="/images/20161208/git_10_01.png" alt=""></p>
 <p>查看commit记录</p>
 <pre><code>git log
 </code></pre><p>或</p>
@@ -295,7 +295,7 @@ tag 标签（commit的别名）
 </code></pre><p>一路回车使用默认值，完成之后在用户主目录中打开 <code>.ssh</code>目录，可以看到</p>
 <pre><code>id_rsa        私钥，不能泄露出去
 id_rsa.pub    公钥，可告诉任何人
-</code></pre><p>登录Github，依次点击”settings”——&gt;”SSH and GPG keys”——&gt;”New SSH Key”<br><img src="/images/git_13_01.png" alt=""></p>
+</code></pre><p>登录Github，依次点击”settings”——&gt;”SSH and GPG keys”——&gt;”New SSH Key”<br><img src="/images/20161208/git_13_01.png" alt=""></p>
 <p>填写Title，在Key文本框里粘贴<code>id_rsa.pub</code>文件的内容，点击”Add SSH Key”</p>
 <h3 id="14-同步远程Github仓库"><a href="#14-同步远程Github仓库" class="headerlink" title="14. 同步远程Github仓库"></a>14. 同步远程Github仓库</h3><p>关联本地仓库与远程仓库</p>
 <pre><code>git remote add origin git@github.com:[github-account]/[repo-name].git
@@ -303,7 +303,7 @@ id_rsa.pub    公钥，可告诉任何人
 <pre><code>git push -u origin master
 </code></pre><p>之后本地做了提交，即可推送到远程库</p>
 <pre><code>git push origin master
-</code></pre><h3 id="15-从Github远程库克隆"><a href="#15-从Github远程库克隆" class="headerlink" title="15. 从Github远程库克隆"></a>15. 从Github远程库克隆</h3><p>创建Github Repositories远程库<br><img src="/images/git_15_01.png" alt=""></p>
+</code></pre><h3 id="15-从Github远程库克隆"><a href="#15-从Github远程库克隆" class="headerlink" title="15. 从Github远程库克隆"></a>15. 从Github远程库克隆</h3><p>创建Github Repositories远程库<br><img src="/images/20161208/git_15_01.png" alt=""></p>
 <p>把远程库克隆到本地</p>
 <pre><code>git clone git@github.com:[github-account]/[repo-name].git
 </code></pre><p>或</p>
