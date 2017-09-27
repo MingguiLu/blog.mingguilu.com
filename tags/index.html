@@ -109,6 +109,24 @@ var themeMenus = {};
 </header>
 
 
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1136006/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
 
 
   <div id="container">
@@ -134,13 +152,19 @@ var themeMenus = {};
         <!-- 
         <div id='tag_cloud' class="tags">
             
-                <a href="#AutoIt" title="AutoIt" rel="5">AutoIt</a>
+                <a href="#AutoIt" title="AutoIt" rel="6">AutoIt</a>
             
-                <a href="#AutoIt3" title="AutoIt3" rel="5">AutoIt3</a>
+                <a href="#AutoIt3" title="AutoIt3" rel="6">AutoIt3</a>
             
-                <a href="#Helpdesk" title="Helpdesk" rel="5">Helpdesk</a>
+                <a href="#Helpdesk" title="Helpdesk" rel="6">Helpdesk</a>
             
-                <a href="#自动化" title="自动化" rel="5">自动化</a>
+                <a href="#自动化" title="自动化" rel="6">自动化</a>
+            
+                <a href="#Github Pages" title="Github Pages" rel="3">Github Pages</a>
+            
+                <a href="#Coding Pages" title="Coding Pages" rel="1">Coding Pages</a>
+            
+                <a href="#GitCafe" title="GitCafe" rel="1">GitCafe</a>
             
                 <a href="#Python" title="Python" rel="1">Python</a>
             
@@ -152,27 +176,21 @@ var themeMenus = {};
             
                 <a href="#readlines()" title="readlines()" rel="1">readlines()</a>
             
-                <a href="#Git" title="Git" rel="1">Git</a>
-            
-                <a href="#git clone" title="git clone" rel="1">git clone</a>
-            
-                <a href="#warning: Clone succeeded, but checkout failed." title="warning: Clone succeeded, but checkout failed." rel="1">warning: Clone succeeded, but checkout failed.</a>
-            
                 <a href="#git" title="git" rel="2">git</a>
             
                 <a href="#gitbash" title="gitbash" rel="1">gitbash</a>
-            
-                <a href="#Github Pages" title="Github Pages" rel="3">Github Pages</a>
-            
-                <a href="#Coding Pages" title="Coding Pages" rel="1">Coding Pages</a>
-            
-                <a href="#GitCafe" title="GitCafe" rel="1">GitCafe</a>
             
                 <a href="#imkind" title="imkind" rel="1">imkind</a>
             
                 <a href="#hugo" title="hugo" rel="3">hugo</a>
             
                 <a href="#blog" title="blog" rel="1">blog</a>
+            
+                <a href="#Git" title="Git" rel="1">Git</a>
+            
+                <a href="#git clone" title="git clone" rel="1">git clone</a>
+            
+                <a href="#warning: Clone succeeded, but checkout failed." title="warning: Clone succeeded, but checkout failed." rel="1">warning: Clone succeeded, but checkout failed.</a>
             
                 <a href="#Hugo" title="Hugo" rel="1">Hugo</a>
             
@@ -196,19 +214,31 @@ var themeMenus = {};
         <div id='tag_cloud' class="tags">       
                     
                         <h1 class="archive-tag">
-                            <a href="/tags/AutoIt" title="AutoIt" rel="5">AutoIt</a>
+                            <a href="/tags/AutoIt" title="AutoIt" rel="6">AutoIt</a>
                         </h1>
                     
                         <h1 class="archive-tag">
-                            <a href="/tags/AutoIt3" title="AutoIt3" rel="5">AutoIt3</a>
+                            <a href="/tags/AutoIt3" title="AutoIt3" rel="6">AutoIt3</a>
                         </h1>
                     
                         <h1 class="archive-tag">
-                            <a href="/tags/Helpdesk" title="Helpdesk" rel="5">Helpdesk</a>
+                            <a href="/tags/Helpdesk" title="Helpdesk" rel="6">Helpdesk</a>
                         </h1>
                     
                         <h1 class="archive-tag">
-                            <a href="/tags/自动化" title="自动化" rel="5">自动化</a>
+                            <a href="/tags/自动化" title="自动化" rel="6">自动化</a>
+                        </h1>
+                    
+                        <h1 class="archive-tag">
+                            <a href="/tags/Github Pages" title="Github Pages" rel="3">Github Pages</a>
+                        </h1>
+                    
+                        <h1 class="archive-tag">
+                            <a href="/tags/Coding Pages" title="Coding Pages" rel="1">Coding Pages</a>
+                        </h1>
+                    
+                        <h1 class="archive-tag">
+                            <a href="/tags/GitCafe" title="GitCafe" rel="1">GitCafe</a>
                         </h1>
                     
                         <h1 class="archive-tag">
@@ -232,35 +262,11 @@ var themeMenus = {};
                         </h1>
                     
                         <h1 class="archive-tag">
-                            <a href="/tags/Git" title="Git" rel="1">Git</a>
-                        </h1>
-                    
-                        <h1 class="archive-tag">
-                            <a href="/tags/git clone" title="git clone" rel="1">git clone</a>
-                        </h1>
-                    
-                        <h1 class="archive-tag">
-                            <a href="/tags/warning: Clone succeeded, but checkout failed." title="warning: Clone succeeded, but checkout failed." rel="1">warning: Clone succeeded, but checkout failed.</a>
-                        </h1>
-                    
-                        <h1 class="archive-tag">
                             <a href="/tags/git" title="git" rel="2">git</a>
                         </h1>
                     
                         <h1 class="archive-tag">
                             <a href="/tags/gitbash" title="gitbash" rel="1">gitbash</a>
-                        </h1>
-                    
-                        <h1 class="archive-tag">
-                            <a href="/tags/Github Pages" title="Github Pages" rel="3">Github Pages</a>
-                        </h1>
-                    
-                        <h1 class="archive-tag">
-                            <a href="/tags/Coding Pages" title="Coding Pages" rel="1">Coding Pages</a>
-                        </h1>
-                    
-                        <h1 class="archive-tag">
-                            <a href="/tags/GitCafe" title="GitCafe" rel="1">GitCafe</a>
                         </h1>
                     
                         <h1 class="archive-tag">
@@ -273,6 +279,18 @@ var themeMenus = {};
                     
                         <h1 class="archive-tag">
                             <a href="/tags/blog" title="blog" rel="1">blog</a>
+                        </h1>
+                    
+                        <h1 class="archive-tag">
+                            <a href="/tags/Git" title="Git" rel="1">Git</a>
+                        </h1>
+                    
+                        <h1 class="archive-tag">
+                            <a href="/tags/git clone" title="git clone" rel="1">git clone</a>
+                        </h1>
+                    
+                        <h1 class="archive-tag">
+                            <a href="/tags/warning: Clone succeeded, but checkout failed." title="warning: Clone succeeded, but checkout failed." rel="1">warning: Clone succeeded, but checkout failed.</a>
                         </h1>
                     
                         <h1 class="archive-tag">
@@ -314,6 +332,25 @@ var themeMenus = {};
                 <h1 class="archive-tag">AutoIt</h1>
             </div>
             <div class="archives">
+                
+                    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/" class="archive-article-date">
+		  <time datetime="2017-05-02T03:05:10.000Z" itemprop="datePublished">5月 02, 2017</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/">AutoIt3开发Helpdesk自动化工具之六:图形用户界面</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+                    
                 
                     <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
@@ -418,6 +455,25 @@ var themeMenus = {};
                 <h1 class="archive-tag">AutoIt3</h1>
             </div>
             <div class="archives">
+                
+                    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/" class="archive-article-date">
+		  <time datetime="2017-05-02T03:05:10.000Z" itemprop="datePublished">5月 02, 2017</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/">AutoIt3开发Helpdesk自动化工具之六:图形用户界面</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+                    
                 
                     <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
@@ -728,6 +784,25 @@ var themeMenus = {};
                 <h1 class="archive-tag">Helpdesk</h1>
             </div>
             <div class="archives">
+                
+                    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/" class="archive-article-date">
+		  <time datetime="2017-05-02T03:05:10.000Z" itemprop="datePublished">5月 02, 2017</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/">AutoIt3开发Helpdesk自动化工具之六:图形用户界面</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+                    
                 
                     <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
@@ -1370,6 +1445,25 @@ var themeMenus = {};
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
+      <a href="/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/" class="archive-article-date">
+		  <time datetime="2017-05-02T03:05:10.000Z" itemprop="datePublished">5月 02, 2017</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/">AutoIt3开发Helpdesk自动化工具之六:图形用户界面</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+                    
+                
+                    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
       <a href="/2017/04/27/AutoIt3开发Helpdesk自动化工具之五/" class="archive-article-date">
 		  <time datetime="2017-04-26T23:05:10.000Z" itemprop="datePublished">4月 27, 2017</time>
 	  </a>
@@ -1602,6 +1696,21 @@ var themeMenus = {};
 
             
               <div class="widget-entry-thumbnail">
+                <a href="/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/" title=""><img width="50" height="50" src="/images/photos/autoit3.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/">AutoIt3开发Helpdesk自动化工具之六:图形用户界面</a></h6>
+              <span>五月 2, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
                 <a href="/2017/04/27/AutoIt3开发Helpdesk自动化工具之五/" title=""><img width="50" height="50" src="/images/photos/autoit3.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
@@ -1658,21 +1767,6 @@ var themeMenus = {};
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/2017/04/18/AutoIT3开发Helpdesk自动化工具之一/" title=""><img width="50" height="50" src="/images/photos/autoit3.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/04/18/AutoIT3开发Helpdesk自动化工具之一/">AutoIt3开发Helpdesk自动化工具之一:简介</a></h6>
-              <span>四月 18, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1691,7 +1785,7 @@ var themeMenus = {};
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/思考感悟/">思考感悟</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术分享/">技术分享</a><span class="category-list-count">12</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/思考感悟/">思考感悟</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术分享/">技术分享</a><span class="category-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -1701,7 +1795,7 @@ var themeMenus = {};
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AutoIt/">AutoIt</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AutoIt3/">AutoIt3</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding-Pages/">Coding Pages</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitCafe/">GitCafe</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github-Pages/">Github Pages</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Helpdesk/">Helpdesk</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hugo/">Hugo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JennyCh/">JennyCh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pages/">Pages</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python3/">Python3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-clone/">git clone</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitbash/">gitbash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hugo/">hugo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/imkind/">imkind</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/read/">read()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/readline/">readline()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/readlines/">readlines()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/warning-Clone-succeeded-but-checkout-failed/">warning: Clone succeeded, but checkout failed.</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动化/">自动化</a><span class="tag-list-count">5</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AutoIt/">AutoIt</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AutoIt3/">AutoIt3</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding-Pages/">Coding Pages</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitCafe/">GitCafe</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github-Pages/">Github Pages</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Helpdesk/">Helpdesk</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hugo/">Hugo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JennyCh/">JennyCh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pages/">Pages</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python3/">Python3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-clone/">git clone</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitbash/">gitbash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hugo/">hugo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/imkind/">imkind</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/read/">read()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/readline/">readline()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/readlines/">readlines()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/warning-Clone-succeeded-but-checkout-failed/">warning: Clone succeeded, but checkout failed.</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动化/">自动化</a><span class="tag-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -1712,7 +1806,7 @@ var themeMenus = {};
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

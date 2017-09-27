@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>autoit3开发helpdesk自动化工具之六:图形用户界面 | MingguiLu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="AutoItAutoIt3Helpdesk自动化" />
+  
+  
+  
+  
+  <meta name="description" content="在持续的编写和测试AutoIt3脚本过程中，对AutoIt的理解更深入了，我意识到可以使用AutoIt3 GUI编写一个图形用户界面，从而增强对每个自定义函数的复用，最终大幅提高运行效率。 参考文档 AutoIt3安装目录中的官方英文手册 v3.3.14.2 - GUI相关 ： AutoIt.chm   AutoIt 在线手册中文版_脚本之家 v3.1.1 - GUI相关 :  http://ww">
+<meta name="keywords" content="AutoIt,AutoIt3,Helpdesk,自动化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AutoIt3开发Helpdesk自动化工具之六:图形用户界面">
+<meta property="og:url" content="http://blog.mingguilu.com/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/index.html">
+<meta property="og:site_name" content="MingguiLu Blog">
+<meta property="og:description" content="在持续的编写和测试AutoIt3脚本过程中，对AutoIt的理解更深入了，我意识到可以使用AutoIt3 GUI编写一个图形用户界面，从而增强对每个自定义函数的复用，最终大幅提高运行效率。 参考文档 AutoIt3安装目录中的官方英文手册 v3.3.14.2 - GUI相关 ： AutoIt.chm   AutoIt 在线手册中文版_脚本之家 v3.1.1 - GUI相关 :  http://ww">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.mingguilu.com/images/photos/autoit3.png">
+<meta property="og:updated_time" content="2017-09-27T08:58:44.747Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AutoIt3开发Helpdesk自动化工具之六:图形用户界面">
+<meta name="twitter:description" content="在持续的编写和测试AutoIt3脚本过程中，对AutoIt的理解更深入了，我意识到可以使用AutoIt3 GUI编写一个图形用户界面，从而增强对每个自定义函数的复用，最终大幅提高运行效率。 参考文档 AutoIt3安装目录中的官方英文手册 v3.3.14.2 - GUI相关 ： AutoIt.chm   AutoIt 在线手册中文版_脚本之家 v3.1.1 - GUI相关 :  http://ww">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/photos/autoit3.png">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/categories"] = "分类"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="MingguiLu Blog" rel="home"> MingguiLu Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Continuous Delivery</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1136006/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-AutoIt3开发Helpdesk自动化工具之六" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!-- 不在文章内容页面顶部显示图片 -->
+<!-- 
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/images/photos/autoit3.png" rel="gallery_cj82u5hhr000afodfbwl7xl12">
+        <img src="/images/photos/autoit3.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+-->
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      AutoIt3开发Helpdesk自动化工具之六:图形用户界面
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/" class="article-date">
+	  <time datetime="2017-05-02T03:05:10.000Z" itemprop="datePublished">五月 2, 2017</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在持续的编写和测试AutoIt3脚本过程中，对AutoIt的理解更深入了，我意识到可以使用AutoIt3 GUI编写一个图形用户界面，从而增强对每个自定义函数的复用，最终大幅提高运行效率。</p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ul>
+<li>AutoIt3安装目录中的官方英文手册 v3.3.14.2 - GUI相关 ： AutoIt.chm  </li>
+<li>AutoIt 在线手册中文版_脚本之家 v3.1.1 - GUI相关 :  <a href="http://www.jb51.net/shouce/autoit/" target="_blank" rel="external">http://www.jb51.net/shouce/autoit/</a> </li>
+</ul>
+<h3 id="GUI的概念"><a href="#GUI的概念" class="headerlink" title="GUI的概念"></a>GUI的概念</h3><pre><code>AutoIt 脚本可创建（由窗口及其控件组成的）简单的图形用户界面（GUI）
+
+GUI 可由一个或多个 窗口 组成，这些窗口又带有一个或多个控件。GUI是靠“事件驱动”实现与用户的交互的，比如像点击按钮这样的动作就会引发一个事件。程序在空闲状态时等待事件的发生，捕捉到事件时则根据事件执行相关操作。
+</code></pre><p>用GUI创建的图形用户界面确实很简单，类似的xp或更早风格的窗口，或许有方法可以美化，但是好看显然不是我关注的地方，我希望它稳定可靠地执行脚本就够了。GUI创建的窗口就如同每个我们所操作的软件操作，有文字，有按钮，可鼠标点击，可键盘输入……</p>
+<a id="more"></a>
+<h3 id="GUI事件模式"><a href="#GUI事件模式" class="headerlink" title="GUI事件模式"></a>GUI事件模式</h3><ul>
+<li><p>消息循环模式（默认）</p>
+</li>
+<li><p>OnEvent（事件驱动） 模式</p>
+</li>
+</ul>
+<p>这两种模式我以地铁站为例来理解，<code>消息循环模式</code>就像地铁站外临街出入口，在运营时间内无论是否有人进出每时每刻都开着；<code>OnEvent(事件驱动)模式</code>就像地铁站内的进出闸门，只有当乘客刷卡时才会打开，行人通过后，又回到关闭等待状态；</p>
+<p>所以这两种模式各有适用的场景，自动化helpdesk工具可以在GUI上进行键鼠操作来命令脚本开始执行，更适合用<code>OnEvent(事件驱动)模式</code>。</p>
+<h3 id="为Helpdesk自动化工具创建GUI"><a href="#为Helpdesk自动化工具创建GUI" class="headerlink" title="为Helpdesk自动化工具创建GUI"></a>为Helpdesk自动化工具创建GUI</h3><h4 id="在脚本开头调用-GUIConstants-au3文件"><a href="#在脚本开头调用-GUIConstants-au3文件" class="headerlink" title="在脚本开头调用 GUIConstants.au3文件"></a>在脚本开头调用 GUIConstants.au3文件</h4><pre><code>;;包含了在编写GUI程序时要用到的所有变量和常量 
+#include &lt;GUIConstants.au3&gt;
+
+;;包含了在编写GUI程序时使用复选框所需的变量和常量
+#include &lt;GuiButton.au3&gt;
+</code></pre><h4 id="将默认的-消息循环模式-切换为-OnEvent-事件驱动-模式"><a href="#将默认的-消息循环模式-切换为-OnEvent-事件驱动-模式" class="headerlink" title="将默认的 消息循环模式 切换为  OnEvent(事件驱动) 模式"></a>将默认的 消息循环模式 切换为  OnEvent(事件驱动) 模式</h4><pre><code>Opt(&quot;GUIOnEventMode&quot;, 1)
+</code></pre><h4 id="创建窗口和控件"><a href="#创建窗口和控件" class="headerlink" title="创建窗口和控件"></a>创建窗口和控件</h4><p>为了方便后期的维护，可以将这部分脚本包含到一个自定义函数中，并在脚本开头适当位置调用</p>
+<pre><code>_mainWindow()
+
+;;窗口创建后是处于隐藏状态的，必须使用本函数来显示
+GUISetState()
+
+Func _mainWindow()
+
+   ;;声明变量 $Checkbox[]
+   Global $Checkbox[53]
+
+   ;;AutoIt GUI的控件定位方式类似于前端CSS中的固定定位，即所有控件定位都以窗口左上角为原点
+
+   ;;将窗口的长度和宽度定义为变量
+   Global $gui_width = 490
+   Global $gui_height = 500
+
+   ;;将控件左侧和上方的定位参数定义为变量，当后期需要调整窗口大小和控件位置时，修改相应的变量值即可
+   Global $checkbox_left = 5
+   Global $sysconf_top = 10
+   Global $install_top = 155
+   Global $user_top = 375
+   Global $checkbox_width = 150
+   Global $checkbox_height = 20
+
+   Global $select_left = 5
+   Global $select_top = 300
+   Global $select_width = 50
+   Global $select_height = 30
+
+   ;;创建一个窗口，语法：GUICreate ( &quot;窗口标题&quot; [, 宽度 [, 高度 [, 左侧 [, 上方 [, 风格 [, 扩展风格 [, 父窗口]]]]]]] )
+   GUICreate(&quot;自动化配置工具 V0.5  - By MingguiLu&quot;, $gui_width, $gui_height)
+
+   ;;创建一个组框，语法：GUICtrlCreateGroup ( &quot;文本&quot;, 左侧, 上方 [, 宽度 [, 高度 [, 风格 [, 扩展风格]]]] )
+   GUICtrlCreateGroup(&quot;系统配置&quot;, $checkbox_left, $sysconf_top, $gui_width-10, $gui_height/3-30)
+   ;;创建一个复选框，语法：GUICtrlCreateCheckbox ( &quot;文本&quot;, 左侧, 上方 [, 宽度 [, 高度 [, 风格 [, 扩展风格]]]] )
+   $Checkbox[1] = GUICtrlCreateCheckbox(&quot;修改计算机名并加域&quot;, $checkbox_left+5, $sysconf_top+20, $checkbox_width, $checkbox_height)
+   $Checkbox[2] = GUICtrlCreateCheckbox(&quot;修改管理员密码&quot;, $checkbox_left+160, $sysconf_top+20, $checkbox_width, $checkbox_height)
+   $Checkbox[3] = GUICtrlCreateCheckbox(&quot;创建Admin用户&quot;, $checkbox_left+320, $sysconf_top+20, $checkbox_width, $checkbox_height)
+   $Checkbox[4] = GUICtrlCreateCheckbox(&quot;添加IT服务台&quot;, $checkbox_left+5, $sysconf_top+50, $checkbox_width, $checkbox_height)
+   $Checkbox[5] = GUICtrlCreateCheckbox(&quot;开启远程桌面&quot;, $checkbox_left+160, $sysconf_top+50, $checkbox_width, $checkbox_height)
+   $Checkbox[6] = GUICtrlCreateCheckbox(&quot;安装AD证书&quot;, $checkbox_left+320, $sysconf_top+50, $checkbox_width, $checkbox_height)
+   $Checkbox[7] = GUICtrlCreateCheckbox(&quot;关闭防火墙&quot;, $checkbox_left+5, $sysconf_top+80, $checkbox_width, $checkbox_height)
+   $Checkbox[8] = GUICtrlCreateCheckbox(&quot;降低UAC等级&quot;, $checkbox_left+160, $sysconf_top+80, $checkbox_width, $checkbox_height)
+
+   GUICtrlCreateGroup(&quot;软件安装&quot;, $checkbox_left, $install_top, $gui_width-10, $gui_height/3-30)
+   $Checkbox[21] = GUICtrlCreateCheckbox(&quot;Adobe Flash Player&quot;, $checkbox_left+5, $install_top+20, $checkbox_width, $checkbox_height)
+   $Checkbox[22] = GUICtrlCreateCheckbox(&quot;Google Chrome&quot;, $checkbox_left+160, $install_top+20, $checkbox_width, $checkbox_height)
+   $Checkbox[23] = GUICtrlCreateCheckbox(&quot;LinPhone for Windows&quot;, $checkbox_left+320, $install_top+20, $checkbox_width, $checkbox_height)
+   $Checkbox[24] = GUICtrlCreateCheckbox(&quot;Cisco VPN Client&quot;, $checkbox_left+5, $install_top+50, $checkbox_width, $checkbox_height)
+   $Checkbox[25] = GUICtrlCreateCheckbox(&quot;CRM Pro&quot;, $checkbox_left+160, $install_top+50, $checkbox_width, $checkbox_height)
+   $Checkbox[26] = GUICtrlCreateCheckbox(&quot;Avaya one-X&quot;, $checkbox_left+320, $install_top+50, $checkbox_width, $checkbox_height)
+   $Checkbox[27] = GUICtrlCreateCheckbox(&quot;Teamviewer11to10&quot;, $checkbox_left+5, $install_top+80, $checkbox_width, $checkbox_height)
+   $Checkbox[28] = GUICtrlCreateCheckbox(&quot;Teamviewer10&quot;, $checkbox_left+160, $install_top+80, $checkbox_width, $checkbox_height)
+
+   GUICtrlCreateGroup(&quot;操作选项&quot;,$select_left, $select_top, $gui_width-10, $gui_height/3-100)
+   ;;创建一个单选框，语法：GUICtrlCreateRadio ( &quot;文本&quot;, 左侧, 上方 [, 宽度 [, 高度 [, 风格 [, 扩展风格]]]] )
+   Global $Radio1 = GUICtrlCreateRadio(&quot;驻地&quot;, $select_left+5, $select_top+20, $select_width, $select_height)
+   Global $Radio2 = GUICtrlCreateRadio(&quot;驻地(含VPN)&quot;, $select_left+55, $select_top+20, $select_width+40, $select_height)
+   Global $Radio3 = GUICtrlCreateRadio(&quot;销售&quot;, $select_left+150, $select_top+20, $select_width, $select_height)
+   Global $Radio4 = GUICtrlCreateRadio(&quot;客服&quot;, $select_left+200, $select_top+20, $select_width, $select_height)
+
+   GUICtrlCreateGroup(&quot;用户选项&quot;,$select_left, $user_top, $gui_width-10, $gui_height/3-100)
+   $Checkbox[43] = GUICtrlCreateCheckbox(&quot;驻地&quot;, $checkbox_left+5, $user_top+20, $checkbox_width-100, $checkbox_height+10)
+   $Checkbox[44] = GUICtrlCreateCheckbox(&quot;销售&quot;, $checkbox_left+65, $user_top+20, $checkbox_width-100, $checkbox_height+10)
+   $Checkbox[45] = GUICtrlCreateCheckbox(&quot;客服&quot;, $checkbox_left+135, $user_top+20, $checkbox_width-100, $checkbox_height+10)
+   $Checkbox[41] = GUICtrlCreateCheckbox(&quot;取消自动登录&quot;, $checkbox_left+205, $user_top+20, $checkbox_width-50, $checkbox_height+10)
+   $Checkbox[42] = GUICtrlCreateCheckbox(&quot;取消管理员权限&quot;, $checkbox_left+305, $user_top+20, $checkbox_width-50, $checkbox_height+10)
+
+   $Checkbox[51] = GUICtrlCreateCheckbox(&quot;自动重启系统+登录账户&quot;, $select_left+90, $user_top+85, $select_width+100, $select_height)
+   Global $Radio11 = GUICtrlCreateRadio(&quot;全选&quot;, $select_left+260, $user_top+85, $select_width, $select_height)
+   Global $Radio12 = GUICtrlCreateRadio(&quot;全不选&quot;, $select_left+320, $user_top+85, $select_width+10, $select_height)
+
+   ;;创建一个按钮，语法：GUICtrlCreateButton ( &quot;文本&quot;, 左侧, 上方 [, 宽度 [, 高度 [, 风格 [, 扩展风格]]]] )
+   Global $Button1 = GUICtrlCreateButton(&quot;运行 (&amp;A)&quot;, $select_left, $user_top+80, $select_width+20, $select_height)
+   Global $Button2 = GUICtrlCreateButton(&quot;退出 (&amp;E)&quot;, $select_left+410, $user_top+80, $select_width+20, $select_height)
+
+   ;;窗口关闭事件
+   GUISetOnEvent($GUI_EVENT_CLOSE,&quot;_exit&quot;)
+
+EndFunc
+
+;;闲置工作，不做任何事
+While 1
+   sleep(1000)
+WEnd
+
+;;关闭程序
+Func _exit()
+   Exit
+EndFun
+</code></pre><p>双击运行脚本，即可见创建好的GUI</p>
+<p><img src="/images/20170502/170502_01.jpg" alt=""></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AutoIt/">AutoIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AutoIt3/">AutoIt3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Helpdesk/">Helpdesk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自动化/">自动化</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wechatpay.png',
+  alipayImage: '/css/images/alipay.jpg'
+});
+</script>
+      
+
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDU3OC83MTMz">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/10/Windows下的git_clone问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Windows下的git_clone问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/27/AutoIt3开发Helpdesk自动化工具之五/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">AutoIt3开发Helpdesk自动化工具之五:多任务组合</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文档"><span class="nav-number">1.</span> <span class="nav-text">参考文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GUI的概念"><span class="nav-number">2.</span> <span class="nav-text">GUI的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GUI事件模式"><span class="nav-number">3.</span> <span class="nav-text">GUI事件模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为Helpdesk自动化工具创建GUI"><span class="nav-number">4.</span> <span class="nav-text">为Helpdesk自动化工具创建GUI</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在脚本开头调用-GUIConstants-au3文件"><span class="nav-number">4.1.</span> <span class="nav-text">在脚本开头调用 GUIConstants.au3文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将默认的-消息循环模式-切换为-OnEvent-事件驱动-模式"><span class="nav-number">4.2.</span> <span class="nav-text">将默认的 消息循环模式 切换为  OnEvent(事件驱动) 模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建窗口和控件"><span class="nav-number">4.3.</span> <span class="nav-text">创建窗口和控件</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 MingguiLu Blog All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Powered_by <a href="https://hexo.io/" target="_blank">Hexo .</a>
+        Theme_by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">Hiero .</a>
+        Hosted_by <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Baidu tongji -->
+<!--
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+-->
+
+<!-- Google Analytics -->
+<!--
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86857821-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+-->
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86857821-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
