@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ubuntu安装matplotlib | MingguiLu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="LinuxUbuntupython3matplotlib" />
+  
+  
+  
+  
+  <meta name="description" content="Matplotlib是一个 Python 的 2D绘图库，它以各种硬拷贝格式和跨平台的交互式环境生成出版质量级别的图形。通过 Matplotlib，开发者可以仅需要几行代码，便可以生成绘图，直方图，功率谱，条形图，错误图，散点图等">
+<meta name="keywords" content="Linux,Ubuntu,python3,matplotlib">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu安装matplotlib">
+<meta property="og:url" content="http://blog.mingguilu.com/2017/03/16/Ubuntu安装matplotlib/index.html">
+<meta property="og:site_name" content="MingguiLu Blog">
+<meta property="og:description" content="Matplotlib是一个 Python 的 2D绘图库，它以各种硬拷贝格式和跨平台的交互式环境生成出版质量级别的图形。通过 Matplotlib，开发者可以仅需要几行代码，便可以生成绘图，直方图，功率谱，条形图，错误图，散点图等">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.mingguilu.com/images/photos/matplotlib.jpg">
+<meta property="og:updated_time" content="2018-01-21T11:34:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu安装matplotlib">
+<meta name="twitter:description" content="Matplotlib是一个 Python 的 2D绘图库，它以各种硬拷贝格式和跨平台的交互式环境生成出版质量级别的图形。通过 Matplotlib，开发者可以仅需要几行代码，便可以生成绘图，直方图，功率谱，条形图，错误图，散点图等">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/photos/matplotlib.jpg">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/categories"] = "分类"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="MingguiLu Blog" rel="home"> MingguiLu Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Continuous Delivery</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Ubuntu安装matplotlib" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!-- 不在文章内容页面顶部显示图片 -->
+<!-- 
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/images/photos/matplotlib.jpg" rel="gallery_cjcoooiwh000cjcessl52xquq">
+        <img src="/images/photos/matplotlib.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+-->
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Ubuntu安装matplotlib
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/03/16/Ubuntu安装matplotlib/" class="article-date">
+	  <time datetime="2017-03-15T23:52:59.000Z" itemprop="datePublished">三月 16, 2017</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><a href="http://matplotlib.org/" target="_blank" rel="noopener">Matplotlib</a></strong>是一个 Python 的 2D绘图库，它以各种硬拷贝格式和跨平台的交互式环境生成出版质量级别的图形。通过 Matplotlib，开发者可以仅需要几行代码，便可以生成绘图，直方图，功率谱，条形图，错误图，散点图等</p>
+<a id="more"></a>
+<h3 id="在Ubuntu16-04安装Matplotlib"><a href="#在Ubuntu16-04安装Matplotlib" class="headerlink" title="在Ubuntu16.04安装Matplotlib"></a>在Ubuntu16.04安装Matplotlib</h3><h4 id="1-如果使用Ubuntu16-04系统自带Python3版本："><a href="#1-如果使用Ubuntu16-04系统自带Python3版本：" class="headerlink" title="1. 如果使用Ubuntu16.04系统自带Python3版本："></a>1. 如果使用Ubuntu16.04系统自带Python3版本：</h4><pre><code>$ pytho3 --version
+Python 3.5.1+
+
+$ sudo apt install python3-matplotlib
+正在读取软件包列表..    . 完成
+正在分析软件包的依赖关系树       
+正在读取状态信息... 完成       
+将会同时安装下列软件：
+  binutils blt cpp-5 fonts-lyx g++-5 gcc-5 gcc-5-base javascript-common libasan2 libatomic1 libblas-common libblas3 libcc1-0 libcilkrts5 libgcc-5-dev libgfortran3
+  libgomp1 libitm1 libjs-jquery libjs-jquery-ui liblapack3 liblsan0 libmpx0 libquadmath0 libstdc++-5-dev libstdc++6 libtsan0 libubsan0 python-matplotlib-data
+  python3-cycler python3-dateutil python3-numpy python3-tk python3-tz tk8.6-blt2.5 ttf-bitstream-vera
+建议安装：
+  binutils-doc blt-demo gcc-5-locales g++-5-multilib gcc-5-doc libstdc++6-5-dbg gcc-5-multilib libgcc1-dbg libgomp1-dbg libitm1-dbg libatomic1-dbg libasan2-dbg
+  liblsan0-dbg libtsan0-dbg libubsan0-dbg libcilkrts5-dbg libmpx0-dbg libquadmath0-dbg apache2 | lighttpd | httpd libjs-jquery-ui-docs libstdc++-5-doc dvipng ffmpeg
+  inkscape ipython3 python-matplotlib-doc python3-cairocffi python3-gobject python3-nose python3-pyqt4 python3-scipy python3-sip python3-tornado texlive-extra-utils
+  texlive-latex-extra ttf-staypuft gfortran python-numpy-doc python3-dev python3-numpy-dbg tix python3-tk-dbg
+下列【新】软件包将被安装：
+  blt fonts-lyx javascript-common libblas-common libblas3 libgfortran3 libjs-jquery libjs-jquery-ui liblapack3 python-matplotlib-data python3-cycler python3-dateutil
+  python3-matplotlib python3-numpy python3-tk python3-tz tk8.6-blt2.5 ttf-bitstream-vera
+下列软件包将被升级：
+  binutils cpp-5 g++-5 gcc-5 gcc-5-base libasan2 libatomic1 libcc1-0 libcilkrts5 libgcc-5-dev libgomp1 libitm1 liblsan0 libmpx0 libquadmath0 libstdc++-5-dev
+  libstdc++6 libtsan0 libubsan0
+升级了 19 个软件包，新安装了 18 个软件包，要卸载 0 个软件包，有 480 个软件包未被升级。
+</code></pre><h4 id="2-如果使用Python2-7"><a href="#2-如果使用Python2-7" class="headerlink" title="2. 如果使用Python2.7"></a>2. 如果使用Python2.7</h4><pre><code>$ python --version
+$ Python 2.7.11+
+
+sudo apt install python-matplotlib
+</code></pre><h4 id="3-如果安装了较新的python版本，就必须安装matplotlib依赖的一些库："><a href="#3-如果安装了较新的python版本，就必须安装matplotlib依赖的一些库：" class="headerlink" title="3. 如果安装了较新的python版本，就必须安装matplotlib依赖的一些库："></a>3. 如果安装了较新的python版本，就必须安装matplotlib依赖的一些库：</h4><pre><code>$ python3 --version
+Python 3.5.2
+
+$ sudo apt install python3.5-dev python3.5-tk tk-dev
+$ sudo apt install libfreetype6-dev g++
+
+$ pip install --user matplotlib
+# 安装包时可能需要使用pip3，而不是pip。另外，如果这个命令不管用，可能需要删除标志`--user`    
+
+Collecting matplotlib
+  Downloading matplotlib-2.0.0-1-cp27-cp27mu-manylinux1_x86_64.whl (14.6MB)
+    100% |████████████████████████████████| 14.6MB 58kB/s 
+Collecting numpy&gt;=1.7.1 (from matplotlib)
+  Downloading numpy-1.12.0-cp27-cp27mu-manylinux1_x86_64.whl (16.5MB)
+    100% |████████████████████████████████| 16.5MB 70kB/s 
+Collecting cycler&gt;=0.10 (from matplotlib)
+  Downloading cycler-0.10.0-py2.py3-none-any.whl
+Collecting python-dateutil (from matplotlib)
+  Downloading python_dateutil-2.6.0-py2.py3-none-any.whl (194kB)
+    100% |████████████████████████████████| 194kB 135kB/s 
+Collecting functools32 (from matplotlib)
+  Downloading functools32-3.2.3-2.zip
+Requirement already satisfied: six&gt;=1.10 in ./.local/lib/python2.7/site-packages (from matplotlib)
+Collecting pytz (from matplotlib)
+  Downloading pytz-2016.10-py2.py3-none-any.whl (483kB)
+    100% |████████████████████████████████| 491kB 252kB/s 
+Requirement already satisfied: pyparsing!=2.0.0,!=2.0.4,!=2.1.2,!=2.1.6,&gt;=1.5.6 in ./.local/lib/python2.7/site-packages (from matplotlib)
+Collecting subprocess32 (from matplotlib)
+  Downloading subprocess32-3.2.7.tar.gz (54kB)
+    100% |████████████████████████████████| 61kB 477kB/s 
+Building wheels for collected packages: functools32, subprocess32
+  Running setup.py bdist_wheel for functools32 ... done
+  Stored in directory: /home/imkind/.cache/pip/wheels/3c/d0/09/cd78d0ff4d6cfecfbd730782a7815a4571cd2cd4d2ed6e69d9
+  Running setup.py bdist_wheel for subprocess32 ... done
+  Stored in directory: /home/imkind/.cache/pip/wheels/7d/4c/a4/ce9ceb463dae01f4b95e670abd9afc8d65a45f38012f8030cc
+Successfully built functools32 subprocess32
+Installing collected packages: numpy, cycler, python-dateutil, functools32, pytz, subprocess32, matplotlib
+Successfully installed cycler-0.10.0 functools32-3.2.3.post2 matplotlib-2.0.0 numpy-1.12.0 python-dateutil-2.6.0 pytz-2016.10 subprocess32-3.2.7
+</code></pre><h3 id="测试matplotlib"><a href="#测试matplotlib" class="headerlink" title="测试matplotlib"></a>测试matplotlib</h3><p>在python中导入matplotlib，如果没有出现任何错误消息，说明matplotlib安装成功</p>
+<pre><code>$ python3
+Python 3.5.2 (default, Nov 17 2016, 17:05:23) 
+[GCC 5.4.0 20160609] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; 
+&gt;&gt;&gt; import matplotlib
+&gt;&gt;&gt; 
+</code></pre><hr>
+<pre><code>*参考文档*
+
+* 《Python编程从入门到实践》-- 数据可视化 15.1 安装matplotlib --p285-287
+</code></pre>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matplotlib/">matplotlib</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wechatpay.png',
+  alipayImage: '/css/images/alipay.jpg'
+});
+</script>
+      
+
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDU3OC83MTMz">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/18/AutoIT3开发Helpdesk自动化工具之一/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          AutoIt3开发Helpdesk自动化工具之一:简介
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/12/Python3从文件中读取数据/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Python3从文件中读取数据</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#在Ubuntu16-04安装Matplotlib"><span class="nav-number">1.</span> <span class="nav-text">在Ubuntu16.04安装Matplotlib</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-如果使用Ubuntu16-04系统自带Python3版本："><span class="nav-number">1.1.</span> <span class="nav-text">1. 如果使用Ubuntu16.04系统自带Python3版本：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-如果使用Python2-7"><span class="nav-number">1.2.</span> <span class="nav-text">2. 如果使用Python2.7</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-如果安装了较新的python版本，就必须安装matplotlib依赖的一些库："><span class="nav-number">1.3.</span> <span class="nav-text">3. 如果安装了较新的python版本，就必须安装matplotlib依赖的一些库：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试matplotlib"><span class="nav-number">2.</span> <span class="nav-text">测试matplotlib</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 MingguiLu Blog All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Powered_by <a href="https://hexo.io/" target="_blank">Hexo .</a>
+        Theme_by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">Hiero .</a>
+        Hosted_by <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Baidu tongji -->
+<!--
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+-->
+
+<!-- Google Analytics -->
+<!--
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86857821-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+-->
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86857821-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
