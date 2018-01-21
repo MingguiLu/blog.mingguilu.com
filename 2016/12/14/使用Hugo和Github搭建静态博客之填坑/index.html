@@ -20,7 +20,7 @@
 <meta property="og:description" content="我的静态博客已经搭建成功了，并且使用Markdown记录了过程，但期间踩了一路的坑，今天总结一下其中一个：Hugo成功部署到Github Pages，但访问博客时不加载网页布局和样式。  这算是遇到最大的坑了，前后折腾了半个月的时间，直到找到了组织（Hugo交流QQ群：512499080），群主大大@coderzh 一语道破天机。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.mingguilu.com/images/photos/gan_00.png">
-<meta property="og:updated_time" content="2017-09-26T08:25:29.152Z">
+<meta property="og:updated_time" content="2018-01-01T05:48:38.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Hugo和Github搭建静态博客之填坑">
 <meta name="twitter:description" content="我的静态博客已经搭建成功了，并且使用Markdown记录了过程，但期间踩了一路的坑，今天总结一下其中一个：Hugo成功部署到Github Pages，但访问博客时不加载网页布局和样式。  这算是遇到最大的坑了，前后折腾了半个月的时间，直到找到了组织（Hugo交流QQ群：512499080），群主大大@coderzh 一语道破天机。">
@@ -123,7 +123,7 @@ var themeMenus = {};
   </div>
 
   <script>
-      var imgUrls = "https://source.unsplash.com/collection/1136006/1920x1080".split(",");
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
       var random = Math.floor((Math.random() * imgUrls.length ));
       if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
         document.getElementById("originBg").src=imgUrls[random];
@@ -147,7 +147,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/photos/gan_00.png" rel="gallery_cj82u5hiv000tfodfsds4h5ov">
+      <a class="article-gallery-img fancybox" href="/images/photos/gan_00.png" rel="gallery_cjbvvajjk001107es8gqno6f9">
         <img src="/images/photos/gan_00.png" itemprop="image">
       </a>
     
@@ -183,14 +183,14 @@ var themeMenus = {};
         <blockquote>
 <p>我的静态博客已经搭建成功了，并且使用Markdown记录了过程，但期间踩了一路的坑，今天总结一下其中一个：Hugo成功部署到Github Pages，但访问博客时不加载网页布局和样式。</p>
 </blockquote>
-<p>这算是遇到最大的坑了，前后折腾了半个月的时间，直到找到了组织（Hugo交流QQ群：512499080），群主大大<a href="http://www.coderzh.com/" target="_blank" rel="external">@coderzh</a> 一语道破天机。<br><img src="/images/20161214/hugo_tk_01.png" alt=""></p>
+<p>这算是遇到最大的坑了，前后折腾了半个月的时间，直到找到了组织（Hugo交流QQ群：512499080），群主大大<a href="http://www.coderzh.com/" target="_blank" rel="noopener">@coderzh</a> 一语道破天机。<br><img src="/images/20161214/hugo_tk_01.png" alt=""></p>
 <a id="more"></a>
 <h4 id="1-先来回顾一下如何踩上这个大坑的"><a href="#1-先来回顾一下如何踩上这个大坑的" class="headerlink" title="1 先来回顾一下如何踩上这个大坑的"></a>1 先来回顾一下如何踩上这个大坑的</h4><h5 id="1-1-使用hugo-new-site-创建一个新站点时，配置文件config-toml-中的-baseurl-默认是-http"><a href="#1-1-使用hugo-new-site-创建一个新站点时，配置文件config-toml-中的-baseurl-默认是-http" class="headerlink" title="1.1 使用hugo new site 创建一个新站点时，配置文件config.toml 中的 baseurl 默认是 http://"></a>1.1 使用<code>hugo new site</code> 创建一个新站点时，配置文件<code>config.toml</code> 中的 <code>baseurl</code> 默认是 <code>http://</code></h5><pre><code>baseurl = &quot;http://replace-this-with-your-hugo-site.com/
 </code></pre><p>clone spf13.com的博客项目中<code>baseurl</code> 也是 <code>http://</code></p>
 <pre><code>baseurl = &quot;http://spf13.com/&quot;
 </code></pre><p>在之后修改时，直接把博客地址改为了我自己的</p>
 <pre><code>baseurl = &quot;http://imkind.github.io/&quot;
-</code></pre><h5 id="1-2-自2016年6月15日起，使用Github-Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing-your-GitHub-Pages-site-with-HTTPS》-https-help-github-com-articles-securing-your-github-pages-site-with-https"><a href="#1-2-自2016年6月15日起，使用Github-Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing-your-GitHub-Pages-site-with-HTTPS》-https-help-github-com-articles-securing-your-github-pages-site-with-https" class="headerlink" title="1.2 自2016年6月15日起，使用Github Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing your GitHub Pages site with HTTPS》 https://help.github.com/articles/securing-your-github-pages-site-with-https/"></a>1.2 自2016年6月15日起，使用Github Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing your GitHub Pages site with HTTPS》 <a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/" target="_blank" rel="external">https://help.github.com/articles/securing-your-github-pages-site-with-https/</a></h5><blockquote>
+</code></pre><h5 id="1-2-自2016年6月15日起，使用Github-Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing-your-GitHub-Pages-site-with-HTTPS》-https-help-github-com-articles-securing-your-github-pages-site-with-https"><a href="#1-2-自2016年6月15日起，使用Github-Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing-your-GitHub-Pages-site-with-HTTPS》-https-help-github-com-articles-securing-your-github-pages-site-with-https" class="headerlink" title="1.2 自2016年6月15日起，使用Github Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing your GitHub Pages site with HTTPS》 https://help.github.com/articles/securing-your-github-pages-site-with-https/"></a>1.2 自2016年6月15日起，使用Github Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing your GitHub Pages site with HTTPS》 <a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/" target="_blank" rel="noopener">https://help.github.com/articles/securing-your-github-pages-site-with-https/</a></h5><blockquote>
 <p>You can enforce HTTPS to add a layer of encryption for traffic to your GitHub Pages site if it has a github.io domain.</p>
 <p>With HTTPS enforcement enabled, HTTP requests to your GitHub Pages site will be transparently redirected to HTTPS.</p>
 <p>HTTPS enforcement is required for GitHub Pages sites created after June 15, 2016 and using a github.io domain. If you created your GitHub Pages site before June 15, 2016, you can manually enable HTTPS enforcement. HTTPS is not supported for GitHub Pages using custom domains.</p>
@@ -206,15 +206,15 @@ var themeMenus = {};
 <p>If you enable HTTPS for your site, and your site’s HTML still references images, CSS, or JavaScript over HTTP, then your site is serving mixed content, and you may have trouble loading assets. Serving mixed content also makes your site less secure.</p>
 <p>To remove your site’s mixed content, improve your site’s security, and resolve problems related to loading mixed content, edit your site’s HTML files and change http:// to https:// so that all of your assets are served over HTTPS.</p>
 </blockquote>
-<h4 id="2-填坑，更多解决方案参见《Resolving-problems-with-mixed-content》https-help-github-com-articles-securing-your-github-pages-site-with-https"><a href="#2-填坑，更多解决方案参见《Resolving-problems-with-mixed-content》https-help-github-com-articles-securing-your-github-pages-site-with-https" class="headerlink" title="2. 填坑，更多解决方案参见《Resolving problems with mixed content》https://help.github.com/articles/securing-your-github-pages-site-with-https/"></a>2. 填坑，更多解决方案参见《Resolving problems with mixed content》<a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/" target="_blank" rel="external">https://help.github.com/articles/securing-your-github-pages-site-with-https/</a></h4><h5 id="2-1-综上，在配置文件config-toml中把http修改为https"><a href="#2-1-综上，在配置文件config-toml中把http修改为https" class="headerlink" title="2.1 综上，在配置文件config.toml中把http修改为https"></a>2.1 综上，在配置文件config.toml中把<code>http</code>修改为<code>https</code></h5><pre><code>baseurl = &quot;http://imkind.github.io/&quot;
+<h4 id="2-填坑，更多解决方案参见《Resolving-problems-with-mixed-content》https-help-github-com-articles-securing-your-github-pages-site-with-https"><a href="#2-填坑，更多解决方案参见《Resolving-problems-with-mixed-content》https-help-github-com-articles-securing-your-github-pages-site-with-https" class="headerlink" title="2. 填坑，更多解决方案参见《Resolving problems with mixed content》https://help.github.com/articles/securing-your-github-pages-site-with-https/"></a>2. 填坑，更多解决方案参见《Resolving problems with mixed content》<a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/" target="_blank" rel="noopener">https://help.github.com/articles/securing-your-github-pages-site-with-https/</a></h4><h5 id="2-1-综上，在配置文件config-toml中把http修改为https"><a href="#2-1-综上，在配置文件config-toml中把http修改为https" class="headerlink" title="2.1 综上，在配置文件config.toml中把http修改为https"></a>2.1 综上，在配置文件config.toml中把<code>http</code>修改为<code>https</code></h5><pre><code>baseurl = &quot;http://imkind.github.io/&quot;
 </code></pre><p>修改为</p>
 <pre><code>baseurl = &quot;https://imkind.github.io/&quot;
 </code></pre><p>然后，重新运行 <code>hugo</code> 生成静态站点，分别把改动push到IMkind_blog_hugo和imkind.github.io</p>
-<h5 id="2-2-但是，我发现spf13-com、blog-coderzh-com、nanshu-wang、blog-bpcoder-com等都能使用HTTP正常访问，这可能是因为绑定了自己的域名。"><a href="#2-2-但是，我发现spf13-com、blog-coderzh-com、nanshu-wang、blog-bpcoder-com等都能使用HTTP正常访问，这可能是因为绑定了自己的域名。" class="headerlink" title="2.2 但是，我发现spf13.com、blog.coderzh.com、nanshu.wang、blog.bpcoder.com等都能使用HTTP正常访问，这可能是因为绑定了自己的域名。"></a>2.2 但是，我发现<a href="http://spf13.com/" target="_blank" rel="external">spf13.com</a>、<a href="http://blog.coderzh.com/" target="_blank" rel="external">blog.coderzh.com</a>、<a href="http://nanshu.wang/" target="_blank" rel="external">nanshu.wang</a>、<a href="http://blog.bpcoder.com/" target="_blank" rel="external">blog.bpcoder.com</a>等都能使用HTTP正常访问，这可能是因为绑定了自己的域名。</h5><p>《Securing your GitHub Pages site with HTTPS》 <a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/" target="_blank" rel="external">https://help.github.com/articles/securing-your-github-pages-site-with-https/</a> ，第三段最后一句：</p>
+<h5 id="2-2-但是，我发现spf13-com、blog-coderzh-com、nanshu-wang、blog-bpcoder-com等都能使用HTTP正常访问，这可能是因为绑定了自己的域名。"><a href="#2-2-但是，我发现spf13-com、blog-coderzh-com、nanshu-wang、blog-bpcoder-com等都能使用HTTP正常访问，这可能是因为绑定了自己的域名。" class="headerlink" title="2.2 但是，我发现spf13.com、blog.coderzh.com、nanshu.wang、blog.bpcoder.com等都能使用HTTP正常访问，这可能是因为绑定了自己的域名。"></a>2.2 但是，我发现<a href="http://spf13.com/" target="_blank" rel="noopener">spf13.com</a>、<a href="http://blog.coderzh.com/" target="_blank" rel="noopener">blog.coderzh.com</a>、<a href="http://nanshu.wang/" target="_blank" rel="noopener">nanshu.wang</a>、<a href="http://blog.bpcoder.com/" target="_blank" rel="noopener">blog.bpcoder.com</a>等都能使用HTTP正常访问，这可能是因为绑定了自己的域名。</h5><p>《Securing your GitHub Pages site with HTTPS》 <a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/" target="_blank" rel="noopener">https://help.github.com/articles/securing-your-github-pages-site-with-https/</a> ，第三段最后一句：</p>
 <blockquote>
 <p>HTTPS is not supported for GitHub Pages using custom domains.</p>
 </blockquote>
-<h4 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a><em>彩蛋</em></h4><p>附上群主大大<a href="http://www.coderzh.com/" target="_blank" rel="external">@coderzh</a>如何一语道破天机<br><img src="/images/20161214/hugo_tk_02.png" alt=""></p>
+<h4 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a><em>彩蛋</em></h4><p>附上群主大大<a href="http://www.coderzh.com/" target="_blank" rel="noopener">@coderzh</a>如何一语道破天机<br><img src="/images/20161214/hugo_tk_02.png" alt=""></p>
 
       
     </div>
@@ -311,7 +311,7 @@ var a = new Donate({
 
   <div class="clearfix container">
       <div class="site-info">
-	      &copy; 2017 MingguiLu Blog All Rights Reserved.
+	      &copy; 2018 MingguiLu Blog All Rights Reserved.
           
             <span id="busuanzi_container_site_uv">
               本站访客数<span id="busuanzi_value_site_uv"></span>人次  

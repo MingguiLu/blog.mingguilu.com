@@ -20,7 +20,7 @@
 <meta property="og:description" content="在员工数量较多的大中型公司，Hekpdesk工程师每天重复处理大量简单而繁琐的桌面软硬件请求和报障，这些工作大多在初期进行短暂的技术学习后，很快演变为经验积累，但再丰富的经验如果无法解放时间和双手，枯燥和疲惫一直如影随形。细想一下，有些工作场景中Helpdesk工程师像机器一样在每台PC上按照相同的流程，打开相同的窗口，安装相同的软件，设置相同的选项…….听起来让人很不安？但这样的情景时常上演，比">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.mingguilu.com/images/photos/autoit3.png">
-<meta property="og:updated_time" content="2017-09-26T08:24:25.323Z">
+<meta property="og:updated_time" content="2018-01-01T05:48:38.762Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AutoIt3开发Helpdesk自动化工具之一:简介">
 <meta name="twitter:description" content="在员工数量较多的大中型公司，Hekpdesk工程师每天重复处理大量简单而繁琐的桌面软硬件请求和报障，这些工作大多在初期进行短暂的技术学习后，很快演变为经验积累，但再丰富的经验如果无法解放时间和双手，枯燥和疲惫一直如影随形。细想一下，有些工作场景中Helpdesk工程师像机器一样在每台PC上按照相同的流程，打开相同的窗口，安装相同的软件，设置相同的选项…….听起来让人很不安？但这样的情景时常上演，比">
@@ -123,7 +123,7 @@ var themeMenus = {};
   </div>
 
   <script>
-      var imgUrls = "https://source.unsplash.com/collection/1136006/1920x1080".split(",");
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
       var random = Math.floor((Math.random() * imgUrls.length ));
       if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
         document.getElementById("originBg").src=imgUrls[random];
@@ -147,7 +147,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/photos/autoit3.png" rel="gallery_cj82u5hfq0001fodf3rz7ofam">
+      <a class="article-gallery-img fancybox" href="/images/photos/autoit3.png" rel="gallery_cjbvvaji2000107esjjip98ub">
         <img src="/images/photos/autoit3.png" itemprop="image">
       </a>
     
@@ -183,7 +183,7 @@ var themeMenus = {};
         <p>在员工数量较多的大中型公司，Hekpdesk工程师每天重复处理大量简单而繁琐的桌面软硬件请求和报障，这些工作大多在初期进行短暂的技术学习后，很快演变为经验积累，但再丰富的经验如果无法解放时间和双手，枯燥和疲惫一直如影随形。细想一下，有些工作场景中Helpdesk工程师像机器一样在每台PC上按照相同的流程，打开相同的窗口，安装相同的软件，设置相同的选项…….听起来让人很不安？但这样的情景时常上演，比如需要给30名新员工配置办公电脑、部门需要统一安装某几款软件并进行设置、或者反过来要卸载某款软件……那么何必把自己当做机器呢，电脑本身不就是一台聪明的机器吗！</p>
 <p> 接下来，我们将使用AutoIt3来开发一个让电脑自己执行重复任务的自动化脚本工具，并打造一个简洁实用的图形界面。</p>
  <a id="more"></a>
-<h3 id="一、AutoIt-v3-简介"><a href="#一、AutoIt-v3-简介" class="headerlink" title="一、AutoIt v3 简介"></a>一、<a href="https://www.autoitscript.com/site/autoit/" target="_blank" rel="external">AutoIt v3 简介</a></h3><p>AutoIt v3是一种免费的基于类BASIC的脚本语言，用于自动化Windows GUI和通用脚本。 它使用模拟键盘，鼠标移动和窗口/控制操作的组合，以便以其他语言（例如VBScript和SendKeys）不可能或不可靠的方式自动执行任务。 AutoIt也非常小，独立，将运行在所有版本的Windows开箱即用，不需要烦人的“runtime”要求！</p>
+<h3 id="一、AutoIt-v3-简介"><a href="#一、AutoIt-v3-简介" class="headerlink" title="一、AutoIt v3 简介"></a>一、<a href="https://www.autoitscript.com/site/autoit/" target="_blank" rel="noopener">AutoIt v3 简介</a></h3><p>AutoIt v3是一种免费的基于类BASIC的脚本语言，用于自动化Windows GUI和通用脚本。 它使用模拟键盘，鼠标移动和窗口/控制操作的组合，以便以其他语言（例如VBScript和SendKeys）不可能或不可靠的方式自动执行任务。 AutoIt也非常小，独立，将运行在所有版本的Windows开箱即用，不需要烦人的“runtime”要求！</p>
 <p>AutoIt最初设计用于PC“大批量交付”情况，可靠地自动化并配置成千上万的个人电脑。 随着时间的推移，它已经成为一种强大的语言，它支持复杂的表达式，用户自定义函数，循环以及经验丰富的脚本编写期望。</p>
 <h4 id="AutoIt-v3-的优秀特性"><a href="#AutoIt-v3-的优秀特性" class="headerlink" title="AutoIt v3 的优秀特性:"></a>AutoIt v3 的优秀特性:</h4> <p>
 
@@ -204,8 +204,8 @@ var themeMenus = {};
 <li>支持数字签名</li>
 <li>适用于Windows Vista的用户帐户控制（UAC）</li>
 </ul>
-</p><p>最重要的是，AutoIt将持续免费 - 但是如果你想支持在项目和网络托管上花费的时间，金钱和精力，那么你可以<a href="https://www.autoitscript.com/site/donate/" target="_blank" rel="external">捐赠</a>。</p>
-<h4 id="搭建AutoIt-v3-脚本开发环境"><a href="#搭建AutoIt-v3-脚本开发环境" class="headerlink" title="搭建AutoIt v3 脚本开发环境"></a>搭建AutoIt v3 脚本开发环境</h4><p></p><p><br><a href="https://www.autoitscript.com/site/autoit/downloads/" target="_blank" rel="external">下载AutoIt v3 开发工具</a></p>
+</p><p>最重要的是，AutoIt将持续免费 - 但是如果你想支持在项目和网络托管上花费的时间，金钱和精力，那么你可以<a href="https://www.autoitscript.com/site/donate/" target="_blank" rel="noopener">捐赠</a>。</p>
+<h4 id="搭建AutoIt-v3-脚本开发环境"><a href="#搭建AutoIt-v3-脚本开发环境" class="headerlink" title="搭建AutoIt v3 脚本开发环境"></a>搭建AutoIt v3 脚本开发环境</h4><p></p><p><br><a href="https://www.autoitscript.com/site/autoit/downloads/" target="_blank" rel="noopener">下载AutoIt v3 开发工具</a></p>
 <p>下载时建议选择AutoIt3完全安装程序，它包含了：</p>
 <ul>
 <li>AutoIt 脚本运行软件、文档和实例</li>
@@ -331,7 +331,7 @@ var a = new Donate({
 
   <div class="clearfix container">
       <div class="site-info">
-	      &copy; 2017 MingguiLu Blog All Rights Reserved.
+	      &copy; 2018 MingguiLu Blog All Rights Reserved.
           
             <span id="busuanzi_container_site_uv">
               本站访客数<span id="busuanzi_value_site_uv"></span>人次  

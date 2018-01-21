@@ -6,13 +6,13 @@
   <title>使用hugo和github搭建静态博客 | MingguiLu Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Github Pagesimkindhugoblog" />
+  <meta name="keywords" content="Github Pageshugoimkindblog" />
   
   
   
   
   <meta name="description" content="我的静态博客使用Hugo生成，部署在Github Pages个人主页上，为了完成搭建，期间学习了Hugo、Git、Markdown。由于接触静态博客不久，对很多东西一知半解，本文仅记录了在Windows 10上基于Hugo作者Steve Francia的个人博客http://spf13.com/的源代码定制自己博客的过程，绝不权威，仅供参考。">
-<meta name="keywords" content="Github Pages,imkind,hugo,blog">
+<meta name="keywords" content="Github Pages,hugo,imkind,blog">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Hugo和Github搭建静态博客">
 <meta property="og:url" content="http://blog.mingguilu.com/2016/12/02/使用Hugo和Github搭建静态博客/index.html">
@@ -20,7 +20,7 @@
 <meta property="og:description" content="我的静态博客使用Hugo生成，部署在Github Pages个人主页上，为了完成搭建，期间学习了Hugo、Git、Markdown。由于接触静态博客不久，对很多东西一知半解，本文仅记录了在Windows 10上基于Hugo作者Steve Francia的个人博客http://spf13.com/的源代码定制自己博客的过程，绝不权威，仅供参考。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.mingguilu.com/images/photos/hugo_00.png">
-<meta property="og:updated_time" content="2017-09-26T08:25:23.471Z">
+<meta property="og:updated_time" content="2018-01-01T05:48:38.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Hugo和Github搭建静态博客">
 <meta name="twitter:description" content="我的静态博客使用Hugo生成，部署在Github Pages个人主页上，为了完成搭建，期间学习了Hugo、Git、Markdown。由于接触静态博客不久，对很多东西一知半解，本文仅记录了在Windows 10上基于Hugo作者Steve Francia的个人博客http://spf13.com/的源代码定制自己博客的过程，绝不权威，仅供参考。">
@@ -123,7 +123,7 @@ var themeMenus = {};
   </div>
 
   <script>
-      var imgUrls = "https://source.unsplash.com/collection/1136006/1920x1080".split(",");
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
       var random = Math.floor((Math.random() * imgUrls.length ));
       if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
         document.getElementById("originBg").src=imgUrls[random];
@@ -147,7 +147,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/photos/hugo_00.png" rel="gallery_cj82u5hik000ofodf803ulm2r">
+      <a class="article-gallery-img fancybox" href="/images/photos/hugo_00.png" rel="gallery_cjbvvajjh000x07eshem6bqn1">
         <img src="/images/photos/hugo_00.png" itemprop="image">
       </a>
     
@@ -181,10 +181,10 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>我的静态博客使用Hugo生成，部署在Github Pages个人主页上，为了完成搭建，期间学习了Hugo、Git、Markdown。由于接触静态博客不久，对很多东西一知半解，本文仅记录了在Windows 10上基于Hugo作者<a href="https://stevefrancia.com/" target="_blank" rel="external">Steve Francia</a>的个人博客<a href="http://spf13.com/" target="_blank" rel="external">http://spf13.com/</a>的源代码定制自己博客的过程，绝不权威，仅供参考。</p>
+<p>我的静态博客使用Hugo生成，部署在Github Pages个人主页上，为了完成搭建，期间学习了Hugo、Git、Markdown。由于接触静态博客不久，对很多东西一知半解，本文仅记录了在Windows 10上基于Hugo作者<a href="https://stevefrancia.com/" target="_blank" rel="noopener">Steve Francia</a>的个人博客<a href="http://spf13.com/" target="_blank" rel="noopener">http://spf13.com/</a>的源代码定制自己博客的过程，绝不权威，仅供参考。</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="1-准备"><a href="#1-准备" class="headerlink" title="1.准备"></a>1.准备</h2><h3 id="1-1-注册Github"><a href="#1-1-注册Github" class="headerlink" title="1.1 注册Github"></a>1.1 <a href="https://github.com/" target="_blank" rel="external">注册Github</a></h3><h3 id="1-2-安装并配置Git-for-Windows"><a href="#1-2-安装并配置Git-for-Windows" class="headerlink" title="1.2 安装并配置Git for Windows"></a>1.2 <a href="https://git-scm.com/downloads" target="_blank" rel="external">安装并配置Git for Windows</a></h3><p>默认选项安装到Ajusting your PATH environment时，勾选第二项Run Git from Windows Command Prompt，即可在windows命令行使用git命令，不过Git Bash用户体验更好。</p>
+<h2 id="1-准备"><a href="#1-准备" class="headerlink" title="1.准备"></a>1.准备</h2><h3 id="1-1-注册Github"><a href="#1-1-注册Github" class="headerlink" title="1.1 注册Github"></a>1.1 <a href="https://github.com/" target="_blank" rel="noopener">注册Github</a></h3><h3 id="1-2-安装并配置Git-for-Windows"><a href="#1-2-安装并配置Git-for-Windows" class="headerlink" title="1.2 安装并配置Git for Windows"></a>1.2 <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">安装并配置Git for Windows</a></h3><p>默认选项安装到Ajusting your PATH environment时，勾选第二项Run Git from Windows Command Prompt，即可在windows命令行使用git命令，不过Git Bash用户体验更好。</p>
 <p>Git全局配置</p>
 <pre><code>git config --global user.name [your-name]
 git config --global user.email [your-email-address]
@@ -196,7 +196,7 @@ git config --global color.ui true
 id_rsa.pub    公钥，可告诉任何人
 </code></pre><p>登录Github，依次点击”settings”——&gt;”SSH and GPG keys”——&gt;”New SSH Key”<br><img src="/images/20161202/git_13_01.png" alt=""></p>
 <p>填写Title，在Key文本框里粘贴<code>id_rsa.pub</code>文件的内容，点击”Add SSH Key”</p>
-<h3 id="1-3-安装Hugo"><a href="#1-3-安装Hugo" class="headerlink" title="1.3 安装Hugo"></a>1.3 <a href="https://github.com/spf13/hugo/releases" target="_blank" rel="external">安装Hugo</a></h3><h4 id="1-3-2-Ubuntu"><a href="#1-3-2-Ubuntu" class="headerlink" title="1.3.2 Ubuntu"></a>1.3.2 Ubuntu</h4><pre><code>sudo apt-get install hugo
+<h3 id="1-3-安装Hugo"><a href="#1-3-安装Hugo" class="headerlink" title="1.3 安装Hugo"></a>1.3 <a href="https://github.com/spf13/hugo/releases" target="_blank" rel="noopener">安装Hugo</a></h3><h4 id="1-3-2-Ubuntu"><a href="#1-3-2-Ubuntu" class="headerlink" title="1.3.2 Ubuntu"></a>1.3.2 Ubuntu</h4><pre><code>sudo apt-get install hugo
 </code></pre><h4 id="1-3-1-Windows-10"><a href="#1-3-1-Windows-10" class="headerlink" title="1.3.1 Windows 10"></a>1.3.1 Windows 10</h4><ol>
 <li>下载hugo-0.17-Windows-64bit.zip，并解压缩到C:\Program Files\Hugo\</li>
 <li>将hugo-0.17-windows-amd64.exe修改为hugo.exe</li>
@@ -206,7 +206,7 @@ id_rsa.pub    公钥，可告诉任何人
 <pre><code>$ cd d/HelloWorld/hugo/
 $ pwd
 /d/HelloWorld/hugo
-</code></pre><p>clone大神spf13的博客项目源代码：<a href="https://github.com/spf13/spf13.com" target="_blank" rel="external">spf13.com</a></p>
+</code></pre><p>clone大神spf13的博客项目源代码：<a href="https://github.com/spf13/spf13.com" target="_blank" rel="noopener">spf13.com</a></p>
 <pre><code>$ git clone https://github.com/spf13/spf13.com.git
 Cloning into &apos;spf13.com&apos;...
 remote: Counting objects: 894, done.
@@ -556,8 +556,8 @@ body&gt;section,body&gt;aside,body&gt;.content,body&gt;footer,#comments{margin:1
 &lt;meta name=&quot;twitter:description&quot; content=&quot;{{ .Description }}&quot;&gt;
 &lt;meta name=&quot;twitter:image:src&quot; content=&quot;&quot;&gt;
 &lt;meta name=&quot;twitter:domain&quot; content=&quot;spf13.com&quot;&gt;
-</code></pre><h3 id="2-12-多说评论系统"><a href="#2-12-多说评论系统" class="headerlink" title="2.12 多说评论系统"></a>2.12 多说评论系统</h3><p>spf13.com默认使用了<a href="https://disqus.com/" target="_blank" rel="external">Disqus</a>评论系统，我去注册并在博客配置之后，无法显示评论区，而且在打开博文时因为连接Disqus服务器严重拖慢速度，于是更换了国产的<a href="http://duoshuo.com/" target="_blank" rel="external">多说</a>评论系统，相对于内置了Disqus，多说评论系统的植入稍微复杂一点。</p>
-<h4 id="2-12-1-注册多说评论系统"><a href="#2-12-1-注册多说评论系统" class="headerlink" title="2.12.1 注册多说评论系统"></a>2.12.1 注册<a href="http://duoshuo.com/" target="_blank" rel="external">多说</a>评论系统</h4><p>打开多说首页，点击“登录”，使用SNS账号登录，我选择了微博。<br><img src="/images/20161202/hugo_2_12_1_01.png" alt=""></p>
+</code></pre><h3 id="2-12-多说评论系统"><a href="#2-12-多说评论系统" class="headerlink" title="2.12 多说评论系统"></a>2.12 多说评论系统</h3><p>spf13.com默认使用了<a href="https://disqus.com/" target="_blank" rel="noopener">Disqus</a>评论系统，我去注册并在博客配置之后，无法显示评论区，而且在打开博文时因为连接Disqus服务器严重拖慢速度，于是更换了国产的<a href="http://duoshuo.com/" target="_blank" rel="noopener">多说</a>评论系统，相对于内置了Disqus，多说评论系统的植入稍微复杂一点。</p>
+<h4 id="2-12-1-注册多说评论系统"><a href="#2-12-1-注册多说评论系统" class="headerlink" title="2.12.1 注册多说评论系统"></a>2.12.1 注册<a href="http://duoshuo.com/" target="_blank" rel="noopener">多说</a>评论系统</h4><p>打开多说首页，点击“登录”，使用SNS账号登录，我选择了微博。<br><img src="/images/20161202/hugo_2_12_1_01.png" alt=""></p>
 <h4 id="2-12-2-创建站点"><a href="#2-12-2-创建站点" class="headerlink" title="2.12.2 创建站点"></a>2.12.2 创建站点</h4><p>登录之后就跳转到站点配置的页面<br><img src="/images/20161202/hugo_2_12_2_01.png" alt=""></p>
 <h4 id="2-12-3-获取植入代码"><a href="#2-12-3-获取植入代码" class="headerlink" title="2.12.3 获取植入代码"></a>2.12.3 获取植入代码</h4><p>工具——&gt;获取代码——&gt;稳定版<br><img src="/images/20161202/hugo_2_12_3_01.png" alt=""></p>
 <h4 id="2-12-4-植入多说代码"><a href="#2-12-4-植入多说代码" class="headerlink" title="2.12.4 植入多说代码"></a>2.12.4 植入多说代码</h4><p>在 layouts\partials\disqus.html</p>
@@ -597,14 +597,14 @@ body&gt;section,body&gt;aside,body&gt;.content,body&gt;footer,#comments{margin:1
 <pre><code>duoshuoShortname = &quot;imkind&quot;
 </code></pre><p>在浏览器中博文下方查看效果</p>
 <p><img src="/images/20161202/hugo_2_12_5_01.png" alt=""></p>
-<h3 id="2-13-代码高亮"><a href="#2-13-代码高亮" class="headerlink" title="2.13 代码高亮"></a>2.13 代码高亮</h3><h4 id="2-13-1-使用在线js-加载速度慢，不推荐使用"><a href="#2-13-1-使用在线js-加载速度慢，不推荐使用" class="headerlink" title="2.13.1 使用在线js(加载速度慢，不推荐使用)"></a>2.13.1 使用在线js(加载速度慢，不推荐使用)</h4><p>参考：<a href="http://nanshu.wang/" target="_blank" rel="external">nanshu.wang</a>的教程<a href="http://nanshu.wang/post/2015-01-31/" target="_blank" rel="external">Hugo静态网站生成器中文教程</a></p>
+<h3 id="2-13-代码高亮"><a href="#2-13-代码高亮" class="headerlink" title="2.13 代码高亮"></a>2.13 代码高亮</h3><h4 id="2-13-1-使用在线js-加载速度慢，不推荐使用"><a href="#2-13-1-使用在线js-加载速度慢，不推荐使用" class="headerlink" title="2.13.1 使用在线js(加载速度慢，不推荐使用)"></a>2.13.1 使用在线js(加载速度慢，不推荐使用)</h4><p>参考：<a href="http://nanshu.wang/" target="_blank" rel="noopener">nanshu.wang</a>的教程<a href="http://nanshu.wang/post/2015-01-31/" target="_blank" rel="noopener">Hugo静态网站生成器中文教程</a></p>
 <p>在 layouts\partials\head_includes.html 添加</p>
 <pre><code>&lt;script src=&quot;https://yandex.st/highlightjs/8.0/highlight.min.js&quot;&gt;&lt;/script&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;https://yandex.st/highlightjs/8.0/styles/default.min.css&quot;&gt;
 &lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
 </code></pre><p>在浏览器查看效果</p>
-<h4 id="2-13-2-使用本地配置highlight-js（推荐使用）"><a href="#2-13-2-使用本地配置highlight-js（推荐使用）" class="headerlink" title="2.13.2 使用本地配置highlight.js（推荐使用）"></a>2.13.2 使用本地配置<a href="https://highlightjs.org/" target="_blank" rel="external">highlight.js</a>（推荐使用）</h4><p>参考：<a href="http://newoxygen.github.io" target="_blank" rel="external">http://newoxygen.github.io</a> 的教程 <a href="http://newoxygen.github.io/post/hugo%E5%BF%AB%E9%80%9F%E5%BB%BA%E7%AB%99/#2.2" target="_blank" rel="external">hugo快速建站</a></p>
-<h5 id="2-13-2-1-下载-highlight-js"><a href="#2-13-2-1-下载-highlight-js" class="headerlink" title="2.13.2.1 下载 highlight.js"></a>2.13.2.1 下载 <a href="https://highlightjs.org/" target="_blank" rel="external">highlight.js</a></h5><p>打开<a href="https://highlightjs.org/" target="_blank" rel="external">highlight.js</a>首页，点击 <a href="https://highlightjs.org/download/" target="_blank" rel="external">Get version 9.8.0</a>，勾选常用的编程语言，点击“Download”下载，解压</p>
+<h4 id="2-13-2-使用本地配置highlight-js（推荐使用）"><a href="#2-13-2-使用本地配置highlight-js（推荐使用）" class="headerlink" title="2.13.2 使用本地配置highlight.js（推荐使用）"></a>2.13.2 使用本地配置<a href="https://highlightjs.org/" target="_blank" rel="noopener">highlight.js</a>（推荐使用）</h4><p>参考：<a href="http://newoxygen.github.io" target="_blank" rel="noopener">http://newoxygen.github.io</a> 的教程 <a href="http://newoxygen.github.io/post/hugo%E5%BF%AB%E9%80%9F%E5%BB%BA%E7%AB%99/#2.2" target="_blank" rel="noopener">hugo快速建站</a></p>
+<h5 id="2-13-2-1-下载-highlight-js"><a href="#2-13-2-1-下载-highlight-js" class="headerlink" title="2.13.2.1 下载 highlight.js"></a>2.13.2.1 下载 <a href="https://highlightjs.org/" target="_blank" rel="noopener">highlight.js</a></h5><p>打开<a href="https://highlightjs.org/" target="_blank" rel="noopener">highlight.js</a>首页，点击 <a href="https://highlightjs.org/download/" target="_blank" rel="noopener">Get version 9.8.0</a>，勾选常用的编程语言，点击“Download”下载，解压</p>
 <pre><code>$ ls highlight/
 CHANGES.md  highlight.pack.js  LICENSE  README.md  README.ru.md  styles/
 </code></pre><h5 id="2-13-2-2-植入highlight-js"><a href="#2-13-2-2-植入highlight-js" class="headerlink" title="2.13.2.2 植入highlight.js"></a>2.13.2.2 植入highlight.js</h5><p>复制 highlight.pack.js 到 static\static\js</p>
@@ -615,7 +615,7 @@ CHANGES.md  highlight.pack.js  LICENSE  README.md  README.ru.md  styles/
 &lt;link rel=&quot;stylesheet&quot; href=&quot;{{ .Site.BaseURL }}static/css/highlight/github.css&quot;&gt;
 &lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
 </code></pre><p>可根据个人爱好调用 static\static\css\highlight 中的css样式。</p>
-<h4 id="2-14-植入百度统计"><a href="#2-14-植入百度统计" class="headerlink" title="2.14 植入百度统计"></a>2.14 植入百度统计</h4><p>注册<a href="http://tongji.baidu.com" target="_blank" rel="external">百度统计</a>，在“管理”中“新增网站”</p>
+<h4 id="2-14-植入百度统计"><a href="#2-14-植入百度统计" class="headerlink" title="2.14 植入百度统计"></a>2.14 植入百度统计</h4><p>注册<a href="http://tongji.baidu.com" target="_blank" rel="noopener">百度统计</a>，在“管理”中“新增网站”</p>
 <p><img src="/images/20161202/hugo_2_14_01.png" alt=""></p>
 <p>拷贝“统计代码”至 layouts\partials\header.html 的<code>&lt;/head&gt;</code>标签前</p>
 <pre><code>&lt;script&gt;]
@@ -627,7 +627,7 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 &lt;/script&gt;
-</code></pre><h4 id="2-15-植入Google-Analytics-分析"><a href="#2-15-植入Google-Analytics-分析" class="headerlink" title="2.15 植入Google Analytics(分析)"></a>2.15 植入Google Analytics(分析)</h4><p>注册<a href="http://www.google.cn/intl/zh-CN_ALL/analytics/features/analysis-tools.html" target="_blank" rel="external">Google Analytics (分析)</a>，在“管理”——“媒体资源”中“创建新媒体资源”</p>
+</code></pre><h4 id="2-15-植入Google-Analytics-分析"><a href="#2-15-植入Google-Analytics-分析" class="headerlink" title="2.15 植入Google Analytics(分析)"></a>2.15 植入Google Analytics(分析)</h4><p>注册<a href="http://www.google.cn/intl/zh-CN_ALL/analytics/features/analysis-tools.html" target="_blank" rel="noopener">Google Analytics (分析)</a>，在“管理”——“媒体资源”中“创建新媒体资源”</p>
 <p><img src="/images/20161202/hugo_2_15_01.png" alt=""></p>
 <p>拷贝“跟踪代码”至 layouts\partials\header.html 的<code>&lt;/head&gt;</code>标签前</p>
 <pre><code>&lt;script&gt;
@@ -639,7 +639,7 @@ var _hmt = _hmt || [];
   ga(&apos;create&apos;, &apos;UA-86857821-1&apos;, &apos;auto&apos;);
   ga(&apos;send&apos;, &apos;pageview&apos;);
 &lt;/script&gt;
-</code></pre><h3 id="3-部署hugo到Github-pages个人主页"><a href="#3-部署hugo到Github-pages个人主页" class="headerlink" title="3. 部署hugo到Github pages个人主页"></a>3. 部署hugo到Github pages个人主页</h3><p><a href="https://pages.github.com/#user-site" target="_blank" rel="external">Github pages</a>有两种类型，个人主页（User site）和项目主页（Project site）。个人主页一个账号只能有一个，必须以[your-github-account].github.io命名来创建repository。</p>
+</code></pre><h3 id="3-部署hugo到Github-pages个人主页"><a href="#3-部署hugo到Github-pages个人主页" class="headerlink" title="3. 部署hugo到Github pages个人主页"></a>3. 部署hugo到Github pages个人主页</h3><p><a href="https://pages.github.com/#user-site" target="_blank" rel="noopener">Github pages</a>有两种类型，个人主页（User site）和项目主页（Project site）。个人主页一个账号只能有一个，必须以[your-github-account].github.io命名来创建repository。</p>
 <h4 id="3-1-在Github新建-your-hugo-project-name-仓库，用于托管hugo静态博客系统源代码"><a href="#3-1-在Github新建-your-hugo-project-name-仓库，用于托管hugo静态博客系统源代码" class="headerlink" title="3.1 在Github新建[your-hugo-project-name]仓库，用于托管hugo静态博客系统源代码"></a>3.1 在Github新建[your-hugo-project-name]仓库，用于托管hugo静态博客系统源代码</h4><pre><code>https://github.com/imkind/IMkind_blog_hugo
 </code></pre><h4 id="3-2-在Github新建-your-github-account-github-io仓库，用于存放hugo生成得静态博客站点文件"><a href="#3-2-在Github新建-your-github-account-github-io仓库，用于存放hugo生成得静态博客站点文件" class="headerlink" title="3.2 在Github新建[your-github-account].github.io仓库，用于存放hugo生成得静态博客站点文件"></a>3.2 在Github新建[your-github-account].github.io仓库，用于存放hugo生成得静态博客站点文件</h4><pre><code>https://github.com/imkind/imkind.github.io
 </code></pre><h4 id="3-3-创建本地的git仓库"><a href="#3-3-创建本地的git仓库" class="headerlink" title="3.3 创建本地的git仓库"></a>3.3 创建本地的git仓库</h4><pre><code>$ git init
@@ -691,13 +691,13 @@ remote: Resolving deltas: 100% (71/71), done.
 To https://github.com/imkind/imkind.github.io.git
  * [new branch]      master -&gt; master
 Branch master set up to track remote branch master from origin.
-</code></pre><h3 id="4-部署成功，在浏览器访问-https-your-github-account-github-io-就看到自己的博客了。"><a href="#4-部署成功，在浏览器访问-https-your-github-account-github-io-就看到自己的博客了。" class="headerlink" title="4. 部署成功，在浏览器访问 https://[your-github-account].github.io 就看到自己的博客了。"></a>4. 部署成功，在浏览器访问 <a href="https://[your-github-account].github.io" target="_blank" rel="external">https://[your-github-account].github.io</a> 就看到自己的博客了。</h3><p><img src="/images/20161202/hugo_4_01.png" alt=""></p>
+</code></pre><h3 id="4-部署成功，在浏览器访问-https-your-github-account-github-io-就看到自己的博客了。"><a href="#4-部署成功，在浏览器访问-https-your-github-account-github-io-就看到自己的博客了。" class="headerlink" title="4. 部署成功，在浏览器访问 https://[your-github-account].github.io 就看到自己的博客了。"></a>4. 部署成功，在浏览器访问 <a href="https://[your-github-account].github.io" target="_blank" rel="noopener">https://[your-github-account].github.io</a> 就看到自己的博客了。</h3><p><img src="/images/20161202/hugo_4_01.png" alt=""></p>
 <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a><em>参考</em></h4><ul>
-<li><a href="http://spf13.com/" target="_blank" rel="external">Steve Francia</a></li>
-<li><a href="http://www.gohugo.org/" target="_blank" rel="external">Hugo中文文档</a></li>
-<li><a href="http://www.gohugo.org/post/coderzh-hugo/" target="_blank" rel="external">使用hugo搭建个人博客站点</a></li>
-<li><a href="http://nanshu.wang/post/2015-01-31/" target="_blank" rel="external">Hugo静态网站生成器中文教程</a></li>
-<li><a href="http://blog.bpcoder.com/2015/12/hugo-create-blog/" target="_blank" rel="external">利用 Hugo &amp; GitHub 搭建个人博客静态网站</a></li>
+<li><a href="http://spf13.com/" target="_blank" rel="noopener">Steve Francia</a></li>
+<li><a href="http://www.gohugo.org/" target="_blank" rel="noopener">Hugo中文文档</a></li>
+<li><a href="http://www.gohugo.org/post/coderzh-hugo/" target="_blank" rel="noopener">使用hugo搭建个人博客站点</a></li>
+<li><a href="http://nanshu.wang/post/2015-01-31/" target="_blank" rel="noopener">Hugo静态网站生成器中文教程</a></li>
+<li><a href="http://blog.bpcoder.com/2015/12/hugo-create-blog/" target="_blank" rel="noopener">利用 Hugo &amp; GitHub 搭建个人博客静态网站</a></li>
 </ul>
 
       
@@ -790,7 +790,7 @@ var a = new Donate({
 
   <div class="clearfix container">
       <div class="site-info">
-	      &copy; 2017 MingguiLu Blog All Rights Reserved.
+	      &copy; 2018 MingguiLu Blog All Rights Reserved.
           
             <span id="busuanzi_container_site_uv">
               本站访客数<span id="busuanzi_value_site_uv"></span>人次  

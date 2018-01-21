@@ -20,7 +20,7 @@
 <meta property="og:description" content="周四晚间在家访问我托管在Github Pages上的Blog时发现网站打不开，确认本地网络没问题，尝试清理浏览器缓存，刷新系统缓存，问题依旧。下意识的回想起来今天我修改代码啦？调整过DNSPod的解析记录啦？还是站点没备案被和谐了？……打开微博刷新了一下，看到关注的几个技术大V:Easy、刘巍峰、梁斌penny都发布或转发了Github无法访问的消息，我有点惊讶：卧槽！why？">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.mingguilu.com/images/photos/170226_01_02.jpg">
-<meta property="og:updated_time" content="2017-09-26T08:25:01.184Z">
+<meta property="og:updated_time" content="2018-01-01T05:48:38.762Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Github_Pages灾备至Coding_Pages">
 <meta name="twitter:description" content="周四晚间在家访问我托管在Github Pages上的Blog时发现网站打不开，确认本地网络没问题，尝试清理浏览器缓存，刷新系统缓存，问题依旧。下意识的回想起来今天我修改代码啦？调整过DNSPod的解析记录啦？还是站点没备案被和谐了？……打开微博刷新了一下，看到关注的几个技术大V:Easy、刘巍峰、梁斌penny都发布或转发了Github无法访问的消息，我有点惊讶：卧槽！why？">
@@ -123,7 +123,7 @@ var themeMenus = {};
   </div>
 
   <script>
-      var imgUrls = "https://source.unsplash.com/collection/1136006/1920x1080".split(",");
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
       var random = Math.floor((Math.random() * imgUrls.length ));
       if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
         document.getElementById("originBg").src=imgUrls[random];
@@ -147,7 +147,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/photos/170226_01_02.jpg" rel="gallery_cj82u5hi2000ffodf7dlc66yl">
+      <a class="article-gallery-img fancybox" href="/images/photos/170226_01_02.jpg" rel="gallery_cjbvvajiw000d07escsr54jjn">
         <img src="/images/photos/170226_01_02.jpg" itemprop="image">
       </a>
     
@@ -185,9 +185,9 @@ var themeMenus = {};
 <p>随即查看了DNSPod的监控，看到托管在Github Pages的三个站点全部告警。</p>
 <p><img src="/images/20170226/170226_01_01.jpg" alt=""></p>
 <p>零点前后部分地区开始恢复访问，但周五上午我在工地访问Github依然时断时续，速度极慢，而github.io始终无法访问，直到中午才恢复正常。事后没能找到关于本次Github无法访问的详细解析，但发现相对我这样的Git小白用户，真正的开发人员似乎都见怪不怪，这次只是又一次而已。</p>
-<p>我想起来刚接触Hugo时在<a href="http://www.gohugo.org/" target="_blank" rel="external">Hugo中文文档</a>看到的那篇<a href="http://www.gohugo.org/post/coderzh-automated-deploy-hugo/" target="_blank" rel="external">通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages</a>，那时完全看不懂，其实现在也是…… 不过我突然明白为什么托管在Github上的代码也要容灾，虽然Github的服务相对稳定可靠，但我们的网络并非如此，将代码备份到国内的代码托管服务上是很有必要的。目前我并不需要自动部署项目至Github和GitCafe，我只希望能够将本地代码同时push到两个远程库，手工创建版本库，并推送到远程仓库，可以让我更熟练Git的常用命令。</p>
+<p>我想起来刚接触Hugo时在<a href="http://www.gohugo.org/" target="_blank" rel="noopener">Hugo中文文档</a>看到的那篇<a href="http://www.gohugo.org/post/coderzh-automated-deploy-hugo/" target="_blank" rel="noopener">通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages</a>，那时完全看不懂，其实现在也是…… 不过我突然明白为什么托管在Github上的代码也要容灾，虽然Github的服务相对稳定可靠，但我们的网络并非如此，将代码备份到国内的代码托管服务上是很有必要的。目前我并不需要自动部署项目至Github和GitCafe，我只希望能够将本地代码同时push到两个远程库，手工创建版本库，并推送到远程仓库，可以让我更熟练Git的常用命令。</p>
 <p>这个方法很简单：先将Github上已有的仓库导入到Coding，在本地.git版本库配置文件中添加Coding远程仓库的地址，一次push即可将代码同时推送到Github和Coding。</p>
-<h3 id="1-注册Coding"><a href="#1-注册Coding" class="headerlink" title="1. 注册Coding"></a>1. 注册Coding</h3><p>起初我是冲着<a href="https://gitcafe.com/" target="_blank" rel="external">GitCafe</a>去的，但现在已经合并到<a href="https://coding.net" target="_blank" rel="external">Coding</a>了。</p>
+<h3 id="1-注册Coding"><a href="#1-注册Coding" class="headerlink" title="1. 注册Coding"></a>1. 注册Coding</h3><p>起初我是冲着<a href="https://gitcafe.com/" target="_blank" rel="noopener">GitCafe</a>去的，但现在已经合并到<a href="https://coding.net" target="_blank" rel="noopener">Coding</a>了。</p>
 <p><img src="/images/20170226/170226_01_01_01.png" alt=""></p>
 <h3 id="2-创建项目的同时导入Github的仓库"><a href="#2-创建项目的同时导入Github的仓库" class="headerlink" title="2. 创建项目的同时导入Github的仓库"></a>2. 创建项目的同时导入Github的仓库</h3><p><img src="/images/20170226/170226_01_02_01.png" alt=""></p>
 <h3 id="3-本地-git版本库追加Coding远程仓库地址"><a href="#3-本地-git版本库追加Coding远程仓库地址" class="headerlink" title="3. 本地.git版本库追加Coding远程仓库地址"></a>3. 本地.git版本库追加Coding远程仓库地址</h3><p>修改 .gitmodules </p>
@@ -342,7 +342,7 @@ var a = new Donate({
 
   <div class="clearfix container">
       <div class="site-info">
-	      &copy; 2017 MingguiLu Blog All Rights Reserved.
+	      &copy; 2018 MingguiLu Blog All Rights Reserved.
           
             <span id="busuanzi_container_site_uv">
               本站访客数<span id="busuanzi_value_site_uv"></span>人次  

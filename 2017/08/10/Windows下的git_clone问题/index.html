@@ -20,7 +20,7 @@
 <meta property="og:description" content="近期为了方便学习数据挖掘与数据分析，将系统由Linux Mint换回windows10开发者预览版，并安装了Ubuntu on Windows 10，由于硬盘格式化了，需要从Github上克隆博客代码，却遇到了问题。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.mingguilu.com/images/photos/git_00.png">
-<meta property="og:updated_time" content="2017-09-26T08:25:18.836Z">
+<meta property="og:updated_time" content="2018-01-01T05:48:38.762Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows下的git_clone问题">
 <meta name="twitter:description" content="近期为了方便学习数据挖掘与数据分析，将系统由Linux Mint换回windows10开发者预览版，并安装了Ubuntu on Windows 10，由于硬盘格式化了，需要从Github上克隆博客代码，却遇到了问题。">
@@ -123,7 +123,7 @@ var themeMenus = {};
   </div>
 
   <script>
-      var imgUrls = "https://source.unsplash.com/collection/1136006/1920x1080".split(",");
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
       var random = Math.floor((Math.random() * imgUrls.length ));
       if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
         document.getElementById("originBg").src=imgUrls[random];
@@ -147,7 +147,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/photos/git_00.png" rel="gallery_cj82u5hir000qfodfovp9emes">
+      <a class="article-gallery-img fancybox" href="/images/photos/git_00.png" rel="gallery_cjbvvajiz000e07esb1p4m7eb">
         <img src="/images/photos/git_00.png" itemprop="image">
       </a>
     
@@ -207,8 +207,8 @@ You can inspect what was checked out with &apos;git status&apos;
 and retry the checkout with &apos;git checkout -f HEAD&apos;
 </code></pre><p>博客代码克隆成功了，但是content下多篇博文检出失败，为了排除Ubuntu on Windows 10的问题，在windows端Git bash上尝试克隆还是报错了……</p>
 <p>一番折腾问题依旧，只好Google一下才大概明白是怎么回事，部分博文的文件名中含有冒号，之前都是在linux中创建的没有问题，但是Windows不支持文件名中包含特殊符号。</p>
-<p><a href="https://stackoverflow.com/questions/20715804/git-cant-checkout-a-repo-from-github" target="_blank" rel="external">Git can’t checkout a repo from github</a> </p>
-<p><a href="https://stackoverflow.com/questions/26097568/git-pull-error-unable-to-create-file-invalid-argument" target="_blank" rel="external">Git pull error: unable to create file (Invalid argument)</a> </p>
+<p><a href="https://stackoverflow.com/questions/20715804/git-cant-checkout-a-repo-from-github" target="_blank" rel="noopener">Git can’t checkout a repo from github</a> </p>
+<p><a href="https://stackoverflow.com/questions/26097568/git-pull-error-unable-to-create-file-invalid-argument" target="_blank" rel="noopener">Git pull error: unable to create file (Invalid argument)</a> </p>
 <p>在Ubuntu on Windows 10上切换到家目录中，顺利克隆成功</p>
 <pre><code>mingguilu@DESKTOP-KME2TBI:~$ git clone git@github.com:mingguilu/blog_mingguilu_com.git
 Cloning into &apos;blog_mingguilu_com&apos;...
@@ -305,7 +305,7 @@ var a = new Donate({
 
   <div class="clearfix container">
       <div class="site-info">
-	      &copy; 2017 MingguiLu Blog All Rights Reserved.
+	      &copy; 2018 MingguiLu Blog All Rights Reserved.
           
             <span id="busuanzi_container_site_uv">
               本站访客数<span id="busuanzi_value_site_uv"></span>人次  
