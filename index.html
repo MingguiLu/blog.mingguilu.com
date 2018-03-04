@@ -108,6 +108,24 @@ var themeMenus = {};
 </header>
 
 
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
 
 
   <div id="container">
@@ -146,7 +164,7 @@ var themeMenus = {};
       
         
           <div class="entry-thumbnail">
-            <a href="/2018/03/02/RAID阵列上的Server_2012_R2忘记Administrator密码后/"><img width="250" height="175" src="/images/20180302/20180302_10.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            <a href="/2018/03/02/RAID阵列上的Server_2012_R2忘记Administrator密码后/"><img width="250" height="175" src="/images/20180302/20180302_10.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
           </div>
           <div class="entry-summary">
           配置了RAID5阵列的Dell服务器丢失了Administrator密码，运行着Windows Server 2012 R2，WinPE没有加载RAID驱动也无能为力，最后使用Windows Server 2012 R2的安装光盘重置了密码
@@ -894,7 +912,7 @@ Pytho...
 
             
               <div class="widget-entry-thumbnail">
-                <a href="/2018/03/02/RAID阵列上的Server_2012_R2忘记Administrator密码后/" title=""><img width="50" height="50" src="/images/20180302/20180302_10.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+                <a href="/2018/03/02/RAID阵列上的Server_2012_R2忘记Administrator密码后/" title=""><img width="50" height="50" src="/images/20180302/20180302_10.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
             

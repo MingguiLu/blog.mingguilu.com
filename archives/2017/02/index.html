@@ -108,6 +108,24 @@ var themeMenus = {};
 </header>
 
 
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
 
 
   <div id="container">
@@ -402,7 +420,7 @@ var themeMenus = {};
 
             
               <div class="widget-entry-thumbnail">
-                <a href="/2018/03/02/RAID阵列上的Server_2012_R2忘记Administrator密码后/" title=""><img width="50" height="50" src="/images/20180302/20180302_10.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+                <a href="/2018/03/02/RAID阵列上的Server_2012_R2忘记Administrator密码后/" title=""><img width="50" height="50" src="/images/20180302/20180302_10.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
             

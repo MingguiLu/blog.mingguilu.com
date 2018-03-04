@@ -19,12 +19,12 @@
 <meta property="og:site_name" content="MingguiLu Blog">
 <meta property="og:description" content="配置了RAID5阵列的Dell服务器丢失了Administrator密码，运行着Windows Server 2012 R2，WinPE没有加载RAID驱动也无能为力，最后使用Windows Server 2012 R2的安装光盘重置了密码">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://blog.mingguilu.com/images/20180302/20180302_10.jpg">
-<meta property="og:updated_time" content="2018-03-03T16:32:09.000Z">
+<meta property="og:image" content="http://blog.mingguilu.com/images/20180302/20180302_10.png">
+<meta property="og:updated_time" content="2018-03-04T06:52:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RAID阵列上的Server_2012_R2忘记Administrator密码后...">
 <meta name="twitter:description" content="配置了RAID5阵列的Dell服务器丢失了Administrator密码，运行着Windows Server 2012 R2，WinPE没有加载RAID驱动也无能为力，最后使用Windows Server 2012 R2的安装光盘重置了密码">
-<meta name="twitter:image" content="http://blog.mingguilu.com/images/20180302/20180302_10.jpg">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/20180302/20180302_10.png">
   
   <link rel="icon" href="/css/images/favicon.ico">
   
@@ -114,6 +114,24 @@ var themeMenus = {};
 </header>
 
 
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
 
 
   <div id="container">
@@ -129,8 +147,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/20180302/20180302_10.jpg" rel="gallery_cjeblaqkw000sj2es47joxgf4">
-        <img src="/images/20180302/20180302_10.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="/images/20180302/20180302_10.png" rel="gallery_cjeblaqkw000sj2es47joxgf4">
+        <img src="/images/20180302/20180302_10.png" itemprop="image">
       </a>
     
   </div>
@@ -164,27 +182,27 @@ var themeMenus = {};
       
         <p>配置了RAID5阵列的Dell服务器丢失了Administrator密码，运行着Windows Server 2012 R2，WinPE没有加载RAID驱动也无能为力，最后使用Windows Server 2012 R2的安装光盘重置了密码</p>
 <a id="more"></a>
-<h4 id="从安装光盘启动"><a href="#从安装光盘启动" class="headerlink" title="从安装光盘启动"></a>从安装光盘启动</h4><p><img src="/images/20180302/20180302_01.jpg" alt=""></p>
-<h4 id="在安装程序中选择”修复计算机”"><a href="#在安装程序中选择”修复计算机”" class="headerlink" title="在安装程序中选择”修复计算机”"></a>在安装程序中选择”修复计算机”</h4><p><img src="/images/20180302/20180302_02.jpg" alt=""></p>
-<h4 id="选择选项”疑难解答”"><a href="#选择选项”疑难解答”" class="headerlink" title="选择选项”疑难解答”"></a>选择选项”疑难解答”</h4><p><img src="/images/20180302/20180302_03.jpg" alt=""></p>
-<h4 id="选择高级选项”命令提示符”"><a href="#选择高级选项”命令提示符”" class="headerlink" title="选择高级选项”命令提示符”"></a>选择高级选项”命令提示符”</h4><p><img src="/images/20180302/20180302_04.jpg" alt=""></p>
+<h4 id="从安装光盘启动"><a href="#从安装光盘启动" class="headerlink" title="从安装光盘启动"></a>从安装光盘启动</h4><p><img src="/images/20180302/20180302_01.png" alt=""></p>
+<h4 id="在安装程序中选择”修复计算机”"><a href="#在安装程序中选择”修复计算机”" class="headerlink" title="在安装程序中选择”修复计算机”"></a>在安装程序中选择”修复计算机”</h4><p><img src="/images/20180302/20180302_02.png" alt=""></p>
+<h4 id="选择选项”疑难解答”"><a href="#选择选项”疑难解答”" class="headerlink" title="选择选项”疑难解答”"></a>选择选项”疑难解答”</h4><p><img src="/images/20180302/20180302_03.png" alt=""></p>
+<h4 id="选择高级选项”命令提示符”"><a href="#选择高级选项”命令提示符”" class="headerlink" title="选择高级选项”命令提示符”"></a>选择高级选项”命令提示符”</h4><p><img src="/images/20180302/20180302_04.png" alt=""></p>
 <h4 id="将Windows-system32下的osk-exe程序替换成cmd-exe程序"><a href="#将Windows-system32下的osk-exe程序替换成cmd-exe程序" class="headerlink" title="将Windows\system32下的osk.exe程序替换成cmd.exe程序"></a>将Windows\system32下的osk.exe程序替换成cmd.exe程序</h4><pre><code># 进入系统盘的Windows\system32目录下
 cd Windows\system32
 # 将osk.exe(屏幕键盘程序)重命名做备份
 rename osk.exe osk.exe.old
 # 拷贝cmd.exe程序并重命名为osk.exe
 copy cmd.exe osk.exe
-</code></pre><p><img src="/images/20180302/20180302_05.jpg" alt=""></p>
-<h4 id="选择”继续”，重启服务器到登录界面"><a href="#选择”继续”，重启服务器到登录界面" class="headerlink" title="选择”继续”，重启服务器到登录界面"></a>选择”继续”，重启服务器到登录界面</h4><p><img src="/images/20180302/20180302_06.jpg" alt=""></p>
-<h4 id="点击”屏幕键盘”，弹出命令行终端"><a href="#点击”屏幕键盘”，弹出命令行终端" class="headerlink" title="点击”屏幕键盘”，弹出命令行终端"></a>点击”屏幕键盘”，弹出命令行终端</h4><p><img src="/images/20180302/20180302_07.jpg" alt=""></p>
+</code></pre><p><img src="/images/20180302/20180302_05.png" alt=""></p>
+<h4 id="选择”继续”，重启服务器到登录界面"><a href="#选择”继续”，重启服务器到登录界面" class="headerlink" title="选择”继续”，重启服务器到登录界面"></a>选择”继续”，重启服务器到登录界面</h4><p><img src="/images/20180302/20180302_06.png" alt=""></p>
+<h4 id="点击”屏幕键盘”，弹出命令行终端"><a href="#点击”屏幕键盘”，弹出命令行终端" class="headerlink" title="点击”屏幕键盘”，弹出命令行终端"></a>点击”屏幕键盘”，弹出命令行终端</h4><p><img src="/images/20180302/20180302_07.png" alt=""></p>
 <h4 id="用DOS命令重置Administrator密码，或创建新用户"><a href="#用DOS命令重置Administrator密码，或创建新用户" class="headerlink" title="用DOS命令重置Administrator密码，或创建新用户"></a>用DOS命令重置Administrator密码，或创建新用户</h4><pre><code># 重置Administrator密码
 net user administrator  New_Password
 # 创建新帐户
 net user New_Username New_Password
 # 将新帐户添加到本地管理员组
 net localgroup administrators New_Username
-</code></pre><p><img src="/images/20180302/20180302_08.jpg" alt=""></p>
-<h4 id="登录系统"><a href="#登录系统" class="headerlink" title="登录系统"></a>登录系统</h4><p><img src="/images/20180302/20180302_09.jpg" alt=""></p>
+</code></pre><p><img src="/images/20180302/20180302_08.png" alt=""></p>
+<h4 id="登录系统"><a href="#登录系统" class="headerlink" title="登录系统"></a>登录系统</h4><p><img src="/images/20180302/20180302_09.png" alt=""></p>
 
       
     </div>
