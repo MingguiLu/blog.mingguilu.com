@@ -3,28 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>ubuntu使用一键安装包安装禅道开源版 | MingguiLu Blog</title>
+  <title>centos7安装和配置harbor | MingguiLu Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="LinuxUbuntu禅道Zentao" />
   
   
   
-  
-  <meta name="description" content="相比搭建LAMP环境使用源码包安装禅道，使用Linux一键安装包则简单很多">
-<meta name="keywords" content="Linux,Ubuntu,禅道,Zentao">
+  <meta name="description" content="Continuous Delivery">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu使用一键安装包安装禅道开源版">
-<meta property="og:url" content="http://blog.mingguilu.com/2017/02/18/Ubuntu使用一键安装包安装禅道开源版/index.html">
+<meta property="og:title" content="CentOS7安装和配置Harbor">
+<meta property="og:url" content="http://blog.mingguilu.com/2018/03/09/CentOS7安装和配置Harbor/index.html">
 <meta property="og:site_name" content="MingguiLu Blog">
-<meta property="og:description" content="相比搭建LAMP环境使用源码包安装禅道，使用Linux一键安装包则简单很多">
+<meta property="og:description" content="Continuous Delivery">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://blog.mingguilu.com/images/photos/zentao.jpg">
-<meta property="og:updated_time" content="2018-01-21T12:15:21.000Z">
+<meta property="og:image" content="http://blog.mingguilu.com/images/">
+<meta property="og:updated_time" content="2018-03-08T16:22:48.187Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu使用一键安装包安装禅道开源版">
-<meta name="twitter:description" content="相比搭建LAMP环境使用源码包安装禅道，使用Linux一键安装包则简单很多">
-<meta name="twitter:image" content="http://blog.mingguilu.com/images/photos/zentao.jpg">
+<meta name="twitter:title" content="CentOS7安装和配置Harbor">
+<meta name="twitter:description" content="Continuous Delivery">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/">
   
   <link rel="icon" href="/css/images/favicon.ico">
   
@@ -139,7 +136,7 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Ubuntu使用一键安装包安装禅道开源版" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-CentOS7安装和配置Harbor" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     <!-- 不在文章内容页面顶部显示图片 -->
 <!-- 
@@ -147,8 +144,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/photos/zentao.jpg" rel="gallery_cjeiq4vn50017gzes3d0jvle3">
-        <img src="/images/photos/zentao.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="/images/" rel="gallery_cjeiq4vmo000kgzes07awbhlq">
+        <img src="/images/" itemprop="image">
       </a>
     
   </div>
@@ -160,7 +157,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Ubuntu使用一键安装包安装禅道开源版
+      CentOS7安装和配置Harbor
     </h1>
   
 
@@ -168,8 +165,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/02/18/Ubuntu使用一键安装包安装禅道开源版/" class="article-date">
-	  <time datetime="2017-02-17T22:17:37.000Z" itemprop="datePublished">二月 18, 2017</time>
+	Posted on <a href="/2018/03/09/CentOS7安装和配置Harbor/" class="article-date">
+	  <time datetime="2018-03-08T16:22:48.000Z" itemprop="datePublished">三月 9, 2018</time>
 	</a>
 
       
@@ -180,112 +177,12 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><br></p>
-<blockquote>
-<p>相比<a href="http://linux.mingguilu.com/2017/02/16/ubuntu%E4%BD%BF%E7%94%A8apt%E6%90%AD%E5%BB%BAlamp/" target="_blank" rel="noopener">搭建LAMP环境</a><a href="http://linux.mingguilu.com/2017/02/17/ubuntu%E4%BD%BF%E7%94%A8%E6%BA%90%E7%A0%81%E5%8C%85%E5%AE%89%E8%A3%85%E7%A6%85%E9%81%93%E5%BC%80%E6%BA%90%E7%89%88/" target="_blank" rel="noopener">使用源码包安装禅道</a>，使用Linux一键安装包则简单很多</p>
-</blockquote>
-<a id="more"></a>
-<h3 id="1-下载并安装Linux-64位一键安装包"><a href="#1-下载并安装Linux-64位一键安装包" class="headerlink" title="1. 下载并安装Linux 64位一键安装包"></a>1. 下载并安装<a href="http://www.zentao.net/download/80025.html" target="_blank" rel="noopener">Linux 64位一键安装包</a></h3><p>下载<a href="http://dl.cnezsoft.com/zentao/9.0.1/ZenTaoPMS.9.0.1.zbox_64.tar.gz" target="_blank" rel="noopener">禅道9.0.1版本Linux 64位一键安装包</a></p>
-<pre><code>$ wget http://dl.cnezsoft.com/zentao/9.0.1/ZenTaoPMS.9.0.1.zbox_64.tar.gz
-</code></pre><p>直接将安装包解压缩到/opt目录下，即安装完成</p>
-<pre><code>$ sudo tar -zxvf ZenTaoPMS.9.0.1.zbox_64.tar.gz -C /opt/
-</code></pre><h3 id="2-使用zbox命令管理Apache和Mysql服务"><a href="#2-使用zbox命令管理Apache和Mysql服务" class="headerlink" title="2. 使用zbox命令管理Apache和Ｍysql服务"></a>2. 使用zbox命令管理Apache和Ｍysql服务</h3><p>获取zbox命令的帮助</p>
-<pre><code>$ sudo /opt/zbox/zbox -h
-Usage: zbox.php {start|stop|restart|status}
-
-Options:
-    -h --help Show help.
-    -ap --aport Apache port, default 80　　# 修改Apache服务端口号
-    -mp --mport Mysql port, default 3306　# 修改Mysql服务端口号
-</code></pre><p>开启Apache和Ｍysql服务</p>
-<pre><code>$ sudo /opt/zbox/zbox start 
-Start Apache success
-Start Mysql success
-</code></pre><p>重启Apache和Ｍysql服务</p>
-<pre><code>$ sudo /opt/zbox/zbox restart
-Retart Apache success
-Retart Mysql success
-</code></pre><p>停止Apache和Ｍysql服务</p>
-<pre><code>$ sudo /opt/zbox/zbox stop
-Stop Apache success
-Stop Mysql success
-</code></pre><p>查看Apache和Ｍysql服务状态</p>
-<pre><code>$ sudo /opt/zbox/zbox status
-Apache is not running
-Mysql is not running
-</code></pre><p>开启Apache和Ｍysql服务后，在浏览器访问禅道管理系统</p>
-<pre><code>http://server-ip
-</code></pre><p><img src="/images/20170218/170218_01_02_01.png" alt=""></p>
-<p>进入“开源版”登录界面，默认帐号：admin，密码：123456</p>
-<p><img src="/images/20170218/170218_01_02_02.png" alt=""></p>
-<p>登录成功</p>
-<p><img src="/images/20170218/170218_01_02_03.png" alt=""></p>
-<h3 id="3-访问数据库"><a href="#3-访问数据库" class="headerlink" title="3. 访问数据库"></a>3. 访问数据库</h3><h4 id="网页登录数据库"><a href="#网页登录数据库" class="headerlink" title="网页登录数据库"></a>网页登录数据库</h4><p>数据库管理用的是adminer，为了安全，访问adminer的时候需要身份验证，需要运行/opt/zbox/auth/adduser.sh来添加用户</p>
-<ul>
-<li><p>在普通用户下</p>
-<p>  $ sudo ./adduser.sh<br>  This tool is used to add user to access adminer<br>  Account: adminer1  passwd123!　　# 设置用户名和密码<br>  ./adduser.sh: 3: read: Illegal option -s<br>  Adding password for user adminer1  </p>
-</li>
-<li><p>在root用户下</p>
-<p>  ＃ cd /opt/zbox/auth/<br>  ＃ ./adduser.sh<br>  This tool is used to add user to access adminer<br>  Account: adminer2　　＃ 设置用户名<br>  Password: 　　　　　＃ 设置密码(隐式)<br>  Adding password for user adminer2</p>
-</li>
-</ul>
-<p>在访问禅道管理系统时，点击右下角的“数据库管理”</p>
-<p><img src="/images/20170218/170218_01_03_01.png" alt=""></p>
-<p>adminer身份验证</p>
-<p><img src="/images/20170218/170218_01_03_02.png" alt=""></p>
-<p>验证通过进入数据web管理台</p>
-<p><img src="/images/20170218/170218_01_03_03.png" alt=""></p>
-<h4 id="命令行连接数据库"><a href="#命令行连接数据库" class="headerlink" title="命令行连接数据库"></a>命令行连接数据库</h4><p>登录数据库，默认帐号:root，密码为空</p>
-<pre><code>/opt/zbox/bin/mysql -u root -P mysql端口 -p 
-
-$ /opt/zbox/bin/mysql -uroot -p　　# 使用默认的3306端口，可省略`-P`参数
-Enter password: 　　　# 密码为空
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 58
-Server version: 5.5.45 Source distribution
-
-Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.
-
-mysql&gt; 
-</code></pre><p><br></p>
-<hr>
-<h3 id="常见问题FQA"><a href="#常见问题FQA" class="headerlink" title="常见问题FQA"></a>常见问题FQA</h3><h4 id="1-如果服务器上已经搭建了LAMP环境，80端口和3306端口被占用了，无法启动"><a href="#1-如果服务器上已经搭建了LAMP环境，80端口和3306端口被占用了，无法启动" class="headerlink" title="1.  如果服务器上已经搭建了LAMP环境，80端口和3306端口被占用了，无法启动"></a>1.  如果服务器上已经搭建了LAMP环境，80端口和3306端口被占用了，无法启动</h4><pre><code>$ sudo /opt/zbox/zbox start
-(98)Address already in use: AH00073: make_sock: unable to listen for connections on address 0.0.0.0:80
-no listening sockets available, shutting down
-AH00015: Unable to open logs
-Start Apache fail. You can see the log /opt/zbox/logs/apache_error.log
-Start Mysql fail. You can see the log /opt/zbox/logs/mysql_error.log
-</code></pre><p>解决方法：</p>
-<p>修改Apache端口</p>
-<pre><code>$ sudo /opt/zbox/zbox -ap 8080
-</code></pre><p>修改Mysql端口</p>
-<pre><code>$ sudo /opt/zbox/zbox -mp 3308
-</code></pre><p>在浏览器访问禅道管理系统时指定端口号</p>
-<pre><code>http://server-ip:8080
-</code></pre><p><br></p>
-<hr>
-<p><em>参考文档</em></p>
-<ul>
-<li><a href="http://www.zentao.net/book/zentaopmshelp/90.html" target="_blank" rel="noopener">linux用一键安装包</a></li>
-</ul>
-
+        
       
     </div>
     <footer class="entry-meta entry-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
-
       
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zentao/">Zentao</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/禅道/">禅道</a></li></ul>
-
       
         <div id="donation_div"></div>
 
@@ -332,19 +229,10 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2017/02/23/CentOS7使用YUM搭建Samba文件共享/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          CentOS7使用YUM搭建Samba文件共享
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/02/17/Ubuntu使用源码包安装禅道开源版/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/03/06/CentOS7安装Docker和Docker-compose/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">Ubuntu使用源码包安装禅道开源版</div>
+      <div class="article-nav-title">CentOS7安装Docker和Docker-compose</div>
     </a>
   
 </nav>
@@ -358,7 +246,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-下载并安装Linux-64位一键安装包"><span class="nav-number">1.</span> <span class="nav-text">1. 下载并安装Linux 64位一键安装包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用zbox命令管理Apache和Mysql服务"><span class="nav-number">2.</span> <span class="nav-text">2. 使用zbox命令管理Apache和Ｍysql服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-访问数据库"><span class="nav-number">3.</span> <span class="nav-text">3. 访问数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#网页登录数据库"><span class="nav-number">3.1.</span> <span class="nav-text">网页登录数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令行连接数据库"><span class="nav-number">3.2.</span> <span class="nav-text">命令行连接数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见问题FQA"><span class="nav-number">4.</span> <span class="nav-text">常见问题FQA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-如果服务器上已经搭建了LAMP环境，80端口和3306端口被占用了，无法启动"><span class="nav-number">4.1.</span> <span class="nav-text">1.  如果服务器上已经搭建了LAMP环境，80端口和3306端口被占用了，无法启动</span></a></li></ol></li></ol>
+      <ol class="nav">无</ol>
     
     </div>
   </aside>
