@@ -108,6 +108,24 @@ var themeMenus = {};
 </header>
 
 
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
 
 
   <div id="container">
@@ -117,7 +135,7 @@ var themeMenus = {};
         
           <section id="main">
   
-    <article id="post-CentOS7安装Docker-EE"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-CentOS7安装Docker和Docker-compose"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     <!-- 不在文章内容页面顶部显示图片 -->
 <!-- 
@@ -128,7 +146,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/03/06/CentOS7安装Docker-EE/">CentOS7安装Docker-EE和Docker-compose</a>
+      <a class="article-title" href="/2018/03/06/CentOS7安装Docker和Docker-compose/">CentOS7安装Docker和Docker-compose</a>
     </h1>
   
 
@@ -136,7 +154,7 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/03/06/CentOS7安装Docker-EE/" class="article-date">
+	Posted on <a href="/2018/03/06/CentOS7安装Docker和Docker-compose/" class="article-date">
 	  <time datetime="2018-03-06T05:01:17.000Z" itemprop="datePublished">三月 6, 2018</time>
 	</a>
 
@@ -146,17 +164,16 @@ var themeMenus = {};
       
         
           <div class="entry-thumbnail">
-            <a href="/2018/03/06/CentOS7安装Docker-EE/"><img width="250" height="175" src="/images/photos/docker.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            <a href="/2018/03/06/CentOS7安装Docker和Docker-compose/"><img width="250" height="175" src="/images/photos/docker.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
           </div>
           <div class="entry-summary">
-          获取Docker EE repository URL注册Docker帐户在Docker官网右上角点击Create Docker ID，输入Docker ID、邮箱、密码进行注册，随后在邮件点击链接激活帐户
+          Docker分为Docker-EE(enterprise edition)和Docker-CE(community edition)两个版本；EE是收费版本，由官方技术团队维护和提供技术支持；CE是免费版本，由社区维护和提供技术支持
 
-
-在Docker Store获取Docker EE for CentOS在GET DOCKER下面点击GET DOCKER EE，筛选出Docker Enterprise Edition...
+安装Docker-EE获取Docker EE repository URL注册Docker帐户在Docker官网右上角点击Create Docker ID，输...
 
         
           <p class="article-more-link">
-            <a href="/2018/03/06/CentOS7安装Docker-EE/#more">阅读全文</a>
+            <a href="/2018/03/06/CentOS7安装Docker和Docker-compose/#more">阅读全文</a>
           </p>
         </div>
       
@@ -894,12 +911,12 @@ AutoIt 在线手册中文版_脚本之家 v3.1.1  :  http://www.jb51.net/shouce/
 
             
               <div class="widget-entry-thumbnail">
-                <a href="/2018/03/06/CentOS7安装Docker-EE/" title=""><img width="50" height="50" src="/images/photos/docker.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+                <a href="/2018/03/06/CentOS7安装Docker和Docker-compose/" title=""><img width="50" height="50" src="/images/photos/docker.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
             
 
-              <h6 style="margin: 0;"><a href="/2018/03/06/CentOS7安装Docker-EE/">CentOS7安装Docker-EE和Docker-compose</a></h6>
+              <h6 style="margin: 0;"><a href="/2018/03/06/CentOS7安装Docker和Docker-compose/">CentOS7安装Docker和Docker-compose</a></h6>
               <span>三月 6, 2018</span>
             </div>
 

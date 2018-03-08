@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>centos7安装docker和docker-compose | MingguiLu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="LinuxCentOSDocker" />
+  
+  
+  
+  
+  <meta name="description" content="Docker分为Docker-EE(enterprise edition)和Docker-CE(community edition)两个版本；EE是收费版本，由官方技术团队维护和提供技术支持；CE是免费版本，由社区维护和提供技术支持">
+<meta name="keywords" content="Linux,CentOS,Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS7安装Docker和Docker-compose">
+<meta property="og:url" content="http://blog.mingguilu.com/2018/03/06/CentOS7安装Docker和Docker-compose/index.html">
+<meta property="og:site_name" content="MingguiLu Blog">
+<meta property="og:description" content="Docker分为Docker-EE(enterprise edition)和Docker-CE(community edition)两个版本；EE是收费版本，由官方技术团队维护和提供技术支持；CE是免费版本，由社区维护和提供技术支持">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.mingguilu.com/images/photos/docker.jpg">
+<meta property="og:updated_time" content="2018-03-08T16:17:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CentOS7安装Docker和Docker-compose">
+<meta name="twitter:description" content="Docker分为Docker-EE(enterprise edition)和Docker-CE(community edition)两个版本；EE是收费版本，由官方技术团队维护和提供技术支持；CE是免费版本，由社区维护和提供技术支持">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/photos/docker.jpg">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/categories"] = "分类"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="MingguiLu Blog" rel="home"> MingguiLu Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Continuous Delivery</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-CentOS7安装Docker和Docker-compose" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    <!-- 不在文章内容页面顶部显示图片 -->
+<!-- 
+
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/images/photos/docker.jpg" rel="gallery_cjeipv2pr0000j0esgnbna5sf">
+        <img src="/images/photos/docker.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+-->
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      CentOS7安装Docker和Docker-compose
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/03/06/CentOS7安装Docker和Docker-compose/" class="article-date">
+	  <time datetime="2018-03-06T05:01:17.000Z" itemprop="datePublished">三月 6, 2018</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Docker分为Docker-EE(enterprise edition)和Docker-CE(community edition)两个版本；EE是收费版本，由官方技术团队维护和提供技术支持；CE是免费版本，由社区维护和提供技术支持</p>
+<a id="more"></a>
+<h4 id="安装Docker-EE"><a href="#安装Docker-EE" class="headerlink" title="安装Docker-EE"></a>安装Docker-EE</h4><h5 id="获取Docker-EE-repository-URL"><a href="#获取Docker-EE-repository-URL" class="headerlink" title="获取Docker EE repository URL"></a>获取Docker EE repository URL</h5><h6 id="注册Docker帐户"><a href="#注册Docker帐户" class="headerlink" title="注册Docker帐户"></a>注册Docker帐户</h6><p>在<a href="https://www.docker.com/" target="_blank" rel="noopener">Docker官网</a>右上角点击<code>Create Docker ID</code>，输入<code>Docker ID</code>、邮箱、密码进行注册，随后在邮件点击链接激活帐户</p>
+<p><img src="/images/20180306/20180306_01_01.png" alt=""></p>
+<!--more-->
+<h6 id="在Docker-Store获取Docker-EE-for-CentOS"><a href="#在Docker-Store获取Docker-EE-for-CentOS" class="headerlink" title="在Docker Store获取Docker EE for CentOS"></a>在<a href="https://store.docker.com/" target="_blank" rel="noopener">Docker Store</a>获取<code>Docker EE for CentOS</code></h6><p>在<code>GET DOCKER</code>下面点击<code>GET DOCKER EE</code>，筛选出<code>Docker Enterprise Edition for CentOS</code></p>
+<p><img src="/images/20180306/20180306_01_02.png" alt=""></p>
+<p>Docker-EE是付费版本，但可以免费体验1个月，点击<code>Start 1 Month Trial</code></p>
+<p><img src="/images/20180306/20180306_01_03.png" alt=""></p>
+<p>如果是第一次获取Docker repository URL，会要求完善个人账户信息，填写提交即可，接下来即可看到自己的URL</p>
+<p><img src="/images/20180306/20180306_01_04.png" alt=""></p>
+<h5 id="卸载旧版本的Docker或Docker-engine"><a href="#卸载旧版本的Docker或Docker-engine" class="headerlink" title="卸载旧版本的Docker或Docker-engine"></a>卸载旧版本的<code>Docker</code>或<code>Docker-engine</code></h5><p>如果系统上不存在旧版的Docker可以跳过这步</p>
+<pre><code>$ sudo yum remove docker \
+                docker-client \
+                docker-client-latest \
+                docker-common \
+                docker-latest \
+                docker-latest-logrotate \
+                docker-logrotate \
+                docker-selinux \
+                docker-engine-selinux \
+                docker-engine \
+                docker-ce
+</code></pre><h5 id="配置Yum源"><a href="#配置Yum源" class="headerlink" title="配置Yum源"></a>配置Yum源</h5><h6 id="移除现有的Docker-yum源"><a href="#移除现有的Docker-yum源" class="headerlink" title="移除现有的Docker yum源"></a>移除现有的Docker yum源</h6><pre><code>[mingguilu@localhost yum.repos.d]$ sudo mv docker-ee.repo docker-ee.repo.bak
+[mingguilu@localhost yum.repos.d]$ ls
+CentOS-Base.repo  CentOS-Debuginfo.repo  CentOS-Media.repo    CentOS-Vault.repo
+CentOS-CR.repo    CentOS-fasttrack.repo  CentOS-Sources.repo  docker-ee.repo.bak
+</code></pre><h6 id="将Docker-EE-repository-UR添加到临时环境变量中"><a href="#将Docker-EE-repository-UR添加到临时环境变量中" class="headerlink" title="将Docker EE repository UR添加到临时环境变量中"></a>将Docker EE repository UR添加到临时环境变量中</h6><pre><code>$ export DOCKERURL=&apos;&lt;DOCKER-EE-URL&gt;&apos;
+
+[mingguilu@localhost yum.repos.d]$ export DOCKERURL=&apos;&lt;DOCKER-EE-URL&gt;&apos;
+[mingguilu@localhost yum.repos.d]$ export | head -1
+declare -x DOCKERURL=&quot;https://storebits.docker.com/ee/centos/sub-43072c8f-268b-4608-8065-9996bb1c7129&quot;
+</code></pre><h6 id="把存储Docker-EE-repository-UR的变量添加到-etc-yum-vars-dockerurl文件中"><a href="#把存储Docker-EE-repository-UR的变量添加到-etc-yum-vars-dockerurl文件中" class="headerlink" title="把存储Docker EE repository UR的变量添加到/etc/yum/vars/dockerurl文件中"></a>把存储Docker EE repository UR的变量添加到/etc/yum/vars/dockerurl文件中</h6><pre><code>$ sudo -E sh -c &apos;echo &quot;$DOCKERURL/centos&quot; &gt; /etc/yum/vars/dockerurl&apos;
+</code></pre><h6 id="安装必需的软件yum-utils、device-mapper-persistent-data、lvm2"><a href="#安装必需的软件yum-utils、device-mapper-persistent-data、lvm2" class="headerlink" title="安装必需的软件yum-utils、device-mapper-persistent-data、lvm2"></a>安装必需的软件yum-utils、device-mapper-persistent-data、lvm2</h6><pre><code>$ sudo yum install -y yum-utils \
+    device-mapper-persistent-data \
+    lvm2
+</code></pre><h6 id="添加到yum源"><a href="#添加到yum源" class="headerlink" title="添加到yum源"></a>添加到yum源</h6><pre><code>$ sudo -E yum-config-manager \
+    --add-repo \
+    &quot;$DOCKERURL/centos/docker-ee.repo&quot;
+</code></pre><h5 id="正式安装"><a href="#正式安装" class="headerlink" title="正式安装"></a>正式安装</h5><pre><code>$ sudo yum -y install docker-ee
+
+[mingguilu@localhost yum.repos.d]$ sudo yum install -y docker-ee
+已加载插件：fastestmirror
+docker-ee-stable-17.06                                       | 2.9 kB  00:00:00     
+docker-ee-stable-18.01                                       | 2.9 kB  00:00:00     
+(1/2): docker-ee-stable-18.01/x86_64/primary_db              | 1.1 kB  00:00:02     
+(2/2): docker-ee-stable-17.06/x86_64/primary_db              | 7.6 kB  00:00:02     
+Loading mirror speeds from cached hostfile
+* base: centos.ustc.edu.cn
+* extras: mirrors.sohu.com
+* updates: mirrors.sohu.com
+正在解决依赖关系
+--&gt; 正在检查事务
+---&gt; 软件包 docker-ee.x86_64.0.17.06.2.ee.6-3.el7.centos 将被 安装
+--&gt; 正在处理依赖关系 container-selinux &gt;= 2.9，它被软件包 docker-ee-17.06.2.ee.6-3.el7.centos.x86_64 需要
+--&gt; 正在检查事务
+---&gt; 软件包 container-selinux.noarch.2.2.36-1.gitff95335.el7 将被 安装
+--&gt; 解决依赖关系完成
+
+依赖关系解决
+
+====================================================================================
+Package           架构   版本                         源                      大小
+====================================================================================
+正在安装:
+docker-ee         x86_64 17.06.2.ee.6-3.el7.centos    docker-ee-stable-17.06  25 M
+为依赖而安装:
+container-selinux noarch 2:2.36-1.gitff95335.el7      extras                  31 k
+
+事务概要
+====================================================================================
+安装  1 软件包 (+1 依赖软件包)
+
+总下载量：25 M
+安装大小：79 M
+Downloading packages:
+(1/2): container-selinux-2.36-1.gitff95335.el7.noarch.rpm    |  31 kB  00:00:01     
+warning: /var/cache/yum/x86_64/7/docker-ee-stable-17.06/packages/docker-ee-17.06.2.ee.6-3.el7.centos.x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID 76682bc9: NOKEY
+docker-ee-17.06.2.ee.6-3.el7.centos.x86_64.rpm 的公钥尚未安装
+(2/2): docker-ee-17.06.2.ee.6-3.el7.centos.x86_64.rpm        |  25 MB  00:00:48     
+------------------------------------------------------------------------------------
+总计                                                   534 kB/s |  25 MB  00:48     
+从 https://storebits.docker.com/ee/centos/sub-43072c8f-268b-4608-8065-9996bb1c7129/centos/gpg 检索密钥
+导入 GPG key 0x76682BC9:
+用户ID     : &quot;Docker Release (EE rpm) &lt;docker@docker.com&gt;&quot;
+指纹       : 77fe da13 1a83 1d29 a418 d3e8 99e5 ff2e 7668 2bc9
+来自       : https://storebits.docker.com/ee/centos/sub-43072c8f-268b-4608-8065-9996bb1c7129/centos/gpg
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+正在安装    : 2:container-selinux-2.36-1.gitff95335.el7.noarch                1/2 
+正在安装    : docker-ee-17.06.2.ee.6-3.el7.centos.x86_64                      2/2 
+验证中      : docker-ee-17.06.2.ee.6-3.el7.centos.x86_64                      1/2 
+验证中      : 2:container-selinux-2.36-1.gitff95335.el7.noarch                2/2 
+
+已安装:
+docker-ee.x86_64 0:17.06.2.ee.6-3.el7.centos                                      
+
+作为依赖被安装:
+container-selinux.noarch 2:2.36-1.gitff95335.el7                                  
+完毕！
+</code></pre><h5 id="启动Docker"><a href="#启动Docker" class="headerlink" title="启动Docker"></a>启动Docker</h5><pre><code>$ sudo systemctl start docker
+</code></pre><h5 id="开机自动启动Docker服务"><a href="#开机自动启动Docker服务" class="headerlink" title="开机自动启动Docker服务"></a>开机自动启动Docker服务</h5><pre><code>$ sudo systemctl enable docker
+</code></pre><h5 id="查看Docker状态"><a href="#查看Docker状态" class="headerlink" title="查看Docker状态"></a>查看Docker状态</h5><pre><code>$ sudo systemctl status docker
+</code></pre><h5 id="停止Docker"><a href="#停止Docker" class="headerlink" title="停止Docker"></a>停止Docker</h5><pre><code>$ sudo systemctl stop docker
+</code></pre><h5 id="测试Docker"><a href="#测试Docker" class="headerlink" title="测试Docker"></a>测试Docker</h5><pre><code>[mingguilu@localhost ~]$ sudo docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+1. The Docker client contacted the Docker daemon.
+2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
+    (amd64)
+3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+$ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+https://cloud.docker.com/
+
+For more examples and ideas, visit:
+https://docs.docker.com/engine/userguide/
+</code></pre><h4 id="安装Docker-CE"><a href="#安装Docker-CE" class="headerlink" title="安装Docker-CE"></a>安装Docker-CE</h4><h5 id="在线安装Docker-CE"><a href="#在线安装Docker-CE" class="headerlink" title="在线安装Docker-CE"></a>在线安装Docker-CE</h5><p>在线安装Docker-CE的步骤与Docker-EE差不多，参考官网文档：<a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener">Get Docker CE for CentOS</a></p>
+<h5 id="离线安装Docker-CE"><a href="#离线安装Docker-CE" class="headerlink" title="离线安装Docker-CE"></a>离线安装Docker-CE</h5><h6 id="下载Docker-CE的rpm包"><a href="#下载Docker-CE的rpm包" class="headerlink" title="下载Docker-CE的rpm包"></a>下载Docker-CE的rpm包</h6><p>下载地址： <a href="https://download.docker.com/linux/centos/7/x86_64/stable/Packages/" target="_blank" rel="noopener">https://download.docker.com/linux/centos/7/x86_64/stable/Packages/</a></p>
+<pre><code>[mingguilu@localhost ~]$  wget https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm
+</code></pre><h6 id="安装Docker-CE-1"><a href="#安装Docker-CE-1" class="headerlink" title="安装Docker-CE"></a>安装Docker-CE</h6><pre><code>[mingguilu@localhost ~]$ sudo yum install ./docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm
+</code></pre><h4 id="安装Docker-Compose"><a href="#安装Docker-Compose" class="headerlink" title="安装Docker Compose"></a>安装Docker Compose</h4><h5 id="curl方式安装Docker-Compose"><a href="#curl方式安装Docker-Compose" class="headerlink" title="curl方式安装Docker Compose"></a>curl方式安装Docker Compose</h5><h6 id="curl命令安装"><a href="#curl命令安装" class="headerlink" title="curl命令安装"></a>curl命令安装</h6><pre><code>$ sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+
+[mingguilu@localhost ~]$ sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+[sudo] mingguilu 的密码：
+% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                Dload  Upload   Total   Spent    Left  Speed
+100   617    0   617    0     0     68      0 --:--:--  0:00:08 --:--:--   138
+100 8288k  100 8288k    0     0   106k      0  0:01:17  0:01:17 --:--:--  319k
+</code></pre><h6 id="添加可执行权限"><a href="#添加可执行权限" class="headerlink" title="添加可执行权限"></a>添加可执行权限</h6><p>[mingguilu@localhost ~]$ sudo chmod +x /usr/local/bin/docker-compose<br>[sudo] mingguilu 的密码：<br>[mingguilu@localhost ~]$<br>[mingguilu@localhost ~]$ ls -lh /usr/local/bin/docker-compose<br>-rwxr-xr-x. 1 root root 8.1M 3月   6 12:58 /usr/local/bin/docker-compose</p>
+<h6 id="查看docker-compose版本"><a href="#查看docker-compose版本" class="headerlink" title="查看docker-compose版本"></a>查看docker-compose版本</h6><pre><code>[mingguilu@localhost ~]$ docker-compose --version
+docker-compose version 1.19.0, build 9e633ef
+</code></pre><h5 id="pip方式安装"><a href="#pip方式安装" class="headerlink" title="pip方式安装"></a>pip方式安装</h5><h6 id="安装python-pip"><a href="#安装python-pip" class="headerlink" title="安装python-pip"></a>安装python-pip</h6><pre><code>[mingguilu@localhost ~]$ sudo yum install python-pip
+已加载插件：fastestmirror
+Loading mirror speeds from cached hostfile
+* base: mirrors.sohu.com
+* extras: mirrors.sohu.com
+* updates: mirrors.sohu.com
+没有可用软件包 python-pip。
+错误：无须任何处理
+</code></pre><h6 id="找不到python-pip包，需先安装epel-release"><a href="#找不到python-pip包，需先安装epel-release" class="headerlink" title="找不到python-pip包，需先安装epel-release"></a>找不到python-pip包，需先安装epel-release</h6><pre><code>[mingguilu@localhost ~]$ sudo yum install -y epel-release 
+
+[mingguilu@localhost ~]$ sudo yum install -y python-pip
+</code></pre><h6 id="pip安装Docker-compose"><a href="#pip安装Docker-compose" class="headerlink" title="pip安装Docker-compose"></a>pip安装Docker-compose</h6><pre><code>[mingguilu@localhost ~]$ sudo yum install -y docker-compose
+已加载插件：fastestmirror
+Loading mirror speeds from cached hostfile
+* base: mirrors.sohu.com
+* epel: mirror01.idc.hinet.net
+* extras: mirrors.sohu.com
+* updates: mirrors.sohu.com
+正在解决依赖关系
+--&gt; 正在检查事务
+---&gt; 软件包 docker-compose.noarch.0.1.9.0-5.el7 将被 安装
+--&gt; 正在处理依赖关系 python-docker-py &gt;= 1.10.6-1，它被软件包 docker-compose-1.9.0-5.el7.noarch 需要
+--&gt; 正在处理依赖关系 python-dockerpty &gt;= 0.4.1-1，它被软件包 docker-compose-1.9.0-5.el7.noarch 需要
+--&gt; 正在处理依赖关系 PyYAML，它被软件包 docker-compose-1.9.0-5.el7.noarch 需要
+--&gt; 正在处理依赖关系 python-cached_property，它被软件包 docker-compose-1.9.0-5.el7.noarch 需要
+--&gt; 正在处理依赖关系 python-docopt，它被软件包 docker-compose-1.9.0-5.el7.noarch 需要
+--&gt; 正在处理依赖关系 python-enum34，它被软件包 docker-compose-1.9.0-5.el7.noarch 需要
+--&gt; 正在处理依赖关系 python-jsonschema，它被软件包 docker-compose-1.9.0-5.el7.noarch 需要
+--&gt; 正在处理依赖关系 python-requests，它被软件包 docker-compose-1.9.0-5.el7.noarch 需要
+--&gt; 正在处理依赖关系 python-six，它被软件包 docker-compose-1.9.0-5.el7.noarch 需要
+--&gt; 正在处理依赖关系 python-texttable，它被软件包 docker-compose-1.9.0-5.el7.noarch 需要
+--&gt; 正在处理依赖关系 python-websocket-client，它被软件包 docker-compose-1.9.0-5.el7.noarch 需要
+--&gt; 正在处理依赖关系 python2-backports-functools_lru_cache，它被软件包 docker-compose-1.9.0-5.el7.noarch 需要
+--&gt; 正在检查事务
+---&gt; 软件包 PyYAML.x86_64.0.3.10-11.el7 将被 安装
+--&gt; 正在处理依赖关系 libyaml-0.so.2()(64bit)，它被软件包 PyYAML-3.10-11.el7.x86_64 需要
+---&gt; 软件包 python-docker-py.noarch.0.1.10.6-3.el7 将被 安装
+--&gt; 正在处理依赖关系 python-ipaddress，它被软件包 python-docker-py-1.10.6-3.el7.noarch 需要
+--&gt; 正在处理依赖关系 python-docker-pycreds，它被软件包 python-docker-py-1.10.6-3.el7.noarch 需要
+---&gt; 软件包 python-enum34.noarch.0.1.0.4-1.el7 将被 安装
+---&gt; 软件包 python-requests.noarch.0.2.6.0-1.el7_1 将被 安装
+--&gt; 正在处理依赖关系 python-urllib3 &gt;= 1.10.2-1，它被软件包 python-requests-2.6.0-1.el7_1.noarch 需要
+--&gt; 正在处理依赖关系 python-chardet &gt;= 2.2.1-1，它被软件包 python-requests-2.6.0-1.el7_1.noarch 需要
+---&gt; 软件包 python-six.noarch.0.1.9.0-2.el7 将被 安装
+---&gt; 软件包 python-websocket-client.noarch.0.0.32.0-116.el7 将被 安装
+---&gt; 软件包 python2-backports-functools_lru_cache.noarch.0.1.2.1-4.el7 将被 安装
+---&gt; 软件包 python2-cached_property.noarch.0.1.3.0-7.el7 将被 安装
+---&gt; 软件包 python2-dockerpty.noarch.0.0.4.1-9.el7 将被 安装
+---&gt; 软件包 python2-docopt.noarch.0.0.6.2-7.el7 将被 安装
+---&gt; 软件包 python2-jsonschema.noarch.0.2.5.1-3.el7 将被 安装
+--&gt; 正在处理依赖关系 python-repoze-lru，它被软件包 python2-jsonschema-2.5.1-3.el7.noarch 需要
+---&gt; 软件包 python2-texttable.noarch.0.0.9.1-1.el7 将被 安装
+--&gt; 正在检查事务
+---&gt; 软件包 libyaml.x86_64.0.0.1.4-11.el7_0 将被 安装
+---&gt; 软件包 python-chardet.noarch.0.2.2.1-1.el7_1 将被 安装
+---&gt; 软件包 python-docker-pycreds.noarch.0.1.10.6-3.el7 将被 安装
+---&gt; 软件包 python-ipaddress.noarch.0.1.0.16-2.el7 将被 安装
+---&gt; 软件包 python-repoze-lru.noarch.0.0.4-3.el7 将被 安装
+---&gt; 软件包 python-urllib3.noarch.0.1.10.2-3.el7 将被 安装
+--&gt; 解决依赖关系完成
+
+依赖关系解决
+
+=========================================================================================================================================================================
+Package                                                      架构                          版本                                     源                             大小
+=========================================================================================================================================================================
+正在安装:
+docker-compose                                               noarch                        1.9.0-5.el7                              epel                          150 k
+为依赖而安装:
+PyYAML                                                       x86_64                        3.10-11.el7                              base                          153 k
+libyaml                                                      x86_64                        0.1.4-11.el7_0                           base                           55 k
+python-chardet                                               noarch                        2.2.1-1.el7_1                            base                          227 k
+python-docker-py                                             noarch                        1.10.6-3.el7                             extras                        101 k
+python-docker-pycreds                                        noarch                        1.10.6-3.el7                             extras                         18 k
+python-enum34                                                noarch                        1.0.4-1.el7                              base                           52 k
+python-ipaddress                                             noarch                        1.0.16-2.el7                             base                           34 k
+python-repoze-lru                                            noarch                        0.4-3.el7                                epel                           13 k
+python-requests                                              noarch                        2.6.0-1.el7_1                            base                           94 k
+python-six                                                   noarch                        1.9.0-2.el7                              base                           29 k
+python-urllib3                                               noarch                        1.10.2-3.el7                             base                          101 k
+python-websocket-client                                      noarch                        0.32.0-116.el7                           extras                         56 k
+python2-backports-functools_lru_cache                        noarch                        1.2.1-4.el7                              epel                           12 k
+python2-cached_property                                      noarch                        1.3.0-7.el7                              epel                           16 k
+python2-dockerpty                                            noarch                        0.4.1-9.el7                              epel                           28 k
+python2-docopt                                               noarch                        0.6.2-7.el7                              epel                           28 k
+python2-jsonschema                                           noarch                        2.5.1-3.el7                              epel                           75 k
+python2-texttable                                            noarch                        0.9.1-1.el7                              epel                           21 k
+
+事务概要
+=========================================================================================================================================================================
+安装  1 软件包 (+18 依赖软件包)
+
+总下载量：1.2 M
+安装大小：4.8 M
+Downloading packages:
+(1/19): libyaml-0.1.4-11.el7_0.x86_64.rpm                                                                                                         |  55 kB  00:00:00     
+(2/19): python-docker-pycreds-1.10.6-3.el7.noarch.rpm                                                                                             |  18 kB  00:00:00     
+(3/19): python-enum34-1.0.4-1.el7.noarch.rpm                                                                                                      |  52 kB  00:00:00     
+(4/19): PyYAML-3.10-11.el7.x86_64.rpm                                                                                                             | 153 kB  00:00:00     
+(5/19): python-docker-py-1.10.6-3.el7.noarch.rpm                                                                                                  | 101 kB  00:00:00     
+(6/19): python-ipaddress-1.0.16-2.el7.noarch.rpm                                                                                                  |  34 kB  00:00:00     
+(7/19): python-chardet-2.2.1-1.el7_1.noarch.rpm                                                                                                   | 227 kB  00:00:00     
+(8/19): docker-compose-1.9.0-5.el7.noarch.rpm                                                                                                     | 150 kB  00:00:00     
+(9/19): python-requests-2.6.0-1.el7_1.noarch.rpm                                                                                                  |  94 kB  00:00:00     
+(10/19): python-repoze-lru-0.4-3.el7.noarch.rpm                                                                                                   |  13 kB  00:00:00     
+(11/19): python2-backports-functools_lru_cache-1.2.1-4.el7.noarch.rpm                                                                             |  12 kB  00:00:00     
+(12/19): python-six-1.9.0-2.el7.noarch.rpm                                                                                                        |  29 kB  00:00:00     
+(13/19): python2-cached_property-1.3.0-7.el7.noarch.rpm                                                                                           |  16 kB  00:00:00     
+(14/19): python-urllib3-1.10.2-3.el7.noarch.rpm                                                                                                   | 101 kB  00:00:00     
+(15/19): python-websocket-client-0.32.0-116.el7.noarch.rpm                                                                                        |  56 kB  00:00:00     
+(16/19): python2-dockerpty-0.4.1-9.el7.noarch.rpm                                                                                                 |  28 kB  00:00:00     
+(17/19): python2-docopt-0.6.2-7.el7.noarch.rpm                                                                                                    |  28 kB  00:00:00     
+(18/19): python2-jsonschema-2.5.1-3.el7.noarch.rpm                                                                                                |  75 kB  00:00:00     
+(19/19): python2-texttable-0.9.1-1.el7.noarch.rpm                                                                                                 |  21 kB  00:00:00     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+总计                                                                                                                                     730 kB/s | 1.2 MB  00:00:01     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+正在安装    : python-six-1.9.0-2.el7.noarch                                                                                                                       1/19 
+正在安装    : python-websocket-client-0.32.0-116.el7.noarch                                                                                                       2/19 
+正在安装    : python-docker-pycreds-1.10.6-3.el7.noarch                                                                                                           3/19 
+正在安装    : python2-dockerpty-0.4.1-9.el7.noarch                                                                                                                4/19 
+正在安装    : python-urllib3-1.10.2-3.el7.noarch                                                                                                                  5/19 
+正在安装    : python-ipaddress-1.0.16-2.el7.noarch                                                                                                                6/19 
+正在安装    : python-enum34-1.0.4-1.el7.noarch                                                                                                                    7/19 
+正在安装    : python2-docopt-0.6.2-7.el7.noarch                                                                                                                   8/19 
+正在安装    : python-chardet-2.2.1-1.el7_1.noarch                                                                                                                 9/19 
+正在安装    : python-requests-2.6.0-1.el7_1.noarch                                                                                                               10/19 
+正在安装    : python-docker-py-1.10.6-3.el7.noarch                                                                                                               11/19 
+正在安装    : python2-cached_property-1.3.0-7.el7.noarch                                                                                                         12/19 
+正在安装    : libyaml-0.1.4-11.el7_0.x86_64                                                                                                                      13/19 
+正在安装    : PyYAML-3.10-11.el7.x86_64                                                                                                                          14/19 
+正在安装    : python2-texttable-0.9.1-1.el7.noarch                                                                                                               15/19 
+正在安装    : python-repoze-lru-0.4-3.el7.noarch                                                                                                                 16/19 
+正在安装    : python2-jsonschema-2.5.1-3.el7.noarch                                                                                                              17/19 
+正在安装    : python2-backports-functools_lru_cache-1.2.1-4.el7.noarch                                                                                           18/19 
+正在安装    : docker-compose-1.9.0-5.el7.noarch                                                                                                                  19/19 
+验证中      : python2-backports-functools_lru_cache-1.2.1-4.el7.noarch                                                                                            1/19 
+验证中      : python-docker-pycreds-1.10.6-3.el7.noarch                                                                                                           2/19 
+验证中      : python-repoze-lru-0.4-3.el7.noarch                                                                                                                  3/19 
+验证中      : docker-compose-1.9.0-5.el7.noarch                                                                                                                   4/19 
+验证中      : python-requests-2.6.0-1.el7_1.noarch                                                                                                                5/19 
+验证中      : python2-texttable-0.9.1-1.el7.noarch                                                                                                                6/19 
+验证中      : python2-jsonschema-2.5.1-3.el7.noarch                                                                                                               7/19 
+验证中      : libyaml-0.1.4-11.el7_0.x86_64                                                                                                                       8/19 
+验证中      : python2-cached_property-1.3.0-7.el7.noarch                                                                                                          9/19 
+验证中      : python-chardet-2.2.1-1.el7_1.noarch                                                                                                                10/19 
+验证中      : python2-docopt-0.6.2-7.el7.noarch                                                                                                                  11/19 
+验证中      : python-enum34-1.0.4-1.el7.noarch                                                                                                                   12/19 
+验证中      : python-docker-py-1.10.6-3.el7.noarch                                                                                                               13/19 
+验证中      : python-websocket-client-0.32.0-116.el7.noarch                                                                                                      14/19 
+验证中      : PyYAML-3.10-11.el7.x86_64                                                                                                                          15/19 
+验证中      : python2-dockerpty-0.4.1-9.el7.noarch                                                                                                               16/19 
+验证中      : python-ipaddress-1.0.16-2.el7.noarch                                                                                                               17/19 
+验证中      : python-six-1.9.0-2.el7.noarch                                                                                                                      18/19 
+验证中      : python-urllib3-1.10.2-3.el7.noarch                                                                                                                 19/19 
+
+已安装:
+docker-compose.noarch 0:1.9.0-5.el7                                                                                                                                    
+
+作为依赖被安装:
+PyYAML.x86_64 0:3.10-11.el7                                     libyaml.x86_64 0:0.1.4-11.el7_0                   python-chardet.noarch 0:2.2.1-1.el7_1               
+python-docker-py.noarch 0:1.10.6-3.el7                          python-docker-pycreds.noarch 0:1.10.6-3.el7       python-enum34.noarch 0:1.0.4-1.el7                  
+python-ipaddress.noarch 0:1.0.16-2.el7                          python-repoze-lru.noarch 0:0.4-3.el7              python-requests.noarch 0:2.6.0-1.el7_1              
+python-six.noarch 0:1.9.0-2.el7                                 python-urllib3.noarch 0:1.10.2-3.el7              python-websocket-client.noarch 0:0.32.0-116.el7     
+python2-backports-functools_lru_cache.noarch 0:1.2.1-4.el7      python2-cached_property.noarch 0:1.3.0-7.el7      python2-dockerpty.noarch 0:0.4.1-9.el7              
+python2-docopt.noarch 0:0.6.2-7.el7                             python2-jsonschema.noarch 0:2.5.1-3.el7           python2-texttable.noarch 0:0.9.1-1.el7              
+
+完毕！
+</code></pre><h6 id="查看Docker-compose版本"><a href="#查看Docker-compose版本" class="headerlink" title="查看Docker-compose版本"></a>查看Docker-compose版本</h6><pre><code>[mingguilu@localhost ~]$ sudo docker-compose --version
+docker-compose version 1.9.0, build 2585387
+</code></pre><hr>
+<h4 id="参考文档："><a href="#参考文档：" class="headerlink" title="参考文档："></a>参考文档：</h4><ul>
+<li><p>《Install Docker》:  <a href="https://docs.docker.com/install/" target="_blank" rel="noopener">https://docs.docker.com/install/</a></p>
+</li>
+<li><p>《Get Docker EE for CentOS》:  <a href="https://docs.docker.com/install/linux/docker-ee/centos/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ee/centos/</a></p>
+</li>
+<li><p>《Get Docker CE for CentOS》:  <a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/centos/</a></p>
+</li>
+<li><p>《Install Docker Compose》:  <a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener">https://docs.docker.com/compose/install/</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/运维/">运维</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CentOS/">CentOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wechatpay.png',
+  alipayImage: '/css/images/alipay.jpg'
+});
+</script>
+      
+
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDU3OC83MTMz">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/02/RAID阵列上的Server_2012_R2忘记Administrator密码后/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">RAID阵列上的Server_2012_R2忘记Administrator密码后...</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Docker-EE"><span class="nav-number">1.</span> <span class="nav-text">安装Docker-EE</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#获取Docker-EE-repository-URL"><span class="nav-number">1.1.</span> <span class="nav-text">获取Docker EE repository URL</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#注册Docker帐户"><span class="nav-number">1.1.1.</span> <span class="nav-text">注册Docker帐户</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#在Docker-Store获取Docker-EE-for-CentOS"><span class="nav-number">1.1.2.</span> <span class="nav-text">在Docker Store获取Docker EE for CentOS</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#卸载旧版本的Docker或Docker-engine"><span class="nav-number">1.2.</span> <span class="nav-text">卸载旧版本的Docker或Docker-engine</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置Yum源"><span class="nav-number">1.3.</span> <span class="nav-text">配置Yum源</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#移除现有的Docker-yum源"><span class="nav-number">1.3.1.</span> <span class="nav-text">移除现有的Docker yum源</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#将Docker-EE-repository-UR添加到临时环境变量中"><span class="nav-number">1.3.2.</span> <span class="nav-text">将Docker EE repository UR添加到临时环境变量中</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#把存储Docker-EE-repository-UR的变量添加到-etc-yum-vars-dockerurl文件中"><span class="nav-number">1.3.3.</span> <span class="nav-text">把存储Docker EE repository UR的变量添加到/etc/yum/vars/dockerurl文件中</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#安装必需的软件yum-utils、device-mapper-persistent-data、lvm2"><span class="nav-number">1.3.4.</span> <span class="nav-text">安装必需的软件yum-utils、device-mapper-persistent-data、lvm2</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#添加到yum源"><span class="nav-number">1.3.5.</span> <span class="nav-text">添加到yum源</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#正式安装"><span class="nav-number">1.4.</span> <span class="nav-text">正式安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启动Docker"><span class="nav-number">1.5.</span> <span class="nav-text">启动Docker</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#开机自动启动Docker服务"><span class="nav-number">1.6.</span> <span class="nav-text">开机自动启动Docker服务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看Docker状态"><span class="nav-number">1.7.</span> <span class="nav-text">查看Docker状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#停止Docker"><span class="nav-number">1.8.</span> <span class="nav-text">停止Docker</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#测试Docker"><span class="nav-number">1.9.</span> <span class="nav-text">测试Docker</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Docker-CE"><span class="nav-number">2.</span> <span class="nav-text">安装Docker-CE</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#在线安装Docker-CE"><span class="nav-number">2.1.</span> <span class="nav-text">在线安装Docker-CE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#离线安装Docker-CE"><span class="nav-number">2.2.</span> <span class="nav-text">离线安装Docker-CE</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#下载Docker-CE的rpm包"><span class="nav-number">2.2.1.</span> <span class="nav-text">下载Docker-CE的rpm包</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#安装Docker-CE-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">安装Docker-CE</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Docker-Compose"><span class="nav-number">3.</span> <span class="nav-text">安装Docker Compose</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#curl方式安装Docker-Compose"><span class="nav-number">3.1.</span> <span class="nav-text">curl方式安装Docker Compose</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#curl命令安装"><span class="nav-number">3.1.1.</span> <span class="nav-text">curl命令安装</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#添加可执行权限"><span class="nav-number">3.1.2.</span> <span class="nav-text">添加可执行权限</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#查看docker-compose版本"><span class="nav-number">3.1.3.</span> <span class="nav-text">查看docker-compose版本</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#pip方式安装"><span class="nav-number">3.2.</span> <span class="nav-text">pip方式安装</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#安装python-pip"><span class="nav-number">3.2.1.</span> <span class="nav-text">安装python-pip</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#找不到python-pip包，需先安装epel-release"><span class="nav-number">3.2.2.</span> <span class="nav-text">找不到python-pip包，需先安装epel-release</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#pip安装Docker-compose"><span class="nav-number">3.2.3.</span> <span class="nav-text">pip安装Docker-compose</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#查看Docker-compose版本"><span class="nav-number">3.2.4.</span> <span class="nav-text">查看Docker-compose版本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文档："><span class="nav-number">4.</span> <span class="nav-text">参考文档：</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 MingguiLu Blog All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Powered_by <a href="https://hexo.io/" target="_blank">Hexo .</a>
+        Theme_by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">Hiero .</a>
+        Hosted_by <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Baidu tongji -->
+<!--
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+-->
+
+<!-- Google Analytics -->
+<!--
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86857821-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+-->
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86857821-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
