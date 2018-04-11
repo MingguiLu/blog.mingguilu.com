@@ -20,7 +20,7 @@
 <meta property="og:description" content="我的静态博客已经搭建成功了，并且使用Markdown记录了过程，但期间踩了一路的坑，今天总结一下其中一个：Hugo成功部署到Github Pages，但访问博客时不加载网页布局和样式。  这算是遇到最大的坑了，前后折腾了半个月的时间，直到找到了组织（Hugo交流QQ群：512499080），群主大大@coderzh 一语道破天机。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.mingguilu.com/images/photos/gan_00.png">
-<meta property="og:updated_time" content="2018-03-23T08:54:56.000Z">
+<meta property="og:updated_time" content="2018-04-08T11:57:17.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Hugo和Github搭建静态博客之填坑">
 <meta name="twitter:description" content="我的静态博客已经搭建成功了，并且使用Markdown记录了过程，但期间踩了一路的坑，今天总结一下其中一个：Hugo成功部署到Github Pages，但访问博客时不加载网页布局和样式。  这算是遇到最大的坑了，前后折腾了半个月的时间，直到找到了组织（Hugo交流QQ群：512499080），群主大大@coderzh 一语道破天机。">
@@ -114,6 +114,24 @@ var themeMenus = {};
 </header>
 
 
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
 
 
   <div id="container">
@@ -129,7 +147,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/photos/gan_00.png" rel="gallery_cjfca1rm300200hesign95ulo">
+      <a class="article-gallery-img fancybox" href="/images/photos/gan_00.png" rel="gallery_cjftolm19001ziqfoske9ehj3">
         <img src="/images/photos/gan_00.png" itemprop="image">
       </a>
     
@@ -174,18 +192,28 @@ var themeMenus = {};
 <pre><code>baseurl = &quot;http://imkind.github.io/&quot;
 </code></pre><h5 id="1-2-自2016年6月15日起，使用Github-Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing-your-GitHub-Pages-site-with-HTTPS》-https-help-github-com-articles-securing-your-github-pages-site-with-https"><a href="#1-2-自2016年6月15日起，使用Github-Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing-your-GitHub-Pages-site-with-HTTPS》-https-help-github-com-articles-securing-your-github-pages-site-with-https" class="headerlink" title="1.2 自2016年6月15日起，使用Github Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing your GitHub Pages site with HTTPS》 https://help.github.com/articles/securing-your-github-pages-site-with-https/"></a>1.2 自2016年6月15日起，使用Github Pages默认域名搭建个人站点，已被强制要求HTTPS访问，即使用HTTP访问，也会被重定向到HTTPS。参见《Securing your GitHub Pages site with HTTPS》 <a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/" target="_blank" rel="noopener">https://help.github.com/articles/securing-your-github-pages-site-with-https/</a></h5><blockquote>
 <p>You can enforce HTTPS to add a layer of encryption for traffic to your GitHub Pages site if it has a github.io domain.</p>
+</blockquote>
+<blockquote>
 <p>With HTTPS enforcement enabled, HTTP requests to your GitHub Pages site will be transparently redirected to HTTPS.</p>
+</blockquote>
+<blockquote>
 <p>HTTPS enforcement is required for GitHub Pages sites created after June 15, 2016 and using a github.io domain. If you created your GitHub Pages site before June 15, 2016, you can manually enable HTTPS enforcement. HTTPS is not supported for GitHub Pages using custom domains.</p>
 </blockquote>
 <p>这一点可以在repository的settings中得到证实</p>
 <blockquote>
 <p>√ Enforce HTTPS — Required for your site because you are using the default domain (imkind.github.io)</p>
+</blockquote>
+<blockquote>
 <p>HTTPS provides a layer of encryption that prevents others from snooping on or tampering with traffic to your site.</p>
+</blockquote>
+<blockquote>
 <p>When HTTPS is enforced, your site will only be served over HTTPS. Learn more.</p>
 </blockquote>
 <p>此时，Hugo中配置的HTTP与Github Pages强制使用的HTTPS不一致，导致站点图片、css和js文件无法加载，访问时造成上图的情况</p>
 <blockquote>
 <p>If you enable HTTPS for your site, and your site’s HTML still references images, CSS, or JavaScript over HTTP, then your site is serving mixed content, and you may have trouble loading assets. Serving mixed content also makes your site less secure.</p>
+</blockquote>
+<blockquote>
 <p>To remove your site’s mixed content, improve your site’s security, and resolve problems related to loading mixed content, edit your site’s HTML files and change http:// to https:// so that all of your assets are served over HTTPS.</p>
 </blockquote>
 <h4 id="2-填坑，更多解决方案参见《Resolving-problems-with-mixed-content》https-help-github-com-articles-securing-your-github-pages-site-with-https"><a href="#2-填坑，更多解决方案参见《Resolving-problems-with-mixed-content》https-help-github-com-articles-securing-your-github-pages-site-with-https" class="headerlink" title="2. 填坑，更多解决方案参见《Resolving problems with mixed content》https://help.github.com/articles/securing-your-github-pages-site-with-https/"></a>2. 填坑，更多解决方案参见《Resolving problems with mixed content》<a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/" target="_blank" rel="noopener">https://help.github.com/articles/securing-your-github-pages-site-with-https/</a></h4><h5 id="2-1-综上，在配置文件config-toml中把http修改为https"><a href="#2-1-综上，在配置文件config-toml中把http修改为https" class="headerlink" title="2.1 综上，在配置文件config.toml中把http修改为https"></a>2.1 综上，在配置文件config.toml中把<code>http</code>修改为<code>https</code></h5><pre><code>baseurl = &quot;http://imkind.github.io/&quot;

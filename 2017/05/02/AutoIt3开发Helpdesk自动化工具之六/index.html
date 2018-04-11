@@ -20,7 +20,7 @@
 <meta property="og:description" content="在持续的编写和测试AutoIt3脚本过程中，对AutoIt的理解更深入了，我意识到可以使用AutoIt3 GUI编写一个图形用户界面，从而增强对每个自定义函数的复用，最终大幅提高运行效率。 参考文档 AutoIt3安装目录中的官方英文手册 v3.3.14.2 - GUI相关 ： AutoIt.chm   AutoIt 在线手册中文版_脚本之家 v3.1.1 - GUI相关 :  http://ww">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.mingguilu.com/images/photos/autoit3.png">
-<meta property="og:updated_time" content="2018-03-23T09:09:03.700Z">
+<meta property="og:updated_time" content="2018-04-08T11:57:17.600Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AutoIt3开发Helpdesk自动化工具之六:图形用户界面">
 <meta name="twitter:description" content="在持续的编写和测试AutoIt3脚本过程中，对AutoIt的理解更深入了，我意识到可以使用AutoIt3 GUI编写一个图形用户界面，从而增强对每个自定义函数的复用，最终大幅提高运行效率。 参考文档 AutoIt3安装目录中的官方英文手册 v3.3.14.2 - GUI相关 ： AutoIt.chm   AutoIt 在线手册中文版_脚本之家 v3.1.1 - GUI相关 :  http://ww">
@@ -114,6 +114,24 @@ var themeMenus = {};
 </header>
 
 
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
 
 
   <div id="container">
@@ -129,7 +147,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/photos/autoit3.png" rel="gallery_cjfca1rkn000c0hesyo58lcf9">
+      <a class="article-gallery-img fancybox" href="/images/photos/autoit3.png" rel="gallery_cjftolm07000aiqfoh1cul5ap">
         <img src="/images/photos/autoit3.png" itemprop="image">
       </a>
     

@@ -6,13 +6,13 @@
   <title>centos7安装和配置harbor | MingguiLu Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="LinuxCentOSDocker" />
+  <meta name="keywords" content="CentOSDockerLinux" />
   
   
   
   
   <meta name="description" content="Harbor安装方式 在线安装： 安装包从Docker Hub下载Harbor镜像，所以安装程序很小，但安装时间较长  离线安装： 当无法联网时使用，安装包较大，安装过程更快速和稳定，推荐使用  OVA安装： 在VMware vCente平台下使用   安装要求 Python:  2.7 或更高版本  Docker： 1.10 或更高版本  Docker Compose： 1.6.0 或更高版本">
-<meta name="keywords" content="Linux,CentOS,Docker">
+<meta name="keywords" content="CentOS,Docker,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS7安装和配置Harbor">
 <meta property="og:url" content="http://blog.mingguilu.com/2018/03/08/CentOS7安装和配置Harbor/index.html">
@@ -20,7 +20,7 @@
 <meta property="og:description" content="Harbor安装方式 在线安装： 安装包从Docker Hub下载Harbor镜像，所以安装程序很小，但安装时间较长  离线安装： 当无法联网时使用，安装包较大，安装过程更快速和稳定，推荐使用  OVA安装： 在VMware vCente平台下使用   安装要求 Python:  2.7 或更高版本  Docker： 1.10 或更高版本  Docker Compose： 1.6.0 或更高版本">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.mingguilu.com/images/photos/harbor.png">
-<meta property="og:updated_time" content="2018-03-23T09:07:53.000Z">
+<meta property="og:updated_time" content="2018-04-08T11:57:17.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS7安装和配置Harbor">
 <meta name="twitter:description" content="Harbor安装方式 在线安装： 安装包从Docker Hub下载Harbor镜像，所以安装程序很小，但安装时间较长  离线安装： 当无法联网时使用，安装包较大，安装过程更快速和稳定，推荐使用  OVA安装： 在VMware vCente平台下使用   安装要求 Python:  2.7 或更高版本  Docker： 1.10 或更高版本  Docker Compose： 1.6.0 或更高版本">
@@ -114,6 +114,24 @@ var themeMenus = {};
 </header>
 
 
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
 
 
   <div id="container">
@@ -129,7 +147,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/photos/harbor.png" rel="gallery_cjfca1rkq000d0hes3x8ojm65">
+      <a class="article-gallery-img fancybox" href="/images/photos/harbor.png" rel="gallery_cjftolm0i000niqfoxgsxmup1">
         <img src="/images/photos/harbor.png" itemprop="image">
       </a>
     

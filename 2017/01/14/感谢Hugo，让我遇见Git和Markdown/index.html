@@ -6,13 +6,13 @@
   <title>感谢hugo，让我遇见git和markdown | MingguiLu Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="hugogitmarkdown" />
+  <meta name="keywords" content="githugomarkdown" />
   
   
   
   
   <meta name="description" content="去年7月在机缘巧合之下接触了静态博客的概念，深入了解了一些知识之后，特别欣喜，决定动手搭建一个自己的静态博客。时间一晃到了年底，当着手实现的时候发现并不简单 首先是选择哪一款生成器，在知乎上研究一番后，最终在Jekyll、Hexo和Hugo中，选择了Hugo，因为简单、生成速度快，在静态博客生成器排名榜上发展势头好，接着在《Hugo中文文档》学习如何安装使用它，利用自己有限的网页知识在Hugo作者">
-<meta name="keywords" content="hugo,git,markdown">
+<meta name="keywords" content="git,hugo,markdown">
 <meta property="og:type" content="article">
 <meta property="og:title" content="感谢Hugo，让我遇见Git和Markdown">
 <meta property="og:url" content="http://blog.mingguilu.com/2017/01/14/感谢Hugo，让我遇见Git和Markdown/index.html">
@@ -20,7 +20,7 @@
 <meta property="og:description" content="去年7月在机缘巧合之下接触了静态博客的概念，深入了解了一些知识之后，特别欣喜，决定动手搭建一个自己的静态博客。时间一晃到了年底，当着手实现的时候发现并不简单 首先是选择哪一款生成器，在知乎上研究一番后，最终在Jekyll、Hexo和Hugo中，选择了Hugo，因为简单、生成速度快，在静态博客生成器排名榜上发展势头好，接着在《Hugo中文文档》学习如何安装使用它，利用自己有限的网页知识在Hugo作者">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.mingguilu.com/images/20170114/gan_00.png">
-<meta property="og:updated_time" content="2018-03-23T08:53:00.000Z">
+<meta property="og:updated_time" content="2018-04-08T11:57:17.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="感谢Hugo，让我遇见Git和Markdown">
 <meta name="twitter:description" content="去年7月在机缘巧合之下接触了静态博客的概念，深入了解了一些知识之后，特别欣喜，决定动手搭建一个自己的静态博客。时间一晃到了年底，当着手实现的时候发现并不简单 首先是选择哪一款生成器，在知乎上研究一番后，最终在Jekyll、Hexo和Hugo中，选择了Hugo，因为简单、生成速度快，在静态博客生成器排名榜上发展势头好，接着在《Hugo中文文档》学习如何安装使用它，利用自己有限的网页知识在Hugo作者">
@@ -114,6 +114,24 @@ var themeMenus = {};
 </header>
 
 
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
 
 
   <div id="container">
@@ -129,7 +147,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/20170114/gan_00.png" rel="gallery_cjfca1rm700250hes2ndhwez3">
+      <a class="article-gallery-img fancybox" href="/images/20170114/gan_00.png" rel="gallery_cjftolm1d0027iqfowqtvn7bk">
         <img src="/images/20170114/gan_00.png" itemprop="image">
       </a>
     

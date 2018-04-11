@@ -20,7 +20,7 @@
 <meta property="og:description" content="一  准备1. Hugo简述:Hugo是由Go语言实现的静态网站生成器。其特点是：简单、易用、高效、易扩展、快速部署。　 官方网站：http://gohugo.io/ 入门推荐：Hugo中文文档 安装:下载适用的windows的hugo_x.xx.x_Windows-64bit.zip 解压后重命名为hugo.exe并存放在c:\Program Files\hugo，并把路径添加到系统环境变量P">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.mingguilu.com/images/20170214/jennych_01.png">
-<meta property="og:updated_time" content="2018-03-23T08:54:52.000Z">
+<meta property="og:updated_time" content="2018-04-08T11:57:17.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于JennyCh_Blog的使用文档">
 <meta name="twitter:description" content="一  准备1. Hugo简述:Hugo是由Go语言实现的静态网站生成器。其特点是：简单、易用、高效、易扩展、快速部署。　 官方网站：http://gohugo.io/ 入门推荐：Hugo中文文档 安装:下载适用的windows的hugo_x.xx.x_Windows-64bit.zip 解压后重命名为hugo.exe并存放在c:\Program Files\hugo，并把路径添加到系统环境变量P">
@@ -114,6 +114,24 @@ var themeMenus = {};
 </header>
 
 
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
 
 
   <div id="container">
@@ -129,7 +147,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/20170214/jennych_01.png" rel="gallery_cjfca1rly001v0hesc0q8kk91">
+      <a class="article-gallery-img fancybox" href="/images/20170214/jennych_01.png" rel="gallery_cjftolm1c0024iqfobn1a7or0">
         <img src="/images/20170214/jennych_01.png" itemprop="image">
       </a>
     

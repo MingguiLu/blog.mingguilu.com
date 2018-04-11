@@ -20,7 +20,7 @@
 <meta property="og:description" content="1. 使用软件源码包2. Debian/UbuntuDebian系Linux发行版的软件包格式为deb 2.1 dpkgdpkg的是基于Debian系统的一个低级包管理器。它可以安装，删除，提供有关资料，以及建立*.deb包，但它不能自动下载并安装它们相应的依赖包。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.mingguilu.com/images/photos/linux_software.jpg">
-<meta property="og:updated_time" content="2018-03-23T09:06:53.000Z">
+<meta property="og:updated_time" content="2018-04-08T11:57:17.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux软件安装与维护">
 <meta name="twitter:description" content="1. 使用软件源码包2. Debian/UbuntuDebian系Linux发行版的软件包格式为deb 2.1 dpkgdpkg的是基于Debian系统的一个低级包管理器。它可以安装，删除，提供有关资料，以及建立*.deb包，但它不能自动下载并安装它们相应的依赖包。">
@@ -114,6 +114,24 @@ var themeMenus = {};
 </header>
 
 
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
 
 
   <div id="container">
@@ -129,7 +147,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/photos/linux_software.jpg" rel="gallery_cjfca1rl3000o0hesgnxaovl5">
+      <a class="article-gallery-img fancybox" href="/images/photos/linux_software.jpg" rel="gallery_cjftolm0q0010iqfoe77rjipz">
         <img src="/images/photos/linux_software.jpg" itemprop="image">
       </a>
     

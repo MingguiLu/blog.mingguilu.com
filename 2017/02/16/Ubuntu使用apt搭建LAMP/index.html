@@ -20,7 +20,7 @@
 <meta property="og:description" content="１. Web服务Apache2安装Apache2$ sudo apt install -y apache2 查看apache2版本$ sudo apache2  -v Server version: Apache/2.4.18 (Ubuntu) Server built:   2016-07-14T12:32:26 启动apache2.service$ sudo systemctl start a">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.mingguilu.com/images/photos/lamp.png">
-<meta property="og:updated_time" content="2018-03-23T08:59:11.000Z">
+<meta property="og:updated_time" content="2018-04-08T11:57:17.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu使用apt搭建LAMP">
 <meta name="twitter:description" content="１. Web服务Apache2安装Apache2$ sudo apt install -y apache2 查看apache2版本$ sudo apache2  -v Server version: Apache/2.4.18 (Ubuntu) Server built:   2016-07-14T12:32:26 启动apache2.service$ sudo systemctl start a">
@@ -114,6 +114,24 @@ var themeMenus = {};
 </header>
 
 
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
 
 
   <div id="container">
@@ -129,7 +147,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/photos/lamp.png" rel="gallery_cjfca1rlu001o0hes8h9e3qxt">
+      <a class="article-gallery-img fancybox" href="/images/photos/lamp.png" rel="gallery_cjftolm0v001aiqfopn2tjhf0">
         <img src="/images/photos/lamp.png" itemprop="image">
       </a>
     

@@ -20,7 +20,7 @@
 <meta property="og:description" content="Docker简介Docker是一个开源的引擎，可以轻松的为任何应用创建一个轻量级的、可移植的、自给自足的容器。开发者在笔记本上编译测试通过的容器可以批量地在生产环境中部署，包括VMs（虚拟机）、bare metal、OpenStack 集群和其他的基础应用平台器">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.mingguilu.com/images/photos/docker.jpg">
-<meta property="og:updated_time" content="2018-03-23T09:07:44.000Z">
+<meta property="og:updated_time" content="2018-04-08T11:57:17.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker入门">
 <meta name="twitter:description" content="Docker简介Docker是一个开源的引擎，可以轻松的为任何应用创建一个轻量级的、可移植的、自给自足的容器。开发者在笔记本上编译测试通过的容器可以批量地在生产环境中部署，包括VMs（虚拟机）、bare metal、OpenStack 集群和其他的基础应用平台器">
@@ -114,6 +114,24 @@ var themeMenus = {};
 </header>
 
 
+  <div style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+      var imgUrls = "https://source.unsplash.com/collection/1628249/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  </script>
+
 
 
   <div id="container">
@@ -129,7 +147,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/images/photos/docker.jpg" rel="gallery_cjfca1rku000h0hesoo4l88ok">
+      <a class="article-gallery-img fancybox" href="/images/photos/docker.jpg" rel="gallery_cjftolm0l000siqfornsfra1i">
         <img src="/images/photos/docker.jpg" itemprop="image">
       </a>
     
@@ -488,11 +506,11 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2018/03/02/RAID阵列上的Server_2012_R2忘记Administrator密码后/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/03/02/Docker进阶-命令详解/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
-          RAID阵列上的Server_2012_R2忘记Administrator密码后...
+          Docker进阶-命令详解
         
       </div>
     </a>
