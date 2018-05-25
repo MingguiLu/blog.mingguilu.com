@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CentOS,nginx,keepalived," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="项目简介 安装nginx6台服务器上安装nginx方法一样，下面以其中一台为例： 参考nginx官方网站安装方法使用yum安装：http://nginx.org/en/linux_packages.html#stable">
+<meta name="keywords" content="CentOS,nginx,keepalived">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Keepalived+Nginx实现主备负载均衡高可用">
+<meta property="og:url" content="http://blog.mingguilu.com/2018/05/19/Keepalived-Nginx实现主备负载均衡高可用/index.html">
+<meta property="og:site_name" content="Welcome to MingguiLu&#39;s Blog">
+<meta property="og:description" content="项目简介 安装nginx6台服务器上安装nginx方法一样，下面以其中一台为例： 参考nginx官方网站安装方法使用yum安装：http://nginx.org/en/linux_packages.html#stable">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://blog.mingguilu.com/images/20180519/20180519_00.jpg">
+<meta property="og:updated_time" content="2018-05-25T08:14:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Keepalived+Nginx实现主备负载均衡高可用">
+<meta name="twitter:description" content="项目简介 安装nginx6台服务器上安装nginx方法一样，下面以其中一台为例： 参考nginx官方网站安装方法使用yum安装：http://nginx.org/en/linux_packages.html#stable">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/20180519/20180519_00.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.mingguilu.com/2018/05/19/Keepalived-Nginx实现主备负载均衡高可用/"/>
+
+
+
+
+
+  <title>Keepalived+Nginx实现主备负载均衡高可用 | Welcome to MingguiLu's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-86857821-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><!--
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i><img src="/images/favicon.ico" /></i></span>
+        <span class="site-title">Welcome to MingguiLu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+-->
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/05/19/Keepalived-Nginx实现主备负载均衡高可用/">
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minggui Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to MingguiLu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Keepalived+Nginx实现主备负载均衡高可用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-19T15:33:42+08:00">
+                2018-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维之道/" itemprop="url" rel="index">
+                    <span itemprop="name">运维之道</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-meta-divider">|</span>
+            
+            <span class="post-meta-item-icon">
+                <i class="fa fa-star-o"></i>
+            </span>
+            
+                <span class="post-meta-item-text">标签于</span>
+            
+            <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              
+                &nbsp;
+                <a href="/tags/CentOS/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> CentOS </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/nginx/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> nginx </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/keepalived/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> keepalived </span>
+                </a>
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/images/20180519/20180519_00.jpg" rel="gallery_cjhlozjrd000l2ginnxv0aj5k"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/20180519/20180519_00.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h4 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h4><p><img src="/images/20180519/20180519_01.png" alt=""></p>
+<h4 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h4><p>6台服务器上安装nginx方法一样，下面以其中一台为例：</p>
+<p>参考nginx官方网站安装方法使用yum安装：<a href="http://nginx.org/en/linux_packages.html#stable" target="_blank" rel="noopener">http://nginx.org/en/linux_packages.html#stable</a></p>
+<a id="more"></a>
+<h5 id="添加yum源"><a href="#添加yum源" class="headerlink" title="添加yum源"></a>添加yum源</h5><pre><code>[root@mg-nginx-03 ~]# vi /etc/yum.repos.d/nginx.repo
+[root@mg-nginx-03 ~]#
+[root@mg-nginx-03 ~]# cat /etc/yum.repos.d/nginx.repo
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/7/$basearch/
+gpgcheck=0
+enabled=1
+</code></pre><h5 id="清理yum缓存"><a href="#清理yum缓存" class="headerlink" title="清理yum缓存"></a>清理yum缓存</h5><pre><code>[root@mg-nginx-03 ~]# yum clean all
+已加载插件：fastestmirror
+正在清理软件源： base epel extras nginx updates
+Cleaning up everything
+Maybe you want: rm -rf /var/cache/yum, to also free up space taken by orphaned data from disabled or removed repos
+Cleaning up list of fastest mirrors
+</code></pre><h5 id="安装nginx-1"><a href="#安装nginx-1" class="headerlink" title="安装nginx"></a>安装nginx</h5><pre><code>[root@mg-nginx-03 ~]# yum install -y nginx
+
+已安装:
+  nginx.x86_64 1:1.14.0-1.el7_4.ngx                                        
+
+完毕！
+</code></pre><h5 id="查看nginx相关文件"><a href="#查看nginx相关文件" class="headerlink" title="查看nginx相关文件"></a>查看nginx相关文件</h5><pre><code>[root@mg-nginx-03 ~]# find / -name &quot;nginx&quot;
+/etc/logrotate.d/nginx
+/etc/sysconfig/nginx
+/etc/nginx                                                            #主配置文件
+/var/lib/yum/repos/x86_64/7/nginx
+/var/log/nginx                                                     #日志
+/var/cache/yum/x86_64/7/nginx
+/var/cache/nginx
+/usr/sbin/nginx                                                    #nginx启动文件
+/usr/lib64/nginx
+/usr/share/nginx                                                  #网站文件存放目录
+/usr/libexec/initscripts/legacy-actions/nginx
+</code></pre><h5 id="管理nginx应用"><a href="#管理nginx应用" class="headerlink" title="管理nginx应用"></a>管理nginx应用</h5><pre><code>[root@mg-nginx-03 conf.d]# systemctl start nginx         #启动nginx
+[root@mg-nginx-03 conf.d]# systemctl enable nginx      #设置nginx开机启动
+Created symlink from /etc/systemd/system/multi-user.target.wants/nginx.service to /usr/lib/systemd/system/nginx.service.
+[root@mg-nginx-03 conf.d]# systemctl status nginx        #查看nginx运行状态
+● nginx.service - nginx - high performance web server
+  Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; vendor preset: disabled)
+  Active: active (running) since 四 2018-05-24 11:14:52 CST; 53s ago
+    Docs: http://nginx.org/en/docs/
+  Process: 10694 ExecStop=/bin/kill -s TERM $MAINPID (code=exited, status=0/SUCCESS)
+  Process: 10709 ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf (code=exited, status=0/SUCCESS)
+Main PID: 10710 (nginx)
+  CGroup: /system.slice/nginx.service
+          ├─10710 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
+          └─10711 nginx: worker process
+
+5月 24 11:14:52 mg-nginx-03 systemd[1]: Starting nginx - high performance web server...
+5月 24 11:14:52 mg-nginx-03 systemd[1]: Started nginx - high performance web server.
+
+[root@mg-nginx-03 conf.d]# systemctl restart nginx        #重启nginx
+[root@mg-nginx-03 conf.d]# systemctl stop nginx            #停止nginx
+</code></pre><h4 id="配置虚拟主机发布网站"><a href="#配置虚拟主机发布网站" class="headerlink" title="配置虚拟主机发布网站"></a>配置虚拟主机发布网站</h4><p>接下来将在四台nginx站点上配置虚拟主机发布我的静态博客网站，为了方便之后检验nginx负载均衡的效果，将每台站点上的博客首页稍做修改，添加上“位于mg-nginx-xx上的blog”，下面以其中一台为例</p>
+<h5 id="创建虚拟主机配置文件"><a href="#创建虚拟主机配置文件" class="headerlink" title="创建虚拟主机配置文件"></a>创建虚拟主机配置文件</h5><p>nginx默认配置文件定义了虚拟主机配置文件存放在/etc/nginx/conf.d/下，以*.conf结尾</p>
+<p>  [root@mg-nginx-03 nginx]# grep “include” /etc/nginx/nginx.conf<br>      include       /etc/nginx/mime.types;<br>      include /etc/nginx/conf.d/*.conf;</p>
+<p>将缺省的配置文件default.conf拷贝一份重名为blog.conf，并修改配置</p>
+<pre><code>[root@mg-nginx-03 conf.d]# cp -a default.conf blog.conf
+[root@mg-nginx-03 conf.d]#
+[root@mg-nginx-03 conf.d]# cat blog.conf
+server {
+    listen       8080;                                        #端口修改为8080
+    server_name  localhost;                           #由于实验环境中使用IP:Port访问，此处缺省即可，如规划域名可修改为域名
+
+    #charset koi8-r;
+    #access_log  /var/log/nginx/host.access.log  main;
+
+    location / {
+        root   /usr/share/nginx/blog;              #网站主目录修改为/usr/share/nginx/blog
+        index  index.html index.htm;
+    }
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+</code></pre><h5 id="将静态博客网站的blog目录上传到-usr-share-nginx下"><a href="#将静态博客网站的blog目录上传到-usr-share-nginx下" class="headerlink" title="将静态博客网站的blog目录上传到/usr/share/nginx下"></a>将静态博客网站的blog目录上传到/usr/share/nginx下</h5><p>推荐一个文件上传下载的工具 lrzsz，可通过yum安装之后使用 rz 上传文件，sz filename 下载文件</p>
+<pre><code>[root@mg-nginx-03 nginx]# cd /tmp/
+[root@mg-nginx-03 tmp]# rz   
+[root@mg-nginx-03 tmp]# ls
+blog.tar.gz
+[root@mg-nginx-03 tmp]# tar -zxvf  blog.tar.gz  -C  /usr/share/nginx/
+[root@mg-nginx-03 tmp]# cd /usr/share/nginx/
+[root@mg-nginx-03 nginx]# ll
+总用量 0
+drwxr-xr-x 15 mingguilu mingguilu 253 5月  24 14:09  blog
+drwxr-xr-x  2 root      root       40 5月  24 10:45  html
+[root@mg-nginx-03 nginx]# ll blog/
+总用量 4824
+drwxr-xr-x  3 mingguilu mingguilu      16 5月  22 16:48 2016
+drwxr-xr-x  8 mingguilu mingguilu      66 5月  24 14:00 2017
+drwxr-xr-x  4 mingguilu mingguilu      26 5月  24 14:00 2018
+-rw-r--r--  1 mingguilu mingguilu     710 5月  22 17:26 404.html
+drwxr-xr-x  2 mingguilu mingguilu      24 5月  22 17:25 about
+drwxr-xr-x  6 mingguilu mingguilu      72 5月  24 14:00 archives
+drwxr-xr-x  6 mingguilu mingguilu     104 5月  24 14:00 categories
+-rw-r--r--  1 mingguilu mingguilu      19 5月  22 17:26 CNAME
+drwxr-xr-x  2 mingguilu mingguilu      22 5月  22 16:48 css
+-rw-r--r--  1 mingguilu mingguilu 4590771 5月  22 17:26 debug.log
+drwxr-xr-x 27 mingguilu mingguilu    4096 5月  22 16:48 images
+-rw-r--r--  1 mingguilu mingguilu   75702 5月  24 14:09 index.html
+drwxr-xr-x  3 mingguilu mingguilu      17 5月  22 16:48 js
+drwxr-xr-x 16 mingguilu mingguilu     261 5月  24 14:00 lib
+drwxr-xr-x  4 mingguilu mingguilu      24 5月  24 14:00 page
+-rw-r--r--  1 mingguilu mingguilu  253501 5月  22 17:26 search.xml
+drwxr-xr-x 51 mingguilu mingguilu    4096 5月  24 14:00 tags
+</code></pre><h5 id="将博客首页index-html稍作修改便于检测nginx负载均衡"><a href="#将博客首页index-html稍作修改便于检测nginx负载均衡" class="headerlink" title="将博客首页index.html稍作修改便于检测nginx负载均衡"></a>将博客首页index.html稍作修改便于检测nginx负载均衡</h5><pre><code>&lt;ul id=&quot;menu&quot; class=&quot;menu&quot;&gt;
+
+    &lt;!-- 用于nginx负载均衡测试  start --&gt;
+    &lt;li class=&quot;menu-item menu-item-home&quot;&gt;
+      &lt;a href=&quot;/&quot; rel=&quot;section&quot;&gt;
+          &lt;i class=&quot;menu-item-icon fa fa-fw fa-linux&quot;&gt;&lt;/i&gt; &lt;br /&gt;
+          位于mg-nginx-03上的blog
+      &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;!-- 用于nginx负载均衡测试  end --&gt;
+
+    &lt;li class=&quot;menu-item menu-item-home&quot;&gt;
+      &lt;a href=&quot;/&quot; rel=&quot;section&quot;&gt;
+          &lt;i class=&quot;menu-item-icon fa fa-fw fa-home&quot;&gt;&lt;/i&gt; &lt;br /&gt;
+          首页
+      &lt;/a&gt;
+    &lt;/li&gt;
+</code></pre><p>修改后将在首页左上角显示“位于mg-nginx-xx上的blog”，效果如下：</p>
+<p><img src="/images/20180519/20180519_02.png" alt=""></p>
+<h4 id="配置nginx负载均衡"><a href="#配置nginx负载均衡" class="headerlink" title="配置nginx负载均衡"></a>配置nginx负载均衡</h4><p>接下来在mg-nginx-01上配置负载均衡，注意：只做负载均衡一台nginx即可，后面会引入高可用则需要2台以上nginx做负载转发</p>
+<p>Nginx的反向代理和负载均衡，需要用到HttpProxyMoudule和HttpUpstreamModule模块，其中HttpProxyMoudule用来将用户的数据请求转发至其他服务器，HttpUpstreamModule模块用来提供简单的负载均衡技术(轮询、最少连接、客户端IP)，这两个模块在nginx安装时会自动安装上</p>
+<h5 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h5><pre><code>[root@mg-nginx-01 ~]# cd /etc/nginx/conf.d/
+[root@mg-nginx-01 conf.d]# vi blog.conf
+[root@mg-nginx-01 conf.d]# cat blog.conf
+upstream blog {          #upstream定义后端真实服务器集合，blog为服务器组的名称
+        #ip_hash;        #根据客户端IP地址的hash值分配固定的后端服务器，否则将使用轮询方式转发数据
+        server 172.29.23.45:8080 weight=4 max_fails=2 fail_timeout=30s;
+        server 172.29.23.46:8080 weight=4 max_fails=2 fail_timeout=30s;
+        server 172.29.23.48:8080 weight=4 max_fails=2 fail_timeout=30s;
+        server 172.29.23.49:8080 weight=4 max_fails=2 fail_timeout=30s;
+        #weight设置权重值，down指令可以设置某台服务器处于宕机不可用状态，max_fails定义连接后端服务器失败多少次后则认为服务器处理无效状态，fail_timeout定义连接后端服务器超时时间
+}
+
+server {
+    listen       80;     #注意：nginx启动之后，默认使用default.conf配置，80端口会被占用，需要在default.conf中改为其它端口或注释掉不使用
+        server_name  blog-uat.mingguilu.com;        #网站域名，如果域名未在DNS注册，需要在客户端hosts文件中添加解析条目：172.29.19.19 blog-uat.mingguilu.com，并清理系统和浏览器缓存
+        access_log  /var/log/nginx/blog.log main;   #访问日志
+
+    location / {
+        proxy_pass         http://blog;                                #将请求转发给一组服务器
+        proxy_set_header   Host             $host;                     #$host代表nginx转发服务器本身
+        proxy_set_header   X-Real-IP        $remote_addr;                                       #获取用户真实的IP地址
+              proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;         #获取用户真实的IP地址
+        proxy_next_upstream error timeout invalid_header http_404 http_500 http_502 http_504;  #当后端服务器中一台返回error timeout或错误码404、500...时，将请求分配给一下台服务器继续处理
+    }
+}
+</code></pre><h5 id="检测nginx配置文件是否合规"><a href="#检测nginx配置文件是否合规" class="headerlink" title="检测nginx配置文件是否合规"></a>检测nginx配置文件是否合规</h5><pre><code>[root@mg-nginx-01 conf.d]# nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+</code></pre><h5 id="重新加载配置文件"><a href="#重新加载配置文件" class="headerlink" title="重新加载配置文件"></a>重新加载配置文件</h5><pre><code>[root@mg-nginx-01 conf.d]# nginx -s reload
+</code></pre><h5 id="客户端添加本地hosts解析"><a href="#客户端添加本地hosts解析" class="headerlink" title="客户端添加本地hosts解析"></a>客户端添加本地hosts解析</h5><p>在C:\Windows\System32\drivers\etc\hosts 文件末尾添加以下内容：</p>
+<pre><code>172.29.19.19  blog-uat.mingguilu.com
+</code></pre><p>刷新系统DNS缓存</p>
+<pre><code>C:\Users\v-mingguilu&gt;ipconfig /flushdns
+
+Windows IP 配置
+
+已成功刷新 DNS 解析缓存。
+</code></pre><h5 id="访问测试，如果firefox和chrome未达预期效果，试试IE浏览器"><a href="#访问测试，如果firefox和chrome未达预期效果，试试IE浏览器" class="headerlink" title="访问测试，如果firefox和chrome未达预期效果，试试IE浏览器"></a>访问测试，如果firefox和chrome未达预期效果，试试IE浏览器</h5><p><img src="/images/20180519/20180519_03.png" alt=""></p>
+<h4 id="配置keepalived-nginx高可用"><a href="#配置keepalived-nginx高可用" class="headerlink" title="配置keepalived+nginx高可用"></a>配置keepalived+nginx高可用</h4><p>以上完成了4台nginx发布站点和1台nginx负载均衡，如果任意站点宕机，剩余站点可以继续响应客户端访问，但实现负载均衡的这台nginx服务器本身存在风险，如果宕机，将无法通过域名blog-uat.mingguilu.com访问，接下来将扩容一台nginx负载均衡服务器并引入keepalived实现高可用</p>
+<h5 id="扩容一台nginx负载均衡服务器"><a href="#扩容一台nginx负载均衡服务器" class="headerlink" title="扩容一台nginx负载均衡服务器"></a>扩容一台nginx负载均衡服务器</h5><p>扩容的nginx负载均衡服务器为mg-nginx-02，与上面mg-nginx-01的配置相同</p>
+<pre><code>[root@mg-nginx-02 ~]# cd /etc/nginx/conf.d/
+[root@mg-nginx-02 conf.d]# vi blog.conf
+[root@mg-nginx-02 conf.d]# cat blog.conf
+upstream blog {          #upstream定义后端真实服务器集合，blog为服务器组的名称
+        #ip_hash;        #根据客户端IP地址的hash值分配固定的后端服务器，否则将使用轮询方式转发数据
+        server 172.29.23.45:8080 weight=4 max_fails=2 fail_timeout=30s;
+        server 172.29.23.46:8080 weight=4 max_fails=2 fail_timeout=30s;
+        server 172.29.23.48:8080 weight=4 max_fails=2 fail_timeout=30s;
+        server 172.29.23.49:8080 weight=4 max_fails=2 fail_timeout=30s;
+        #weight设置权重值，down指令可以设置某台服务器处于宕机不可用状态，max_fails定义连接后端服务器失败多少次后则认为服务器处理无效状态，fail_timeout定义连接后端服务器超时时间
+}
+
+server {
+    listen       80;     #注意：nginx启动之后，默认使用default.conf配置，80端口会被占用，需要在default.conf中改为其它端口或注释掉不使用
+        server_name  blog-uat.mingguilu.com;        #网站域名
+        access_log  /var/log/nginx/blog.log main;   #访问日志
+
+    location / {
+        proxy_pass         http://blog;                                #将请求转发给一组服务器
+        proxy_set_header   Host             $host;                     #$host代表nginx转发服务器本身
+        proxy_set_header   X-Real-IP        $remote_addr;                                       #获取用户真实的IP地址
+              proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;         #获取用户真实的IP地址
+        proxy_next_upstream error timeout invalid_header http_404 http_500 http_502 http_504;  #当后端服务器中一台返回error timeout或错误码404、500...时，将请求分配给一下台服务器继续处理
+    }
+}
+</code></pre><h5 id="安装keepalived"><a href="#安装keepalived" class="headerlink" title="安装keepalived"></a>安装keepalived</h5><p>在mg-nginx-01和mg-nginx-02上安装keepalived，将mg-nginx-01称为主负载均衡服务器，即主Master节点， mg-nginx-02称为备负载均衡服务器，即备Backup节点</p>
+<p>安装方法参考官方文档：<a href="http://www.keepalived.org/doc/installing_keepalived.html" target="_blank" rel="noopener">http://www.keepalived.org/doc/installing_keepalived.html</a></p>
+<pre><code>[root@mg-nginx-01 ~]# yum install -y keepalived
+
+已安装:
+  keepalived.x86_64 0:1.3.5-6.el7                                                                                                                            
+
+作为依赖被安装:
+  lm_sensors-libs.x86_64 0:3.4.0-4.20160601gitf9185e5.el7     net-snmp-agent-libs.x86_64 1:5.7.2-33.el7_5.2     net-snmp-libs.x86_64 1:5.7.2-33.el7_5.2    
+
+完毕！
+</code></pre><h5 id="查看keepalived部分安装文件"><a href="#查看keepalived部分安装文件" class="headerlink" title="查看keepalived部分安装文件"></a>查看keepalived部分安装文件</h5><pre><code>[root@mg-nginx-01 ~]# find / -name &quot;keepalived*&quot;
+/etc/sysconfig/keepalived
+/etc/selinux/targeted/active/modules/100/keepalived
+/etc/keepalived
+/etc/keepalived/keepalived.conf                        #主配置文件
+/usr/sbin/keepalived                                          #启动程序
+/usr/lib/systemd/system/keepalived.service     
+......
+</code></pre><h5 id="配置文件说明"><a href="#配置文件说明" class="headerlink" title="配置文件说明"></a>配置文件说明</h5><p>配置文件： /etc/keepalived/keepalived.conf</p>
+<pre><code>global_defs {    #全局配置
+    notification_email {   定义报警邮件地址
+    acassen@firewall.loc
+    failover@firewall.loc
+    sysadmin@firewall.loc
+    }
+    notification_email_from Alexandre.Cassen@firewall.loc  #定义发送邮件的地址
+    smtp_server 192.168.200.1   #邮箱服务器
+    smtp_connect_timeout 30      #定义超时时间
+    router_id LVS_DEVEL        #定义路由标识信息，相同局域网唯一
+}
+vrrp_instance VI_1 {           #定义实例
+    state MASTER          #状态参数 master/backup 只是说明
+    interface eth0        #虚IP地址放置的网卡位置
+    virtual_router_id 51  #同一个集群id一致
+    priority 100          # 优先级决定是主还是备，越大越优先
+    advert_int 1             #主备通讯时间间隔
+    authentication {      #认证
+        auth_type PASS    
+        auth_pass 1111    
+    }                        
+    virtual_ipaddress {   #设备之间使用的虚拟ip地址
+        192.168.200.16    
+          192.168.200.17
+        192.168.200.18
+    }
+}
+</code></pre><h5 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h5><h6 id="主节点配置"><a href="#主节点配置" class="headerlink" title="主节点配置"></a>主节点配置</h6><pre><code>[root@mg-nginx-01 keepalived]# cp -a keepalived.conf keepalived.conf.bak      #养成好习惯，先备份默认配置文件
+[root@mg-nginx-01 keepalived]# vi keepalived.conf
+[root@mg-nginx-01 keepalived]# cat keepalived.conf
+! Configuration File for keepalived
+
+global_defs {
+  router_id mg-nginx-01                #与备节点的配置不同
+}
+
+vrrp_instance VI_1 {
+    state MASTER                            #与备节点的配置不同
+    interface ens33
+    virtual_router_id 51
+    priority 150                                #与备节点的配置不同
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    virtual_ipaddress {
+        172.29.19.18/24
+    }
+}
+</code></pre><h6 id="备节点配置"><a href="#备节点配置" class="headerlink" title="备节点配置"></a>备节点配置</h6><pre><code>[root@mg-nginx-02 keepalived]# cp -a keepalived.conf keepalived.conf.bak        #养成好习惯，先备份默认配置文件
+[root@mg-nginx-02 keepalived]# vi keepalived.conf
+[root@mg-nginx-02 keepalived]# cat keepalived.conf
+! Configuration File for keepalived
+
+global_defs {
+  router_id mg-nginx-02                     #与主节点的配置不同
+}
+
+vrrp_instance VI_1 {
+    state BACKUP                                  #与主节点的配置不同
+    interface ens33
+    virtual_router_id 51
+    priority 100                                     #与主节点的配置不同
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    virtual_ipaddress {
+    172.29.19.18/24
+    }
+}
+</code></pre><h5 id="启动keepalived"><a href="#启动keepalived" class="headerlink" title="启动keepalived"></a>启动keepalived</h5><pre><code>[root@mg-nginx-01 keepalived]# systemctl enable keepalived
+Created symlink from /etc/systemd/system/multi-user.target.wants/keepalived.service to /usr/lib/systemd/system/keepalived.service.
+[root@mg-nginx-01 keepalived]#
+[root@mg-nginx-01 keepalived]# systemctl start keepalived
+
+
+[root@mg-nginx-02 keepalived]# systemctl enable keepalived
+Created symlink from /etc/systemd/system/multi-user.target.wants/keepalived.service to /usr/lib/systemd/system/keepalived.service.
+[root@mg-nginx-02 keepalived]#
+[root@mg-nginx-02 keepalived]# systemctl start keepalived
+</code></pre><h5 id="查看虚拟ip状态"><a href="#查看虚拟ip状态" class="headerlink" title="查看虚拟ip状态"></a>查看虚拟ip状态</h5><p>主节点优先级设置为：priority 150 ，备节点优先级设置为：priority 100</p>
+<p>所以当前虚拟ip飘在主节点mg-nginx-01上：</p>
+<pre><code>[root@mg-nginx-01 keepalived]# ip add
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+      valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+      valid_lft forever preferred_lft forever
+2: ens33: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 00:0c:29:bc:f8:34 brd ff:ff:ff:ff:ff:ff
+    inet 172.29.19.19/24 brd 172.29.19.255 scope global dynamic ens33
+      valid_lft 518994sec preferred_lft 518994sec
+    inet 172.29.19.18/24 scope global secondary ens33                                     #keepalived虚拟ip
+      valid_lft forever preferred_lft forever
+    inet6 fe80::eaa7:1c99:3289:8d13/64 scope link
+      valid_lft forever preferred_lft forever
+</code></pre><h5 id="修改客户端本地hosts解析"><a href="#修改客户端本地hosts解析" class="headerlink" title="修改客户端本地hosts解析"></a>修改客户端本地hosts解析</h5><p>将C:\Windows\System32\drivers\etc\hosts 文件修改如下：</p>
+<pre><code>172.29.19.18  blog-uat.mingguilu.com
+</code></pre><p>刷新系统DNS缓存，清理浏览器缓存</p>
+<pre><code>C:\Users\v-mingguilu&gt;ipconfig /flushdns
+
+Windows IP 配置
+
+已成功刷新 DNS 解析缓存。
+</code></pre><h5 id="访问测试，成功！"><a href="#访问测试，成功！" class="headerlink" title="访问测试，成功！"></a>访问测试，成功！</h5><p><img src="/images/20180519/20180519_04.png" alt=""></p>
+<h5 id="模拟一下主节点发生故障宕机，备节点接管服务"><a href="#模拟一下主节点发生故障宕机，备节点接管服务" class="headerlink" title="模拟一下主节点发生故障宕机，备节点接管服务"></a>模拟一下主节点发生故障宕机，备节点接管服务</h5><p>将主节点上的nginx和keepalived都停掉：</p>
+<pre><code>[root@mg-nginx-01 ~]# systemctl stop nginx
+
+[root@mg-nginx-01 ~]# systemctl stop keepalived
+</code></pre><p>查看网卡信息，虚拟ip果然飘到了备节点网卡上：</p>
+<pre><code>[root@mg-nginx-02 ~]# ip add
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+      valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+      valid_lft forever preferred_lft forever
+2: ens33: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 00:0c:29:3b:15:27 brd ff:ff:ff:ff:ff:ff
+    inet 172.29.19.20/24 brd 172.29.19.255 scope global dynamic ens33
+      valid_lft 688417sec preferred_lft 688417sec
+    inet 172.29.19.18/24 scope global secondary ens33
+      valid_lft forever preferred_lft forever
+    inet6 fe80::362c:96eb:19ff:bf5e/64 scope link
+      valid_lft forever preferred_lft forever
+</code></pre><p>在浏览器访问测试结果也正常，keepalived+nginx高可用配置成功！</p>
+<h5 id="模拟一下主节点从故障中恢复，夺回主节点身份"><a href="#模拟一下主节点从故障中恢复，夺回主节点身份" class="headerlink" title="模拟一下主节点从故障中恢复，夺回主节点身份"></a>模拟一下主节点从故障中恢复，夺回主节点身份</h5><p>重新启动nginx和keepalived服务，很快就夺回主节点地位</p>
+<pre><code>[root@mg-nginx-01 ~]# systemctl start nginx
+[root@mg-nginx-01 ~]# systemctl start keepalived
+[root@mg-nginx-01 ~]#
+[root@mg-nginx-01 ~]# ip add
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+      valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+      valid_lft forever preferred_lft forever
+2: ens33: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 00:0c:29:bc:f8:34 brd ff:ff:ff:ff:ff:ff
+    inet 172.29.19.19/24 brd 172.29.19.255 scope global dynamic ens33
+      valid_lft 687526sec preferred_lft 687526sec
+    inet 172.29.19.18/24 scope global secondary ens33
+      valid_lft forever preferred_lft forever
+    inet6 fe80::eaa7:1c99:3289:8d13/64 scope link
+      valid_lft forever preferred_lft forever
+</code></pre><h4 id="本次实验中出现的一些问题？！"><a href="#本次实验中出现的一些问题？！" class="headerlink" title="本次实验中出现的一些问题？！"></a>本次实验中出现的一些问题？！</h4><h5 id="keepalived配置文件中virtual-ipaddress的写法不同产生的网卡信息显示差异"><a href="#keepalived配置文件中virtual-ipaddress的写法不同产生的网卡信息显示差异" class="headerlink" title="keepalived配置文件中virtual_ipaddress的写法不同产生的网卡信息显示差异"></a>keepalived配置文件中virtual_ipaddress的写法不同产生的网卡信息显示差异</h5><p>原本虚拟ip简省的配置应该是：</p>
+<pre><code>virtual_ipaddress {
+    172.29.19.18
+}
+</code></pre><p>启动keepalived服务后，查看网卡信息：</p>
+<p>虚拟ip掩码为32位，但客户端和其他服务器都能ping通，网站正常访问</p>
+<p><img src="/images/20180519/20180519_05.png" alt=""></p>
+<p>随后将虚拟ip配置修改为如下：</p>
+<pre><code>virtual_ipaddress {
+    172.29.19.18/24
+}
+</code></pre><p>重启keepalived服务后，查看网卡信息：</p>
+<p>虚拟ip掩码为24位，显示信息中增加了secondary字段，服务正常</p>
+<p><img src="/images/20180519/20180519_06.png" alt=""></p>
+<p>将虚拟ip配置修改为最详细：</p>
+<pre><code>virtual_ipaddress {
+    172.29.19.18/24 dev ens33 label ens33:1
+}
+</code></pre><p>重启keepalived服务后，查看网卡信息：</p>
+<p>虚拟ip掩码为24位，显示信息中增加了secondary字段，虚拟接口为1，服务正常</p>
+<p><img src="/images/20180519/20180519_07.png" alt=""></p>
+<h5 id="主节点nginx服务stop之后，主节点的身份未变，网站无法访问"><a href="#主节点nginx服务stop之后，主节点的身份未变，网站无法访问" class="headerlink" title="主节点nginx服务stop之后，主节点的身份未变，网站无法访问"></a>主节点nginx服务stop之后，主节点的身份未变，网站无法访问</h5><p>我原本的理解是，当主节点上的nginx服务stop之后，无法响应客户端数据请求，备节点就会上位接管客户端请求，但这个理解是错误的，实际上故障中的主节点此时依然是主节点，客户端将无法访问网站。</p>
+<p><img src="/images/20180519/20180519_08.png" alt=""></p>
+<p><img src="/images/20180519/20180519_09.png" alt=""></p>
+<p>要理解这个意料之外的结果，需要先研究一下keepalived高可用故障切换转移的工作原理： VRRP (Virtual Router Redundancy Protocol ,虚拟路由器冗余协议）</p>
+<p>简言之， 在 Keepalived服务正常工作时，主节点会不断地向备节点发送（多播的方式）心跳消息，用以告诉备节点自己还活看，当主节点发生故障时，就无法发送心跳消息，备节点也就因此无法继续检测到来自主节点的心跳了，于是调用自身的接管程序，接管主节点的 IP资源及服务。而当主节点恢复时，备节点又会释放主节点故障时自身接管的IP资源及服务，恢复到原来的备节点角色。</p>
+<p>所以只停止主节点上nginx服务，主备节点之间的心跳消息依然正常通信，备节点不会接管客户端请求，而主节点也无法进行响应客户端请求，最终造成客户端访问失败。</p>
+<p>当我们把主节点keepalived服务stop时，或者主节点宕机，物理连接不通时，主备节点无法收发心跳消息，备节点就会成功上位！</p>
+<hr>
+<h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><ul>
+<li>《Nginx Documentation》：<a href="http://nginx.org/en/docs/" target="_blank" rel="noopener">http://nginx.org/en/docs/</a></li>
+<li>《Keepalived User Guide》：<a href="http://www.keepalived.org/doc/" target="_blank" rel="noopener">http://www.keepalived.org/doc/</a></li>
+<li>《 keepalived实现服务高可用》： <a href="https://www.cnblogs.com/clsn/p/8052649.html#auto_id_4" target="_blank" rel="noopener">https://www.cnblogs.com/clsn/p/8052649.html#auto_id_4</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Minggui Lu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Minggui Lu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      <!--
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CentOS/" rel="tag"> <i class="fa fa-tag"></i> CentOS</a>
+          
+            <a href="/tags/nginx/" rel="tag"> <i class="fa fa-tag"></i> nginx</a>
+          
+            <a href="/tags/keepalived/" rel="tag"> <i class="fa fa-tag"></i> keepalived</a>
+          
+        </div>
+      
+      -->
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/12/Manjaro-17-1-7-Hakoila安装Teamviewer-beta-13无法连接问题/" rel="next" title="Manjaro_17.1.7_Hakoila安装Teamviewer-beta_13无法连接问题">
+                <i class="fa fa-chevron-left"></i> Manjaro_17.1.7_Hakoila安装Teamviewer-beta_13无法连接问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDU3OC83MTMz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Minggui Lu</p>
+              <p class="site-description motion-element" itemprop="description">我们有理由相信在计算机的世界里没有诡异的事情，肯定是自己犯了某个傻X的错误</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:luminggui0214@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/mingguilu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/kind0214" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/kind0214" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/kind0214" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/kind0214" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#项目简介"><span class="nav-number">1.</span> <span class="nav-text">项目简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装nginx"><span class="nav-number">2.</span> <span class="nav-text">安装nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#添加yum源"><span class="nav-number">2.1.</span> <span class="nav-text">添加yum源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#清理yum缓存"><span class="nav-number">2.2.</span> <span class="nav-text">清理yum缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装nginx-1"><span class="nav-number">2.3.</span> <span class="nav-text">安装nginx</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看nginx相关文件"><span class="nav-number">2.4.</span> <span class="nav-text">查看nginx相关文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#管理nginx应用"><span class="nav-number">2.5.</span> <span class="nav-text">管理nginx应用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置虚拟主机发布网站"><span class="nav-number">3.</span> <span class="nav-text">配置虚拟主机发布网站</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建虚拟主机配置文件"><span class="nav-number">3.1.</span> <span class="nav-text">创建虚拟主机配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#将静态博客网站的blog目录上传到-usr-share-nginx下"><span class="nav-number">3.2.</span> <span class="nav-text">将静态博客网站的blog目录上传到/usr/share/nginx下</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#将博客首页index-html稍作修改便于检测nginx负载均衡"><span class="nav-number">3.3.</span> <span class="nav-text">将博客首页index.html稍作修改便于检测nginx负载均衡</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置nginx负载均衡"><span class="nav-number">4.</span> <span class="nav-text">配置nginx负载均衡</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建配置文件"><span class="nav-number">4.1.</span> <span class="nav-text">创建配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#检测nginx配置文件是否合规"><span class="nav-number">4.2.</span> <span class="nav-text">检测nginx配置文件是否合规</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#重新加载配置文件"><span class="nav-number">4.3.</span> <span class="nav-text">重新加载配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#客户端添加本地hosts解析"><span class="nav-number">4.4.</span> <span class="nav-text">客户端添加本地hosts解析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#访问测试，如果firefox和chrome未达预期效果，试试IE浏览器"><span class="nav-number">4.5.</span> <span class="nav-text">访问测试，如果firefox和chrome未达预期效果，试试IE浏览器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置keepalived-nginx高可用"><span class="nav-number">5.</span> <span class="nav-text">配置keepalived+nginx高可用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#扩容一台nginx负载均衡服务器"><span class="nav-number">5.1.</span> <span class="nav-text">扩容一台nginx负载均衡服务器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装keepalived"><span class="nav-number">5.2.</span> <span class="nav-text">安装keepalived</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看keepalived部分安装文件"><span class="nav-number">5.3.</span> <span class="nav-text">查看keepalived部分安装文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置文件说明"><span class="nav-number">5.4.</span> <span class="nav-text">配置文件说明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改配置文件"><span class="nav-number">5.5.</span> <span class="nav-text">修改配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#主节点配置"><span class="nav-number">5.5.1.</span> <span class="nav-text">主节点配置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#备节点配置"><span class="nav-number">5.5.2.</span> <span class="nav-text">备节点配置</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启动keepalived"><span class="nav-number">5.6.</span> <span class="nav-text">启动keepalived</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看虚拟ip状态"><span class="nav-number">5.7.</span> <span class="nav-text">查看虚拟ip状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改客户端本地hosts解析"><span class="nav-number">5.8.</span> <span class="nav-text">修改客户端本地hosts解析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#访问测试，成功！"><span class="nav-number">5.9.</span> <span class="nav-text">访问测试，成功！</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模拟一下主节点发生故障宕机，备节点接管服务"><span class="nav-number">5.10.</span> <span class="nav-text">模拟一下主节点发生故障宕机，备节点接管服务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模拟一下主节点从故障中恢复，夺回主节点身份"><span class="nav-number">5.11.</span> <span class="nav-text">模拟一下主节点从故障中恢复，夺回主节点身份</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本次实验中出现的一些问题？！"><span class="nav-number">6.</span> <span class="nav-text">本次实验中出现的一些问题？！</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#keepalived配置文件中virtual-ipaddress的写法不同产生的网卡信息显示差异"><span class="nav-number">6.1.</span> <span class="nav-text">keepalived配置文件中virtual_ipaddress的写法不同产生的网卡信息显示差异</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#主节点nginx服务stop之后，主节点的身份未变，网站无法访问"><span class="nav-number">6.2.</span> <span class="nav-text">主节点nginx服务stop之后，主节点的身份未变，网站无法访问</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文档"><span class="nav-number">7.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+      <!-- geektime start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <p class="site-author-name" itemprop="name"> </p>
+              <p class="site-author-name" itemprop="name"> 极客时间·左耳听风 </p>
+              <p class="site-description motion-element" itemprop="description"> 
+                <img src="/images/reading/左耳听风.jpg" title="洞悉技术的本质，享受科技的乐趣" />
+          </div>
+        </div>
+      </section> 
+
+      <!-- geektime end -->
+
+      <!-- huobi start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a href="https://www.huobi.br.com/zh-cn/topic/invited/?invite_code=vg333" target="_blank">
+                  <img src="/images/reading/huobi2.jpg" title="点击注册火币" />
+                </a>
+          </div>
+        </div>
+      </section>  
+      
+      <!-- huobi end -->
+
+      <!-- yizhihognxing start -->
+      <!--
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a href="http://order.yizhihongxing2018.com/aff.php?aff=294" target="_blank">
+                  <img src="/images/reading/yizhihongxing_vertical.jpg" />
+                </a>
+          </div>
+        </div>
+      </section>  
+      -->
+      <!-- yizhihongxing end -->
+
+    </div>
+  </aside>
+
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minggui Lu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">
+    托管于 <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+  </div>
+
+
+
+
+<!-- 百度分享
+<script>
+  window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"1","bdPos":"right","bdTop":"100"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+-->
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=65849690";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
