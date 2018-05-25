@@ -88,7 +88,7 @@
 <meta property="og:description" content="项目简介 安装nginx6台服务器上安装nginx方法一样，下面以其中一台为例： 参考nginx官方网站安装方法使用yum安装：http://nginx.org/en/linux_packages.html#stable">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://blog.mingguilu.com/images/20180519/20180519_00.jpg">
-<meta property="og:updated_time" content="2018-05-25T08:14:24.000Z">
+<meta property="og:updated_time" content="2018-05-25T08:33:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Keepalived+Nginx实现主备负载均衡高可用">
 <meta name="twitter:description" content="项目简介 安装nginx6台服务器上安装nginx方法一样，下面以其中一台为例： 参考nginx官方网站安装方法使用yum安装：http://nginx.org/en/linux_packages.html#stable">
@@ -627,7 +627,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 Windows IP 配置
 
 已成功刷新 DNS 解析缓存。
-</code></pre><h5 id="访问测试，如果firefox和chrome未达预期效果，试试IE浏览器"><a href="#访问测试，如果firefox和chrome未达预期效果，试试IE浏览器" class="headerlink" title="访问测试，如果firefox和chrome未达预期效果，试试IE浏览器"></a>访问测试，如果firefox和chrome未达预期效果，试试IE浏览器</h5><p><img src="/images/20180519/20180519_03.png" alt=""></p>
+</code></pre><h5 id="访问测试，如果firefox和chrome未达预期效果，试试IE浏览器"><a href="#访问测试，如果firefox和chrome未达预期效果，试试IE浏览器" class="headerlink" title="访问测试，如果firefox和chrome未达预期效果，试试IE浏览器"></a>访问测试，如果firefox和chrome未达预期效果，试试IE浏览器</h5><p><img src="/images/20180519/20180519_03.gif" alt=""></p>
 <h4 id="配置keepalived-nginx高可用"><a href="#配置keepalived-nginx高可用" class="headerlink" title="配置keepalived+nginx高可用"></a>配置keepalived+nginx高可用</h4><p>以上完成了4台nginx发布站点和1台nginx负载均衡，如果任意站点宕机，剩余站点可以继续响应客户端访问，但实现负载均衡的这台nginx服务器本身存在风险，如果宕机，将无法通过域名blog-uat.mingguilu.com访问，接下来将扩容一台nginx负载均衡服务器并引入keepalived实现高可用</p>
 <h5 id="扩容一台nginx负载均衡服务器"><a href="#扩容一台nginx负载均衡服务器" class="headerlink" title="扩容一台nginx负载均衡服务器"></a>扩容一台nginx负载均衡服务器</h5><p>扩容的nginx负载均衡服务器为mg-nginx-02，与上面mg-nginx-01的配置相同</p>
 <pre><code>[root@mg-nginx-02 ~]# cd /etc/nginx/conf.d/
@@ -783,7 +783,7 @@ Created symlink from /etc/systemd/system/multi-user.target.wants/keepalived.serv
 Windows IP 配置
 
 已成功刷新 DNS 解析缓存。
-</code></pre><h5 id="访问测试，成功！"><a href="#访问测试，成功！" class="headerlink" title="访问测试，成功！"></a>访问测试，成功！</h5><p><img src="/images/20180519/20180519_04.png" alt=""></p>
+</code></pre><h5 id="访问测试，成功！"><a href="#访问测试，成功！" class="headerlink" title="访问测试，成功！"></a>访问测试，成功！</h5><p><img src="/images/20180519/20180519_04.gif" alt=""></p>
 <h5 id="模拟一下主节点发生故障宕机，备节点接管服务"><a href="#模拟一下主节点发生故障宕机，备节点接管服务" class="headerlink" title="模拟一下主节点发生故障宕机，备节点接管服务"></a>模拟一下主节点发生故障宕机，备节点接管服务</h5><p>将主节点上的nginx和keepalived都停掉：</p>
 <pre><code>[root@mg-nginx-01 ~]# systemctl stop nginx
 
