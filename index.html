@@ -313,6 +313,176 @@
   
   
 
+  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/05/20/Nginx配置proxy_pass自动定向到二级目录/">
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minggui Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to MingguiLu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/20/Nginx配置proxy_pass自动定向到二级目录/" itemprop="url">Nginx配置proxy_pass自动定向到二级目录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T12:49:21+08:00">
+                2018-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维之道-编程之路-趣玩尝新-若有所思/" itemprop="url" rel="index">
+                    <span itemprop="name">运维之道 | 编程之路 | 趣玩尝新 | 若有所思</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/images/20180520/20180520_00.gif" rel="gallery_cjhmyfo1i000u1sino83jtpz1"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/20180520/20180520_00.gif" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        
+          <p>近期在生产中遇到一个需求：</p>
+<p>某部门CRM系统运行在一台CentOS服务器(假设IP为 172.29.23.48)上，该系统使用一个java web的war包启动，客户端使用IP地址加端口接二级目录来访问： <a href="http://172.29.23.48:8088/crm" target="_blank" rel="noopener">http://172.29.23.48:8088/crm</a> 。现在需要再扩容1台CRM服务器，加入Keepalived高可用方案，并绑定域名(假设为 crm.mingguilu.com)进行访问：<a href="http://crm.mingguilu.com" target="_blank" rel="noopener">http://crm.mingguilu.com</a></p>
+<p>在扩容完成并配置Keepalived+Nginx负载均衡高可用后，仍然需要域名接二级目录访问： <a href="http://crm.mingguilu.com/crm/，该如何配置直接使用域名http://crm.mingguilu.com访问呢？" target="_blank" rel="noopener">http://crm.mingguilu.com/crm/，该如何配置直接使用域名http://crm.mingguilu.com访问呢？</a></p>
+<p><img src="/images/20180520/20180520_01.png" alt=""></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/20/Nginx配置proxy_pass自动定向到二级目录/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      <!--
+      
+      -->
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
   <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/05/19/Keepalived-Nginx实现主备负载均衡高可用/">
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -415,7 +585,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/20180519/20180519_00.jpg" rel="gallery_cjhlozjrd000l2ginnxv0aj5k"
+                 href="/images/20180519/20180519_00.jpg" rel="gallery_cjhmyfo2400161sin4d4zoj4h"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/20180519/20180519_00.jpg" itemprop="contentUrl"/>
               </a>
@@ -584,7 +754,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/teamviewer.jpg" rel="gallery_cjhlozjso00192ginuafnl1cw"
+                 href="/images/photos/teamviewer.jpg" rel="gallery_cjhmyfo1p000y1sinpb853vo1"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/teamviewer.jpg" itemprop="contentUrl"/>
               </a>
@@ -762,7 +932,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/gluster_ceph.jpg" rel="gallery_cjhlozjqc00092ginkrxn3i3o"
+                 href="/images/photos/gluster_ceph.jpg" rel="gallery_cjhmyfo0o000h1sinnltmhoop"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/gluster_ceph.jpg" itemprop="contentUrl"/>
               </a>
@@ -938,7 +1108,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/harbor.png" rel="gallery_cjhlozjr0000g2gin2nb016jb"
+                 href="/images/photos/harbor.png" rel="gallery_cjhmyfo0t000j1sinedh6nxy8"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/harbor.png" itemprop="contentUrl"/>
               </a>
@@ -1130,7 +1300,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/docker.jpg" rel="gallery_cjhlozjqr000e2gins6ywbxvx"
+                 href="/images/photos/docker.jpg" rel="gallery_cjhmyfo0d000d1sin1ltunxtk"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/docker.jpg" itemprop="contentUrl"/>
               </a>
@@ -1297,7 +1467,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/20180302/20180302_10.png" rel="gallery_cjhlozjs5000z2ginnx0fehtq"
+                 href="/images/20180302/20180302_10.png" rel="gallery_cjhmyfo2d001c1sin5kb8zvni"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/20180302/20180302_10.png" itemprop="contentUrl"/>
               </a>
@@ -1464,7 +1634,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/docker.jpg" rel="gallery_cjhlozjr9000j2gingip2hlm7"
+                 href="/images/photos/docker.jpg" rel="gallery_cjhmyfo2j001e1sin1zjfy7ld"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/docker.jpg" itemprop="contentUrl"/>
               </a>
@@ -1701,7 +1871,7 @@ Docker version 18.03.0-ce, build 0520e24302
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/docker.jpg" rel="gallery_cjhlozjrq000r2ginm28y1yzf"
+                 href="/images/photos/docker.jpg" rel="gallery_cjhmyfo13000o1sinz6rikkbk"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/docker.jpg" itemprop="contentUrl"/>
               </a>
@@ -1868,7 +2038,7 @@ Docker version 18.03.0-ce, build 0520e24302
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/git_00.png" rel="gallery_cjhlozjtj001l2gin13rtly4f"
+                 href="/images/photos/git_00.png" rel="gallery_cjhmyfo36001x1sinj817fvju"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/git_00.png" itemprop="contentUrl"/>
               </a>
@@ -1925,186 +2095,11 @@ Docker version 18.03.0-ce, build 0520e24302
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/">
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Minggui Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome to MingguiLu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/" itemprop="url">AutoIt3开发Helpdesk自动化工具之六:图形用户界面</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-02T11:05:10+08:00">
-                2017-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维之道/" itemprop="url" rel="index">
-                    <span itemprop="name">运维之道</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="/images/photos/autoit3.png" rel="gallery_cjhlozjps00052ginivplf6f0"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="/images/photos/autoit3.png" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <p>在持续的编写和测试AutoIt3脚本过程中，对AutoIt的理解更深入了，我意识到可以使用AutoIt3 GUI编写一个图形用户界面，从而增强对每个自定义函数的复用，最终大幅提高运行效率。</p>
-<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ul>
-<li>AutoIt3安装目录中的官方英文手册 v3.3.14.2 - GUI相关 ： AutoIt.chm  </li>
-<li>AutoIt 在线手册中文版_脚本之家 v3.1.1 - GUI相关 :  <a href="http://www.jb51.net/shouce/autoit/" target="_blank" rel="noopener">http://www.jb51.net/shouce/autoit/</a> </li>
-</ul>
-<h3 id="GUI的概念"><a href="#GUI的概念" class="headerlink" title="GUI的概念"></a>GUI的概念</h3><pre><code>AutoIt 脚本可创建（由窗口及其控件组成的）简单的图形用户界面（GUI）
-
-GUI 可由一个或多个 窗口 组成，这些窗口又带有一个或多个控件。GUI是靠“事件驱动”实现与用户的交互的，比如像点击按钮这样的动作就会引发一个事件。程序在空闲状态时等待事件的发生，捕捉到事件时则根据事件执行相关操作。
-</code></pre><p>用GUI创建的图形用户界面确实很简单，类似的xp或更早风格的窗口，或许有方法可以美化，但是好看显然不是我关注的地方，我希望它稳定可靠地执行脚本就够了。GUI创建的窗口就如同每个我们所操作的软件操作，有文字，有按钮，可鼠标点击，可键盘输入……</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      <!--
-      
-      -->
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2150,7 +2145,7 @@ GUI 可由一个或多个 窗口 组成，这些窗口又带有一个或多个�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2161,7 +2156,7 @@ GUI 可由一个或多个 窗口 组成，这些窗口又带有一个或多个�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2172,7 +2167,7 @@ GUI 可由一个或多个 窗口 组成，这些窗口又带有一个或多个�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
