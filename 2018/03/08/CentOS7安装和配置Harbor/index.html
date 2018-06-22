@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Linux,CentOS,Docker," />
+  <meta name="keywords" content="CentOS,Docker,Linux," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="Harbor安装方式 在线安装： 安装包从Docker Hub下载Harbor镜像，所以安装程序很小，但安装时间较长  离线安装： 当无法联网时使用，安装包较大，安装过程更快速和稳定，推荐使用  OVA安装： 在VMware vCente平台下使用   安装要求 Python:  2.7 或更高版本  Docker： 1.10 或更高版本  Docker Compose： 1.6.0 或更高版本">
-<meta name="keywords" content="Linux,CentOS,Docker">
+<meta name="keywords" content="CentOS,Docker,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS7安装和配置Harbor">
 <meta property="og:url" content="http://blog.mingguilu.com/2018/03/08/CentOS7安装和配置Harbor/index.html">
@@ -244,6 +244,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-candies">
+          <a href="/candies/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cny"></i> <br />
+            
+            领红包
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
@@ -397,11 +407,6 @@
             <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
               
                 &nbsp;
-                <a href="/tags/Linux/" itemprop="url" rel="tag"> 
-                  <span itemprop="name"> Linux </span>
-                </a>
-              
-                &nbsp;
                 <a href="/tags/CentOS/" itemprop="url" rel="tag"> 
                   <span itemprop="name"> CentOS </span>
                 </a>
@@ -409,6 +414,11 @@
                 &nbsp;
                 <a href="/tags/Docker/" itemprop="url" rel="tag"> 
                   <span itemprop="name"> Docker </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/Linux/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> Linux </span>
                 </a>
               
             </span>
@@ -443,7 +453,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/harbor.png" rel="gallery_cjhmyfo0t000j1sinedh6nxy8"
+                 href="/images/photos/harbor.png" rel="gallery_cjipd4a11000bgjin6tv0h4vv"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/harbor.png" itemprop="contentUrl"/>
               </a>
@@ -803,23 +813,18 @@ vmware/harbor-log                   v1.4.0              9e818c7a27ab        4 we
     
       <div>
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!</div>
+  <div>如果阅读这篇文章让您有所收获而感到开心...那还有更开心的！支付宝扫码立领红包！</div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>打赏</span>
+    <span>领红包</span>
   </button>
   <div id="QR" style="display: none;">
 
     
-      <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechatpay.png" alt="Minggui Lu 微信支付"/>
-        <p>微信支付</p>
-      </div>
-    
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.jpg" alt="Minggui Lu 支付宝"/>
-        <p>支付宝</p>
+        <img id="alipay_qr" src="/images/alipay_worldcpu.png" alt="Minggui Lu 我有一个支付宝！扫码就能领红包！"/>
+        <p>我有一个支付宝！扫码就能领红包！</p>
       </div>
     
 
@@ -838,11 +843,11 @@ vmware/harbor-log                   v1.4.0              9e818c7a27ab        4 we
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag"> <i class="fa fa-tag"></i> Linux</a>
-          
             <a href="/tags/CentOS/" rel="tag"> <i class="fa fa-tag"></i> CentOS</a>
           
             <a href="/tags/Docker/" rel="tag"> <i class="fa fa-tag"></i> Docker</a>
+          
+            <a href="/tags/Linux/" rel="tag"> <i class="fa fa-tag"></i> Linux</a>
           
         </div>
       
@@ -955,7 +960,7 @@ vmware/harbor-log                   v1.4.0              9e818c7a27ab        4 we
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Minggui Lu</p>
-              <p class="site-description motion-element" itemprop="description">我们有理由相信在计算机的世界里没有诡异的事情，肯定是自己犯了某个傻X的错误</p>
+              <p class="site-description motion-element" itemprop="description">持续集成 &nbsp;&nbsp; 持续交付</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -976,7 +981,7 @@ vmware/harbor-log                   v1.4.0              9e818c7a27ab        4 we
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1033,7 +1038,7 @@ vmware/harbor-log                   v1.4.0              9e818c7a27ab        4 we
                   <span class="links-of-author-item">
                     <a href="http://weibo.com/kind0214" target="_blank" title="微博">
                       
-                        <i class="fa fa-fw fa-globe"></i></a>
+                        <i class="fa fa-fw fa-weibo"></i></a>
                   </span>
                 
             </div>
@@ -1069,6 +1074,25 @@ vmware/harbor-log                   v1.4.0              9e818c7a27ab        4 we
       
 
       
+
+      <!-- alipay_QRcode start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <p class="site-author-name" itemprop="name"> </p>
+              <p class="site-description motion-element" itemprop="description"> 
+                <a href="/candies/" target="_blank">
+                  <img src="/images/reading/alipay_QRcode.jpg" title="打开支付宝，扫码领红包" />
+                </a>
+          </div>
+        </div>
+      </section> 
+
+      <!-- alipay_QRcode end -->
 
       <!-- geektime start -->
 

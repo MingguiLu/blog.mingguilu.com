@@ -60,9 +60,9 @@
         <category>运维之道</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>CentOS</tag>
         <tag>Docker</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -73,9 +73,9 @@
         <category>运维之道</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>CentOS</tag>
         <tag>Docker</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -275,8 +275,8 @@
         <category>运维之道</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>CentOS</tag>
+        <tag>Linux</tag>
         <tag>Samba</tag>
       </tags>
   </entry>
