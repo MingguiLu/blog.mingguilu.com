@@ -1193,6 +1193,8 @@ pre .javascript .function {
   display: inline-block;
   margin: 0 10px;
   list-style: none;
+  width: 45%;
+  float: left;
 }
 @media screen and (max-width: 767px) {
   .menu .menu-item {
@@ -1979,7 +1981,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #db5c04;
+  background: #69d775;
 }
 .links-of-blogroll {
   font-size: 13px;
