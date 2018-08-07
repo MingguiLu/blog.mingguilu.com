@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="nicehash,bitcoin,cpuminer,挖矿," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="时至今日，随着挖矿难度提升，加密货币价格一再腰斩，个人挖矿只是浪费精力和资源而已，完全不推荐，本篇文章仅作为体验教程 Nicehash矿池相比国内外XMR矿池Nicehash矿池相比于其他国内外的XMR矿池，有一定的优势，或网络连通性好，或矿工多算力强，容易爆块获得收益，最重要的是结算周期短，相对国内矿池1.5～3XMR的高门槛，Nicehash结算到交易所钱包最低0.0021BTC即可，抽水0.">
+<meta name="keywords" content="nicehash,bitcoin,cpuminer,挖矿">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nicehash的CPU挖矿指南之CentOS篇">
+<meta property="og:url" content="http://blog.mingguilu.com/2018/04/01/Nicehash的CPU挖矿指南之CentOS篇/index.html">
+<meta property="og:site_name" content="Welcome to MingguiLu&#39;s Blog">
+<meta property="og:description" content="时至今日，随着挖矿难度提升，加密货币价格一再腰斩，个人挖矿只是浪费精力和资源而已，完全不推荐，本篇文章仅作为体验教程 Nicehash矿池相比国内外XMR矿池Nicehash矿池相比于其他国内外的XMR矿池，有一定的优势，或网络连通性好，或矿工多算力强，容易爆块获得收益，最重要的是结算周期短，相对国内矿池1.5～3XMR的高门槛，Nicehash结算到交易所钱包最低0.0021BTC即可，抽水0.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://blog.mingguilu.com/images/photos/nicehash.png">
+<meta property="og:updated_time" content="2018-08-07T03:31:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nicehash的CPU挖矿指南之CentOS篇">
+<meta name="twitter:description" content="时至今日，随着挖矿难度提升，加密货币价格一再腰斩，个人挖矿只是浪费精力和资源而已，完全不推荐，本篇文章仅作为体验教程 Nicehash矿池相比国内外XMR矿池Nicehash矿池相比于其他国内外的XMR矿池，有一定的优势，或网络连通性好，或矿工多算力强，容易爆块获得收益，最重要的是结算周期短，相对国内矿池1.5～3XMR的高门槛，Nicehash结算到交易所钱包最低0.0021BTC即可，抽水0.">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/photos/nicehash.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.mingguilu.com/2018/04/01/Nicehash的CPU挖矿指南之CentOS篇/"/>
+
+
+
+
+
+  <title>Nicehash的CPU挖矿指南之CentOS篇 | Welcome to MingguiLu's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-86857821-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><!--
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i><img src="/images/favicon.ico" /></i></span>
+        <span class="site-title">Welcome to MingguiLu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+-->
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-candies">
+          <a href="/candies/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cny"></i> <br />
+            
+            红包
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/04/01/Nicehash的CPU挖矿指南之CentOS篇/">
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minggui Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to MingguiLu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Nicehash的CPU挖矿指南之CentOS篇</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-01T16:27:37+08:00">
+                2018-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/趣玩尝新/" itemprop="url" rel="index">
+                    <span itemprop="name">趣玩尝新</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-meta-divider">|</span>
+            
+            <span class="post-meta-item-icon">
+                <i class="fa fa-star-o"></i>
+            </span>
+            
+                <span class="post-meta-item-text">标签于</span>
+            
+            <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              
+                &nbsp;
+                <a href="/tags/nicehash/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> nicehash </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/bitcoin/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> bitcoin </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/cpuminer/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> cpuminer </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/挖矿/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> 挖矿 </span>
+                </a>
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/images/photos/nicehash.png" rel="gallery_cjju2rjgq001m84innd8b8hn5"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/photos/nicehash.png" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <p>时至今日，随着挖矿难度提升，加密货币价格一再腰斩，个人挖矿只是浪费精力和资源而已，完全不推荐，本篇文章仅作为体验教程</p>
+<h4 id="Nicehash矿池相比国内外XMR矿池"><a href="#Nicehash矿池相比国内外XMR矿池" class="headerlink" title="Nicehash矿池相比国内外XMR矿池"></a>Nicehash矿池相比国内外XMR矿池</h4><p>Nicehash矿池相比于其他国内外的XMR矿池，有一定的优势，或网络连通性好，或矿工多算力强，容易爆块获得收益，最重要的是结算周期短，相对国内矿池1.5～3XMR的高门槛，Nicehash结算到交易所钱包最低0.0021BTC即可，抽水0.2%也相对较低</p>
+<h4 id="Linux版本相比Windows版本优缺点"><a href="#Linux版本相比Windows版本优缺点" class="headerlink" title="Linux版本相比Windows版本优缺点"></a>Linux版本相比Windows版本优缺点</h4><p>无论Windows还是Linux版本CPU挖矿实际是调用xmr-stak、cpuminer等挖XMR，再抽掉手续费换算成Bitcoin结算给矿工</p>
+<p>优点：</p>
+<ul>
+<li>系统资源开销更低，挖矿软件运行更稳定</li>
+<li>Linux系统便于结合自动化工具进行批量部署和管理</li>
+<li>Linux系统便于持续部署的新版本挖矿软件和算法</li>
+<li>用户可自定义用于挖矿的CPU线程数</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>Nichash控制面板无法显示每台矿机的名称，无论实际有多少台矿机，矿机数量只显示1台</li>
+<li>Github上有很多版本的挖矿软件，但有些版本可能会抽水，注意分辨</li>
+</ul>
+<a id="more"></a>
+<h4 id="注册Nicehash"><a href="#注册Nicehash" class="headerlink" title="注册Nicehash"></a>注册Nicehash</h4><p><a href="https://www.nicehash.com/?refby=1358932&amp;lang=zh" target="_blank" rel="noopener">https://www.nicehash.com/?refby=1358932&amp;lang=zh</a></p>
+<h4 id="推荐系统：CentOS-7-以上"><a href="#推荐系统：CentOS-7-以上" class="headerlink" title="推荐系统：CentOS 7 以上"></a>推荐系统：CentOS 7 以上</h4><pre><code>cat /etc/redhat-release 
+
+CentOS Linux release 7.4.1708 (Core)
+</code></pre><h4 id="切换到root用户"><a href="#切换到root用户" class="headerlink" title="切换到root用户"></a>切换到root用户</h4><pre><code>sudo su - root
+</code></pre><h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><pre><code>sudo systemctl stop firewalld
+sudo systemctl disable firewalld
+sudo setenforce 0
+sudo sed -i &quot;s/SELINUX=enforcing/SELINUX=disabled/g&quot; /etc/selinux/config
+</code></pre><h4 id="系统调优参数，防止出现内存错误"><a href="#系统调优参数，防止出现内存错误" class="headerlink" title="系统调优参数，防止出现内存错误"></a>系统调优参数，防止出现内存错误</h4><pre><code>echo &apos;* soft memlock 262144&apos; &gt;&gt; /etc/security/limits.conf
+echo &apos;* hard memlock 262144&apos; &gt;&gt; /etc/security/limits.conf
+sysctl -w vm.nr_hugepages=128
+</code></pre><h4 id="安装依赖软件"><a href="#安装依赖软件" class="headerlink" title="安装依赖软件"></a>安装依赖软件</h4><pre><code>yum install -y centos-release-scl epel-release
+yum install -y devtoolset-4-gcc* hwloc-devel libmicrohttpd-devel openssl-devel libcurl-devel libtool automake make git
+yum groupinstall -y &quot;Development Tools&quot;
+scl enable devtoolset-4 bash
+</code></pre><h4 id="创建cpuminer-opt工作目录"><a href="#创建cpuminer-opt工作目录" class="headerlink" title="创建cpuminer-opt工作目录"></a>创建cpuminer-opt工作目录</h4><pre><code>mkdir /data
+cd /data
+</code></pre><h4 id="下载编译cpuminer-opt"><a href="#下载编译cpuminer-opt" class="headerlink" title="下载编译cpuminer-opt"></a>下载编译cpuminer-opt</h4><p>Nicehash官方推荐的cpuminer-multi的Github仓库地址为：<a href="https://github.com/tpruvot/cpuminer-multi.git" target="_blank" rel="noopener">https://github.com/tpruvot/cpuminer-multi.git</a></p>
+<p>不过这个版本不支持cryptonightv7算法（或许支持但我不知道怎么用），所以选择以下支持cryptonightv7算法的cpuminer-opt</p>
+<pre><code>git clone https://github.com/JayDDee/cpuminer-opt.git
+cd cpuminer-opt
+./build.sh
+</code></pre><h4 id="创建日志文件"><a href="#创建日志文件" class="headerlink" title="创建日志文件"></a>创建日志文件</h4><pre><code>mkdir /data/cpuminer-opt/logs
+touch /data/cpuminer-opt/logs/cpuminer.log
+chmod -R 755 /data/cpuminer-opt/logs/cpuminer.log
+</code></pre><h4 id="配置对应算法的挖矿参数"><a href="#配置对应算法的挖矿参数" class="headerlink" title="配置对应算法的挖矿参数"></a>配置对应算法的挖矿参数</h4><p>参数简介：</p>
+<p>“url” : Stratum服务器地址，格式为：stratum+tcp://算法.位置.nicehash.com:端口，参考<a href="https://www.nicehash.com/farm-mining" target="_blank" rel="noopener">https://www.nicehash.com/farm-mining</a><br>“user” : 你的Nicehash钱包地址，或者Nicehash的邮箱账户<br>“pass” : 密码，默认‘x’，可以空着’ ‘，或者填‘矿工名称:邮箱地址’<br>“algo” : 挖矿算法，需要跟url中的算法一样，参考<a href="https://www.nicehash.com/algorithm" target="_blank" rel="noopener">https://www.nicehash.com/algorithm</a><br>“threads” : 用于挖矿的cpu线程，默认0为所有线程<br>其他参数： 默认即可</p>
+<pre><code>cp cpuminer-conf.json cpuminer-conf.json.cryptonightv7
+cp cpuminer-conf.json cpuminer-conf.json.lyra2rev2
+
+vi cpuminer-conf.json.cryptonightv7
+{
+        &quot;_comment1&quot; : &quot;Any long-format command line argument &quot;,
+        &quot;_comment2&quot; : &quot;may be used in this JSON configuration file&quot;,
+
+        &quot;api-bind&quot; : &quot;127.0.0.1:4048&quot;,
+
+        &quot;url&quot; : &quot;stratum+tcp://cryptonightv7.hk.nicehash.com:3363&quot;,
+        &quot;user&quot; : &quot;3PZxBftQ8kt8uUszqM9tFnqwJMKWPpg8zm&quot;,
+        &quot;pass&quot; : &quot;x&quot;,
+
+        &quot;algo&quot; : &quot;cryptonightv7&quot;,
+        &quot;threads&quot; : 7,
+        &quot;cpu-priority&quot; : 0,
+        &quot;cpu-affinity&quot; : -1,
+
+        &quot;benchmark&quot; : false,
+        &quot;debug&quot; : false,
+        &quot;protocol&quot;: false,
+        &quot;quiet&quot; : false
+}
+
+vi cpuminer-conf.json.lyra2rev2
+{
+        &quot;_comment1&quot; : &quot;Any long-format command line argument &quot;,
+        &quot;_comment2&quot; : &quot;may be used in this JSON configuration file&quot;,
+
+        &quot;api-bind&quot; : &quot;127.0.0.1:4048&quot;,
+
+        &quot;url&quot; : &quot;stratum+tcp://lyra2rev2.hk.nicehash.com:3347&quot;,
+        &quot;user&quot; : &quot;3PZxBftQ8kt8uUszqM9tFnqwJMKWPpg8zm&quot;,
+        &quot;pass&quot; : &quot;x&quot;,
+
+        &quot;algo&quot; : &quot;lyra2rev2&quot;,
+        &quot;threads&quot; : 7,
+        &quot;cpu-priority&quot; : 0,
+        &quot;cpu-affinity&quot; : -1,
+
+        &quot;benchmark&quot; : false,
+        &quot;debug&quot; : false,
+        &quot;protocol&quot;: false,
+        &quot;quiet&quot; : false
+}
+</code></pre><h4 id="创建cpuminer对应算法的启动脚本"><a href="#创建cpuminer对应算法的启动脚本" class="headerlink" title="创建cpuminer对应算法的启动脚本"></a>创建cpuminer对应算法的启动脚本</h4><pre><code>mkdir /data/cpuminer-opt/bin
+cd /data/cpuminer-opt/bin
+
+vi startup-cryptonightv7.sh
+
+#!/bin/bash
+cd /data/cpuminer-opt
+./cpuminer -c cpuminer-conf.json.cryptonightv7 &gt;/data/cpuminer-opt/logs/cpuminer.log 2&gt;&amp;1 &amp;
+
+vi startup-lyra2rev2.sh
+
+#!/bin/bash
+cd /data/cpuminer-opt
+./cpuminer -c cpuminer-conf.json.lyra2rev2 &gt;/data/cpuminer-opt/logs/cpuminer.log 2&gt;&amp;1 &amp;
+
+chmod 755 startup-cryptonightv7.sh
+chmod 755 startup-lyra2rev2.sh
+</code></pre><h4 id="创建cpuminer停止脚本"><a href="#创建cpuminer停止脚本" class="headerlink" title="创建cpuminer停止脚本"></a>创建cpuminer停止脚本</h4><pre><code>vi shutdown.sh
+
+#!/bin/bash
+XMR_STAK_PID=`ps -ef|grep cpuminer|grep -v grep|awk &apos;{print $2}&apos;`
+kill -9 $XMR_STAK_PID
+chmod 755 shutdown.sh
+</code></pre><h4 id="启动cpuminer开始挖矿"><a href="#启动cpuminer开始挖矿" class="headerlink" title="启动cpuminer开始挖矿"></a>启动cpuminer开始挖矿</h4><pre><code>sh startup-cryptonightv7.sh
+</code></pre><p>切换算法挖矿</p>
+<pre><code>sh shutdown.sh
+sh startup-lyra2rev2.sh
+</code></pre><h4 id="实时追踪cpuminer日志"><a href="#实时追踪cpuminer日志" class="headerlink" title="实时追踪cpuminer日志"></a>实时追踪cpuminer日志</h4><pre><code>tail -fn 100 /data/cpuminer-opt/logs/cpuminer.log
+</code></pre><h4 id="实时查看挖矿信息"><a href="#实时查看挖矿信息" class="headerlink" title="实时查看挖矿信息"></a>实时查看挖矿信息</h4><p>登录Nicehash，依次访问控制面板 ——&gt; 查看统计数据，即可查看矿机实时挖矿状态</p>
+<p>免登陆情况下直接访问：<a href="https://www.nicehash.com/miner/你的Nicehash钱包地址" target="_blank" rel="noopener">https://www.nicehash.com/miner/你的Nicehash钱包地址</a></p>
+<h4 id="结算到交易所换成RMB"><a href="#结算到交易所换成RMB" class="headerlink" title="结算到交易所换成RMB"></a>结算到交易所换成RMB</h4><p>推荐将Nicehash赚取的Bitcoin结算到火币交易所<a href="https://www.huobi.br.com/zh-cn/topic/invited/?invite_code=vg333" target="_blank" rel="noopener">https://www.huobi.br.com/zh-cn/topic/invited/?invite_code=vg333</a>，通过站内法币交易简单方便的将数字货币出售为RMB，支持微信、支付宝收款</p>
+<p><img src="/images/reading/huobi1.jpg" alt=""></p>
+<hr>
+<h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><ul>
+<li><p>注册Nicehash：<a href="https://www.nicehash.com/?refby=1358932&amp;lang=zh" target="_blank" rel="noopener">https://www.nicehash.com/?refby=1358932&amp;lang=zh</a></p>
+</li>
+<li><p>火币交易所：<a href="https://www.huobi.br.com/zh-cn/topic/invited/?invite_code=vg333" target="_blank" rel="noopener">https://www.huobi.br.com/zh-cn/topic/invited/?invite_code=vg333</a></p>
+</li>
+<li><p>《CPU挖矿指南》： <a href="https://www.nicehash.com/help/cpu-mining" target="_blank" rel="noopener">https://www.nicehash.com/help/cpu-mining</a></p>
+</li>
+<li><p>《Nicehash算法》： <a href="https://www.nicehash.com/algorithm" target="_blank" rel="noopener">https://www.nicehash.com/algorithm</a></p>
+</li>
+<li><p>《Nicehash选择服务器》： <a href="https://www.nicehash.com/farm-mining" target="_blank" rel="noopener">https://www.nicehash.com/farm-mining</a></p>
+</li>
+<li><p>《cpuminer-opt/RELEASE_NOTES》 ：<a href="https://github.com/JayDDee/cpuminer-opt/blob/master/RELEASE_NOTES" target="_blank" rel="noopener">https://github.com/JayDDee/cpuminer-opt/blob/master/RELEASE_NOTES</a></p>
+</li>
+<li><p>《This is the home of cpuminer-opt, The optimized CPU miner》： <a href="https://bitcointalk.org/index.php?topic=1326803.0" target="_blank" rel="noopener">https://bitcointalk.org/index.php?topic=1326803.0</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果阅读这篇文章让您有所收获而感到开心...那还有更开心的！支付宝扫码立领红包！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>领红包</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay_worldcpu.png" alt="Minggui Lu 我有一个支付宝！扫码就能领红包！"/>
+        <p>我有一个支付宝！扫码就能领红包！</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      <!--
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nicehash/" rel="tag"> <i class="fa fa-tag"></i> nicehash</a>
+          
+            <a href="/tags/bitcoin/" rel="tag"> <i class="fa fa-tag"></i> bitcoin</a>
+          
+            <a href="/tags/cpuminer/" rel="tag"> <i class="fa fa-tag"></i> cpuminer</a>
+          
+            <a href="/tags/挖矿/" rel="tag"> <i class="fa fa-tag"></i> 挖矿</a>
+          
+        </div>
+      
+      -->
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/01/Nicehash的CPU挖矿指南之Ubuntu篇/" rel="next" title="Nicehash的CPU挖矿指南之Ubuntu篇">
+                <i class="fa fa-chevron-left"></i> Nicehash的CPU挖矿指南之Ubuntu篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/12/Manjaro-17-1-7-Hakoila安装Teamviewer-beta-13无法连接问题/" rel="prev" title="Manjaro_17.1.7_Hakoila安装Teamviewer-beta_13无法连接问题">
+                Manjaro_17.1.7_Hakoila安装Teamviewer-beta_13无法连接问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDU3OC83MTMz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Minggui Lu</p>
+              <p class="site-description motion-element" itemprop="description">持续集成 &nbsp;&nbsp; 持续交付</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:luminggui0214@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/mingguilu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/kind0214" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/kind0214" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/kind0214" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/kind0214" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Nicehash矿池相比国内外XMR矿池"><span class="nav-number">1.</span> <span class="nav-text">Nicehash矿池相比国内外XMR矿池</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux版本相比Windows版本优缺点"><span class="nav-number">2.</span> <span class="nav-text">Linux版本相比Windows版本优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注册Nicehash"><span class="nav-number">3.</span> <span class="nav-text">注册Nicehash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推荐系统：CentOS-7-以上"><span class="nav-number">4.</span> <span class="nav-text">推荐系统：CentOS 7 以上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换到root用户"><span class="nav-number">5.</span> <span class="nav-text">切换到root用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关闭防火墙"><span class="nav-number">6.</span> <span class="nav-text">关闭防火墙</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统调优参数，防止出现内存错误"><span class="nav-number">7.</span> <span class="nav-text">系统调优参数，防止出现内存错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装依赖软件"><span class="nav-number">8.</span> <span class="nav-text">安装依赖软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建cpuminer-opt工作目录"><span class="nav-number">9.</span> <span class="nav-text">创建cpuminer-opt工作目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下载编译cpuminer-opt"><span class="nav-number">10.</span> <span class="nav-text">下载编译cpuminer-opt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建日志文件"><span class="nav-number">11.</span> <span class="nav-text">创建日志文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置对应算法的挖矿参数"><span class="nav-number">12.</span> <span class="nav-text">配置对应算法的挖矿参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建cpuminer对应算法的启动脚本"><span class="nav-number">13.</span> <span class="nav-text">创建cpuminer对应算法的启动脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建cpuminer停止脚本"><span class="nav-number">14.</span> <span class="nav-text">创建cpuminer停止脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动cpuminer开始挖矿"><span class="nav-number">15.</span> <span class="nav-text">启动cpuminer开始挖矿</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实时追踪cpuminer日志"><span class="nav-number">16.</span> <span class="nav-text">实时追踪cpuminer日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实时查看挖矿信息"><span class="nav-number">17.</span> <span class="nav-text">实时查看挖矿信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结算到交易所换成RMB"><span class="nav-number">18.</span> <span class="nav-text">结算到交易所换成RMB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文档"><span class="nav-number">19.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+      <!-- alipay_QRcode start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <p class="site-author-name" itemprop="name"> </p>
+              <p class="site-description motion-element" itemprop="description"> 
+                <a href="/candies/" target="_blank">
+                  <img src="/images/reading/alipay_QRcode.jpg" title="打开支付宝，扫码领红包" />
+                </a>
+          </div>
+        </div>
+      </section> 
+
+      <!-- alipay_QRcode end -->
+
+      <!-- geektime start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <p class="site-author-name" itemprop="name"> </p>
+              <p class="site-author-name" itemprop="name"> 极客时间·左耳听风 </p>
+              <p class="site-description motion-element" itemprop="description"> 
+                <img src="/images/reading/左耳听风.jpg" title="洞悉技术的本质，享受科技的乐趣" />
+          </div>
+        </div>
+      </section> 
+
+      <!-- geektime end -->
+
+      <!-- huobi start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a href="https://www.huobi.br.com/zh-cn/topic/invited/?invite_code=vg333" target="_blank">
+                  <img src="/images/reading/huobi2.jpg" title="点击注册火币" />
+                </a>
+          </div>
+        </div>
+      </section>  
+      
+      <!-- huobi end -->
+
+      <!-- yizhihognxing start -->
+      <!--
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a href="http://order.yizhihongxing2018.com/aff.php?aff=294" target="_blank">
+                  <img src="/images/reading/yizhihongxing_vertical.jpg" />
+                </a>
+          </div>
+        </div>
+      </section>  
+      -->
+      <!-- yizhihongxing end -->
+
+    </div>
+  </aside>
+
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minggui Lu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">
+    托管于 <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+  </div>
+
+
+
+
+<!-- 百度分享
+<script>
+  window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"1","bdPos":"right","bdTop":"100"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+-->
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=65849690";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
