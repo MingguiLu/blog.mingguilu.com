@@ -323,7 +323,7 @@
   
   
 
-  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/06/27/Account-locked-due-to-13-failed-logins/">
+  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/08/16/【Linux】计划任务crond服务/">
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
@@ -348,7 +348,186 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/27/Account-locked-due-to-13-failed-logins/" itemprop="url">Account locked due to 13 failed logins</a></h1>
+                <a class="post-title-link" href="/2018/08/16/【Linux】计划任务crond服务/" itemprop="url">【Linux】计划任务atd和crond服务</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-16T16:33:27+08:00">
+                2018-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/点滴随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">点滴随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="一次性计划任务at"><a href="#一次性计划任务at" class="headerlink" title="一次性计划任务at"></a>一次性计划任务at</h4><h5 id="安装at"><a href="#安装at" class="headerlink" title="安装at"></a>安装at</h5><p>CentOS 7.4 默认没有安装at，需自行安装并启动atd服务</p>
+<pre><code>yum install -y at
+systemctl start atd
+</code></pre><h5 id="命令语法"><a href="#命令语法" class="headerlink" title="命令语法"></a>命令语法</h5><table>
+<thead>
+<tr>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">at 时间</td>
+<td style="text-align:left">默认交互式创建一次性计划任务,Ctrl+d组合键结束编辑</td>
+</tr>
+<tr>
+<td style="text-align:left">at -l</td>
+<td style="text-align:left">查看已设置但还未执行的一次性计划任务</td>
+</tr>
+<tr>
+<td style="text-align:left">atq</td>
+<td style="text-align:left">作用同at -l</td>
+</tr>
+<tr>
+<td style="text-align:left">atrm 任务序号</td>
+<td style="text-align:left">删除已设置但还未执行的一次性计划任务</td>
+</tr>
+</tbody>
+</table>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/16/【Linux】计划任务crond服务/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      <!--
+      
+      -->
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/06/27/【Linux】Account-locked-due-to-13-failed-logins/">
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minggui Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to MingguiLu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/27/【Linux】Account-locked-due-to-13-failed-logins/" itemprop="url">【Linux】Account locked due to 13 failed logins</a></h1>
         
 
         <div class="post-meta">
@@ -383,8 +562,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维之道/" itemprop="url" rel="index">
-                    <span itemprop="name">运维之道</span>
+                  <a href="/categories/点滴随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">点滴随笔</span>
                   </a>
                 </span>
 
@@ -429,7 +608,7 @@ pam_tally2 --user=ituser --reset #重置计数器，即解锁用户
 </code></pre><p>极端情况下，已经无法登录到服务器上进行解锁，需要使用salt工具等远程解锁：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/06/27/Account-locked-due-to-13-failed-logins/#more" rel="contents">
+            <a class="btn" href="/2018/06/27/【Linux】Account-locked-due-to-13-failed-logins/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -579,7 +758,7 @@ pam_tally2 --user=ituser --reset #重置计数器，即解锁用户
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/20180520/20180520_00.gif" rel="gallery_cjju2rjgd001584in5oze6oqg"
+                 href="/images/20180520/20180520_00.gif" rel="gallery_cjkrx5g1h0019jdindo0o9xjx"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/20180520/20180520_00.gif" itemprop="contentUrl"/>
               </a>
@@ -749,7 +928,7 @@ pam_tally2 --user=ituser --reset #重置计数器，即解锁用户
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/20180519/20180519_00.jpg" rel="gallery_cjju2rjgh001884in0al3i8py"
+                 href="/images/20180519/20180519_00.jpg" rel="gallery_cjkrx5g190011jdina07lljim"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/20180519/20180519_00.jpg" itemprop="contentUrl"/>
               </a>
@@ -918,7 +1097,7 @@ pam_tally2 --user=ituser --reset #重置计数器，即解锁用户
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/teamviewer.jpg" rel="gallery_cjju2rjgb001384inwvyznfol"
+                 href="/images/photos/teamviewer.jpg" rel="gallery_cjkrx5g1f0017jdinyywcs458"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/teamviewer.jpg" itemprop="contentUrl"/>
               </a>
@@ -1096,7 +1275,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/nicehash.png" rel="gallery_cjju2rjgq001m84innd8b8hn5"
+                 href="/images/photos/nicehash.png" rel="gallery_cjkrx5g1k001cjdinowgpje4m"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/nicehash.png" itemprop="contentUrl"/>
               </a>
@@ -1277,7 +1456,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/nicehash.png" rel="gallery_cjju2rjhr002e84ingx5asn8b"
+                 href="/images/photos/nicehash.png" rel="gallery_cjkrx5g1m001fjdinlji6wfph"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/nicehash.png" itemprop="contentUrl"/>
               </a>
@@ -1458,7 +1637,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/nicehash.png" rel="gallery_cjju2rjgw001t84ingff1age2"
+                 href="/images/photos/nicehash.png" rel="gallery_cjkrx5g1o001jjdinzuo4a0ab"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/nicehash.png" itemprop="contentUrl"/>
               </a>
@@ -1640,7 +1819,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/gluster_ceph.jpg" rel="gallery_cjju2rjfs000e84inktdjzec6"
+                 href="/images/photos/gluster_ceph.jpg" rel="gallery_cjkrx5g0p000hjdin0oe5ik3u"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/gluster_ceph.jpg" itemprop="contentUrl"/>
               </a>
@@ -1816,7 +1995,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/harbor.png" rel="gallery_cjju2rjg2000q84iniqxoetj6"
+                 href="/images/photos/harbor.png" rel="gallery_cjkrx5g0x000pjdinnsivyhxr"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/harbor.png" itemprop="contentUrl"/>
               </a>
@@ -1859,173 +2038,6 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/03/08/CentOS7安装和配置Harbor/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      <!--
-      
-      -->
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/03/06/CentOS7安装Docker和Docker-compose/">
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Minggui Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome to MingguiLu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/06/CentOS7安装Docker和Docker-compose/" itemprop="url">CentOS7安装Docker和Docker-compose</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T13:01:17+08:00">
-                2018-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维之道/" itemprop="url" rel="index">
-                    <span itemprop="name">运维之道</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="/images/photos/docker.jpg" rel="gallery_cjju2rjhy002k84inj9otm2f9"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="/images/photos/docker.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <p>Docker分为Docker-EE(enterprise edition)和Docker-CE(community edition)两个版本；EE是收费版本，由官方技术团队维护和提供技术支持；CE是免费版本，由社区维护和提供技术支持</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/06/CentOS7安装Docker和Docker-compose/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2115,7 +2127,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2126,7 +2138,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2137,7 +2149,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
