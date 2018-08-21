@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Linux,crond,计划任务,atd," />
+  <meta name="keywords" content="linux,atd,crond,计划任务," />
 
 
 
@@ -80,17 +80,19 @@
 
 
 <meta name="description" content="一次性计划任务at安装atCentOS 7.4 默认没有安装at，需自行安装并启动atd服务 yum install -y at systemctl start atd 命令语法   命令 用途     at 时间 默认交互式创建一次性计划任务,Ctrl+d组合键结束编辑   at -l 查看已设置但还未执行的一次性计划任务   atq 作用同at -l   atrm 任务序号 删除已设置但还未执">
-<meta name="keywords" content="Linux,crond,计划任务,atd">
+<meta name="keywords" content="linux,atd,crond,计划任务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Linux】计划任务atd和crond服务">
 <meta property="og:url" content="http://blog.mingguilu.com/2018/08/16/【Linux】计划任务crond服务/index.html">
 <meta property="og:site_name" content="Welcome to MingguiLu&#39;s Blog">
 <meta property="og:description" content="一次性计划任务at安装atCentOS 7.4 默认没有安装at，需自行安装并启动atd服务 yum install -y at systemctl start atd 命令语法   命令 用途     at 时间 默认交互式创建一次性计划任务,Ctrl+d组合键结束编辑   at -l 查看已设置但还未执行的一次性计划任务   atq 作用同at -l   atrm 任务序号 删除已设置但还未执">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-16T11:57:56.000Z">
+<meta property="og:image" content="http://blog.mingguilu.com/images/photos/linux.jpg">
+<meta property="og:updated_time" content="2018-08-21T12:50:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Linux】计划任务atd和crond服务">
 <meta name="twitter:description" content="一次性计划任务at安装atCentOS 7.4 默认没有安装at，需自行安装并启动atd服务 yum install -y at systemctl start atd 命令语法   命令 用途     at 时间 默认交互式创建一次性计划任务,Ctrl+d组合键结束编辑   at -l 查看已设置但还未执行的一次性计划任务   atq 作用同at -l   atrm 任务序号 删除已设置但还未执">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/photos/linux.jpg">
 
 
 
@@ -405,8 +407,13 @@
             <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
               
                 &nbsp;
-                <a href="/tags/Linux/" itemprop="url" rel="tag"> 
-                  <span itemprop="name"> Linux </span>
+                <a href="/tags/linux/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> linux </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/atd/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> atd </span>
                 </a>
               
                 &nbsp;
@@ -417,11 +424,6 @@
                 &nbsp;
                 <a href="/tags/计划任务/" itemprop="url" rel="tag"> 
                   <span itemprop="name"> 计划任务 </span>
-                </a>
-              
-                &nbsp;
-                <a href="/tags/atd/" itemprop="url" rel="tag"> 
-                  <span itemprop="name"> atd </span>
                 </a>
               
             </span>
@@ -450,6 +452,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/images/photos/linux.jpg" rel="gallery_cjl3ejt87004ilyinow0qoyoa"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/photos/linux.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
       
 
       
@@ -577,15 +595,17 @@ helloworld.20180816-16:55:48.bak  helloworld.20180816-17:00:00.bak  helloworld.2
 </tr>
 </tbody>
 </table>
-<h5 id="示例一"><a href="#示例一" class="headerlink" title="示例一"></a>示例一</h5><pre><code># cat /data/scripts/backup.sh 
+<h5 id="示例一"><a href="#示例一" class="headerlink" title="示例一"></a>示例一</h5><pre><code># chmod +x /data/scripts/backup.sh 
+
+# cat /data/scripts/backup.sh 
 #!/bin/bash
-/usr/bin/cp -a /data/helloworld /data/backup/helloworld.$(date +%Y%m%d-%H:%M:%S)
+/usr/bin/cp -a /data/helloworld /data/backup/helloworld.$(date +%Y%m%d-%T)
 
 # crontab -e
 crontab: installing new crontab
 
 # crontab -l
-*/1 * * * * sh /data/scripts/backup.sh  #每分钟备份一次/data/helloworld至/data/backup
+*/1 * * * * /data/scripts/backup.sh  #每分钟备份一次/data/helloworld至/data/backup
 
 # ll /data/backup/
 total 0
@@ -603,7 +623,7 @@ crontab: installing new crontab
 
 # crontab -l -u itadmin
 #每分钟检查一次内存用量
-*/1 * * * * /usr/bin/free -m &gt; /home/itadmin/checkMem/$(/bin/date +\%Y\%m\%d-\%H:\%M:\%S).log
+*/1 * * * * /usr/bin/free -m &gt; /home/itadmin/checkMem/$(/bin/date +\%Y\%m\%d-\%T).log
 
 # ll /home/itadmin/checkMem
 total 112
@@ -618,7 +638,8 @@ total 112
 <li>crontab可以以#号开头写上注释信息，便于快速理解任务的信息</li>
 <li>crontab参数中所有的命令用绝对路径方式来写，避免用户未加载的环境变量导致任务失败</li>
 <li>可以用 whereis 来查询命令的绝对路径</li>
-<li>crontab系统变量需要使用反斜杠转义,如上 $(/bin/date +\%Y\%m\%d-\%H:\%M:\%S).log</li>
+<li>crontab系统变量需要使用反斜杠转义,如上 $(/bin/date +\%Y\%m\%d-\%T).log</li>
+<li>crontab文件中执行脚本，如不加/usr/bin/sh，则必须给脚本文件执行权限</li>
 </ul>
 
       
@@ -662,13 +683,13 @@ total 112
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag"> <i class="fa fa-tag"></i> Linux</a>
+            <a href="/tags/linux/" rel="tag"> <i class="fa fa-tag"></i> linux</a>
+          
+            <a href="/tags/atd/" rel="tag"> <i class="fa fa-tag"></i> atd</a>
           
             <a href="/tags/crond/" rel="tag"> <i class="fa fa-tag"></i> crond</a>
           
             <a href="/tags/计划任务/" rel="tag"> <i class="fa fa-tag"></i> 计划任务</a>
-          
-            <a href="/tags/atd/" rel="tag"> <i class="fa fa-tag"></i> atd</a>
           
         </div>
       
@@ -706,6 +727,10 @@ total 112
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/21/【Linux】文件权限/" rel="prev" title="【Linux】文件权限">
+                【Linux】文件权限 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -787,7 +812,7 @@ total 112
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -798,7 +823,7 @@ total 112
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -809,7 +834,7 @@ total 112
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
