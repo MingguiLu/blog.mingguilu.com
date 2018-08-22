@@ -323,6 +323,239 @@
   
   
 
+  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/08/21/【Linux】sudo扩展/">
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minggui Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to MingguiLu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/21/【Linux】sudo扩展/" itemprop="url">【Linux】sudo扩展</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-21T21:40:51+08:00">
+                2018-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/点滴随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">点滴随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/images/photos/linux.jpg" rel="gallery_cjl50cih800001gin3czxxp42"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/photos/linux.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        
+          <h4 id="配置文件-etc-sudoers"><a href="#配置文件-etc-sudoers" class="headerlink" title="配置文件/etc/sudoers"></a>配置文件/etc/sudoers</h4><p>visudo 命令专门用来修改sudo配置文件/etc/sudoers，如果配置出错，会有提示，只有root账户才能使用</p>
+<p>sudo权限控制的基本格式是</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">授权用户/组</th>
+<th style="text-align:center">允许的主机</th>
+<th style="text-align:center">=</th>
+<th style="text-align:center">以谁的身份</th>
+<th style="text-align:center">是否免密码</th>
+<th style="text-align:center">可执行的命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">不以%号开头表示用户；以％开头表示用户组</td>
+<td style="text-align:center">ALL表示所有；不为ALL表示主机或自定义的主机组</td>
+<td style="text-align:center">　</td>
+<td style="text-align:center">可选，如省略相当于(root:root);(ALL)或者(ALL:ALL)表示提权到(任意用户:任意用户组)</td>
+<td style="text-align:center">NOPASSWD:　表示执行sudo时不需要密码验证</td>
+<td style="text-align:center">ALL表示允许所有操作;或者用逗号分开的一系列命令</td>
+</tr>
+</tbody>
+</table>
+<h4 id="自定义配置文件-etc-sudoers"><a href="#自定义配置文件-etc-sudoers" class="headerlink" title="自定义配置文件/etc/sudoers/"></a>自定义配置文件/etc/sudoers/</h4><p>sudo配置文件/etc/sudoers的内容十分敏感，直接影响系统安全，默认该文件为只读。当需要设置比较复杂的权限需求时，不推荐直接修改该文件，而是在/etc/sudoers.d目录下创建自定义的配置文件</p>
+<p>默认/etc/sudoers文件已经启用了/etc/sudoers目录，见/etc/sudoers最后一行</p>
+<pre><code>## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)
+#includedir /etc/sudoers.d
+</code></pre><p>在自定义的配置文件中，可使用User_Alias、Host_Alias、Runas_Alias和Cmnd_Alias来定义所需的字段</p>
+<pre><code>User_Alias  NAME = User_List
+
+Host_Alias  NAME = Host_List
+
+Runas_Alias NAME = Runas_List
+
+Cmnd_Alias  NAME = Cmnd_List
+</code></pre><h4 id="案例演示-创建logger用户并限定指定的命令操作指定的软件包和日志文件"><a href="#案例演示-创建logger用户并限定指定的命令操作指定的软件包和日志文件" class="headerlink" title="案例演示:创建logger用户并限定指定的命令操作指定的软件包和日志文件"></a>案例演示:创建logger用户并限定指定的命令操作指定的软件包和日志文件</h4><p>生产中为了方便检查应用运行状态和故障排查，常需要给某些开发人员开放查看应用和日志，但是生产服务器上安全无小事，必修严格控制，仅给予满足需求的最低权限。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">UserName</th>
+<th style="text-align:center">APP_DIR</th>
+<th style="text-align:center">LOG_DIR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">logger</td>
+<td style="text-align:center">/usr/apache-tomcat-7.0.69/webapps</td>
+<td style="text-align:center">/usr/apache-tomcat-7.0.69/logs</td>
+</tr>
+<tr>
+<td style="text-align:left">仅用于查看应用软件包和日志</td>
+<td style="text-align:center">可以列出、校验、下载软件包</td>
+<td style="text-align:center">可以列出、读取、下载应用日志</td>
+</tr>
+</tbody>
+</table>
+<h5 id="创建logger用户和组"><a href="#创建logger用户和组" class="headerlink" title="创建logger用户和组"></a>创建logger用户和组</h5><pre><code>groupadd logger
+useradd -d /home/logger -g logger -s /bin/bash logger
+echo &quot;000000&quot; | passwd --stdin logger
+</code></pre><h5 id="限定logger用户的shell环境"><a href="#限定logger用户的shell环境" class="headerlink" title="限定logger用户的shell环境"></a>限定logger用户的shell环境</h5><pre><code>vi /home/logger/.bash_profile
+
+#PATH=$PATH:$HOME/.local/bin:$HOME/bin
+</code></pre><p>修改为：</p>
+<pre><code>PATH=$HOME/bin
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/21/【Linux】sudo扩展/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      <!--
+      
+      -->
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
   <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/08/21/【Linux】文件权限/">
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -425,7 +658,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/linux.jpg" rel="gallery_cjl3ejt7m003ulyincgjxy8ah"
+                 href="/images/photos/linux.jpg" rel="gallery_cjl4h7mkp0036fninwj12wss1"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/linux.jpg" itemprop="contentUrl"/>
               </a>
@@ -626,7 +859,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/linux.jpg" rel="gallery_cjl3ejt87004ilyinow0qoyoa"
+                 href="/images/photos/linux.jpg" rel="gallery_cjl4h7mkh002rfninw95ylyco"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/linux.jpg" itemprop="contentUrl"/>
               </a>
@@ -975,7 +1208,7 @@ pam_tally2 --user=ituser --reset #重置计数器，即解锁用户
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/20180520/20180520_00.gif" rel="gallery_cjl3ejt6l002hlyinx4u6b7pv"
+                 href="/images/20180520/20180520_00.gif" rel="gallery_cjl4h7mij0010fnin85kfcevk"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/20180520/20180520_00.gif" itemprop="contentUrl"/>
               </a>
@@ -1145,7 +1378,7 @@ pam_tally2 --user=ituser --reset #重置计数器，即解锁用户
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/20180519/20180519_00.jpg" rel="gallery_cjl3ejt6d002alyintcpg4sgk"
+                 href="/images/20180519/20180519_00.jpg" rel="gallery_cjl4h7mjw002efnin1wh3clr5"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/20180519/20180519_00.jpg" itemprop="contentUrl"/>
               </a>
@@ -1314,7 +1547,7 @@ pam_tally2 --user=ituser --reset #重置计数器，即解锁用户
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/teamviewer.jpg" rel="gallery_cjl3ejt6i002dlyin1xalegpi"
+                 href="/images/photos/teamviewer.jpg" rel="gallery_cjl4h7mj1001dfninum3tbpm6"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/teamviewer.jpg" itemprop="contentUrl"/>
               </a>
@@ -1492,7 +1725,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/nicehash.png" rel="gallery_cjl3ejt78003clyinsv3x8ru8"
+                 href="/images/photos/nicehash.png" rel="gallery_cjl4h7mjb001pfninbg21m451"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/nicehash.png" itemprop="contentUrl"/>
               </a>
@@ -1673,7 +1906,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/nicehash.png" rel="gallery_cjl3ejt6y002ylyin8xtptjca"
+                 href="/images/photos/nicehash.png" rel="gallery_cjl4h7mjq0027fninioov0xnf"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/nicehash.png" itemprop="contentUrl"/>
               </a>
@@ -1854,7 +2087,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/nicehash.png" rel="gallery_cjl3ejt7k003qlyinr91ztb51"
+                 href="/images/photos/nicehash.png" rel="gallery_cjl4h7mk1002lfningyw5sxqa"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/nicehash.png" itemprop="contentUrl"/>
               </a>
@@ -1887,182 +2120,6 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/01/Nicehash的CPU挖矿指南之Windows篇/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      <!--
-      
-      -->
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/03/12/CentOS7使用GlusterFS实现Harbor镜像仓库的分布式存储/">
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Minggui Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome to MingguiLu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/CentOS7使用GlusterFS实现Harbor镜像仓库的分布式存储/" itemprop="url">CentOS7使用GlusterFS实现Harbor镜像仓库的分布式存储</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T20:51:06+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维之道/" itemprop="url" rel="index">
-                    <span itemprop="name">运维之道</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="/images/photos/gluster_ceph.jpg" rel="gallery_cjl3ejsog000alyinp74pd0ks"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="/images/photos/gluster_ceph.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <h4 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h4><h5 id="Hostname、IP"><a href="#Hostname、IP" class="headerlink" title="Hostname、IP"></a>Hostname、IP</h5><ul>
-<li>Docker+Harbor     os：CentOS7.2    hostname：centos7-01         ip：72.29.20.54 </li>
-<li>GlusterFS节点1      os：CentOS7.2    hostname：gluster-node-1     ip：172.29.20.57</li>
-<li>GlusterFS节点2      os：CentOS7.2    hostname：gluster-node-2     ip：172.29.20.59</li>
-</ul>
-<h5 id="磁盘信息"><a href="#磁盘信息" class="headerlink" title="磁盘信息"></a>磁盘信息</h5><ul>
-<li>GlusterFS节点1   /dev/sda：20G 安装系统   /dev/sdb：20G GlusterFS存储</li>
-<li>GlusterFS节点2   /dev/sda：20G 安装系统   /dev/sdb：20G GlusterFS存储</li>
-</ul>
-<h4 id="格式化并挂载磁盘"><a href="#格式化并挂载磁盘" class="headerlink" title="格式化并挂载磁盘"></a>格式化并挂载磁盘</h4><p>同时在gluster-node-1和gluster-node-2上进行</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/12/CentOS7使用GlusterFS实现Harbor镜像仓库的分布式存储/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2152,7 +2209,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2163,7 +2220,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2174,7 +2231,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
