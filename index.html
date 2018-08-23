@@ -425,7 +425,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/linux.jpg" rel="gallery_cjl50cih800001gin3czxxp42"
+                 href="/images/photos/linux.jpg" rel="gallery_cjl4wtp24000f77in1zhgby3e"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/linux.jpg" itemprop="contentUrl"/>
               </a>
@@ -463,49 +463,6 @@
 </tr>
 </tbody>
 </table>
-<h4 id="自定义配置文件-etc-sudoers"><a href="#自定义配置文件-etc-sudoers" class="headerlink" title="自定义配置文件/etc/sudoers/"></a>自定义配置文件/etc/sudoers/</h4><p>sudo配置文件/etc/sudoers的内容十分敏感，直接影响系统安全，默认该文件为只读。当需要设置比较复杂的权限需求时，不推荐直接修改该文件，而是在/etc/sudoers.d目录下创建自定义的配置文件</p>
-<p>默认/etc/sudoers文件已经启用了/etc/sudoers目录，见/etc/sudoers最后一行</p>
-<pre><code>## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)
-#includedir /etc/sudoers.d
-</code></pre><p>在自定义的配置文件中，可使用User_Alias、Host_Alias、Runas_Alias和Cmnd_Alias来定义所需的字段</p>
-<pre><code>User_Alias  NAME = User_List
-
-Host_Alias  NAME = Host_List
-
-Runas_Alias NAME = Runas_List
-
-Cmnd_Alias  NAME = Cmnd_List
-</code></pre><h4 id="案例演示-创建logger用户并限定指定的命令操作指定的软件包和日志文件"><a href="#案例演示-创建logger用户并限定指定的命令操作指定的软件包和日志文件" class="headerlink" title="案例演示:创建logger用户并限定指定的命令操作指定的软件包和日志文件"></a>案例演示:创建logger用户并限定指定的命令操作指定的软件包和日志文件</h4><p>生产中为了方便检查应用运行状态和故障排查，常需要给某些开发人员开放查看应用和日志，但是生产服务器上安全无小事，必修严格控制，仅给予满足需求的最低权限。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">UserName</th>
-<th style="text-align:center">APP_DIR</th>
-<th style="text-align:center">LOG_DIR</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">logger</td>
-<td style="text-align:center">/usr/apache-tomcat-7.0.69/webapps</td>
-<td style="text-align:center">/usr/apache-tomcat-7.0.69/logs</td>
-</tr>
-<tr>
-<td style="text-align:left">仅用于查看应用软件包和日志</td>
-<td style="text-align:center">可以列出、校验、下载软件包</td>
-<td style="text-align:center">可以列出、读取、下载应用日志</td>
-</tr>
-</tbody>
-</table>
-<h5 id="创建logger用户和组"><a href="#创建logger用户和组" class="headerlink" title="创建logger用户和组"></a>创建logger用户和组</h5><pre><code>groupadd logger
-useradd -d /home/logger -g logger -s /bin/bash logger
-echo &quot;000000&quot; | passwd --stdin logger
-</code></pre><h5 id="限定logger用户的shell环境"><a href="#限定logger用户的shell环境" class="headerlink" title="限定logger用户的shell环境"></a>限定logger用户的shell环境</h5><pre><code>vi /home/logger/.bash_profile
-
-#PATH=$PATH:$HOME/.local/bin:$HOME/bin
-</code></pre><p>修改为：</p>
-<pre><code>PATH=$HOME/bin
-</code></pre>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/08/21/【Linux】sudo扩展/#more" rel="contents">
@@ -2231,7 +2188,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

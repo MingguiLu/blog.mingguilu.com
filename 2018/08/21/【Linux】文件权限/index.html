@@ -88,7 +88,7 @@
 <meta property="og:description" content="Linux一切皆文件，但每个文件类型不尽相同    字符标示 文件类型     - 普通文件   d 目录文件   l 链接文件   b 块设备文件   c 字符设备文件   p 管道文件">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://blog.mingguilu.com/images/photos/linux.jpg">
-<meta property="og:updated_time" content="2018-08-21T12:54:04.000Z">
+<meta property="og:updated_time" content="2018-08-22T10:46:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Linux】文件权限">
 <meta name="twitter:description" content="Linux一切皆文件，但每个文件类型不尽相同    字符标示 文件类型     - 普通文件   d 目录文件   l 链接文件   b 块设备文件   c 字符设备文件   p 管道文件">
@@ -595,12 +595,12 @@ find: &apos;/proc/51211/fdinfo/6&apos;: No such file or directory
 <tbody>
 <tr>
 <td style="text-align:center">原本有x执行权限</td>
-<td style="text-align:center">chmod g+s</td>
+<td style="text-align:center">chmod -R g+s</td>
 <td style="text-align:center">x执行权限位替换成s (小写s)</td>
 </tr>
 <tr>
 <td style="text-align:center">原本无x执行权限</td>
-<td style="text-align:center">chmod g+s</td>
+<td style="text-align:center">chmod -R g+s</td>
 <td style="text-align:center">x执行权限位替换成S (大写S)</td>
 </tr>
 </tbody>
@@ -926,7 +926,7 @@ find: &apos;/proc/51231/fdinfo/6&apos;: No such file or directory
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
