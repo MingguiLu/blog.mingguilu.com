@@ -323,7 +323,7 @@
   
   
 
-  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/08/22/【Linux】RAID/">
+  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/08/23/【Linux】LVM逻辑卷/">
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
@@ -348,7 +348,229 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/22/【Linux】RAID/" itemprop="url">【Linux】RAID</a></h1>
+                <a class="post-title-link" href="/2018/08/23/【Linux】LVM逻辑卷/" itemprop="url">【Linux】LVM逻辑卷</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-23T01:17:06+08:00">
+                2018-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/点滴随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">点滴随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/images/photos/linux.jpg" rel="gallery_cjlcn9meb0028qffok9fgvfwz"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/photos/linux.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        
+          <h4 id="LVM逻辑卷简介"><a href="#LVM逻辑卷简介" class="headerlink" title="LVM逻辑卷简介"></a>LVM逻辑卷简介</h4><p><img src="/images/photos/20180823/20180823_01.jpg" alt=""></p>
+<p>LVM利用Linux内核的device-mapper来实现存储系统的虚拟化（系统分区独立于底层硬件），实现存储空间的抽象化并在上面建立虚拟分区（virtual partitions），可以更简便地扩大和缩小分区，可以增删分区时无需担心某个硬盘上没有足够的连续空间，实现对硬盘分区的动态调整</p>
+<h4 id="LVM常用部署命令"><a href="#LVM常用部署命令" class="headerlink" title="LVM常用部署命令"></a>LVM常用部署命令</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">物理卷管理</th>
+<th style="text-align:center">卷组管理</th>
+<th style="text-align:center">逻辑卷管理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">扫描</td>
+<td style="text-align:center">pvscan</td>
+<td style="text-align:center">vgscan</td>
+<td style="text-align:center">lvscan</td>
+</tr>
+<tr>
+<td style="text-align:center">建立</td>
+<td style="text-align:center">pvcreate</td>
+<td style="text-align:center">vgcreate</td>
+<td style="text-align:center">lvcreate</td>
+</tr>
+<tr>
+<td style="text-align:center">显示概要</td>
+<td style="text-align:center">pvs</td>
+<td style="text-align:center">vgs</td>
+<td style="text-align:center">lvs</td>
+</tr>
+<tr>
+<td style="text-align:center">显示详情</td>
+<td style="text-align:center">pvdisplay</td>
+<td style="text-align:center">vgdisplay</td>
+<td style="text-align:center">lvdisplay</td>
+</tr>
+<tr>
+<td style="text-align:center">删除</td>
+<td style="text-align:center">pvremove</td>
+<td style="text-align:center">vgremove</td>
+<td style="text-align:center">lvremove</td>
+</tr>
+<tr>
+<td style="text-align:center">扩展</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">vgextend</td>
+<td style="text-align:center">lvextend</td>
+</tr>
+<tr>
+<td style="text-align:center">缩小</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">vgreduce</td>
+<td style="text-align:center">lvreduce</td>
+</tr>
+</tbody>
+</table>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/23/【Linux】LVM逻辑卷/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      <!--
+      
+      -->
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/08/22/【Linux】RAID磁盘阵列/">
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minggui Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to MingguiLu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/22/【Linux】RAID磁盘阵列/" itemprop="url">【Linux】RAID磁盘阵列</a></h1>
         
 
         <div class="post-meta">
@@ -425,7 +647,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/linux.jpg" rel="gallery_cjl91oboe00002uinv7q8ha1u"
+                 href="/images/photos/linux.jpg" rel="gallery_cjlcn9mee002bqffomj0xmlj3"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/linux.jpg" itemprop="contentUrl"/>
               </a>
@@ -549,7 +771,7 @@
 </table>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/22/【Linux】RAID/#more" rel="contents">
+            <a class="btn" href="/2018/08/22/【Linux】RAID磁盘阵列/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -699,7 +921,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/linux.jpg" rel="gallery_cjl7fn3gq0092p9in4pshkbd8"
+                 href="/images/photos/linux.jpg" rel="gallery_cjlcn9mef002gqffo6pnbz5cv"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/linux.jpg" itemprop="contentUrl"/>
               </a>
@@ -889,7 +1111,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/linux.jpg" rel="gallery_cjl7fn3dg002hp9in6vum0akv"
+                 href="/images/photos/linux.jpg" rel="gallery_cjlcn9meh002jqffotbzh20d3"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/linux.jpg" itemprop="contentUrl"/>
               </a>
@@ -1090,7 +1312,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/linux.jpg" rel="gallery_cjl7fn3gr0095p9inwm3f9y2l"
+                 href="/images/photos/linux.jpg" rel="gallery_cjlcn9mej002qqffom2w0pwox"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/linux.jpg" itemprop="contentUrl"/>
               </a>
@@ -1439,7 +1661,7 @@ pam_tally2 --user=ituser --reset #重置计数器，即解锁用户
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/20180520/20180520_00.gif" rel="gallery_cjl7fn3d90024p9invs11ox49"
+                 href="/images/20180520/20180520_00.gif" rel="gallery_cjlcn9mdk000xqffol1eo2v53"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/20180520/20180520_00.gif" itemprop="contentUrl"/>
               </a>
@@ -1609,7 +1831,7 @@ pam_tally2 --user=ituser --reset #重置计数器，即解锁用户
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/20180519/20180519_00.jpg" rel="gallery_cjl7fn3cl000vp9in8jemi46k"
+                 href="/images/20180519/20180519_00.jpg" rel="gallery_cjlcn9mdb000mqffop9fk8qyy"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/20180519/20180519_00.jpg" itemprop="contentUrl"/>
               </a>
@@ -1778,7 +2000,7 @@ pam_tally2 --user=ituser --reset #重置计数器，即解锁用户
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/teamviewer.jpg" rel="gallery_cjl7fn3cs0017p9in6ghws2u3"
+                 href="/images/photos/teamviewer.jpg" rel="gallery_cjlcn9mdi000tqffoylvbiyw8"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/teamviewer.jpg" itemprop="contentUrl"/>
               </a>
@@ -1956,7 +2178,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/nicehash.png" rel="gallery_cjl7fn3cv001cp9in2obdrc3h"
+                 href="/images/photos/nicehash.png" rel="gallery_cjlcn9mdl0011qffodt35olq6"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/nicehash.png" itemprop="contentUrl"/>
               </a>
@@ -1988,187 +2210,6 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/01/Nicehash的CPU挖矿指南之CentOS篇/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      <!--
-      
-      -->
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/04/01/Nicehash的CPU挖矿指南之Ubuntu篇/">
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Minggui Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome to MingguiLu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/01/Nicehash的CPU挖矿指南之Ubuntu篇/" itemprop="url">Nicehash的CPU挖矿指南之Ubuntu篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-01T10:27:37+08:00">
-                2018-04-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/趣玩尝新/" itemprop="url" rel="index">
-                    <span itemprop="name">趣玩尝新</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="/images/photos/nicehash.png" rel="gallery_cjl7fn3ct0019p9inue8gdhhg"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="/images/photos/nicehash.png" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <p>时至今日，随着挖矿难度提升，加密货币价格一再腰斩，个人挖矿只是浪费精力和资源而已，完全不推荐，本篇文章仅作为体验教程</p>
-<h4 id="Nicehash矿池相比国内外XMR矿池"><a href="#Nicehash矿池相比国内外XMR矿池" class="headerlink" title="Nicehash矿池相比国内外XMR矿池"></a>Nicehash矿池相比国内外XMR矿池</h4><p>Nicehash矿池相比于其他国内外的XMR矿池，有一定的优势，或网络连通性好，或矿工多算力强，容易爆块获得收益，最重要的是结算周期短，相对国内矿池1.5～3XMR的高门槛，Nicehash结算到交易所钱包最低0.0021BTC即可，抽水0.2%也相对较低</p>
-<h4 id="Linux版本相比Windows版本优缺点"><a href="#Linux版本相比Windows版本优缺点" class="headerlink" title="Linux版本相比Windows版本优缺点"></a>Linux版本相比Windows版本优缺点</h4><p>无论Windows还是Linux版本CPU挖矿实际是调用xmr-stak、cpuminer等挖XMR，再抽掉手续费换算成Bitcoin结算给矿工</p>
-<p>优点：</p>
-<ul>
-<li>系统资源开销更低，挖矿软件运行更稳定</li>
-<li>Linux系统便于结合自动化工具进行批量部署和管理</li>
-<li>Linux系统便于持续部署的新版本挖矿软件和算法</li>
-<li>用户可自定义用于挖矿的CPU线程数</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>Nichash控制面板无法显示每台矿机的名称，无论实际有多少台矿机，矿机数量只显示1台</li>
-<li>Github上有很多版本的挖矿软件，但有些版本可能会抽水，注意分辨</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/01/Nicehash的CPU挖矿指南之Ubuntu篇/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2258,7 +2299,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2269,7 +2310,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2280,7 +2321,7 @@ archlinuxcn/teamviewer-beta 13.1.3026-1
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
