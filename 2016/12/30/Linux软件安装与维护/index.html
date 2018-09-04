@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,apt,apt-get,rpm,yum," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. 使用软件源码包2. Debian/UbuntuDebian系Linux发行版的软件包格式为deb 2.1 dpkgdpkg的是基于Debian系统的一个低级包管理器。它可以安装，删除，提供有关资料，以及建立*.deb包，但它不能自动下载并安装它们相应的依赖包。">
+<meta name="keywords" content="Linux,apt,apt-get,rpm,yum">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux软件安装与维护">
+<meta property="og:url" content="http://blog.mingguilu.com/2016/12/30/Linux软件安装与维护/index.html">
+<meta property="og:site_name" content="Welcome to MingguiLu&#39;s Blog">
+<meta property="og:description" content="1. 使用软件源码包2. Debian/UbuntuDebian系Linux发行版的软件包格式为deb 2.1 dpkgdpkg的是基于Debian系统的一个低级包管理器。它可以安装，删除，提供有关资料，以及建立*.deb包，但它不能自动下载并安装它们相应的依赖包。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://blog.mingguilu.com/images/photos/linux_software.jpg">
+<meta property="og:updated_time" content="2018-09-03T16:25:56.985Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux软件安装与维护">
+<meta name="twitter:description" content="1. 使用软件源码包2. Debian/UbuntuDebian系Linux发行版的软件包格式为deb 2.1 dpkgdpkg的是基于Debian系统的一个低级包管理器。它可以安装，删除，提供有关资料，以及建立*.deb包，但它不能自动下载并安装它们相应的依赖包。">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/photos/linux_software.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.mingguilu.com/2016/12/30/Linux软件安装与维护/"/>
+
+
+
+
+
+  <title>Linux软件安装与维护 | Welcome to MingguiLu's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-86857821-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><!--
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i><img src="/images/favicon.ico" /></i></span>
+        <span class="site-title">Welcome to MingguiLu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+-->
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-candies">
+          <a href="/candies/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cny"></i> <br />
+            
+            红包
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2016/12/30/Linux软件安装与维护/">
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minggui Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to MingguiLu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux软件安装与维护</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-30T01:09:19+08:00">
+                2016-12-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维之道/" itemprop="url" rel="index">
+                    <span itemprop="name">运维之道</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-meta-divider">|</span>
+            
+            <span class="post-meta-item-icon">
+                <i class="fa fa-star-o"></i>
+            </span>
+            
+                <span class="post-meta-item-text">标签于</span>
+            
+            <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              
+                &nbsp;
+                <a href="/tags/Linux/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> Linux </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/apt/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> apt </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/apt-get/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> apt-get </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/rpm/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> rpm </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/yum/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> yum </span>
+                </a>
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/images/photos/linux_software.jpg" rel="gallery_cjlnb96a80010qwmmicexhubp"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/photos/linux_software.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h3 id="1-使用软件源码包"><a href="#1-使用软件源码包" class="headerlink" title="1. 使用软件源码包"></a>1. 使用软件源码包</h3><h3 id="2-Debian-Ubuntu"><a href="#2-Debian-Ubuntu" class="headerlink" title="2. Debian/Ubuntu"></a>2. Debian/Ubuntu</h3><p>Debian系Linux发行版的软件包格式为deb</p>
+<h4 id="2-1-dpkg"><a href="#2-1-dpkg" class="headerlink" title="2.1 dpkg"></a>2.1 dpkg</h4><p>dpkg的是基于Debian系统的一个低级包管理器。它可以安装，删除，提供有关资料，以及建立*.deb包，但它不能自动下载并安装它们相应的依赖包。</p>
+<a id="more"></a>
+<p>查看帮助</p>
+<pre><code>dpkg --help
+</code></pre><p>查看指定软件包的信息</p>
+<pre><code>dpkg -I 下载/Software/vivaldi-stable_1.6.689.46-1_amd64.deb
+
+#以Vivaldi浏览器deb安装包为例
+##必须使用软件包的完整名称
+</code></pre><p>列出指定软件包里的文件目录</p>
+<pre><code>dpkg -c 下载/Software/vivaldi-stable_1.6.689.46-1_amd64.deb
+
+#必须使用软件包的完整名称
+</code></pre><p>安装deb软件包</p>
+<pre><code>dpkg -i vivaldi-stable_1.6.689.46-1_amd64.deb
+</code></pre><p>列出所有已安装的软件包</p>
+<pre><code>dpkg -l
+</code></pre><p>查询是否已安装指定软件包</p>
+<pre><code>dpkg -l vivaldi-stable
+
+#即可看到软件名称、版本、架构、描述信息
+#注意软件名称必须正确，比如查询“vivaldi”就会提示“dpkg-query: 没有找到与 vivaldi 相匹配的软件包”
+#当不能确认完整的软件包名称，可以再输入“vivaldi”后，按“Tab”键，会列出所有相关包名称
+</code></pre><p>查看已安装的软件包的详细信息</p>
+<pre><code>dpkg -s vivaldi-stable
+
+#同上，必须指定软件名称“vivaldi-stable”，而不能用原始的软件包名称“vivaldi-stable_1.6.689.46-1_amd64.deb”
+</code></pre><p>列出指定软件包安装后的所有文件</p>
+<pre><code>dpkg -L vivaldi-stable
+
+#同上
+</code></pre><p>卸载软件包（保留配置文件）</p>
+<pre><code>dpkg -r vivaldi-stable
+
+#同上，必须指定软件名称“vivaldi-stable”，而不能用原始的软件包名称“vivaldi-stable_1.6.689.46-1_amd64.deb”
+</code></pre><p>卸载软件包（删除配置文件）</p>
+<pre><code>dpkg -p vivaldi-stable
+
+#有些软件包卸载后还会遗留一些配置文件，使用`-p`就像在windows上卸载软件时勾选上“同时清除用户配置文件”
+</code></pre><p>安装指定目录及其子目录下所有的“.deb”包</p>
+<pre><code>dpkg -R --install debpackages/
+
+# -R 参数表示递归，指定目录和子目录下所有的.deb包都将被安装
+</code></pre><p>释放软件包，但不配置</p>
+<pre><code>dpkg --unpack vivaldi-stable_1.6.689.46-1_amd64.deb
+</code></pre><p>重新配置软件包</p>
+<pre><code>dpkg --configure
+</code></pre><p>替换软件包信息</p>
+<pre><code>dpkg --update-avail
+</code></pre><p>清除包的当前可用信息</p>
+<pre><code>dpkg --clear-avail
+</code></pre><p>丢弃所有不能安装和不可用软件包的信息</p>
+<pre><code>dpkg --forget-old-unavail
+</code></pre><p>显示版本</p>
+<pre><code>dpkg --version
+</code></pre><h4 id="2-2-apt-cache、apt-get"><a href="#2-2-apt-cache、apt-get" class="headerlink" title="2.2 apt-cache、apt-get"></a>2.2 apt-cache、apt-get</h4><h5 id="2-2-1-apt-cache"><a href="#2-2-1-apt-cache" class="headerlink" title="2.2.1 apt-cache"></a>2.2.1 apt-cache</h5><p>apt-cache是Linux下的apt软件包管理工具，使用它能查询到apt的二进制软件包缓存文件,结合一些参数使用能查寻到软件包信息和软件包依赖关系等</p>
+<p>列出所有软件包的名称</p>
+<pre><code>apt-cache pkgnames
+</code></pre><p>列出所有以指定字符开头的软件包</p>
+<pre><code>apt-cache pkgnames apache2
+
+#以“apache2”为例
+</code></pre><p>列出包含指定关键字的软件包和简介</p>
+<pre><code>apt-cache search apache2
+</code></pre><p>以便于阅读的格式介绍该软件包</p>
+<pre><code>apt-cache show apache2
+</code></pre><p>查询软件包的依赖关系</p>
+<pre><code>apt-cache showpkg apache2
+</code></pre><p>统计全部软件包的信息</p>
+<pre><code>apt-cache stats
+</code></pre><h5 id="2-2-2-apt-get"><a href="#2-2-2-apt-get" class="headerlink" title="2.2.2 apt-get"></a>2.2.2 apt-get</h5><p>apt-get是Debian及其衍生版的高级包管理器，并提供命令行方式来从多个来源检索和安装软件包，其中包括解决依赖性。和dpkg不同的是，apt-get不是直接基于.deb文件工作，而是基于软件包的正确名称。</p>
+<p>更新软件源（/etc/apt/source.list）</p>
+<pre><code>sudo apt-get update
+</code></pre><p>升级已安装的所有软件包（不管依赖性，不添加包，也不删除包）</p>
+<pre><code>sudo apt-get upgrade
+</code></pre><p>升级已安装的所有软件包（根据依赖关系的变化，添加包或删除包）</p>
+<pre><code>sudo apt-get dist-upgrade
+</code></pre><p>安装指定的软件包</p>
+<pre><code>sudo apt-get install apache2
+
+#以“apache2”为例
+</code></pre><p>安装多个软件包</p>
+<pre><code>sudo apt-get install apache2 mysql-server php5
+
+#同时安装“apache2”、&quot;mysql-server&quot;、&quot;php5&quot;，并解决依赖性
+</code></pre><p>安装包含指定字符串的软件包</p>
+<pre><code>sudo apt-get install &apos;*name*&apos;
+</code></pre><p>安装软件包但不升级</p>
+<pre><code>sudo apt-get install packageName --no-upgrade
+</code></pre><p>安装指定名称和版本的软件包</p>
+<pre><code>sudo apt-get install apache2=2.4.18-2ubuntu3.1
+</code></pre><p>卸载软件包但不清除配置文件</p>
+<pre><code>sudo apt-get remove apache2
+</code></pre><p>卸载软件包同时清除配置文件</p>
+<pre><code>sudo apt-get purge apaceh2
+</code></pre><p>或者</p>
+<pre><code>sudo apt-get remove --purge apache2
+</code></pre><p>清理本地软件仓库</p>
+<pre><code>sudo apt-get clean
+</code></pre><p>仅下载指定软件源码包</p>
+<pre><code>sudo apt-get --download-only source apache2
+</code></pre><p>下载指定软件包并解包</p>
+<pre><code>sudo apt-get source apache2
+</code></pre><p>同时下载、解包并编译软件包</p>
+<pre><code>sudo apt-get --compile source apache2
+</code></pre><p>仅下载不安装软件包</p>
+<pre><code>sudo apt-get download apache2
+</code></pre><p>查看软件包版本变更日志</p>
+<pre><code>sudo apt-get changelog apache2
+</code></pre><p>检查是否有损坏的依赖关系</p>
+<pre><code>sudo apt-get check
+</code></pre><p>建立指定软件包的编译环境</p>
+<pre><code>sudo apt-get build-dep apache2
+
+#为手工编译软件apache2,提前把编译过程中需要用的软件包先安装配置好
+</code></pre><p>将已经删除了的软件包的.deb安装文件从硬盘中删除掉</p>
+<pre><code>sudo apt-get autoclean
+</code></pre><p>将已经安装了的所有软件包的.deb包从硬盘中删除掉</p>
+<pre><code>sudo apt-get clean
+</code></pre><p>删除为了满足其他软件包的依赖而安装的，但现在不再需要的软件包</p>
+<pre><code>sudo apt-get autoremove apache2
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果阅读这篇文章让您有所收获而感到开心...那还有更开心的！支付宝扫码立领红包！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>领红包</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay_worldcpu.png" alt="Minggui Lu 我有一个支付宝！扫码就能领红包！"/>
+        <p>我有一个支付宝！扫码就能领红包！</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      <!--
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"> <i class="fa fa-tag"></i> Linux</a>
+          
+            <a href="/tags/apt/" rel="tag"> <i class="fa fa-tag"></i> apt</a>
+          
+            <a href="/tags/apt-get/" rel="tag"> <i class="fa fa-tag"></i> apt-get</a>
+          
+            <a href="/tags/rpm/" rel="tag"> <i class="fa fa-tag"></i> rpm</a>
+          
+            <a href="/tags/yum/" rel="tag"> <i class="fa fa-tag"></i> yum</a>
+          
+        </div>
+      
+      -->
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/15/打造Ubuntu桌面/" rel="next" title="打造Ubuntu桌面">
+                <i class="fa fa-chevron-left"></i> 打造Ubuntu桌面
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/14/感谢Hugo，让我遇见Git和Markdown/" rel="prev" title="感谢Hugo，让我遇见Git和Markdown">
+                感谢Hugo，让我遇见Git和Markdown <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDU3OC83MTMz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Minggui Lu</p>
+              <p class="site-description motion-element" itemprop="description">持续集成 &nbsp;&nbsp; 持续交付</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:luminggui0214@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/mingguilu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/kind0214" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/kind0214" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/kind0214" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/kind0214" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-使用软件源码包"><span class="nav-number">1.</span> <span class="nav-text">1. 使用软件源码包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Debian-Ubuntu"><span class="nav-number">2.</span> <span class="nav-text">2. Debian/Ubuntu</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-dpkg"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 dpkg</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-apt-cache、apt-get"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 apt-cache、apt-get</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-1-apt-cache"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 apt-cache</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-2-apt-get"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 apt-get</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+      <!-- alipay_QRcode start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <p class="site-author-name" itemprop="name"> </p>
+              <p class="site-description motion-element" itemprop="description"> 
+                <a href="/candies/" target="_blank">
+                  <img src="/images/reading/alipay_QRcode.jpg" title="打开支付宝，扫码领红包" />
+                </a>
+          </div>
+        </div>
+      </section> 
+
+      <!-- alipay_QRcode end -->
+
+      <!-- geektime start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <p class="site-author-name" itemprop="name"> </p>
+              <p class="site-author-name" itemprop="name"> 极客时间·左耳听风 </p>
+              <p class="site-description motion-element" itemprop="description"> 
+                <img src="/images/reading/左耳听风.jpg" title="洞悉技术的本质，享受科技的乐趣" />
+          </div>
+        </div>
+      </section> 
+
+      <!-- geektime end -->
+
+      <!-- huobi start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a href="https://www.huobi.br.com/zh-cn/topic/invited/?invite_code=vg333" target="_blank">
+                  <img src="/images/reading/huobi2.jpg" title="点击注册火币" />
+                </a>
+          </div>
+        </div>
+      </section>  
+      
+      <!-- huobi end -->
+
+      <!-- yizhihognxing start -->
+      <!--
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a href="http://order.yizhihongxing2018.com/aff.php?aff=294" target="_blank">
+                  <img src="/images/reading/yizhihongxing_vertical.jpg" />
+                </a>
+          </div>
+        </div>
+      </section>  
+      -->
+      <!-- yizhihongxing end -->
+
+    </div>
+  </aside>
+
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minggui Lu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">
+    托管于 <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+  </div>
+
+
+
+
+<!-- 百度分享
+<script>
+  window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"1","bdPos":"right","bdTop":"100"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+-->
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=65849690";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

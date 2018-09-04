@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AutoIt,AutoIt3,Helpdesk,自动化," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在正式开始脚本工具编写之前，先熟悉一下AutoIt3常用的语法 参考文档： AutoIt3安装目录中的官方英文手册 v3.3.14.2 ： AutoIt.chm   AutoIt 在线手册中文版_脚本之家 v3.1.1  :  http://www.jb51.net/shouce/autoit/">
+<meta name="keywords" content="AutoIt,AutoIt3,Helpdesk,自动化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AutoIt3开发Helpdesk自动化工具之二:常用语法">
+<meta property="og:url" content="http://blog.mingguilu.com/2017/04/21/AutoIt3开发Helpdesk自动化工具之二/index.html">
+<meta property="og:site_name" content="Welcome to MingguiLu&#39;s Blog">
+<meta property="og:description" content="在正式开始脚本工具编写之前，先熟悉一下AutoIt3常用的语法 参考文档： AutoIt3安装目录中的官方英文手册 v3.3.14.2 ： AutoIt.chm   AutoIt 在线手册中文版_脚本之家 v3.1.1  :  http://www.jb51.net/shouce/autoit/">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://blog.mingguilu.com/images/photos/autoit3.png">
+<meta property="og:updated_time" content="2018-09-03T16:25:56.899Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AutoIt3开发Helpdesk自动化工具之二:常用语法">
+<meta name="twitter:description" content="在正式开始脚本工具编写之前，先熟悉一下AutoIt3常用的语法 参考文档： AutoIt3安装目录中的官方英文手册 v3.3.14.2 ： AutoIt.chm   AutoIt 在线手册中文版_脚本之家 v3.1.1  :  http://www.jb51.net/shouce/autoit/">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/photos/autoit3.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.mingguilu.com/2017/04/21/AutoIt3开发Helpdesk自动化工具之二/"/>
+
+
+
+
+
+  <title>AutoIt3开发Helpdesk自动化工具之二:常用语法 | Welcome to MingguiLu's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-86857821-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><!--
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i><img src="/images/favicon.ico" /></i></span>
+        <span class="site-title">Welcome to MingguiLu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+-->
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-candies">
+          <a href="/candies/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cny"></i> <br />
+            
+            红包
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2017/04/21/AutoIt3开发Helpdesk自动化工具之二/">
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minggui Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to MingguiLu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">AutoIt3开发Helpdesk自动化工具之二:常用语法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-21T01:11:59+08:00">
+                2017-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维之道/" itemprop="url" rel="index">
+                    <span itemprop="name">运维之道</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-meta-divider">|</span>
+            
+            <span class="post-meta-item-icon">
+                <i class="fa fa-star-o"></i>
+            </span>
+            
+                <span class="post-meta-item-text">标签于</span>
+            
+            <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              
+                &nbsp;
+                <a href="/tags/AutoIt/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> AutoIt </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/AutoIt3/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> AutoIt3 </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/Helpdesk/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> Helpdesk </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/自动化/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> 自动化 </span>
+                </a>
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/images/photos/autoit3.png" rel="gallery_cjlnb969p0006qwmmpm4w3rsz"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/photos/autoit3.png" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <p>在正式开始脚本工具编写之前，先熟悉一下AutoIt3常用的语法</p>
+<h4 id="参考文档："><a href="#参考文档：" class="headerlink" title="参考文档："></a>参考文档：</h4><ul>
+<li>AutoIt3安装目录中的官方英文手册 v3.3.14.2 ： AutoIt.chm  </li>
+<li>AutoIt 在线手册中文版_脚本之家 v3.1.1  :  <a href="http://www.jb51.net/shouce/autoit/" target="_blank" rel="noopener">http://www.jb51.net/shouce/autoit/</a>   </li>
+</ul>
+<a id="more"></a>
+<h4 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h4><p>自带的编辑器是SciTe，带有所有的语法高亮功能，同时还整合了很多AutoIt的第三方工具（比如语法错误检查和脚本整理等）</p>
+<p>AutoIt3脚本文件的后缀名是<code>.au3</code>，在安装AutoIt软件的系统上可直接运行，在未安装的系统上需编译为<code>.exe</code>程序。创建<code>.au3</code>格式的脚本文件方法：</p>
+<ul>
+<li>右键 ——&gt; 新建 ——&gt; AutoIt v3 Script </li>
+</ul>
+<p>建议使用这种方法，优势在于脚本会自动添加一段头注释模板：</p>
+<pre><code>#cs ----------------------------------------------------------------------------
+
+ AutoIt Version: 3.3.14.2
+ Author:         myName
+
+ Script Function:
+    Template AutoIt script.
+
+#ce ----------------------------------------------------------------------------
+
+; Script Start - Add your code below here
+</code></pre><ul>
+<li>在编辑器上 File ——&gt; New、直接点击New图标、或者使用快捷键 <code>Ctrl + N</code>，这些不会自动添加头注释</li>
+</ul>
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><ul>
+<li>单行注释    分号“;”之后的内容作为注释内容</li>
+<li><p>多行注释    </p>
+<p>  #comments-start    注释开始，可简写为：#cs</p>
+<p>  ;code    脚本代码</p>
+<p>  #comments-end    注释结束，可简写为：#ce</p>
+</li>
+</ul>
+<h4 id="暂停执行脚本"><a href="#暂停执行脚本" class="headerlink" title="暂停执行脚本"></a>暂停执行脚本</h4><pre><code>Sleep ( 暂停时间 )    ;暂停执行的时间以毫秒为单位，1000毫秒 = 1秒
+
+Sleep(500)
+;推荐在每次等待窗口出现之后和模拟键鼠操作控件时使用Sleep暂停执行脚本半秒钟，以优化自动任务的可视效果
+</code></pre><h4 id="运行外部程序"><a href="#运行外部程序" class="headerlink" title="运行外部程序"></a>运行外部程序</h4><pre><code>Run ( &quot;文件名&quot; [, &quot;工作目录&quot; [, 标志]] )
+</code></pre><ul>
+<li><p>.exe 可执行程序</p>
+<p> Run(“notepad.exe”)</p>
+<p> Run(“C:\Program Files\Microsoft Office\Office16\OUTLOOK.EXE”)    ;绝对路径</p>
+<p> Run(“\\wh-filesrv-01\Installers\LinPhone\Linphone-3.10.2-win32.exe”)    ;网络共享路径</p>
+</li>
+<li><p>.msi    微软格式的安装包</p>
+<p>  Run(“msiexec /i \\wh-filesrv-01\Installers\Synjones\二代证读验机具USB驱动\USBDrv3.0-x64.msi”)<br>  ;调用系统程序<code>msiexec.exe</code>操作.msi程序， <code>/i</code>参数表示安装</p>
+</li>
+<li><p>.cpl     控制面板项</p>
+<p> Run(“control sysdm.cpl”)    ;打开系统属性窗口</p>
+</li>
+</ul>
+<ul>
+<li><p>.cer    证书文件</p>
+<p>  Run(“explorer  \\wh-filesrv-01\Installers\AD\CA.cer”)    ;打开安装证书窗口</p>
+</li>
+<li><p>DOS命令 </p>
+<p>   Run(“net user admin abc@123 /add”)    ;创建本地用户admin，密码为abc@123</p>
+<p>   Run(“net localgroup users admin /add”)    ;将本地用户admin加入users组</p>
+</li>
+<li><p>系统目录</p>
+<p> Run(“explorer “ &amp; @ProgramFilesDir)    ;打开C:\Program Files (x86)</p>
+</li>
+</ul>
+<h4 id="以其它用户运行外部程序"><a href="#以其它用户运行外部程序" class="headerlink" title="以其它用户运行外部程序"></a>以其它用户运行外部程序</h4><pre><code>RunAs ( &quot;用户名&quot;, &quot;域&quot;, &quot;密码&quot;, 注册标志, &quot;程序&quot; [, &quot;工作目录&quot; [, 显示标志 [, 选项标志 ]]] )
+;注册标志：0 - 不加载配置文件的交互式登录. 1 - 加载配置文件的交互式登录. 2 - 使用网络证书. 4 - 继承调用进程的环境, 而不是用户环境
+</code></pre><ul>
+<li><p>以本地管理员Administrator运行</p>
+<p>  Global $rootUserName = “administrator”<br>  Global $rootPassword = “password@123456”<br>  Local $tempUserName = @UserName  </p>
+<pre><code>RunAs($rootUserName,@ComputerName,$rootPassWord,0,&quot;\\\\wh-filesrv-01\Installers\LinPhone\Linphone-3.10.2-win32.exe&quot;,&quot;&quot;)
+</code></pre><p>  RunAs($rootUserName,@ComputerName,$rootPassword,0,”net localgroup /delete  administrators “ &amp; $tempUserName,””)</p>
+<p>  RunAs($rootUserName,@ComputerName,$rootPassWord,0,”certutil -addstore -f Root \\wh-filesrv-01\Installers\AD\CA.cer”,””)</p>
+</li>
+</ul>
+<h4 id="使用ShellExecute运行外部程序"><a href="#使用ShellExecute运行外部程序" class="headerlink" title="使用ShellExecute运行外部程序"></a>使用ShellExecute运行外部程序</h4><pre><code>ShellExecute ( &quot;文件名&quot; [, &quot;参数&quot; [, &quot;工作目录&quot; [, &quot;动作&quot; [, 显示标志]]]] )
+;理论上windows能识别的文件，即双击能打开的文件，使用ShellExecute也能打开
+</code></pre><ul>
+<li><p>.msi 微软格式的安装包</p>
+<p>  ShellExecute(“\\wh-filesrv-01\Installers\Synjones\二代证读验机具USB驱动\USBDrv3.0-x64.msi”)    ;安装共享目录的.msi程序</p>
+</li>
+<li><p>.msc 微软管理控制台窗口</p>
+<p>  ShellExecute(@SystemDir &amp; “\compmgmt.msc”)    ;打开计算机管理</p>
+</li>
+<li><p>.docx、.xlsx、.pptx  Office文档</p>
+<p>  ShellExecute(“test.docx”)    ;打开当前目录中的Word文件<br>  ShellExecute(“test.xlsx”)    ;打开当前目录中的Excel文件<br>  ShellExecute(“test.pptx”)    ;打开当前目录中的PPT文件</p>
+</li>
+<li><p>.lnk    快捷方式</p>
+<p>  ShellExecute(@UserProfileDir &amp; “\desktop\微信.lnk”)    ;通过快捷方式运行微信</p>
+</li>
+</ul>
+<h4 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h4><ul>
+<li><p>最小化所有窗口</p>
+<p>  WinMinimizeAll()<br>  ;我习惯在每个任务开头加上这个函数，以便仅显示任务的活动窗口</p>
+</li>
+<li><p>等待指定窗口出现</p>
+<p>  WinWait ( “窗口标题” [, “窗口文本” [, 超时时间]] )</p>
+</li>
+<li><p>激活指定的窗口</p>
+<p>  WinActivate ( “窗口标题” [, “窗口文本”] )</p>
+</li>
+<li><p>等待指定的窗口被激活</p>
+<p>  WinWaitActive ( “窗口标题”, [“窗口文本”], [超时时间] )</p>
+</li>
+<li><p>关闭指定的窗口</p>
+<p>  WinClose ( “窗口标题” [, “窗口文本”] )</p>
+</li>
+<li><p>等待指定的窗口被关闭</p>
+<p>  WinWaitClose ( “窗口标题” [, “窗口文本” [, 超时时间]] )</p>
+</li>
+<li><p>检查指定的窗口是否存在</p>
+<p>  WinExists ( “窗口标题” [, “窗口文本”] )<br>  ;返回值：若目标窗口确实存在则返回值为1，否则返回值为0</p>
+</li>
+<li><p>检查指定的窗口是否存在且当前被激活</p>
+<p>  WinActive ( “窗口标题” [, “窗口文本”] )<br>  ;返回值：若目标窗口确实存在并被激活了则返回1，否则返回值为0</p>
+</li>
+<li><p>获取指定窗口的完整标题名</p>
+<p>  WinGetTitle ( “窗口标题” [, “窗口文本”] )<br>  ;返回值：返回一个含有目标窗口的完整标题的字符串。若无匹配窗口则返回值为1</p>
+</li>
+<li><p>获取指定窗口中的文本</p>
+<p>  WinGetText ( “窗口标题” [, “窗口文本”] )<br>  ;返回值：返回一个含有获得的窗口文本的字符串。若无匹配窗口则返回值为1</p>
+</li>
+</ul>
+<h4 id="控件操作"><a href="#控件操作" class="headerlink" title="控件操作"></a>控件操作</h4><ul>
+<li><p>向指定控件发送鼠标点击命令</p>
+<p>  ControlClick ( “窗口标题”, “窗口文本”, “控件ID” [, 按钮] [, 点击次数]] )<br>  ;按钮：默认“left”，还可以是“right”、“middle”；点击次数：默认“1”</p>
+</li>
+<li><p>选中或撤销选中指定的复选/单选框</p>
+<p>  ControlCommand ( “窗口标题”, “窗口文本”, 控件ID, “命令”, “选项” )<br>  ;命令：“Check”使目标按钮（复选框/单选框）变为选中状态 ;“UnCheck”撤销目标按钮（复选框/单选框）的选中状态</p>
+</li>
+<li><p>向指定的控件发送字符串</p>
+<p>  ControlSend ( “窗口标题”, “窗口文本”, 控件ID, “字符串” [, 标志] )<br>  ;向控件发送指定的字符串，并追加到原有字符串后面</p>
+</li>
+<li><p>修改指定控件的文本</p>
+<p>  ControlSetText( “窗口标题”, “窗口文本”, 控件ID, “新文本” )<br>  ;向控件发送指定的字符串，并替换原有的字符串</p>
+</li>
+</ul>
+<h4 id="模拟键击操作"><a href="#模拟键击操作" class="headerlink" title="模拟键击操作"></a>模拟键击操作</h4><p>参考文档：<a href="http://www.jb51.net/shouce/autoit/AutoIt_CN/html/functions/Send.htm" target="_blank" rel="noopener">Send - AutoIt 在线手册中文版_脚本之家</a></p>
+<pre><code>Send ( &quot;按键&quot; [, 标志] )  
+;向激活窗口发送模拟键击操作
+
+!  表示 Alt  
++ 表示 Shift  
+^ 表示 Ctrl  
+# 表示 Windows  
+
+Send(&quot;!y&quot;)  ;按下Alt+Y键
+Send(&quot;^s&quot;)  ;按下Ctrl+S键
+Send(&quot;#r&quot;)  ;按下Win+R键，打开运行
+
+Send(&quot;{TAB}&quot;)  ;按下Tab键  
+Send(&quot;+{TAB 4}&quot;)  ;连续按下4次Shift+Tab键  
+Send(&quot;{ENTER}&quot;)  ;按下回车键  
+Send(&quot;{SPACE}&quot;)  ;按下空格键  
+
+Send(&quot;{UP}&quot;)  ;方向键上  
+Send(&quot;{DOWN 3}&quot;)  ;连续按3次方向键下  
+Send(&quot;{LEFT}&quot;)  ;方向键左  
+Send(&quot;{RIGHT 5}&quot;)  ;连续按5次方向键右  
+</code></pre><h4 id="消息框"><a href="#消息框" class="headerlink" title="消息框"></a>消息框</h4><pre><code>MsgBox ( 标志, &quot;标题&quot;, &quot;文本&quot; [, 超时时间] )  
+;显示一个简单的对话框（可设置超时属性）
+
+$i = 5
+While $i &gt; 0
+   MsgBox(64, &quot;测试&quot;, &quot;此对话框将会在&quot; &amp; $i &amp; &quot;秒后自动消失&quot;,1)
+   Sleep(1000)
+   $i = $i - 1
+WEnd
+</code></pre><h4 id="输入框"><a href="#输入框" class="headerlink" title="输入框"></a>输入框</h4><pre><code>InputBox ( &quot;标题&quot;, &quot;提示信息&quot; [, &quot;默认数据&quot; [, &quot;密码字符&quot; [, 宽度, 高度 [, 左边, 上边 [, 超时时间]]]]] )  
+;显示一个输入框以供用户输入数据
+
+$yourName = InputBox(&quot;提问&quot;,&quot;请输入你的姓名：&quot;,&quot;Please enter your name&quot;)
+MsgBox(64,&quot;欢迎&quot;,&quot;Wellcome, &quot; &amp; $yourName &amp; &quot; !&quot;)
+</code></pre><h4 id="检查当前用户是否拥有管理员权限"><a href="#检查当前用户是否拥有管理员权限" class="headerlink" title="检查当前用户是否拥有管理员权限"></a>检查当前用户是否拥有管理员权限</h4><pre><code>IsAdmin()
+; 返回值为 1，说明当前用户拥有管理员权限  ;返回值为0，说明用户不是管理员
+
+If IsAdmin() Then
+   MsgBox(64,&quot;提示&quot;,&quot;当前用户为系统管理员！请继续操作！&quot;)
+Else
+   MsgBox(64,&quot;提示&quot;,&quot;当前用户非系统管理员！请切换管理员操作！&quot;)
+EndIf
+</code></pre><h4 id="检查某个字符串是否含有给定的子串"><a href="#检查某个字符串是否含有给定的子串" class="headerlink" title="检查某个字符串是否含有给定的子串"></a>检查某个字符串是否含有给定的子串</h4><pre><code>StringInStr ( &quot;字符串&quot;, &quot;子串&quot; [, 区分大小写 [, 出现次序]] )
+;成功：返回子串的位置  ;失败：返回值为0，说明未发现匹配子串
+</code></pre><p>尝试运行2次下面的脚本示例：</p>
+<pre><code>WinMinimizeAll()
+Run(&quot;notepad.exe&quot;)
+WinWaitActive(&quot;无标题 - 记事本&quot;)
+Sleep(500)
+ControlSend(&quot;无标题 - 记事本&quot;,&quot;&quot;,&quot;Edit1&quot;,&quot;写入一段演示的文本内容！&quot;)
+Sleep(500)
+$tempText = WinGetText(&quot;&quot;)
+If StringInStr($tempText,&quot;一段演示&quot;) Then
+   MsgBox(64,&quot;提示&quot;,&quot;文本写入成功&quot;,1)
+EndIf
+Sleep(500)
+WinClose(&quot;无标题 - 记事本&quot;)
+WinWaitActive(&quot;记事本&quot;,&quot;保存(&amp;S)&quot;)
+Sleep(500)
+Send(&quot;!s&quot;)
+WinWaitActive(&quot;另存为&quot;,&quot;命名空间树控件&quot;)
+Sleep(500)
+ControlSetText(&quot;另存为&quot;,&quot;命名空间树控件&quot;,&quot;Edit1&quot;,&quot;test.txt&quot;)
+Sleep(500)
+Send(&quot;!s&quot;)
+Sleep(500)
+If WinExists(&quot;确认另存为&quot;) Then
+   ;WinActivate(&quot;确认另存为&quot;)
+   ;WinWaitActive(&quot;确认另存为&quot;)
+   Send(&quot;!y&quot;)
+EndIf    
+</code></pre><h4 id="操作注册表"><a href="#操作注册表" class="headerlink" title="操作注册表"></a>操作注册表</h4><ul>
+<li><p>读取注册表指定的值</p>
+<p>  RegRead ( “键名”, “值项” )</p>
+</li>
+<li><p>创建一个主键、子键或值项</p>
+<p>  RegWrite ( “键名” [,”值项”, “类型”, 数据] )</p>
+</li>
+<li><p>从注册表中删除指定键值</p>
+<p>  RegDelete ( “键名” [, “值项”] )</p>
+<p>  ;修改注册表实现开机自动登录：</p>
+<p>  RegWrite(“HKEY_LOCAL_MACHINE64\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon”, “AutoAdminLogon”, “REG_SZ”, “1”)<br>  RegWrite(“HKEY_LOCAL_MACHINE64\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon”, “DefaultDomainName”, “REG_SZ”, $domainName)<br>  RegWrite(“HKEY_LOCAL_MACHINE64\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon”, “DefaultUserName”, “REG_SZ”, $userName)<br>  RegWrite(“HKEY_LOCAL_MACHINE64\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon”, “DefaultPassword”, “REG_SZ”, $userPassword)  </p>
+<p>  ;修改注册表取消开机自动登录：</p>
+<p>  RegWrite(“HKEY_LOCAL_MACHINE64\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon”, “AutoAdminLogon”, “REG_SZ”, “0”)<br>  RegWrite(“HKEY_LOCAL_MACHINE64\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon”, “DefaultDomainName”, “REG_SZ”, “.”)<br>  RegWrite(“HKEY_LOCAL_MACHINE64\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon”, “DefaultUserName”, “REG_SZ”,”administrator”)<br>  RegDelete(“HKEY_LOCAL_MACHINE64\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon”, “DefaultPassword”)  </p>
+</li>
+</ul>
+<p>注意！操作注册表有一个技巧十分重要，如果是Windows x64系统，需在“HKEY_LOCAL_MACHINE”后加上“64”，否则操作会被重定向至 “HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node”</p>
+<h4 id="关机"><a href="#关机" class="headerlink" title="关机"></a>关机</h4><pre><code>Shutdown ( 代码 )
+
+0 = Logoff（注销）
+1 = Shutdown（关机）
+2 = Reboot（重启）
+4 = Force（强制执行）
+8 = Power down（断电）
+32= Suspend（待机）
+64= Hibernate（休眠）
+可按需把相应数值相加。比如，要关机并断电，则应指定数值 9 （shutdown + power down = 1 + 8 = 9）
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果阅读这篇文章让您有所收获而感到开心...那还有更开心的！支付宝扫码立领红包！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>领红包</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay_worldcpu.png" alt="Minggui Lu 我有一个支付宝！扫码就能领红包！"/>
+        <p>我有一个支付宝！扫码就能领红包！</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      <!--
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AutoIt/" rel="tag"> <i class="fa fa-tag"></i> AutoIt</a>
+          
+            <a href="/tags/AutoIt3/" rel="tag"> <i class="fa fa-tag"></i> AutoIt3</a>
+          
+            <a href="/tags/Helpdesk/" rel="tag"> <i class="fa fa-tag"></i> Helpdesk</a>
+          
+            <a href="/tags/自动化/" rel="tag"> <i class="fa fa-tag"></i> 自动化</a>
+          
+        </div>
+      
+      -->
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/18/AutoIT3开发Helpdesk自动化工具之一/" rel="next" title="AutoIt3开发Helpdesk自动化工具之一:简介">
+                <i class="fa fa-chevron-left"></i> AutoIt3开发Helpdesk自动化工具之一:简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/23/AutoIt3开发Helpdesk自动化工具之三/" rel="prev" title="AutoIt3开发Helpdesk自动化工具之三:系统配置">
+                AutoIt3开发Helpdesk自动化工具之三:系统配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDU3OC83MTMz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Minggui Lu</p>
+              <p class="site-description motion-element" itemprop="description">持续集成 &nbsp;&nbsp; 持续交付</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:luminggui0214@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/mingguilu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/kind0214" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/kind0214" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/kind0214" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/kind0214" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文档："><span class="nav-number">1.</span> <span class="nav-text">参考文档：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编辑器"><span class="nav-number">2.</span> <span class="nav-text">编辑器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注释"><span class="nav-number">3.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#暂停执行脚本"><span class="nav-number">4.</span> <span class="nav-text">暂停执行脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行外部程序"><span class="nav-number">5.</span> <span class="nav-text">运行外部程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以其它用户运行外部程序"><span class="nav-number">6.</span> <span class="nav-text">以其它用户运行外部程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用ShellExecute运行外部程序"><span class="nav-number">7.</span> <span class="nav-text">使用ShellExecute运行外部程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#窗口操作"><span class="nav-number">8.</span> <span class="nav-text">窗口操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#控件操作"><span class="nav-number">9.</span> <span class="nav-text">控件操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模拟键击操作"><span class="nav-number">10.</span> <span class="nav-text">模拟键击操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息框"><span class="nav-number">11.</span> <span class="nav-text">消息框</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入框"><span class="nav-number">12.</span> <span class="nav-text">输入框</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查当前用户是否拥有管理员权限"><span class="nav-number">13.</span> <span class="nav-text">检查当前用户是否拥有管理员权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查某个字符串是否含有给定的子串"><span class="nav-number">14.</span> <span class="nav-text">检查某个字符串是否含有给定的子串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作注册表"><span class="nav-number">15.</span> <span class="nav-text">操作注册表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关机"><span class="nav-number">16.</span> <span class="nav-text">关机</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+      <!-- alipay_QRcode start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <p class="site-author-name" itemprop="name"> </p>
+              <p class="site-description motion-element" itemprop="description"> 
+                <a href="/candies/" target="_blank">
+                  <img src="/images/reading/alipay_QRcode.jpg" title="打开支付宝，扫码领红包" />
+                </a>
+          </div>
+        </div>
+      </section> 
+
+      <!-- alipay_QRcode end -->
+
+      <!-- geektime start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <p class="site-author-name" itemprop="name"> </p>
+              <p class="site-author-name" itemprop="name"> 极客时间·左耳听风 </p>
+              <p class="site-description motion-element" itemprop="description"> 
+                <img src="/images/reading/左耳听风.jpg" title="洞悉技术的本质，享受科技的乐趣" />
+          </div>
+        </div>
+      </section> 
+
+      <!-- geektime end -->
+
+      <!-- huobi start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a href="https://www.huobi.br.com/zh-cn/topic/invited/?invite_code=vg333" target="_blank">
+                  <img src="/images/reading/huobi2.jpg" title="点击注册火币" />
+                </a>
+          </div>
+        </div>
+      </section>  
+      
+      <!-- huobi end -->
+
+      <!-- yizhihognxing start -->
+      <!--
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a href="http://order.yizhihongxing2018.com/aff.php?aff=294" target="_blank">
+                  <img src="/images/reading/yizhihongxing_vertical.jpg" />
+                </a>
+          </div>
+        </div>
+      </section>  
+      -->
+      <!-- yizhihongxing end -->
+
+    </div>
+  </aside>
+
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minggui Lu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">
+    托管于 <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+  </div>
+
+
+
+
+<!-- 百度分享
+<script>
+  window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"1","bdPos":"right","bdTop":"100"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+-->
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=65849690";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

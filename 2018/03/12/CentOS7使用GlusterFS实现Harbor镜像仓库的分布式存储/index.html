@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CentOS,Docker,Harbor,GlusterFS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="实验环境Hostname、IP Docker+Harbor     os：CentOS7.2    hostname：centos7-01         ip：72.29.20.54  GlusterFS节点1      os：CentOS7.2    hostname：gluster-node-1     ip：172.29.20.57 GlusterFS节点2      os：CentOS7">
+<meta name="keywords" content="CentOS,Docker,Harbor,GlusterFS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS7使用GlusterFS实现Harbor镜像仓库的分布式存储">
+<meta property="og:url" content="http://blog.mingguilu.com/2018/03/12/CentOS7使用GlusterFS实现Harbor镜像仓库的分布式存储/index.html">
+<meta property="og:site_name" content="Welcome to MingguiLu&#39;s Blog">
+<meta property="og:description" content="实验环境Hostname、IP Docker+Harbor     os：CentOS7.2    hostname：centos7-01         ip：72.29.20.54  GlusterFS节点1      os：CentOS7.2    hostname：gluster-node-1     ip：172.29.20.57 GlusterFS节点2      os：CentOS7">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://blog.mingguilu.com/images/photos/gluster_ceph.jpg">
+<meta property="og:updated_time" content="2018-09-03T16:25:56.934Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CentOS7使用GlusterFS实现Harbor镜像仓库的分布式存储">
+<meta name="twitter:description" content="实验环境Hostname、IP Docker+Harbor     os：CentOS7.2    hostname：centos7-01         ip：72.29.20.54  GlusterFS节点1      os：CentOS7.2    hostname：gluster-node-1     ip：172.29.20.57 GlusterFS节点2      os：CentOS7">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/photos/gluster_ceph.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.mingguilu.com/2018/03/12/CentOS7使用GlusterFS实现Harbor镜像仓库的分布式存储/"/>
+
+
+
+
+
+  <title>CentOS7使用GlusterFS实现Harbor镜像仓库的分布式存储 | Welcome to MingguiLu's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-86857821-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><!--
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i><img src="/images/favicon.ico" /></i></span>
+        <span class="site-title">Welcome to MingguiLu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+-->
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-candies">
+          <a href="/candies/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cny"></i> <br />
+            
+            红包
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/03/12/CentOS7使用GlusterFS实现Harbor镜像仓库的分布式存储/">
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minggui Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to MingguiLu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CentOS7使用GlusterFS实现Harbor镜像仓库的分布式存储</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T20:51:06+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维之道/" itemprop="url" rel="index">
+                    <span itemprop="name">运维之道</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-meta-divider">|</span>
+            
+            <span class="post-meta-item-icon">
+                <i class="fa fa-star-o"></i>
+            </span>
+            
+                <span class="post-meta-item-text">标签于</span>
+            
+            <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              
+                &nbsp;
+                <a href="/tags/CentOS/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> CentOS </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/Docker/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> Docker </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/Harbor/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> Harbor </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/GlusterFS/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> GlusterFS </span>
+                </a>
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/images/photos/gluster_ceph.jpg" rel="gallery_cjlnb96at002dqwmm68eg9tn4"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/photos/gluster_ceph.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h4 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h4><h5 id="Hostname、IP"><a href="#Hostname、IP" class="headerlink" title="Hostname、IP"></a>Hostname、IP</h5><ul>
+<li>Docker+Harbor     os：CentOS7.2    hostname：centos7-01         ip：72.29.20.54 </li>
+<li>GlusterFS节点1      os：CentOS7.2    hostname：gluster-node-1     ip：172.29.20.57</li>
+<li>GlusterFS节点2      os：CentOS7.2    hostname：gluster-node-2     ip：172.29.20.59</li>
+</ul>
+<h5 id="磁盘信息"><a href="#磁盘信息" class="headerlink" title="磁盘信息"></a>磁盘信息</h5><ul>
+<li>GlusterFS节点1   /dev/sda：20G 安装系统   /dev/sdb：20G GlusterFS存储</li>
+<li>GlusterFS节点2   /dev/sda：20G 安装系统   /dev/sdb：20G GlusterFS存储</li>
+</ul>
+<h4 id="格式化并挂载磁盘"><a href="#格式化并挂载磁盘" class="headerlink" title="格式化并挂载磁盘"></a>格式化并挂载磁盘</h4><p>同时在gluster-node-1和gluster-node-2上进行</p>
+<a id="more"></a>
+<h5 id="查看磁盘信息"><a href="#查看磁盘信息" class="headerlink" title="查看磁盘信息"></a>查看磁盘信息</h5><pre><code>[mingguilu@gluster-node-1 ~]$ sudo fdisk -l
+
+磁盘 /dev/sdb：21.5 GB, 21474836480 字节，41943040 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+
+
+磁盘 /dev/sda：21.5 GB, 21474836480 字节，41943040 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+磁盘标签类型：dos
+磁盘标识符：0x000a1bd9
+
+设备 Boot      Start         End      Blocks   Id  System
+/dev/sda1   *        2048     2099199     1048576   83  Linux
+/dev/sda2         2099200    41943039    19921920   8e  Linux LVM
+
+磁盘 /dev/mapper/centos-root：18.2 GB, 18249416704 字节，35643392 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+
+
+磁盘 /dev/mapper/centos-swap：2147 MB, 2147483648 字节，4194304 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+</code></pre><h5 id="磁盘分区"><a href="#磁盘分区" class="headerlink" title="磁盘分区"></a>磁盘分区</h5><pre><code>[root@gluster-node-1 mingguilu]# fdisk /dev/sdb 
+欢迎使用 fdisk (util-linux 2.23.2)。
+
+更改将停留在内存中，直到您决定将更改写入磁盘。
+使用写入命令前请三思。
+
+Device does not contain a recognized partition table
+使用磁盘标识符 0x896a8f0e 创建新的 DOS 磁盘标签。
+
+命令(输入 m 获取帮助)：m
+命令操作
+a   toggle a bootable flag
+b   edit bsd disklabel
+c   toggle the dos compatibility flag
+d   delete a partition
+g   create a new empty GPT partition table
+G   create an IRIX (SGI) partition table
+l   list known partition types
+m   print this menu
+n   add a new partition
+o   create a new empty DOS partition table
+p   print the partition table
+q   quit without saving changes
+s   create a new empty Sun disklabel
+t   change a partition&apos;s system id
+u   change display/entry units
+v   verify the partition table
+w   write table to disk and exit
+x   extra functionality (experts only)
+
+命令(输入 m 获取帮助)：n
+Partition type:
+p   primary (0 primary, 0 extended, 4 free)
+e   extended
+Select (default p): p
+分区号 (1-4，默认 1)：
+起始 扇区 (2048-41943039，默认为 2048)：
+将使用默认值 2048
+Last 扇区, +扇区 or +size{K,M,G} (2048-41943039，默认为 41943039)：
+将使用默认值 41943039
+分区 1 已设置为 Linux 类型，大小设为 20 GiB
+
+命令(输入 m 获取帮助)：w
+The partition table has been altered!
+
+Calling ioctl() to re-read partition table.
+正在同步磁盘。
+
+[root@gluster-node-2 mingguilu]# fdisk -l | grep sdb
+磁盘 /dev/sdb：21.5 GB, 21474836480 字节，41943040 个扇区
+/dev/sdb1            2048    41943039    20970496   83  Linux
+</code></pre><h5 id="磁盘格式化"><a href="#磁盘格式化" class="headerlink" title="磁盘格式化"></a>磁盘格式化</h5><pre><code>[root@gluster-node-1 mingguilu]# mkfs.xfs -i size=512 /dev/sdb1
+meta-data=/dev/sdb1              isize=512    agcount=4, agsize=1310656 blks
+        =                       sectsz=512   attr=2, projid32bit=1
+        =                       crc=1        finobt=0, sparse=0
+data     =                       bsize=4096   blocks=5242624, imaxpct=25
+        =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+        =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+</code></pre><h5 id="创建存储挂载点目录"><a href="#创建存储挂载点目录" class="headerlink" title="创建存储挂载点目录"></a>创建存储挂载点目录</h5><pre><code>[root@gluster-node-1 mingguilu]# mkdir -p /data/brick1
+</code></pre><h5 id="设置开机自动载"><a href="#设置开机自动载" class="headerlink" title="设置开机自动载"></a>设置开机自动载</h5><pre><code>[root@gluster-node-1 mingguilu]# echo &apos;/dev/sdb1 /data/brick1 xfs defaults 1 2&apos; &gt;&gt; /etc/fstab
+</code></pre><h5 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h5><pre><code>[root@gluster-node-1 ~]# mount -a
+[root@gluster-node-1 ~]# mount | grep sdb1
+/dev/sdb1 on /data/brick1 type xfs (rw,relatime,seclabel,attr2,inode64,noquota)
+</code></pre><h4 id="安装GlusterFS"><a href="#安装GlusterFS" class="headerlink" title="安装GlusterFS"></a>安装GlusterFS</h4><h5 id="添加GlusterFS安装源"><a href="#添加GlusterFS安装源" class="headerlink" title="添加GlusterFS安装源"></a>添加GlusterFS安装源</h5><pre><code>[root@gluster-node-1 ~]# yum install centos-release-gluster
+</code></pre><h5 id="安装GlusterFS-1"><a href="#安装GlusterFS-1" class="headerlink" title="安装GlusterFS"></a>安装GlusterFS</h5><pre><code>[root@gluter-node-1 ~]# yum install -y glusterfs-server
+</code></pre><h5 id="启动Gluster"><a href="#启动Gluster" class="headerlink" title="启动Gluster"></a>启动Gluster</h5><pre><code>[root@gluster-node-1 ~]# systemctl start glusterd
+</code></pre><h5 id="开机自启动"><a href="#开机自启动" class="headerlink" title="开机自启动"></a>开机自启动</h5><pre><code>[root@gluster-node-1 ~]# systemctl enable glusterd
+</code></pre><p>Created symlink from /etc/systemd/system/multi-user.target.wants/glusterd.service to /usr/lib/systemd/system/glusterd.service.</p>
+<h5 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h5><pre><code>[root@gluster-node-1 ~]# systemctl status glusterd
+● glusterd.service - GlusterFS, a clustered file-system server
+   Loaded: loaded (/usr/lib/systemd/system/glusterd.service; enabled; vendor preset: disabled)
+   Active: active (running) since 一 2018-03-12 16:41:40 CST; 18s ago
+ Main PID: 8894 (glusterd)
+   CGroup: /system.slice/glusterd.service
+           └─8894 /usr/sbin/glusterd -p /var/run/glusterd.pid --log-level INFO
+
+3月 12 16:41:40 gluster-node-1 systemd[1]: Starting GlusterFS, a clustered file....
+3月 12 16:41:40 gluster-node-1 systemd[1]: Started GlusterFS, a clustered file-....
+Hint: Some lines were ellipsized, use -l to show in full.
+</code></pre><h5 id="停止GlusterFS"><a href="#停止GlusterFS" class="headerlink" title="停止GlusterFS"></a>停止GlusterFS</h5><pre><code>[root@gluster-node-1 ~]# systemctl stop glusterd
+</code></pre><h4 id="添加节点"><a href="#添加节点" class="headerlink" title="添加节点"></a>添加节点</h4><h5 id="gluster-node-1上"><a href="#gluster-node-1上" class="headerlink" title="gluster-node-1上"></a>gluster-node-1上</h5><pre><code>[root@gluster-node-1 mingguilu]# gluster peer probe 172.29.20.59
+peer probe: success.
+</code></pre><h5 id="gluster-node-2上"><a href="#gluster-node-2上" class="headerlink" title="gluster-node-2上"></a>gluster-node-2上</h5><pre><code>[root@gluster-node-2 ~]# gluster peer probe 172.29.20.57
+peer probe: success. 
+</code></pre><h5 id="检查节点状态"><a href="#检查节点状态" class="headerlink" title="检查节点状态"></a>检查节点状态</h5><pre><code>[root@gluster-node-1 mingguilu]# gluster peer status
+Number of Peers: 1
+
+Hostname: 172.29.20.59
+Uuid: c786d332-1647-4b1b-9640-adbf7b80162d
+State: Peer in Cluster (Connected)
+
+
+[root@gluster-node-2 ~]# gluster peer status
+Number of Peers: 1
+
+Hostname: gluster-node-1
+Uuid: a3d5a5bb-d60d-411d-bafb-0d3439f211e0
+State: Peer in Cluster (Connected)
+Other names:
+172.29.20.57
+</code></pre><h4 id="创建Volume"><a href="#创建Volume" class="headerlink" title="创建Volume"></a>创建Volume</h4><h5 id="创建volume挂载点"><a href="#创建volume挂载点" class="headerlink" title="创建volume挂载点"></a>创建volume挂载点</h5><pre><code>[root@gluster-node-1 mingguilu]# mkdir -p /data/brick1/gv0
+
+[root@gluster-node-2 mingguilu]# mkdir -p /data/brick1/gv0
+</code></pre><h5 id="创建volume"><a href="#创建volume" class="headerlink" title="创建volume"></a>创建volume</h5><p>在随意一台上：</p>
+<pre><code>[root@gluster-node-1 mingguilu]# gluster volume create gv0 replica 2 gluster-node-1:/data/brick1/gv0 gluster-node-2:/data/brick1/gv0
+Replica 2 volumes are prone to split-brain. Use Arbiter or Replica 3 to avoid this. See: http://docs.gluster.org/en/latest/Administrator%20Guide/Split%20brain%20and%20ways%20to%20deal%20with%20it/.
+Do you still want to continue?
+ (y/n) y
+volume create: gv0: success: please start the volume to access data
+</code></pre><h5 id="启动volume"><a href="#启动volume" class="headerlink" title="启动volume"></a>启动volume</h5><pre><code>[root@gluster-node-1 mingguilu]# gluster volume create gv0 replica 2 gluster-node-1:/data/brick1/gv0 gluster-node-2:/data/brick1/gv0
+Replica 2 volumes are prone to split-brain. Use Arbiter or Replica 3 to avoid this. See: http://docs.gluster.org/en/latest/Administrator%20Guide/Split%20brain%20and%20ways%20to%20deal%20with%20it/.
+Do you still want to continue?
+ (y/n) y
+volume create: gv0: success: please start the volume to access data
+</code></pre><h5 id="查看volume状态"><a href="#查看volume状态" class="headerlink" title="查看volume状态"></a>查看volume状态</h5><pre><code>[root@gluster-node-1 mingguilu]# gluster volume info
+
+Volume Name: gv0
+Type: Replicate
+Volume ID: df3bf85e-1e39-43ae-9e7d-d857b4fce7a5
+Status: Started
+Snapshot Count: 0
+Number of Bricks: 1 x 2 = 2
+Transport-type: tcp
+Bricks:
+Brick1: gluster-node-1:/data/brick1/gv0
+Brick2: gluster-node-2:/data/brick1/gv0
+Options Reconfigured:
+transport.address-family: inet
+nfs.disable: on
+performance.client-io-threads: off
+
+[root@gluster-node-2 ~]# gluster volume info
+
+Volume Name: gv0
+Type: Replicate
+Volume ID: df3bf85e-1e39-43ae-9e7d-d857b4fce7a5
+Status: Started
+Snapshot Count: 0
+Number of Bricks: 1 x 2 = 2
+Transport-type: tcp
+Bricks:
+Brick1: gluster-node-1:/data/brick1/gv0
+Brick2: gluster-node-2:/data/brick1/gv0
+Options Reconfigured:
+transport.address-family: inet
+nfs.disable: on
+performance.client-io-threads: off
+</code></pre><h4 id="将Harbor镜像仓库挂载到GlusterFS"><a href="#将Harbor镜像仓库挂载到GlusterFS" class="headerlink" title="将Harbor镜像仓库挂载到GlusterFS"></a>将Harbor镜像仓库挂载到GlusterFS</h4><h5 id="安装GlusterFS和Glusterfs-client"><a href="#安装GlusterFS和Glusterfs-client" class="headerlink" title="安装GlusterFS和Glusterfs-client"></a>安装GlusterFS和Glusterfs-client</h5><pre><code>yum install -y glusterfs glusterfs-client
+</code></pre><h5 id="停止harbor"><a href="#停止harbor" class="headerlink" title="停止harbor"></a>停止harbor</h5><pre><code>[root@centos7-01 harbor]# docker-compose stop
+Stopping nginx              ... done
+Stopping harbor-jobservice  ... done
+Stopping harbor-ui          ... done
+Stopping harbor-db          ... done
+Stopping harbor-adminserver ... done
+Stopping registry           ... done
+Stopping harbor-log         ... done
+</code></pre><h5 id="挂载-1"><a href="#挂载-1" class="headerlink" title="挂载"></a>挂载</h5><pre><code>[root@centos7-01 harbor]# mount -t glusterfs gluster-node-1:gv0 /data/registry/docker/registry/v2/repositories/
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果阅读这篇文章让您有所收获而感到开心...那还有更开心的！支付宝扫码立领红包！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>领红包</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay_worldcpu.png" alt="Minggui Lu 我有一个支付宝！扫码就能领红包！"/>
+        <p>我有一个支付宝！扫码就能领红包！</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      <!--
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CentOS/" rel="tag"> <i class="fa fa-tag"></i> CentOS</a>
+          
+            <a href="/tags/Docker/" rel="tag"> <i class="fa fa-tag"></i> Docker</a>
+          
+            <a href="/tags/Harbor/" rel="tag"> <i class="fa fa-tag"></i> Harbor</a>
+          
+            <a href="/tags/GlusterFS/" rel="tag"> <i class="fa fa-tag"></i> GlusterFS</a>
+          
+        </div>
+      
+      -->
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/08/CentOS7安装和配置Harbor/" rel="next" title="CentOS7安装和配置Harbor">
+                <i class="fa fa-chevron-left"></i> CentOS7安装和配置Harbor
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/01/Nicehash的CPU挖矿指南之Windows篇/" rel="prev" title="Nicehash的CPU挖矿指南之Windows篇">
+                Nicehash的CPU挖矿指南之Windows篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDU3OC83MTMz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Minggui Lu</p>
+              <p class="site-description motion-element" itemprop="description">持续集成 &nbsp;&nbsp; 持续交付</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:luminggui0214@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/mingguilu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/kind0214" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/kind0214" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/kind0214" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/kind0214" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#实验环境"><span class="nav-number">1.</span> <span class="nav-text">实验环境</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Hostname、IP"><span class="nav-number">1.1.</span> <span class="nav-text">Hostname、IP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#磁盘信息"><span class="nav-number">1.2.</span> <span class="nav-text">磁盘信息</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#格式化并挂载磁盘"><span class="nav-number">2.</span> <span class="nav-text">格式化并挂载磁盘</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看磁盘信息"><span class="nav-number">2.1.</span> <span class="nav-text">查看磁盘信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#磁盘分区"><span class="nav-number">2.2.</span> <span class="nav-text">磁盘分区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#磁盘格式化"><span class="nav-number">2.3.</span> <span class="nav-text">磁盘格式化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建存储挂载点目录"><span class="nav-number">2.4.</span> <span class="nav-text">创建存储挂载点目录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#设置开机自动载"><span class="nav-number">2.5.</span> <span class="nav-text">设置开机自动载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#挂载"><span class="nav-number">2.6.</span> <span class="nav-text">挂载</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装GlusterFS"><span class="nav-number">3.</span> <span class="nav-text">安装GlusterFS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#添加GlusterFS安装源"><span class="nav-number">3.1.</span> <span class="nav-text">添加GlusterFS安装源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装GlusterFS-1"><span class="nav-number">3.2.</span> <span class="nav-text">安装GlusterFS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启动Gluster"><span class="nav-number">3.3.</span> <span class="nav-text">启动Gluster</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#开机自启动"><span class="nav-number">3.4.</span> <span class="nav-text">开机自启动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看状态"><span class="nav-number">3.5.</span> <span class="nav-text">查看状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#停止GlusterFS"><span class="nav-number">3.6.</span> <span class="nav-text">停止GlusterFS</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加节点"><span class="nav-number">4.</span> <span class="nav-text">添加节点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#gluster-node-1上"><span class="nav-number">4.1.</span> <span class="nav-text">gluster-node-1上</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#gluster-node-2上"><span class="nav-number">4.2.</span> <span class="nav-text">gluster-node-2上</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#检查节点状态"><span class="nav-number">4.3.</span> <span class="nav-text">检查节点状态</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建Volume"><span class="nav-number">5.</span> <span class="nav-text">创建Volume</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建volume挂载点"><span class="nav-number">5.1.</span> <span class="nav-text">创建volume挂载点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建volume"><span class="nav-number">5.2.</span> <span class="nav-text">创建volume</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启动volume"><span class="nav-number">5.3.</span> <span class="nav-text">启动volume</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看volume状态"><span class="nav-number">5.4.</span> <span class="nav-text">查看volume状态</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将Harbor镜像仓库挂载到GlusterFS"><span class="nav-number">6.</span> <span class="nav-text">将Harbor镜像仓库挂载到GlusterFS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装GlusterFS和Glusterfs-client"><span class="nav-number">6.1.</span> <span class="nav-text">安装GlusterFS和Glusterfs-client</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#停止harbor"><span class="nav-number">6.2.</span> <span class="nav-text">停止harbor</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#挂载-1"><span class="nav-number">6.3.</span> <span class="nav-text">挂载</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+      <!-- alipay_QRcode start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <p class="site-author-name" itemprop="name"> </p>
+              <p class="site-description motion-element" itemprop="description"> 
+                <a href="/candies/" target="_blank">
+                  <img src="/images/reading/alipay_QRcode.jpg" title="打开支付宝，扫码领红包" />
+                </a>
+          </div>
+        </div>
+      </section> 
+
+      <!-- alipay_QRcode end -->
+
+      <!-- geektime start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <p class="site-author-name" itemprop="name"> </p>
+              <p class="site-author-name" itemprop="name"> 极客时间·左耳听风 </p>
+              <p class="site-description motion-element" itemprop="description"> 
+                <img src="/images/reading/左耳听风.jpg" title="洞悉技术的本质，享受科技的乐趣" />
+          </div>
+        </div>
+      </section> 
+
+      <!-- geektime end -->
+
+      <!-- huobi start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a href="https://www.huobi.br.com/zh-cn/topic/invited/?invite_code=vg333" target="_blank">
+                  <img src="/images/reading/huobi2.jpg" title="点击注册火币" />
+                </a>
+          </div>
+        </div>
+      </section>  
+      
+      <!-- huobi end -->
+
+      <!-- yizhihognxing start -->
+      <!--
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a href="http://order.yizhihongxing2018.com/aff.php?aff=294" target="_blank">
+                  <img src="/images/reading/yizhihongxing_vertical.jpg" />
+                </a>
+          </div>
+        </div>
+      </section>  
+      -->
+      <!-- yizhihongxing end -->
+
+    </div>
+  </aside>
+
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minggui Lu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">
+    托管于 <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+  </div>
+
+
+
+
+<!-- 百度分享
+<script>
+  window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"1","bdPos":"right","bdTop":"100"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+-->
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=65849690";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

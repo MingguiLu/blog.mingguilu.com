@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AutoIt,AutoIt3,Helpdesk,自动化," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在持续的编写和测试AutoIt3脚本过程中，对AutoIt的理解更深入了，我意识到可以使用AutoIt3 GUI编写一个图形用户界面，从而增强对每个自定义函数的复用，最终大幅提高运行效率。 参考文档 AutoIt3安装目录中的官方英文手册 v3.3.14.2 - GUI相关 ： AutoIt.chm   AutoIt 在线手册中文版_脚本之家 v3.1.1 - GUI相关 :  http://ww">
+<meta name="keywords" content="AutoIt,AutoIt3,Helpdesk,自动化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AutoIt3开发Helpdesk自动化工具之六:图形用户界面">
+<meta property="og:url" content="http://blog.mingguilu.com/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/index.html">
+<meta property="og:site_name" content="Welcome to MingguiLu&#39;s Blog">
+<meta property="og:description" content="在持续的编写和测试AutoIt3脚本过程中，对AutoIt的理解更深入了，我意识到可以使用AutoIt3 GUI编写一个图形用户界面，从而增强对每个自定义函数的复用，最终大幅提高运行效率。 参考文档 AutoIt3安装目录中的官方英文手册 v3.3.14.2 - GUI相关 ： AutoIt.chm   AutoIt 在线手册中文版_脚本之家 v3.1.1 - GUI相关 :  http://ww">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://blog.mingguilu.com/images/photos/autoit3.png">
+<meta property="og:updated_time" content="2018-09-03T16:25:56.911Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AutoIt3开发Helpdesk自动化工具之六:图形用户界面">
+<meta name="twitter:description" content="在持续的编写和测试AutoIt3脚本过程中，对AutoIt的理解更深入了，我意识到可以使用AutoIt3 GUI编写一个图形用户界面，从而增强对每个自定义函数的复用，最终大幅提高运行效率。 参考文档 AutoIt3安装目录中的官方英文手册 v3.3.14.2 - GUI相关 ： AutoIt.chm   AutoIt 在线手册中文版_脚本之家 v3.1.1 - GUI相关 :  http://ww">
+<meta name="twitter:image" content="http://blog.mingguilu.com/images/photos/autoit3.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.mingguilu.com/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/"/>
+
+
+
+
+
+  <title>AutoIt3开发Helpdesk自动化工具之六:图形用户界面 | Welcome to MingguiLu's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-86857821-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e445a3394fe0a8c528bebf844c37c922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><!--
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i><img src="/images/favicon.ico" /></i></span>
+        <span class="site-title">Welcome to MingguiLu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+-->
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-candies">
+          <a href="/candies/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cny"></i> <br />
+            
+            红包
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2017/05/02/AutoIt3开发Helpdesk自动化工具之六/">
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minggui Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to MingguiLu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">AutoIt3开发Helpdesk自动化工具之六:图形用户界面</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-02T11:05:10+08:00">
+                2017-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维之道/" itemprop="url" rel="index">
+                    <span itemprop="name">运维之道</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-meta-divider">|</span>
+            
+            <span class="post-meta-item-icon">
+                <i class="fa fa-star-o"></i>
+            </span>
+            
+                <span class="post-meta-item-text">标签于</span>
+            
+            <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              
+                &nbsp;
+                <a href="/tags/AutoIt/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> AutoIt </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/AutoIt3/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> AutoIt3 </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/Helpdesk/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> Helpdesk </span>
+                </a>
+              
+                &nbsp;
+                <a href="/tags/自动化/" itemprop="url" rel="tag"> 
+                  <span itemprop="name"> 自动化 </span>
+                </a>
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/images/photos/autoit3.png" rel="gallery_cjlnb969s000aqwmm81m4dtnm"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/photos/autoit3.png" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <p>在持续的编写和测试AutoIt3脚本过程中，对AutoIt的理解更深入了，我意识到可以使用AutoIt3 GUI编写一个图形用户界面，从而增强对每个自定义函数的复用，最终大幅提高运行效率。</p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ul>
+<li>AutoIt3安装目录中的官方英文手册 v3.3.14.2 - GUI相关 ： AutoIt.chm  </li>
+<li>AutoIt 在线手册中文版_脚本之家 v3.1.1 - GUI相关 :  <a href="http://www.jb51.net/shouce/autoit/" target="_blank" rel="noopener">http://www.jb51.net/shouce/autoit/</a> </li>
+</ul>
+<h3 id="GUI的概念"><a href="#GUI的概念" class="headerlink" title="GUI的概念"></a>GUI的概念</h3><pre><code>AutoIt 脚本可创建（由窗口及其控件组成的）简单的图形用户界面（GUI）
+
+GUI 可由一个或多个 窗口 组成，这些窗口又带有一个或多个控件。GUI是靠“事件驱动”实现与用户的交互的，比如像点击按钮这样的动作就会引发一个事件。程序在空闲状态时等待事件的发生，捕捉到事件时则根据事件执行相关操作。
+</code></pre><p>用GUI创建的图形用户界面确实很简单，类似的xp或更早风格的窗口，或许有方法可以美化，但是好看显然不是我关注的地方，我希望它稳定可靠地执行脚本就够了。GUI创建的窗口就如同每个我们所操作的软件操作，有文字，有按钮，可鼠标点击，可键盘输入……</p>
+<a id="more"></a>
+<h3 id="GUI事件模式"><a href="#GUI事件模式" class="headerlink" title="GUI事件模式"></a>GUI事件模式</h3><ul>
+<li><p>消息循环模式（默认）</p>
+</li>
+<li><p>OnEvent（事件驱动） 模式</p>
+</li>
+</ul>
+<p>这两种模式我以地铁站为例来理解，<code>消息循环模式</code>就像地铁站外临街出入口，在运营时间内无论是否有人进出每时每刻都开着；<code>OnEvent(事件驱动)模式</code>就像地铁站内的进出闸门，只有当乘客刷卡时才会打开，行人通过后，又回到关闭等待状态；</p>
+<p>所以这两种模式各有适用的场景，自动化helpdesk工具可以在GUI上进行键鼠操作来命令脚本开始执行，更适合用<code>OnEvent(事件驱动)模式</code>。</p>
+<h3 id="为Helpdesk自动化工具创建GUI"><a href="#为Helpdesk自动化工具创建GUI" class="headerlink" title="为Helpdesk自动化工具创建GUI"></a>为Helpdesk自动化工具创建GUI</h3><h4 id="在脚本开头调用-GUIConstants-au3文件"><a href="#在脚本开头调用-GUIConstants-au3文件" class="headerlink" title="在脚本开头调用 GUIConstants.au3文件"></a>在脚本开头调用 GUIConstants.au3文件</h4><pre><code>;;包含了在编写GUI程序时要用到的所有变量和常量 
+#include &lt;GUIConstants.au3&gt;
+
+;;包含了在编写GUI程序时使用复选框所需的变量和常量
+#include &lt;GuiButton.au3&gt;
+</code></pre><h4 id="将默认的-消息循环模式-切换为-OnEvent-事件驱动-模式"><a href="#将默认的-消息循环模式-切换为-OnEvent-事件驱动-模式" class="headerlink" title="将默认的 消息循环模式 切换为  OnEvent(事件驱动) 模式"></a>将默认的 消息循环模式 切换为  OnEvent(事件驱动) 模式</h4><pre><code>Opt(&quot;GUIOnEventMode&quot;, 1)
+</code></pre><h4 id="创建窗口和控件"><a href="#创建窗口和控件" class="headerlink" title="创建窗口和控件"></a>创建窗口和控件</h4><p>为了方便后期的维护，可以将这部分脚本包含到一个自定义函数中，并在脚本开头适当位置调用</p>
+<pre><code>_mainWindow()
+
+;;窗口创建后是处于隐藏状态的，必须使用本函数来显示
+GUISetState()
+
+Func _mainWindow()
+
+   ;;声明变量 $Checkbox[]
+   Global $Checkbox[53]
+
+   ;;AutoIt GUI的控件定位方式类似于前端CSS中的固定定位，即所有控件定位都以窗口左上角为原点
+
+   ;;将窗口的长度和宽度定义为变量
+   Global $gui_width = 490
+   Global $gui_height = 500
+
+   ;;将控件左侧和上方的定位参数定义为变量，当后期需要调整窗口大小和控件位置时，修改相应的变量值即可
+   Global $checkbox_left = 5
+   Global $sysconf_top = 10
+   Global $install_top = 155
+   Global $user_top = 375
+   Global $checkbox_width = 150
+   Global $checkbox_height = 20
+
+   Global $select_left = 5
+   Global $select_top = 300
+   Global $select_width = 50
+   Global $select_height = 30
+
+   ;;创建一个窗口，语法：GUICreate ( &quot;窗口标题&quot; [, 宽度 [, 高度 [, 左侧 [, 上方 [, 风格 [, 扩展风格 [, 父窗口]]]]]]] )
+   GUICreate(&quot;自动化配置工具 V0.5  - By MingguiLu&quot;, $gui_width, $gui_height)
+
+   ;;创建一个组框，语法：GUICtrlCreateGroup ( &quot;文本&quot;, 左侧, 上方 [, 宽度 [, 高度 [, 风格 [, 扩展风格]]]] )
+   GUICtrlCreateGroup(&quot;系统配置&quot;, $checkbox_left, $sysconf_top, $gui_width-10, $gui_height/3-30)
+   ;;创建一个复选框，语法：GUICtrlCreateCheckbox ( &quot;文本&quot;, 左侧, 上方 [, 宽度 [, 高度 [, 风格 [, 扩展风格]]]] )
+   $Checkbox[1] = GUICtrlCreateCheckbox(&quot;修改计算机名并加域&quot;, $checkbox_left+5, $sysconf_top+20, $checkbox_width, $checkbox_height)
+   $Checkbox[2] = GUICtrlCreateCheckbox(&quot;修改管理员密码&quot;, $checkbox_left+160, $sysconf_top+20, $checkbox_width, $checkbox_height)
+   $Checkbox[3] = GUICtrlCreateCheckbox(&quot;创建Admin用户&quot;, $checkbox_left+320, $sysconf_top+20, $checkbox_width, $checkbox_height)
+   $Checkbox[4] = GUICtrlCreateCheckbox(&quot;添加IT服务台&quot;, $checkbox_left+5, $sysconf_top+50, $checkbox_width, $checkbox_height)
+   $Checkbox[5] = GUICtrlCreateCheckbox(&quot;开启远程桌面&quot;, $checkbox_left+160, $sysconf_top+50, $checkbox_width, $checkbox_height)
+   $Checkbox[6] = GUICtrlCreateCheckbox(&quot;安装AD证书&quot;, $checkbox_left+320, $sysconf_top+50, $checkbox_width, $checkbox_height)
+   $Checkbox[7] = GUICtrlCreateCheckbox(&quot;关闭防火墙&quot;, $checkbox_left+5, $sysconf_top+80, $checkbox_width, $checkbox_height)
+   $Checkbox[8] = GUICtrlCreateCheckbox(&quot;降低UAC等级&quot;, $checkbox_left+160, $sysconf_top+80, $checkbox_width, $checkbox_height)
+
+   GUICtrlCreateGroup(&quot;软件安装&quot;, $checkbox_left, $install_top, $gui_width-10, $gui_height/3-30)
+   $Checkbox[21] = GUICtrlCreateCheckbox(&quot;Adobe Flash Player&quot;, $checkbox_left+5, $install_top+20, $checkbox_width, $checkbox_height)
+   $Checkbox[22] = GUICtrlCreateCheckbox(&quot;Google Chrome&quot;, $checkbox_left+160, $install_top+20, $checkbox_width, $checkbox_height)
+   $Checkbox[23] = GUICtrlCreateCheckbox(&quot;LinPhone for Windows&quot;, $checkbox_left+320, $install_top+20, $checkbox_width, $checkbox_height)
+   $Checkbox[24] = GUICtrlCreateCheckbox(&quot;Cisco VPN Client&quot;, $checkbox_left+5, $install_top+50, $checkbox_width, $checkbox_height)
+   $Checkbox[25] = GUICtrlCreateCheckbox(&quot;CRM Pro&quot;, $checkbox_left+160, $install_top+50, $checkbox_width, $checkbox_height)
+   $Checkbox[26] = GUICtrlCreateCheckbox(&quot;Avaya one-X&quot;, $checkbox_left+320, $install_top+50, $checkbox_width, $checkbox_height)
+   $Checkbox[27] = GUICtrlCreateCheckbox(&quot;Teamviewer11to10&quot;, $checkbox_left+5, $install_top+80, $checkbox_width, $checkbox_height)
+   $Checkbox[28] = GUICtrlCreateCheckbox(&quot;Teamviewer10&quot;, $checkbox_left+160, $install_top+80, $checkbox_width, $checkbox_height)
+
+   GUICtrlCreateGroup(&quot;操作选项&quot;,$select_left, $select_top, $gui_width-10, $gui_height/3-100)
+   ;;创建一个单选框，语法：GUICtrlCreateRadio ( &quot;文本&quot;, 左侧, 上方 [, 宽度 [, 高度 [, 风格 [, 扩展风格]]]] )
+   Global $Radio1 = GUICtrlCreateRadio(&quot;驻地&quot;, $select_left+5, $select_top+20, $select_width, $select_height)
+   Global $Radio2 = GUICtrlCreateRadio(&quot;驻地(含VPN)&quot;, $select_left+55, $select_top+20, $select_width+40, $select_height)
+   Global $Radio3 = GUICtrlCreateRadio(&quot;销售&quot;, $select_left+150, $select_top+20, $select_width, $select_height)
+   Global $Radio4 = GUICtrlCreateRadio(&quot;客服&quot;, $select_left+200, $select_top+20, $select_width, $select_height)
+
+   GUICtrlCreateGroup(&quot;用户选项&quot;,$select_left, $user_top, $gui_width-10, $gui_height/3-100)
+   $Checkbox[43] = GUICtrlCreateCheckbox(&quot;驻地&quot;, $checkbox_left+5, $user_top+20, $checkbox_width-100, $checkbox_height+10)
+   $Checkbox[44] = GUICtrlCreateCheckbox(&quot;销售&quot;, $checkbox_left+65, $user_top+20, $checkbox_width-100, $checkbox_height+10)
+   $Checkbox[45] = GUICtrlCreateCheckbox(&quot;客服&quot;, $checkbox_left+135, $user_top+20, $checkbox_width-100, $checkbox_height+10)
+   $Checkbox[41] = GUICtrlCreateCheckbox(&quot;取消自动登录&quot;, $checkbox_left+205, $user_top+20, $checkbox_width-50, $checkbox_height+10)
+   $Checkbox[42] = GUICtrlCreateCheckbox(&quot;取消管理员权限&quot;, $checkbox_left+305, $user_top+20, $checkbox_width-50, $checkbox_height+10)
+
+   $Checkbox[51] = GUICtrlCreateCheckbox(&quot;自动重启系统+登录账户&quot;, $select_left+90, $user_top+85, $select_width+100, $select_height)
+   Global $Radio11 = GUICtrlCreateRadio(&quot;全选&quot;, $select_left+260, $user_top+85, $select_width, $select_height)
+   Global $Radio12 = GUICtrlCreateRadio(&quot;全不选&quot;, $select_left+320, $user_top+85, $select_width+10, $select_height)
+
+   ;;创建一个按钮，语法：GUICtrlCreateButton ( &quot;文本&quot;, 左侧, 上方 [, 宽度 [, 高度 [, 风格 [, 扩展风格]]]] )
+   Global $Button1 = GUICtrlCreateButton(&quot;运行 (&amp;A)&quot;, $select_left, $user_top+80, $select_width+20, $select_height)
+   Global $Button2 = GUICtrlCreateButton(&quot;退出 (&amp;E)&quot;, $select_left+410, $user_top+80, $select_width+20, $select_height)
+
+   ;;窗口关闭事件
+   GUISetOnEvent($GUI_EVENT_CLOSE,&quot;_exit&quot;)
+
+EndFunc
+
+;;闲置工作，不做任何事
+While 1
+   sleep(1000)
+WEnd
+
+;;关闭程序
+Func _exit()
+   Exit
+EndFun
+</code></pre><p>双击运行脚本，即可见创建好的GUI</p>
+<p><img src="/images/20170502/170502_01.jpg" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果阅读这篇文章让您有所收获而感到开心...那还有更开心的！支付宝扫码立领红包！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>领红包</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay_worldcpu.png" alt="Minggui Lu 我有一个支付宝！扫码就能领红包！"/>
+        <p>我有一个支付宝！扫码就能领红包！</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      <!--
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AutoIt/" rel="tag"> <i class="fa fa-tag"></i> AutoIt</a>
+          
+            <a href="/tags/AutoIt3/" rel="tag"> <i class="fa fa-tag"></i> AutoIt3</a>
+          
+            <a href="/tags/Helpdesk/" rel="tag"> <i class="fa fa-tag"></i> Helpdesk</a>
+          
+            <a href="/tags/自动化/" rel="tag"> <i class="fa fa-tag"></i> 自动化</a>
+          
+        </div>
+      
+      -->
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/27/AutoIt3开发Helpdesk自动化工具之五/" rel="next" title="AutoIt3开发Helpdesk自动化工具之五:多任务组合">
+                <i class="fa fa-chevron-left"></i> AutoIt3开发Helpdesk自动化工具之五:多任务组合
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/10/Windows下的git_clone问题/" rel="prev" title="Windows下的git_clone问题">
+                Windows下的git_clone问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDU3OC83MTMz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Minggui Lu</p>
+              <p class="site-description motion-element" itemprop="description">持续集成 &nbsp;&nbsp; 持续交付</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:luminggui0214@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/mingguilu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/kind0214" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/kind0214" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/kind0214" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/kind0214" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文档"><span class="nav-number">1.</span> <span class="nav-text">参考文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GUI的概念"><span class="nav-number">2.</span> <span class="nav-text">GUI的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GUI事件模式"><span class="nav-number">3.</span> <span class="nav-text">GUI事件模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为Helpdesk自动化工具创建GUI"><span class="nav-number">4.</span> <span class="nav-text">为Helpdesk自动化工具创建GUI</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在脚本开头调用-GUIConstants-au3文件"><span class="nav-number">4.1.</span> <span class="nav-text">在脚本开头调用 GUIConstants.au3文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将默认的-消息循环模式-切换为-OnEvent-事件驱动-模式"><span class="nav-number">4.2.</span> <span class="nav-text">将默认的 消息循环模式 切换为  OnEvent(事件驱动) 模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建窗口和控件"><span class="nav-number">4.3.</span> <span class="nav-text">创建窗口和控件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+      <!-- alipay_QRcode start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <p class="site-author-name" itemprop="name"> </p>
+              <p class="site-description motion-element" itemprop="description"> 
+                <a href="/candies/" target="_blank">
+                  <img src="/images/reading/alipay_QRcode.jpg" title="打开支付宝，扫码领红包" />
+                </a>
+          </div>
+        </div>
+      </section> 
+
+      <!-- alipay_QRcode end -->
+
+      <!-- geektime start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <p class="site-author-name" itemprop="name"> </p>
+              <p class="site-author-name" itemprop="name"> 极客时间·左耳听风 </p>
+              <p class="site-description motion-element" itemprop="description"> 
+                <img src="/images/reading/左耳听风.jpg" title="洞悉技术的本质，享受科技的乐趣" />
+          </div>
+        </div>
+      </section> 
+
+      <!-- geektime end -->
+
+      <!-- huobi start -->
+
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a href="https://www.huobi.br.com/zh-cn/topic/invited/?invite_code=vg333" target="_blank">
+                  <img src="/images/reading/huobi2.jpg" title="点击注册火币" />
+                </a>
+          </div>
+        </div>
+      </section>  
+      
+      <!-- huobi end -->
+
+      <!-- yizhihognxing start -->
+      <!--
+      <div style="height:12px; border-bottom:1px dotted;"></div>
+      <div style="height:12px; border-top:1px dotted;"></div>
+
+      <section class="site-overview-wrap">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a href="http://order.yizhihongxing2018.com/aff.php?aff=294" target="_blank">
+                  <img src="/images/reading/yizhihongxing_vertical.jpg" />
+                </a>
+          </div>
+        </div>
+      </section>  
+      -->
+      <!-- yizhihongxing end -->
+
+    </div>
+  </aside>
+
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minggui Lu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">
+    托管于 <a href="https://coding.net/" target="_blank">Coding</a> pages and <a href="https://github.com/" target="_blank">Github</a> pages
+  </div>
+
+
+
+
+<!-- 百度分享
+<script>
+  window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"1","bdPos":"right","bdTop":"100"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+-->
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=65849690";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
