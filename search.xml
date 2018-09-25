@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JAVA技术和Tomcat入门及优化]]></title>
+    <url>%2F2018%2F09%2F25%2FJAVA%E6%8A%80%E6%9C%AF%E5%92%8CTomcat%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BC%98%E5%8C%96%2F</url>
+    <content type="text"><![CDATA[MVC框架讲解 模型Model 处理应用程序数据逻辑 视图View 处理数据显示 控制器Controller 处理用户交互 平台移植c/c++c 面向过程，c++ 面向对象，都与硬件和操作系统关系紧密 缺点：跨平台性差、移植困难、维护成本高 优点：运行速度快、适合开发驱动程序 c: API(Application programming Interface) OS，System call： API: Windows，APILinux，API POSIX: Protable Oprating System ABI： Application Binary Interface JAVA包含四个独立却又彼此相关的技术： Java程序设计语言 Java API Java class文件格式 JVM: Java virtual Machine JVM和Java库Once for all (Write once,Run anywhere)一次编译，到处运行 .java ——&gt; .class(bytecode) JVM实现方式 一次性解释器，解释字节码并执行 即时编译器(just-in-time complier),依赖于更多内存缓存解释后的结果 自适应编辑器，缓存20%左右代码，提高80%的速度 jdk讲解Sun：hotspot JVM（1999年面世） JRE=JVM+Java SE API, Java运行时环境，只能运行编译好的Java程序 JDK=Java+API+JVM，Java开发(编译)+运行环境，是用于实现Java程序开发的最小环境 OpenJDK开发(编译)+运行 Java应用领域分类 JAVA SE: 标准版Standard Edition &lt;—— J2SE JAVA EE: 企业版Enterprise Edition &lt;—— j2EE JAVA ME: 移动版Mobile Edition &lt;—— J2ME，未广泛应用 1995年，JAVA 1.0面世，作者James Gosling，项目名Green Project 1999年，hotspot JVM面世 2006年，Sun在GPL协议下开源Java 2009年，Oracle以74亿美元收购Sun，包括Java Servlet讲解JSPJSP: Java Server Page JSP –&gt; Servlet 参考文档]]></content>
+      <categories>
+        <category>运维之道</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>jdk</tag>
+        <tag>tomcat</tag>
+        <tag>马哥</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[【Linux】CentOS7.4上能ping通IP，但ping不通域名]]></title>
     <url>%2F2018%2F08%2F23%2F%E3%80%90Linux%E3%80%91CentOS7.4%E4%B8%8A%E8%83%BDping%E9%80%9AIP%EF%BC%8C%E4%BD%86ping%E4%B8%8D%E9%80%9A%E5%9F%9F%E5%90%8D%2F</url>
     <content type="text"><![CDATA[这是一个马虎大意+先入为主的沙雕故事 偶然一次查看CentOS IP信息时，赫然发现本地网卡多了一个IP，但我笃定该台机器只配置一个固定IP：172.29.23.3，现在却显示为scope global secondary eth0,然后多出一个IP：172.29.23.88 当时就先入为主的认为自己确实只配置了一个固定IP，并且之前没发现这个问题，肯定是谁动了配置了。。。 其实当时只要稍微冷静一点就能发现问题， inet 172.29.23.88/24 brd 172.29.23.255 scope global dynamic eth0 ，说明这个iP是通过dhcp自动获取的，检查一下网卡配置文件显示BOOTPROTO=&quot;dhcp&quot;,果不其然。。。 于是抬手就修改了配置BOOTPROTO=&quot;static&quot;，并重启了网卡，然后ssh连不上了。。。在其他机器上测试能ping通，telent 22端口也能通 然后只好远程桌面到hyper-v所在服务器上去调试CentOS的虚拟机，经反复检查和测试，确认网卡信息配置无误、DNS地址配置正确、默认路由正确，能ping通外网IP，但ping不通外网域名。。。 A few hours later 。。。 终于google了一剂猛药：《Linux能ping通IP ping不通域名》 在防火墙开放53端口 然后恢复正常了]]></content>
