@@ -323,6 +323,193 @@
   
   
 
+  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/10/17/【Tomcat】多个Tomcat实例共享同一个Tomcat副本/">
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minggui Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to MingguiLu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/17/【Tomcat】多个Tomcat实例共享同一个Tomcat副本/" itemprop="url">【Tomcat】多个tomcat实例共享同一个tomcat副本</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-17T20:40:26+08:00">
+                2018-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/点滴随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">点滴随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/images/photos/tomcat.jpg" rel="gallery_cjndg3jv7005emgesey0svmsm"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/photos/tomcat.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        
+          <p>近期在项目遇到了多个tomcat实例共享一个tomcat副本，其原理就是在各个实例启动脚本中指定CATALINA_HOME为Tomcat的安装目录，CATALINA_BASE为Tomcat实例的根目录</p>
+<h4 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境"></a>系统环境</h4><pre><code># cat /etc/redhat-release
+Red Hat Enterprise Linux Server release 6.4 (Santiago)
+
+# ip add
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 16436 qdisc noqueue state UNKNOWN
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+    inet6 ::1/128 scope host
+      valid_lft forever preferred_lft forever
+2: eth2: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 08:00:27:67:af:f4 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.56.101/24 brd 192.168.56.255 scope global eth2
+    inet6 fe80::a00:27ff:fe67:aff4/64 scope link
+      valid_lft forever preferred_lft forever
+3: eth3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 08:00:27:ad:37:47 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.3.15/24 brd 10.0.3.255 scope global eth3
+    inet6 fe80::a00:27ff:fead:3747/64 scope link
+      valid_lft forever preferred_lft forever
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/17/【Tomcat】多个Tomcat实例共享同一个Tomcat副本/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      <!--
+      
+      -->
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
   <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/10/06/【JAVA】Linux命令行下载JDK/">
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -425,7 +612,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/java.jpg" rel="gallery_cjmxcpc6i002lbswgsewmd2t2"
+                 href="/images/photos/java.jpg" rel="gallery_cjndg3jth003mmgeslixwa6ys"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/java.jpg" itemprop="contentUrl"/>
               </a>
@@ -610,7 +797,7 @@ HTTP request sent, awaiting response... 403 Forbidden
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/reading/程序员的英语.jpg" rel="gallery_cjmxcpc6d002ebswg3ipuxzl7"
+                 href="/images/reading/程序员的英语.jpg" rel="gallery_cjndg3juw0052mgesiy9i2sxh"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/reading/程序员的英语.jpg" itemprop="contentUrl"/>
               </a>
@@ -1127,7 +1314,7 @@ No package telnet available.
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/java.jpg" rel="gallery_cjmxcpc6g002hbswgfotx6uhu"
+                 href="/images/photos/java.jpg" rel="gallery_cjndg3jte003imgespva2mg3c"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/java.jpg" itemprop="contentUrl"/>
               </a>
@@ -1306,7 +1493,7 @@ No package telnet available.
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/wtf.png" rel="gallery_cjmxcpc6n002rbswg7fhcyxaq"
+                 href="/images/photos/wtf.png" rel="gallery_cjndg3jtp003xmgescgep2tem"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/wtf.png" itemprop="contentUrl"/>
               </a>
@@ -1476,7 +1663,7 @@ No package telnet available.
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/linux.jpg" rel="gallery_cjmxcpc6r002ybswgo30lnoxx"
+                 href="/images/photos/linux.jpg" rel="gallery_cjndg3ju8004gmgesp97q569w"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/linux.jpg" itemprop="contentUrl"/>
               </a>
@@ -1698,7 +1885,7 @@ No package telnet available.
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/linux.jpg" rel="gallery_cjmxcpc6t0032bswggg5cfdj1"
+                 href="/images/photos/linux.jpg" rel="gallery_cjndg3ju00049mgesr92hzpxd"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/linux.jpg" itemprop="contentUrl"/>
               </a>
@@ -1972,7 +2159,7 @@ No package telnet available.
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/linux.jpg" rel="gallery_cjmxcpc6z0039bswgaeveb9v4"
+                 href="/images/photos/linux.jpg" rel="gallery_cjndg3ju4004dmgesc3yajvgg"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/linux.jpg" itemprop="contentUrl"/>
               </a>
@@ -2013,207 +2200,6 @@ No package telnet available.
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/08/21/【Linux】sudo扩展/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      <!--
-      
-      -->
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2018/08/21/【Linux】文件权限/">
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Minggui Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome to MingguiLu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/21/【Linux】文件权限/" itemprop="url">【Linux】文件权限</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-21T12:05:35+08:00">
-                2018-08-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/点滴随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">点滴随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="/images/photos/linux.jpg" rel="gallery_cjmxcpc72003cbswgbn8i72hn"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="/images/photos/linux.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <p>Linux一切皆文件，但每个文件类型不尽相同</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">字符标示</th>
-<th style="text-align:center">文件类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">-</td>
-<td style="text-align:center">普通文件</td>
-</tr>
-<tr>
-<td style="text-align:center">d</td>
-<td style="text-align:center">目录文件</td>
-</tr>
-<tr>
-<td style="text-align:center">l</td>
-<td style="text-align:center">链接文件</td>
-</tr>
-<tr>
-<td style="text-align:center">b</td>
-<td style="text-align:center">块设备文件</td>
-</tr>
-<tr>
-<td style="text-align:center">c</td>
-<td style="text-align:center">字符设备文件</td>
-</tr>
-<tr>
-<td style="text-align:center">p</td>
-<td style="text-align:center">管道文件</td>
-</tr>
-</tbody>
-</table>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/21/【Linux】文件权限/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2303,7 +2289,7 @@ No package telnet available.
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
