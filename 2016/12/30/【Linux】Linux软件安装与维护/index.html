@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="1. 使用软件源码包2. Debian/UbuntuDebian系Linux发行版的软件包格式为deb 2.1 dpkgdpkg的是基于Debian系统的一个低级包管理器。它可以安装，删除，提供有关资料，以及建立*.deb包，但它不能自动下载并安装它们相应的依赖包。">
+<meta name="description" content="使用软件源码包跨代码文件的依赖关系手动编译难度高，需要使用项目管理器：  c、c++: make (configure + Makefile.in ——&amp;gt; makefile) 源代码 ——&amp;gt; 预处理 ——&amp;gt; 编译(gcc) ——&amp;gt; 汇编 ——&amp;gt; 链接 ——&amp;gt; 执行   java: maven  开发工具 autoconf： 生成configure脚本 autom">
 <meta name="keywords" content="Linux,apt,apt-get,rpm,yum">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux软件安装与维护">
-<meta property="og:url" content="http://blog.mingguilu.com/2016/12/30/Linux软件安装与维护/index.html">
+<meta property="og:title" content="【Linux】Linux软件安装与维护">
+<meta property="og:url" content="http://blog.mingguilu.com/2016/12/30/【Linux】Linux软件安装与维护/index.html">
 <meta property="og:site_name" content="Welcome to MingguiLu&#39;s Blog">
-<meta property="og:description" content="1. 使用软件源码包2. Debian/UbuntuDebian系Linux发行版的软件包格式为deb 2.1 dpkgdpkg的是基于Debian系统的一个低级包管理器。它可以安装，删除，提供有关资料，以及建立*.deb包，但它不能自动下载并安装它们相应的依赖包。">
+<meta property="og:description" content="使用软件源码包跨代码文件的依赖关系手动编译难度高，需要使用项目管理器：  c、c++: make (configure + Makefile.in ——&amp;gt; makefile) 源代码 ——&amp;gt; 预处理 ——&amp;gt; 编译(gcc) ——&amp;gt; 汇编 ——&amp;gt; 链接 ——&amp;gt; 执行   java: maven  开发工具 autoconf： 生成configure脚本 autom">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://blog.mingguilu.com/images/photos/linux_software.jpg">
-<meta property="og:updated_time" content="2018-09-06T16:18:07.727Z">
+<meta property="og:updated_time" content="2018-11-01T20:14:30.962Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux软件安装与维护">
-<meta name="twitter:description" content="1. 使用软件源码包2. Debian/UbuntuDebian系Linux发行版的软件包格式为deb 2.1 dpkgdpkg的是基于Debian系统的一个低级包管理器。它可以安装，删除，提供有关资料，以及建立*.deb包，但它不能自动下载并安装它们相应的依赖包。">
+<meta name="twitter:title" content="【Linux】Linux软件安装与维护">
+<meta name="twitter:description" content="使用软件源码包跨代码文件的依赖关系手动编译难度高，需要使用项目管理器：  c、c++: make (configure + Makefile.in ——&amp;gt; makefile) 源代码 ——&amp;gt; 预处理 ——&amp;gt; 编译(gcc) ——&amp;gt; 汇编 ——&amp;gt; 链接 ——&amp;gt; 执行   java: maven  开发工具 autoconf： 生成configure脚本 autom">
 <meta name="twitter:image" content="http://blog.mingguilu.com/images/photos/linux_software.jpg">
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.mingguilu.com/2016/12/30/Linux软件安装与维护/"/>
+  <link rel="canonical" href="http://blog.mingguilu.com/2016/12/30/【Linux】Linux软件安装与维护/"/>
 
 
 
 
 
-  <title>Linux软件安装与维护 | Welcome to MingguiLu's Blog</title>
+  <title>【Linux】Linux软件安装与维护 | Welcome to MingguiLu's Blog</title>
   
 
 
@@ -325,7 +325,7 @@
   
   
 
-  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2016/12/30/Linux软件安装与维护/">
+  <link itemprop="mainEntityOfPage" href="http://blog.mingguilu.com/2016/12/30/【Linux】Linux软件安装与维护/">
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
@@ -348,7 +348,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux软件安装与维护</h1>
+          <h1 class="post-title" itemprop="name headline">【Linux】Linux软件安装与维护</h1>
         
 
         <div class="post-meta">
@@ -383,8 +383,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维之道/" itemprop="url" rel="index">
-                    <span itemprop="name">运维之道</span>
+                  <a href="/categories/点滴随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">点滴随笔</span>
                   </a>
                 </span>
 
@@ -463,7 +463,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/images/photos/linux_software.jpg" rel="gallery_cjmxcpc5f0012bswgbqwpzfuq"
+                 href="/images/photos/linux_software.jpg" rel="gallery_cjnz1cqp100007owgggztghnq"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/photos/linux_software.jpg" itemprop="contentUrl"/>
               </a>
@@ -476,8 +476,82 @@
       
 
       
-        <h3 id="1-使用软件源码包"><a href="#1-使用软件源码包" class="headerlink" title="1. 使用软件源码包"></a>1. 使用软件源码包</h3><h3 id="2-Debian-Ubuntu"><a href="#2-Debian-Ubuntu" class="headerlink" title="2. Debian/Ubuntu"></a>2. Debian/Ubuntu</h3><p>Debian系Linux发行版的软件包格式为deb</p>
-<h4 id="2-1-dpkg"><a href="#2-1-dpkg" class="headerlink" title="2.1 dpkg"></a>2.1 dpkg</h4><p>dpkg的是基于Debian系统的一个低级包管理器。它可以安装，删除，提供有关资料，以及建立*.deb包，但它不能自动下载并安装它们相应的依赖包。</p>
+        <h3 id="使用软件源码包"><a href="#使用软件源码包" class="headerlink" title="使用软件源码包"></a>使用软件源码包</h3><h4 id="跨代码文件的依赖关系"><a href="#跨代码文件的依赖关系" class="headerlink" title="跨代码文件的依赖关系"></a>跨代码文件的依赖关系</h4><p>手动编译难度高，需要使用项目管理器：</p>
+<ul>
+<li>c、c++: make (configure + Makefile.in ——&gt; makefile)<ul>
+<li>源代码 ——&gt; 预处理 ——&gt; 编译(gcc) ——&gt; 汇编 ——&gt; 链接 ——&gt; 执行</li>
+</ul>
+</li>
+<li>java: maven</li>
+</ul>
+<h4 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h4><ul>
+<li>autoconf： 生成configure脚本</li>
+<li>automake： 生成Makefile.in</li>
+</ul>
+<h4 id="编译安装三步骤"><a href="#编译安装三步骤" class="headerlink" title="编译安装三步骤"></a>编译安装三步骤</h4><ul>
+<li>./configure: <ul>
+<li>通过选项传递参数，指定启用特性、安装路径等；执行时参数结合Makefile.in来生成makefile</li>
+<li>检查依赖的外部环境</li>
+</ul>
+</li>
+<li>make<ul>
+<li>根据makefile构建应用程序</li>
+</ul>
+</li>
+<li>make install<ul>
+<li>实际执行脚本，将构建好的二进制应用程序和库文件复制(install命令)到指定的目录中去</li>
+</ul>
+</li>
+</ul>
+<h4 id="编译c源代码"><a href="#编译c源代码" class="headerlink" title="编译c源代码"></a>编译c源代码</h4><ul>
+<li>开发工具： make、gcc等</li>
+<li>开发环境： 开发库、头文件<ul>
+<li>glibc: 标准库</li>
+</ul>
+</li>
+<li>通过“包组”提供开发组件<ul>
+<li>CentOS 5： Development Tools、Development Library </li>
+<li>CentOS 6： Development Tools、Server Platform Development</li>
+<li>CentOS 7:  Development Tools<ul>
+<li>yum groupinstall ‘Development Tools’</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="configure脚本"><a href="#configure脚本" class="headerlink" title="configure脚本"></a>configure脚本</h4><ul>
+<li>./configure –help 查看配置文件参数<ul>
+<li>Configuration 对./configure脚本本身运行的过程进行配置</li>
+<li>Installation directories 程序安装目录<ul>
+<li>–prefix=DIR 指定默认安装路径，默认是/usr/local</li>
+<li>–sysconfdir=DIR 配置文件安装路径,默认是 PREFIX/etc</li>
+</ul>
+</li>
+<li>Program names 改变安装后程序的名称</li>
+<li>System types 形成各个平台的安装版本，即交叉编译</li>
+<li>Optional Features 可选特性<ul>
+<li>–disable-FEATURE</li>
+<li>–enable-FEATURE[=ARG]</li>
+</ul>
+</li>
+<li>Optional Packages 可选包<ul>
+<li>–with-PACKAGE[=ARG]<ul>
+<li>–without-PACKAGE </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Some influential environment variables 影响安装的环境变量</li>
+</ul>
+</li>
+</ul>
+<h4 id="make"><a href="#make" class="headerlink" title="make"></a>make</h4><h4 id="make-install"><a href="#make-install" class="headerlink" title="make install"></a>make install</h4><h4 id="安装后的配置"><a href="#安装后的配置" class="headerlink" title="安装后的配置"></a>安装后的配置</h4><h5 id="导出二进制的程序目录至PATH环境变量中"><a href="#导出二进制的程序目录至PATH环境变量中" class="headerlink" title="导出二进制的程序目录至PATH环境变量中"></a>导出二进制的程序目录至PATH环境变量中</h5><p>vim /etc/profile/NAME.sh<br>export PATH=/PATH/TO/BIN:$PATH</p>
+<h5 id="导出库文件路径"><a href="#导出库文件路径" class="headerlink" title="导出库文件路径"></a>导出库文件路径</h5><p>vim /etc/ld.so.conf.d/NAME.conf<br>添加新的库文件所在目录之词文件中</p>
+<p>让系统重新生成缓存： ldconfig [-v]</p>
+<h5 id="导出头文件"><a href="#导出头文件" class="headerlink" title="导出头文件"></a>导出头文件</h5><p>基于链接的方式实现<br>ln -sv </p>
+<h5 id="导出帮助手册"><a href="#导出帮助手册" class="headerlink" title="导出帮助手册"></a>导出帮助手册</h5><p>vim /etc/man.conf<br>MANPATH /PATH/TO/MAN</p>
+<h3 id="Debian-Ubuntu"><a href="#Debian-Ubuntu" class="headerlink" title="Debian/Ubuntu"></a>Debian/Ubuntu</h3><p>Debian系Linux发行版的软件包格式为deb</p>
+<h4 id="dpkg"><a href="#dpkg" class="headerlink" title="dpkg"></a>dpkg</h4><p>dpkg的是基于Debian系统的一个低级包管理器。它可以安装，删除，提供有关资料，以及建立*.deb包，但它不能自动下载并安装它们相应的依赖包。</p>
 <a id="more"></a>
 <p>查看帮助</p>
 <pre><code>dpkg --help
@@ -532,7 +606,7 @@
 <pre><code>dpkg --forget-old-unavail
 </code></pre><p>显示版本</p>
 <pre><code>dpkg --version
-</code></pre><h4 id="2-2-apt-cache、apt-get"><a href="#2-2-apt-cache、apt-get" class="headerlink" title="2.2 apt-cache、apt-get"></a>2.2 apt-cache、apt-get</h4><h5 id="2-2-1-apt-cache"><a href="#2-2-1-apt-cache" class="headerlink" title="2.2.1 apt-cache"></a>2.2.1 apt-cache</h5><p>apt-cache是Linux下的apt软件包管理工具，使用它能查询到apt的二进制软件包缓存文件,结合一些参数使用能查寻到软件包信息和软件包依赖关系等</p>
+</code></pre><h4 id="apt-cache、apt-get"><a href="#apt-cache、apt-get" class="headerlink" title="apt-cache、apt-get"></a>apt-cache、apt-get</h4><h5 id="apt-cache"><a href="#apt-cache" class="headerlink" title="apt-cache"></a>apt-cache</h5><p>apt-cache是Linux下的apt软件包管理工具，使用它能查询到apt的二进制软件包缓存文件,结合一些参数使用能查寻到软件包信息和软件包依赖关系等</p>
 <p>列出所有软件包的名称</p>
 <pre><code>apt-cache pkgnames
 </code></pre><p>列出所有以指定字符开头的软件包</p>
@@ -547,7 +621,7 @@
 <pre><code>apt-cache showpkg apache2
 </code></pre><p>统计全部软件包的信息</p>
 <pre><code>apt-cache stats
-</code></pre><h5 id="2-2-2-apt-get"><a href="#2-2-2-apt-get" class="headerlink" title="2.2.2 apt-get"></a>2.2.2 apt-get</h5><p>apt-get是Debian及其衍生版的高级包管理器，并提供命令行方式来从多个来源检索和安装软件包，其中包括解决依赖性。和dpkg不同的是，apt-get不是直接基于.deb文件工作，而是基于软件包的正确名称。</p>
+</code></pre><h5 id="apt-get"><a href="#apt-get" class="headerlink" title="apt-get"></a>apt-get</h5><p>apt-get是Debian及其衍生版的高级包管理器，并提供命令行方式来从多个来源检索和安装软件包，其中包括解决依赖性。和dpkg不同的是，apt-get不是直接基于.deb文件工作，而是基于软件包的正确名称。</p>
 <p>更新软件源（/etc/apt/source.list）</p>
 <pre><code>sudo apt-get update
 </code></pre><p>升级已安装的所有软件包（不管依赖性，不添加包，也不删除包）</p>
@@ -866,7 +940,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-使用软件源码包"><span class="nav-number">1.</span> <span class="nav-text">1. 使用软件源码包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Debian-Ubuntu"><span class="nav-number">2.</span> <span class="nav-text">2. Debian/Ubuntu</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-dpkg"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 dpkg</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-apt-cache、apt-get"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 apt-cache、apt-get</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-1-apt-cache"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 apt-cache</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-2-apt-get"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 apt-get</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用软件源码包"><span class="nav-number">1.</span> <span class="nav-text">使用软件源码包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#跨代码文件的依赖关系"><span class="nav-number">1.1.</span> <span class="nav-text">跨代码文件的依赖关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开发工具"><span class="nav-number">1.2.</span> <span class="nav-text">开发工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译安装三步骤"><span class="nav-number">1.3.</span> <span class="nav-text">编译安装三步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译c源代码"><span class="nav-number">1.4.</span> <span class="nav-text">编译c源代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#configure脚本"><span class="nav-number">1.5.</span> <span class="nav-text">configure脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#make"><span class="nav-number">1.6.</span> <span class="nav-text">make</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#make-install"><span class="nav-number">1.7.</span> <span class="nav-text">make install</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装后的配置"><span class="nav-number">1.8.</span> <span class="nav-text">安装后的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#导出二进制的程序目录至PATH环境变量中"><span class="nav-number">1.8.1.</span> <span class="nav-text">导出二进制的程序目录至PATH环境变量中</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#导出库文件路径"><span class="nav-number">1.8.2.</span> <span class="nav-text">导出库文件路径</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#导出头文件"><span class="nav-number">1.8.3.</span> <span class="nav-text">导出头文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#导出帮助手册"><span class="nav-number">1.8.4.</span> <span class="nav-text">导出帮助手册</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Debian-Ubuntu"><span class="nav-number">2.</span> <span class="nav-text">Debian/Ubuntu</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dpkg"><span class="nav-number">2.1.</span> <span class="nav-text">dpkg</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#apt-cache、apt-get"><span class="nav-number">2.2.</span> <span class="nav-text">apt-cache、apt-get</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#apt-cache"><span class="nav-number">2.2.1.</span> <span class="nav-text">apt-cache</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#apt-get"><span class="nav-number">2.2.2.</span> <span class="nav-text">apt-get</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
